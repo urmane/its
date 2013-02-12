@@ -63,15 +63,8 @@ UID: %d]]):format(
 end
 
 
---- this is function computeFOV from engine/interface/ActorFOV.lua
+--- this replaces function computeFOV from engine/interface/ActorFOV.lua
 --- might also need to mod function computeFOVBeam from engine/interface/ActorFOV.lua
----
---- This is where I think I need to modify the engine code to add the option of NPCs not seeing the player based on lighting
---- Default t-engine/tome behavior appears to be that an NPC is aware of player if NPC has LOS within sight range - only block_sight stops FOV
---- It appears to be the same in both example and TOME mods; even though TOME has more code, it's mostly to restrict/enhance player display (ie visibility)
----
---- Add a check against Actor.canSee() in the below code, that way NPCs will check just like players do
---- add actual visibility code there
 
 --- Computes actor's FOV
 -- @param radius the FOV radius, defaults to 20
@@ -155,7 +148,7 @@ function _M:computeFOV(radius, block, apply, force, no_store, cache)
 
                 -- Sort actors by distance (squared but we do not care)
                 table.sort(fov.actors_dist, "__sqdist")
-              print("Computed FOV for", self.uid, self.name, ":: seen ", #fov.actors_dist, "actors closeby")
+--              print("Computed FOV for", self.uid, self.name, ":: seen ", #fov.actors_dist, "actors closeby")
 
                 self.fov = fov
                 self.fov_last_x = self.x

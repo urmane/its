@@ -18,7 +18,7 @@
 -- darkgod@te4.org
 
 newEntity{
-    define_as = "BASE_SUITARMOR", slot = "TORSO",
+    define_as = "BASE_SUITARMOR", slot = "TORSO", slot_forbid = "ARMS",
     type = "armor", subtype="suit", display = "/", color=colors.SLATE,
     encumber = 3, rarity = 5,
     combat = { sound = "actions/melee", sound_miss = "actions/melee_miss", },
@@ -26,17 +26,7 @@ newEntity{
     desc = [[A crunchy shell.]],
 }
 
-newEntity{ base="BASE_SUITARMOR", name="bronze helmet",   level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_SUITARMOR", name="iron helmet",     level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_SUITARMOR", name="steel helmet",    level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_SUITARMOR", name="coral helmet",    level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_SUITARMOR", name="crystal helmet",  level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_SUITARMOR", name="carnite helmet",  level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_SUITARMOR", name="arkidine helmet", level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_SUITARMOR", name="energy helmet",   level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_SUITARMOR", name="power helmet",    level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_SUITARMOR", name="force helmet",    level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_SUITARMOR", name="nanite helmet",   level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_SUITARMOR", name="gravity helmet",  level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_SUITARMOR", name="null helmet",     level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
+newEntity{ base="BASE_SUITARMOR", name="bronze armor",   level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
+newEntity{ base="BASE_SUITARMOR", name="iron armor",     level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
+newEntity{ base="BASE_SUITARMOR", name="steel armor",    level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
 

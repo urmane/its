@@ -35,7 +35,7 @@ newEntity{ base = "BASE_GUARD",
 	name = "prisonguard", color=colors.GREEN,
 	level_range = {1, 4}, exp_worth = 1,
 	rarity = 4,
-	lite = 3,		-- radius of the light this actor puts out
+	lite = 5,		-- radius of the light this actor puts out
 	sight = 20,		-- absolute limit of sight
 	sight_min = 5,		-- minimum light level this actor can distinguish
 	move_dir = 2,		-- initial move direction, they'll rotate clockwise 90 degrees for now

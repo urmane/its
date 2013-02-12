@@ -94,15 +94,6 @@ function _M:newGame()
 	Map:setViewerActor(self.player)
 	self:setupDisplayMode()
 
-	print("[ITS] Creating new universe")
-	print("[ITS] Creating new pantheon")
-	print("[ITS] Creating creation myth")
-	print("[ITS] Creating new world")
-	self.logdisplay("[ITS] Creating new universe")
-	self.logdisplay("[ITS] Creating new pantheon")
-	self.logdisplay("[ITS] Creating new creation myth")
-	self.logdisplay("[ITS] Creating new startworld")
-
 	self.creating_player = true
 	local birth = Birther.new(nil, self.player, {"base", "role" }, function()
 		self:changeLevel(1, "dungeon")
@@ -114,16 +105,14 @@ function _M:newGame()
 		self.creating_player = false
 		print("[PLAYER BIRTH] resolved!")
                 local d = require("engine.dialogs.ShowText").new("Welcome to ITS", "introduction", {name=self.player.name}, nil, nil, function()
+			-- This code is from TOME, dunno what it all does yet
                         -- For quickbirth
-                        savefile_pipe:push(self.player.name, "entity", self.party, "engine.CharacterVaultSave")
-                        self.creating_player = false
-
-                        self.player:grantQuest(self.player.starting_quest)
-
-                        birth_done()
-                        self.player:check("on_birth_done")
-
-                        if __module_extra_info.birth_done_script then loadstring(__module_extra_info.birth_done_script)() end
+                        -- savefile_pipe:push(self.player.name, "entity", self.party, "engine.CharacterVaultSave")
+                        -- self.creating_player = false
+                        -- self.player:grantQuest(self.player.starting_quest)
+                        -- birth_done()
+                        -- self.player:check("on_birth_done")
+                        -- if __module_extra_info.birth_done_script then loadstring(__module_extra_info.birth_done_script)() end
                 end, true)
                 self:registerDialog(d)
 

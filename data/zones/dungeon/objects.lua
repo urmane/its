@@ -20,3 +20,4 @@
 load "/data/general/objects/swords.lua"
 load "/data/general/objects/helmets.lua"
 load "/data/general/objects/armors.lua"
+load "/data/general/objects/tools.lua"

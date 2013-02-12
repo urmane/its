@@ -35,5 +35,7 @@ newEntity{
 newEntity{ base = "BASE_LOCKPICK", name = "makeshift lockpick", level_range = {1, 10}, cost = 1, }
 newEntity{ base = "BASE_LOCKPICK", name = "iron lockpick", level_range = {1, 10}, cost = 1, }
 newEntity{ base = "BASE_LOCKPICK", name = "steel lockpick", level_range = {1, 10}, cost = 1, }
-newEntity{ base = "BASE_LOCKPICK", name = "iron thiefs tools", level_range = {1, 10}, cost = 1, }
-newEntity{ base = "BASE_LOCKPICK", name = "steel thiefs tools", level_range = {1, 10}, cost = 1, }
+newEntity{ base = "BASE_LOCKPICK", name = "basic thief's tools", level_range = {1, 10}, cost = 1, }
+newEntity{ base = "BASE_LOCKPICK", name = "professional thief's tools", level_range = {1, 10}, cost = 1, }
+newEntity{ base = "BASE_LOCKPICK", name = "locksmith's tools", level_range = {1, 10}, cost = 1, }
+newEntity{ base = "BASE_LOCKPICK", name = "professional locksmith's tools", level_range = {1, 10}, cost = 1, }

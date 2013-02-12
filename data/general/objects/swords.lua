@@ -23,22 +23,9 @@ newEntity{
     encumber = 3, rarity = 5,
     combat = { sound = "actions/melee", sound_miss = "actions/melee_miss", },
     name = "a generic sword",
-    desc = [[A long, sharp object used for poking holes in monsters.]],
+    desc = [[A long, sharp object used for poking holes in bad guys.]],
 }
-
--- original
--- newEntity{ base = "BASE_SWORD", name = "brass sword", level_range = {1, 10}, require = { stat = { str=11 }, }, cost = 5, combat = { dam = 10, }, }
 
 newEntity{ base = "BASE_SWORD", name = "brass sword",    level_range = {1, 10}, cost = 5, combat = { dam = 10, }, }
 newEntity{ base = "BASE_SWORD", name = "iron sword",     level_range = {1, 10}, cost = 5, combat = { dam = 10, }, }
 newEntity{ base = "BASE_SWORD", name = "steel sword",    level_range = {1, 10}, cost = 5, combat = { dam = 10, }, }
-newEntity{ base = "BASE_SWORD", name = "coral sword",    level_range = {1, 10}, cost = 5, combat = { dam = 10, }, }
-newEntity{ base = "BASE_SWORD", name = "crystal sword",  level_range = {1, 10}, cost = 5, combat = { dam = 10, }, }
-newEntity{ base = "BASE_SWORD", name = "carnite sword",  level_range = {1, 10}, cost = 5, combat = { dam = 10, }, }
-newEntity{ base = "BASE_SWORD", name = "arkidine sword", level_range = {1, 10}, cost = 5, combat = { dam = 10, }, }
-newEntity{ base = "BASE_SWORD", name = "energy sword",   level_range = {1, 10}, cost = 5, combat = { dam = 10, }, }
-newEntity{ base = "BASE_SWORD", name = "power sword",    level_range = {1, 10}, cost = 5, combat = { dam = 10, }, }
-newEntity{ base = "BASE_SWORD", name = "force sword",    level_range = {1, 10}, cost = 5, combat = { dam = 10, }, }
-newEntity{ base = "BASE_SWORD", name = "nanite sword",   level_range = {1, 10}, cost = 5, combat = { dam = 10, }, }
-newEntity{ base = "BASE_SWORD", name = "gravity sword",  level_range = {1, 10}, cost = 5, combat = { dam = 10, }, }
-newEntity{ base = "BASE_SWORD", name = "null sword",     level_range = {1, 10}, cost = 5, combat = { dam = 10, }, }

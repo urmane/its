@@ -5,9 +5,11 @@ then a sewers/cavern/underwater level
 then the graveyard level
 put in a stub worldmap
 done: add in lockpicks / thieves tools as objects
-test/add ability to equip them
+done: test/add ability to equip them
+add locked doors
+add ability for lockpick to work
 start player with the crappiest lockpick
-make locked doors, put 'em in dungeon, and flyingtext Unlock on bump
+put locked doors in dungeon, and flyingtext Unlock on bump
 add / give guards directional lights
 add pickpocket talent from X grids away
 consider several ways out: pickpocket key from guard/bigprisoner, kill bigprisoner, climb (easier in a corner), sneak/run to the lower exit, swim out thru underwater to exit

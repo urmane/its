@@ -31,13 +31,3 @@ newEntity{ base="BASE_HELMET", name="wood helmet",     level_range = {1, 10}, co
 newEntity{ base="BASE_HELMET", name="bronze helmet",   level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
 newEntity{ base="BASE_HELMET", name="iron helmet",     level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
 newEntity{ base="BASE_HELMET", name="steel helmet",    level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_HELMET", name="coral helmet",    level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_HELMET", name="crystal helmet",  level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_HELMET", name="carnite helmet",  level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_HELMET", name="arkidine helmet", level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_HELMET", name="energy helmet",   level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_HELMET", name="power helmet",    level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_HELMET", name="force helmet",    level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_HELMET", name="nanite helmet",   level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_HELMET", name="gravity helmet",  level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_HELMET", name="null helmet",     level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}

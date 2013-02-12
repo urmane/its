@@ -28,9 +28,16 @@ local ActorInventory = require "engine.interface.ActorInventory"
 local ActorLevel = require "engine.interface.ActorLevel"
 local ActorTemporaryEffects = require "engine.interface.ActorTemporaryEffects"
 local Birther = require "engine.Birther"
+local Faction = require "engine.Faction"
 
 -- Useful keybinds
 KeyBind:load("move,hotkeys,inventory,actions,interface,debug")
+
+-- Politics
+Faction:add{ name="Operation Entertainment", reaction={players=-100} }
+Faction:add{ name="The Guild", reaction={players=-10} }
+Faction:add{ name="Secret Brotherhood", reaction={} }
+Faction:add{ name="Order Of The Sword", reaction={} }
 
 -- Damage types
 DamageType:loadDefinition("/data/damage_types.lua")

@@ -81,3 +81,15 @@ newEntity{
 	always_remember = true,
 	door_closed = "DOOR",
 }
+
+newEntity{
+	define_as = "DOOR_LOCKED",
+	name = "locked door", image = "terrain/granite_door1.png",
+	display = '+', color_r=238, color_g=154, color_b=77, back_color=colors.DARK_UMBER,
+	notice = true,
+	always_remember = true,
+	block_sight = true,
+	door_opened = "DOOR_OPEN",
+	door_locked = "DOOR_OPEN",
+}
+

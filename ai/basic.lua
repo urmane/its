@@ -5,7 +5,6 @@ newAI("guard_wander", function(self)
 	if self:runAI(self.ai_state.ai_target or "target_simple") then
 		return self:runAI(self.ai_state.ai_move or "move_simple")
 	else
-		print(self.name, " not targetting, attempting to move ", self.move_dir)
 		local counter = 0
 		local number_attempts = 4
 		local x, y = util.dirToCoord(self.move_dir)

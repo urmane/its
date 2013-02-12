@@ -28,6 +28,11 @@ function _M:init(t, no_default)
 end
 
 function _M:block_move(x, y, e, act, couldpass)
+	-- Locked doors
+	if self.door_locked then
+		return true
+	end
+
 	-- Open doors
 	if self.door_opened and act then
 		game.level.map(x, y, engine.Map.TERRAIN, game.zone.grid_list.DOOR_OPEN)
