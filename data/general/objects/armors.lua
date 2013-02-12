@@ -18,12 +18,12 @@
 -- darkgod@te4.org
 
 newEntity{
-    define_as = "BASE_SUITARMOR", slot = "TORSO", slot_forbid= "ARMS", -- cannot wear suit armor and bracers (?)
+    define_as = "BASE_SUITARMOR", slot = "TORSO",
     type = "armor", subtype="suit", display = "/", color=colors.SLATE,
     encumber = 3, rarity = 5,
     combat = { sound = "actions/melee", sound_miss = "actions/melee_miss", },
-    name = "a generic sword",
-    desc = [[A long, sharp object used for poking holes in monsters.]],
+    name = "a generic armor",
+    desc = [[A crunchy shell.]],
 }
 
 newEntity{ base="BASE_SUITARMOR", name="bronze helmet",   level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}

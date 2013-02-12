@@ -22,7 +22,6 @@
 newEntity{
     define_as = "BASE_LOCKPICK",
     slot = "TOOL",
---     slot_forbid = "SHIELD",
     type = "tool", subtype="lockpick",
     display = "/",
     color=colors.SLATE,
@@ -32,9 +31,6 @@ newEntity{
     name = "a generic lockpick",
     desc = [[One or more strong, shaped wires or keys used to open locks.]],
 }
-
--- original
--- newEntity{ base = "BASE_SWORD", name = "brass sword", level_range = {1, 10}, require = { stat = { str=11 }, }, cost = 5, combat = { dam = 10, }, }
 
 newEntity{ base = "BASE_LOCKPICK", name = "makeshift lockpick", level_range = {1, 10}, cost = 1, }
 newEntity{ base = "BASE_LOCKPICK", name = "iron lockpick", level_range = {1, 10}, cost = 1, }
