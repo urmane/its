@@ -20,46 +20,24 @@
 -- thief's tools, diggers, climber, gemcutter? holy symbol, writing(scroll?), pole (why?), mechanism/device, flint-and-steel
 
 newEntity{
-    define_as = "BASE_SWORD",
-    slot = "WEAPON",
+    define_as = "BASE_LOCKPICK",
+    slot = "TOOL",
 --     slot_forbid = "SHIELD",
-    type = "weapon", subtype="sword",
+    type = "tool", subtype="lockpick",
     display = "/",
     color=colors.SLATE,
     encumber = 3,
     rarity = 5,
-    combat = { sound = "actions/melee", sound_miss = "actions/melee_miss", },
-    name = "a generic sword",
-    desc = [[A long, sharp object used for poking holes in monsters.]],
+    -- combat = { sound = "actions/lockpick", sound_miss = "actions/melee_miss", },
+    name = "a generic lockpick",
+    desc = [[One or more strong, shaped wires or keys used to open locks.]],
 }
 
 -- original
 -- newEntity{ base = "BASE_SWORD", name = "brass sword", level_range = {1, 10}, require = { stat = { str=11 }, }, cost = 5, combat = { dam = 10, }, }
 
-newEntity{ base = "BASE_SWORD", name = "brass sword", level_range = {1, 10}, require = { stat = { str=11 }, }, cost = 5, combat = { dam = 10, }, }
-newEntity{ base = "BASE_SWORD", name = "iron sword", level_range = {1, 10}, require = { stat = { str=11 }, }, cost = 5, combat = { dam = 10, }, }
-newEntity{ base = "BASE_SWORD", name = "steel sword", level_range = {1, 10}, require = { stat = { str=11 }, }, cost = 5, combat = { dam = 10, }, }
-newEntity{ base = "BASE_SWORD", name = "coral sword", level_range = {1, 10}, require = { stat = { str=11 }, }, cost = 5, combat = { dam = 10, }, }
-newEntity{ base = "BASE_SWORD", name = "crystal sword", level_range = {1, 10}, require = { stat = { str=11 }, }, cost = 5, combat = { dam = 10, }, }
-newEntity{ base = "BASE_SWORD", name = "carnite sword", level_range = {1, 10}, require = { stat = { str=11 }, }, cost = 5, combat = { dam = 10, }, }
-newEntity{ base = "BASE_SWORD", name = "arkidine sword", level_range = {1, 10}, require = { stat = { str=11 }, }, cost = 5, combat = { dam = 10, }, }
-newEntity{ base = "BASE_SWORD", name = "energy sword", level_range = {1, 10}, require = { stat = { str=11 }, }, cost = 5, combat = { dam = 10, }, }
-newEntity{ base = "BASE_SWORD", name = "power sword", level_range = {1, 10}, require = { stat = { str=11 }, }, cost = 5, combat = { dam = 10, }, }
-newEntity{ base = "BASE_SWORD", name = "force sword", level_range = {1, 10}, require = { stat = { str=11 }, }, cost = 5, combat = { dam = 10, }, }
-newEntity{ base = "BASE_SWORD", name = "nanite sword", level_range = {1, 10}, require = { stat = { str=11 }, }, cost = 5, combat = { dam = 10, }, }
-newEntity{ base = "BASE_SWORD", name = "gravity sword", level_range = {1, 10}, require = { stat = { str=11 }, }, cost = 5, combat = { dam = 10, }, }
-newEntity{ base = "BASE_SWORD", name = "null sword", level_range = {1, 10}, require = { stat = { str=11 }, }, cost = 5, combat = { dam = 10, }, }
-
-newEntity{
-    define_as = "BASE_SWORD",
-    slot = "WEAPON",
---     slot_forbid = "SHIELD",
-    type = "weapon", subtype="sword",
-    display = "/",
-    color=colors.SLATE,
-    encumber = 3,
-    rarity = 5,
-    combat = { sound = "actions/melee", sound_miss = "actions/melee_miss", },
-    name = "a generic sword",
-    desc = [[A long, sharp object used for poking holes in monsters.]],
-}
+newEntity{ base = "BASE_LOCKPICK", name = "makeshift lockpick", level_range = {1, 10}, cost = 1, }
+newEntity{ base = "BASE_LOCKPICK", name = "iron lockpick", level_range = {1, 10}, cost = 1, }
+newEntity{ base = "BASE_LOCKPICK", name = "steel lockpick", level_range = {1, 10}, cost = 1, }
+newEntity{ base = "BASE_LOCKPICK", name = "iron thiefs tools", level_range = {1, 10}, cost = 1, }
+newEntity{ base = "BASE_LOCKPICK", name = "steel thiefs tools", level_range = {1, 10}, cost = 1, }
