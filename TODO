@@ -1,19 +1,21 @@
-add in wall grates
-put in several more dungeon levels
 add in static lights for torches/brazziers
-then a sewers/cavern/underwater level
-then the graveyard level
+added, needs work: then a sewers/cavern/underwater level
+added, needs work: then the graveyard level
 put in a stub worldmap
+change/consolidate a colorscheme for grids
+start player with the crappiest lockpick
+allow closing doors
+add prisoners (dumb first)
+add random prisoner chats
+add / give guards directional lights
+add pickpocket talent from X grids away (directional lights are a prereq, yes?)
+pick up quests on the way (i'm dying take my macguffin, take up my sword(mayor demon))
+quest 1: Take down corrupt mayor/actually a "demon", who's part of a larger plot to, say, enslave all the <race>
+actions affect later gameplay - what taken, how many killed vs knocked out, etc - eg opening cell doors
+done: put in several more dungeon levels
 done: add in lockpicks / thieves tools as objects
 done: test/add ability to equip them
 done: add locked doors
 done: add ability for lockpick to work
-start player with the crappiest lockpick
 done: put locked doors in dungeon
-add flyingtext Unlock on unlock
-add / give guards directional lights
-add pickpocket talent from X grids away
-consider several ways out: pickpocket key from guard/bigprisoner, kill bigprisoner, climb (easier in a corner), sneak/run to the lower exit, swim out thru underwater to exit
-pick up quests on the way (i'm dying take my macguffin, take up my sword(mayor demon))
-quest 1: Take down corrupt mayor/actually a "demon", who's part of a larger plot to, say, enslave all the <race>
-actions affect later gameplay - what taken, how many killed vs knocked out, etc
+done: add flyingtext Unlock on unlock

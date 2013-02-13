@@ -18,7 +18,7 @@
 -- darkgod@te4.org
 
 return {
-	name = "Gora Prison",
+	name = "Gora Graveyard",
 	level_range = {1, 3},
 	max_level = 3,
 	decay = {300, 800},
@@ -36,9 +36,8 @@ return {
 		down = "DOWN",
 	},
 	levels = {
-		[1] = { width = 70, height = 70, generator = { map = { class = "engine.generator.map.Static", map = "zones/gora-prison1", }, }, },
-		[2] = { width = 70, height = 70, generator = { map = { class = "engine.generator.map.Static", map = "zones/gora-prison2", }, }, },
-		[3] = { width = 70, height = 70, generator = { map = { class = "engine.generator.map.Static", map = "zones/gora-prison3", }, }, },
-		[4] = { width = 40, height = 40, generator = { map = { class = "engine.generator.map.Static", map = "zones/gora-prison-sewers", }, }, },
+		[1] = { width = 64, height = 64, generator = { map = { class = "engine.generator.map.Static", map = "zones/gora-graveyard1", }, }, },
+		[2] = { width = 64, height = 64, generator = { map = { class = "engine.generator.map.Static", map = "zones/gora-graveyard2", }, }, },
+		[3] = { width = 64, height = 64, generator = { map = { class = "engine.generator.map.Static", map = "zones/gora-graveyard3", }, }, },
 	},
 }
