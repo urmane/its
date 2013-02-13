@@ -61,8 +61,9 @@ function _M:run()
 	self.hotkeys_display = HotkeysDisplay.new(nil, self.w * 0.5, self.h * 0.8, self.w * 0.5, self.h * 0.2, {30,30,0})
 	self.npcs_display = ActorsSeenDisplay.new(nil, self.w * 0.5, self.h * 0.8, self.w * 0.5, self.h * 0.2, {30,30,0})
 	self.tooltip = Tooltip.new(nil, nil, {255,255,255}, {30,30,30})
-	self.flyers = FlyingText.new()
+	self.flyers = FlyingText.new("/data/font/DroidSans.ttf",14,"/data/font/DroidSans.ttf",18)
 	self:setFlyingText(self.flyers)
+	self.flyers:enableShadow(0.6)
 
 	self.log = function(style, ...) if type(style) == "number" then self.logdisplay(...) self.flash(style, ...) else self.logdisplay(style, ...) self.flash(self.flash.NEUTRAL, style, ...) end end
 	self.logSeen = function(e, style, ...) if e and self.level.map.seens(e.x, e.y) then self.log(style, ...) end end
@@ -96,7 +97,7 @@ function _M:newGame()
 
 	self.creating_player = true
 	local birth = Birther.new(nil, self.player, {"base", "role" }, function()
-		self:changeLevel(1, "dungeon")
+		self:changeLevel(1, "gora-prison")
 		print("[PLAYER BIRTH] resolve...")
 		self.player:resolve()
 		self.player:resolve(nil, true)

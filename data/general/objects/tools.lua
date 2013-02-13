@@ -19,6 +19,8 @@
 
 -- thief's tools, diggers, climber, gemcutter? holy symbol, writing(scroll?), pole (why?), mechanism/device, flint-and-steel
 
+local FlyingText = require "engine.FlyingText"
+
 newEntity{
     define_as = "BASE_LOCKPICK",
     slot = "TOOL",
@@ -38,6 +40,8 @@ newEntity{
 		if door.door_unlocked then
 			print("unlocking at ", x, ",", y)
 			game.level.map(x, y, engine.Map.TERRAIN, game.zone.grid_list[door.door_unlocked])
+			local sx, sy = game.level.map:getTileToScreen(x, y)
+			game.flyers:add(sx, sy, 10, 0, -1, "Unlocked!", {0,255,0}, false)
 		else
 			print("cannot unlock at", x, ",", y)
 		end
