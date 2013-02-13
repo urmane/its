@@ -30,6 +30,20 @@ newEntity{
     -- combat = { sound = "actions/lockpick", sound_miss = "actions/melee_miss", },
     name = "a generic lockpick",
     desc = [[One or more strong, shaped wires or keys used to open locks.]],
+    use_simple = { name = "Unlock that which is locked.", use = function(self, who)
+                local tg = {type="bolt", range=1, nolock=true}
+                local x, y = who:getTarget(tg)
+                if not x or not y then return nil end
+		local door = game.level.map(x, y, engine.Map.TERRAIN) -- only works on doors (TERRAIN) right now
+		if door.door_unlocked then
+			print("unlocking at ", x, ",", y)
+			game.level.map(x, y, engine.Map.TERRAIN, game.zone.grid_list[door.door_unlocked])
+		else
+			print("cannot unlock at", x, ",", y)
+		end
+                return {id=true, used=true}
+        end},
+
 }
 
 newEntity{ base = "BASE_LOCKPICK", name = "makeshift lockpick", level_range = {1, 10}, cost = 1, }

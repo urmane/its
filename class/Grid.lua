@@ -29,7 +29,7 @@ end
 
 function _M:block_move(x, y, e, act, couldpass)
 	-- Locked doors
-	if self.door_locked then
+	if self.door_unlocked then
 		return true
 	end
 

@@ -89,7 +89,6 @@ newEntity{
 	notice = true,
 	always_remember = true,
 	block_sight = true,
-	door_opened = "DOOR_OPEN",
-	door_locked = "DOOR_OPEN",
+	door_unlocked = "DOOR",
 }
 

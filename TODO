@@ -6,7 +6,7 @@ then the graveyard level
 put in a stub worldmap
 done: add in lockpicks / thieves tools as objects
 done: test/add ability to equip them
-add locked doors
+done: add locked doors
 add ability for lockpick to work
 start player with the crappiest lockpick
 put locked doors in dungeon, and flyingtext Unlock on bump
