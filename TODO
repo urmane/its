@@ -1,6 +1,9 @@
 add in static lights for torches/brazziers
-added, needs work: then a sewers/cavern/underwater level
-added, needs work: then the graveyard level
+stub added: a sewers/cavern/underwater level
+add content to sewer level, with an eye toward revisiting it
+stub added: the graveyard levels
+add content to graveyard levels, with an eye toward revisiting it
+put a portal back from gora-graveyard3 to gora-prison-sewer
 put in a stub worldmap
 change/consolidate a colorscheme for grids
 start player with the crappiest lockpick
@@ -12,6 +15,10 @@ add pickpocket talent from X grids away (directional lights are a prereq, yes?)
 pick up quests on the way (i'm dying take my macguffin, take up my sword(mayor demon))
 quest 1: Take down corrupt mayor/actually a "demon", who's part of a larger plot to, say, enslave all the <race>
 actions affect later gameplay - what taken, how many killed vs knocked out, etc - eg opening cell doors
+Add in light levels, lights fade with distance to limit
+Make gold integers, not .02d
+Make gems and valuables, name with "(100gp)" or "(~100gp)"
+Need a fence to sell stolen
 done: put in several more dungeon levels
 done: add in lockpicks / thieves tools as objects
 done: test/add ability to equip them
