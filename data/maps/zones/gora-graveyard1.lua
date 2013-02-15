@@ -12,7 +12,7 @@ defineTile("+", "DOOR_LOCKED")
 defineTile("=", "FENCE")
 defineTile("^", "GRAVESTONE")
 defineTile("|", "TREE")
-defineTile("<", "UP")
+defineTile("W", "TO_WORLDMAP")
 defineTile(">", "DOWN")
 defineTile("G", "FLOOR", nil, {random_filter={name="prisonguard"}})
 defineTile("P", "FLOOR", nil, {random_filter={type="humanoid", subtype="prisoner"}})
@@ -20,7 +20,7 @@ defineTile("P", "FLOOR", nil, {random_filter={type="humanoid", subtype="prisoner
 return [[|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 |=============================================================|
 ==...........................................................==
->.............................................................<
+>.............................................................W
 ==...........................................................==
 |=...........................................................=|
 |=...........................................................=|

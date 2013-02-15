@@ -5,20 +5,51 @@ stub added: the graveyard levels
 add content to graveyard levels, with an eye toward revisiting it
 put a portal back from gora-graveyard3 to gora-prison-sewer
 put in a stub worldmap
-change/consolidate a colorscheme for grids
+make lockpick talent
+make lockpick talent a starting talent
+make lockpicks add to existing talent
 start player with the crappiest lockpick
+put a town near the graveyard (need a dramatic break)
+change/consolidate a colorscheme for grids
 allow closing doors
 add prisoners (dumb first)
 add random prisoner chats
 add / give guards directional lights
+(some) corpses stick around, NPCs can recognize corpse and its faction for AI, kills affect rep/faction reactions
+ability to move corpses
 add pickpocket talent from X grids away (directional lights are a prereq, yes?)
 pick up quests on the way (i'm dying take my macguffin, take up my sword(mayor demon))
 quest 1: Take down corrupt mayor/actually a "demon", who's part of a larger plot to, say, enslave all the <race>
 actions affect later gameplay - what taken, how many killed vs knocked out, etc - eg opening cell doors
-Add in light levels, lights fade with distance to limit
+Add in light levels, lights fade with distance to limit, gfx or gfx effects for various levels
 Make gold integers, not .02d
 Make gems and valuables, name with "(100gp)" or "(~100gp)"
 Need a fence to sell stolen
+finalize the overall storyline, and sketch out the major bits needed (then redo this todo)
+	prison->sewer->graveyard->town->worldmap
+	town is a dramatic break, very big, opportunity to practice, equip up, swipe stuff
+		game adjusts to how much illegal done (wanted, reputation)
+	starting quest - get out of the prison
+	side quest - take-my-macguffin in the sewers
+	side quest - take-up-my sword in the prison, get the key from the secret room
+	side quests - collect gold/valuables/treasures, some big ones
+	side quest - assassinate
+	reputation and faction reactions change the game
+	npc chats -> quests and/or reputation / reaction changes, re-emprison (lose equip), etc
+	large-scale famous acts (ie steal X's thing)
+	overall has to be save the world
+
+mod the player resources / stats / thief talents needed for game
+resources: air
+stats: stealth?  Dex, str, con, chr, int (for lore? player provides int, call it something else)
+attrs: reputation
+talents: lockpick (tool use), pickpocket, hide, move silent, knockout, find mechanisms/disarm traps, climb, shoot, force lock
+backstab(bonus on attacks if target unaware, includes shoot), poison weapon (temporary), poison target (?)
+flash bombs (disablers), noisemakers (distractors), smoke bomb (both), disguise, fake death?
+resist charms, confuse, poison, etc;, Evade, Dodge, Tumble, Leap, appraise, Negotiate, bluff
+unarmed combat (weapons make noise, implement noise) - silencing strike, sleeper hold, etc
+equipments: normal and special arrows, poison, climbing equip (rope, claws, maybe sideways view)
+
 done: put in several more dungeon levels
 done: add in lockpicks / thieves tools as objects
 done: test/add ability to equip them

@@ -43,6 +43,8 @@ local Tooltip = require "engine.Tooltip"
 
 local QuitDialog = require "mod.dialogs.Quit"
 
+local Markov = require "mod.class.Markov"
+
 module(..., package.seeall, class.inherit(engine.GameTurnBased, engine.interface.GameTargeting))
 
 function _M:init()
@@ -94,6 +96,10 @@ function _M:newGame()
 	self.player = Player.new{name=self.player_name, game_ender=true}
 	Map:setViewerActor(self.player)
 	self:setupDisplayMode()
+
+	local markov = Markov.new("/data/testmarkov")
+	local x = markov.generateWord(data, "M", 4, 12)
+	print("new markov word is ", x)
 
 	self.creating_player = true
 	local birth = Birther.new(nil, self.player, {"base", "role" }, function()

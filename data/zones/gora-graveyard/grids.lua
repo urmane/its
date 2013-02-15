@@ -50,3 +50,13 @@ newEntity{
 --        block_esp = true,
 }
 
+newEntity{
+        define_as = "TO_WORLDMAP",
+        always_remember = true,
+        show_tooltip=true,
+        name="Exit to the World Map.",
+        display='>', color=colors.VIOLET,
+        -- image = "terrain/stair_up_wild.png",
+        notice = true,
+        change_level=3, change_zone="world-of-afeedi",
+}
