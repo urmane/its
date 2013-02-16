@@ -35,7 +35,7 @@ function _M:generateWord(start, min, max)
 
 	local startString = ""
 	local word = {}
-	if not start then
+	if not start or not self.chain[start] then
 		if not self.chain["start"] then return end
 		rnd = rng.range(1, table.getn(self.chain["start"]))
 		startString = self.chain["start"][rnd]

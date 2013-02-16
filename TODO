@@ -1,15 +1,16 @@
 add in static lights for torches/brazziers
 stub added: a sewers/cavern/underwater level
-add content to sewer level, with an eye toward revisiting it
 stub added: the graveyard levels
 add content to graveyard levels, with an eye toward revisiting it
-put a portal back from gora-graveyard3 to gora-prison-sewer
-put in a stub worldmap
+put a portal back from gora-graveyard3 to gora-prison-sewer, but appearance conditional on quest
+put in a stub worldmap - static now, make a generator later
 make lockpick talent
 make lockpick talent a starting talent
 make lockpicks add to existing talent
+make doors have a lockpick value (mechanisms/levers, too)
 start player with the crappiest lockpick
 put a town near the graveyard (need a dramatic break)
+add content to sewer level, with an eye toward revisiting it
 change/consolidate a colorscheme for grids
 allow closing doors
 add prisoners (dumb first)

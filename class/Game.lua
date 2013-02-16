@@ -98,10 +98,22 @@ function _M:newGame()
 	self:setupDisplayMode()
 
 	--FIXME remove this at some point
-	self.markov = Markov:new()
-	self.markov:loadChain("/data/markov/elvish.lua")
-	local x = self.markov:generateWord("E", 3, 12)
-	print("new markov word is ", x)
+	self.markov = {}
+	self.markov["dwarvish"]= {}
+	self.markov["dwarvish"]= Markov:new()
+	self.markov["dwarvish"]:loadChain("/data/markov/dwarvish.lua")
+	self.markov["elvish"]= {}
+	self.markov["elvish"]= Markov:new()
+	self.markov["elvish"]:loadChain("/data/markov/elvish.lua")
+	self.markov["english"]= {}
+	self.markov["english"]= Markov:new()
+	self.markov["english"]:loadChain("/data/markov/englishProper.lua")
+	local testname = self.markov["elvish"]:generateWord("E", 3, 9)
+	print("new elvish markov word is ", testname)
+	testname = self.markov["dwarvish"]:generateWord("K", 5, 10)
+	print("new dwarvish markov word is ", testname)
+	testname = self.markov["english"]:generateWord("N", 5, 12)
+	print("new english markov word is ", testname)
 
 	self.creating_player = true
 	local birth = Birther.new(nil, self.player, {"base", "role" }, function()
