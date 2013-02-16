@@ -97,8 +97,10 @@ function _M:newGame()
 	Map:setViewerActor(self.player)
 	self:setupDisplayMode()
 
-	local markov = Markov.new("/data/testmarkov")
-	local x = markov.generateWord(data, "M", 4, 12)
+	--FIXME remove this at some point
+	self.markov = Markov:new()
+	self.markov:loadChain("/data/markov/elvish.lua")
+	local x = self.markov:generateWord("E", 3, 12)
 	print("new markov word is ", x)
 
 	self.creating_player = true
