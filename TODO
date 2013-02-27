@@ -3,7 +3,10 @@ stub added: a sewers/cavern/underwater level
 stub added: the graveyard levels
 add content to graveyard levels, with an eye toward revisiting it
 put a portal back from gora-graveyard3 to gora-prison-sewer, but appearance conditional on quest
-put in a stub worldmap - static now, make a generator later
+worldmap, static stub
+worldmap, static piece in stub random world generator 
+worldmap, above plus each grid enterable (random zones, some with params (ie town set on worldmap, generate on enter))
+worlmap, stub out locations (towns, cities, fortresses, keeps, towers, beast lairs, faction encampments, bandits ...)
 make lockpick talent
 make lockpick talent a starting talent
 make lockpicks add to existing talent
@@ -39,6 +42,7 @@ finalize the overall storyline, and sketch out the major bits needed (then redo 
 	npc chats -> quests and/or reputation / reaction changes, re-emprison (lose equip), etc
 	large-scale famous acts (ie steal X's thing)
 	overall has to be save the world
+A Discovery of Witches: unknowingly let Witches loose, nice pictures
 
 mod the player resources / stats / thief talents needed for game
 resources: air

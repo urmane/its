@@ -15,7 +15,7 @@ There's no way you can make it out the entrance ... but perhaps there's another 
 Time to go.
 
 
-And remember to stay ...
+And remember ...
 
-In The Shadows.
+stay in the shadows.
 ]]

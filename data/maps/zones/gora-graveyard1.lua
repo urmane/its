@@ -1,7 +1,7 @@
 
-startx = 0
+startx = 62
 starty = 3
-endx = 62
+endx = 0
 endy = 3
 
 defineTile(".", "FLOOR")
