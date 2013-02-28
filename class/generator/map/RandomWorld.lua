@@ -94,12 +94,9 @@ function _M:generate(lev, old_lev)
                 print("[ITS] map not OK - regenerate")
                 return self:generate(lev, old_lev)
         end
-	print("[ITS] resolve ocean = ", self:resolve("ocean"))
-	print("[ITS] resolve land = ", self:resolve("land"))
-	printtable(self.grid_list)
-	printtable(self.zone.grid_list)
 
-	-- Add all random world stuff starting here
+	-- Add all abstract random world stuff starting here
+	-- Note this is not zone-specifics - that goes in zone.lua
 
 	-- Map overlays
 	print("[ITS] adding map overlays")
@@ -108,38 +105,4 @@ function _M:generate(lev, old_lev)
 	-- random items
 	print("[ITS] adding random entities")
 
-	print("[ITS] end of randomworld.lua checking")
-	print("terrain at 62,3 is", self.map(62,3,engine.Map.TERRAIN))
-	-- do i need this to have the player start somewhere?
-	-- print("[ITS] adding stairs?")
-        -- return self:makeStairsInside(lev, old_lev, {})
-end
-
---- Create the stairs inside the level
-function _M:makeStairsInside(lev, old_lev, spots)
-        -- Put down stairs
-        local dx, dy
-        if lev < self.zone.max_level or self.data.force_last_stair then
-                while true do
-                        dx, dy = rng.range(1, self.map.w - 1), rng.range(1, self.map.h - 1)
-                        if not self.map:checkEntity(dx, dy, Map.TERRAIN, "block_move") and not self.map.room_map[dx][dy].special then
-                                self.map(dx, dy, Map.TERRAIN, self:resolve("down"))
-                                self.map.room_map[dx][dy].special = "exit"
-                                break
-                        end
-                end
-        end
-
-        -- Put up stairs
-        local ux, uy
-        while true do
-                ux, uy = rng.range(1, self.map.w - 1), rng.range(1, self.map.h - 1)
-                if not self.map:checkEntity(ux, uy, Map.TERRAIN, "block_move") and not self.map.room_map[ux][uy].special then
-                        self.map(ux, uy, Map.TERRAIN, self:resolve("up"))
-                        self.map.room_map[ux][uy].special = "exit"
-                        break
-                end
-        end
-
-        return ux, uy, dx, dy, spots
 end

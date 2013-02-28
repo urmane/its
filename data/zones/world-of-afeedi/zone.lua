@@ -30,8 +30,8 @@ return {
 	generator =  {
         	map = {
             		class = "mod.class.generator.map.RandomWorld",
+			land = "LAND",
+			ocean = "OCEAN",
         	},
-		up = "UP",
-		down = "DOWN",
 	},
 }
