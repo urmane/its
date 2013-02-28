@@ -8,13 +8,11 @@
 require "engine.class"
 local Map = require "engine.Map"
 require "engine.Generator"
+require "mod.utils"
 
 module(..., package.seeall, class.inherit(engine.Generator))
 
 function _M:init(zone, map, level, data)
-	--self.w = 256
-	--self.h = 256
-
         print("[ITS] Initializing generator")
 	engine.Generator.init(self, zone, map, level)
         self.data = data
@@ -90,13 +88,16 @@ function _M:generate(lev, old_lev)
                         for j = 1, #groups[i].list do
                                 local jn = groups[i].list[j]
                                 self.map(jn.x, jn.y, Map.TERRAIN, self:resolve("ocean"))
-                   print("[ITS] ",jn.x,jn.y," is ", self.map(jn.x, jn.y, Map.TERRAIN))
                         end
                 end
         else
                 print("[ITS] map not OK - regenerate")
                 return self:generate(lev, old_lev)
         end
+	print("[ITS] resolve ocean = ", self:resolve("ocean"))
+	print("[ITS] resolve land = ", self:resolve("land"))
+	printtable(self.grid_list)
+	printtable(self.zone.grid_list)
 
 	-- Add all random world stuff starting here
 
