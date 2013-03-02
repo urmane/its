@@ -8,7 +8,6 @@
 require "engine.class"
 local Map = require "engine.Map"
 require "engine.Generator"
-require "mod.utils"
 
 module(..., package.seeall, class.inherit(engine.Generator))
 
@@ -145,8 +144,6 @@ function _M:generate(lev, old_lev)
 	-- First try to use Static as a subgenerator - not sure that'll work
 	--
 
-        local spots = {}
-
 	print("[ITS] Generating RandomWorld")
         local noise = core.noise.new(2, self.hurst, self.lacunarity)
         local fills = {}
@@ -242,8 +239,8 @@ function _M:generate(lev, old_lev)
 
                 table.append(self.spots, subspots)
 
-                if g.define_up then self.gen_map.startx, self.gen_map.starty = ux + self.data.__import_offset_x+g.x, uy + self.data.__import_offset_y+g.y end
-                if g.define_down then self.gen_map.endx, self.gen_map.endy = dx + self.data.__import_offset_x+g.x, dy + self.data.__import_offset_y+g.y end
+                --if g.define_up then self.gen_map.startx, self.gen_map.starty = ux + self.data.__import_offset_x+g.x, uy + self.data.__import_offset_y+g.y end
+                --if g.define_down then self.gen_map.endx, self.gen_map.endy = dx + self.data.__import_offset_x+g.x, dy + self.data.__import_offset_y+g.y end
         end
 
 	-- Left over from Static.lua, dunno if I need these
@@ -254,6 +251,7 @@ function _M:generate(lev, old_lev)
 --                self.map.room_map[self.gen_map.endx][self.gen_map.endy].special = "exit"
 --        end
 
-	print("[ITS] RandomWorld generation complete")
-        return self.map.map.startx, self.map.map.starty, self.map.map.endx, self.map.map.endy, self.spots
+	print("[ITS] RandomWorld generation complete", self.data.startx, self.data.starty, self.data.endx, self.data.endy)
+        return 3, 3, 5, 5, self.spots
+        -- return self.data.startx, self.data.starty, self.data.endx, self.data.endy, self.spots
 end
