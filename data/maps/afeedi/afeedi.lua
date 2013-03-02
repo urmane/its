@@ -17,19 +17,14 @@
 -- Nicolas Casalini "DarkGod"
 -- darkgod@te4.org
 
-return {
-	name = "The World of Afeedi",
-	level_range = {1, 1},
-	max_level = 1,
-	decay = {300, 800},
-	persistent = "zone",
-	width = 256,
-	height = 256,
-	all_lited = true,
-	generator =  {
-        	map = {
-            		class = "mod.class.generator.map.RandomWorld",
-			map = "afeedi/afeedi",
-        	},
-	},
+subGenerator{
+    x = 0, y = 0, w = 64, h = 64,
+    generator = "engine.generator.map.Static",
+    data = {
+    	map = "afeedi/afeedi-start",
+        land = "LAND",
+        ocean = "OCEAN",
+        trees = "TREES",
+        mountain = "MOUNTAIN",
+    },
 }
