@@ -17,15 +17,15 @@
 -- Nicolas Casalini "DarkGod"
 -- darkgod@te4.org
 
-subGenerator{
-    x = 0, y = 0, w = 64, h = 64,
-    generator = "engine.generator.map.Static",
-    data = {
-    	map = "afeedi/afeedi-start",
-        land = "LAND",
-        ocean = "OCEAN",
-        trees = "TREES",
-        mountain = "MOUNTAIN",
-    },
+newEntity{
+    define_as = "BASE_DAGGER", slot = "WEAPON",
+    type = "weapon", subtype="dagger", display = "/", color=colors.SLATE,
+    encumber = 3, rarity = 5,
+    combat = { sound = "actions/melee", sound_miss = "actions/melee_miss", },
+    name = "a generic dagger",
+    desc = [[A long, sharp object used for poking holes in bad guys.]],
 }
-return true
+
+newEntity{ base = "BASE_SWORD", name = "brass dagger",    level_range = {1, 10}, cost = 5, combat = { dam = 10, }, }
+newEntity{ base = "BASE_SWORD", name = "iron dagger",     level_range = {1, 10}, cost = 5, combat = { dam = 10, }, }
+newEntity{ base = "BASE_SWORD", name = "steel dagger",    level_range = {1, 10}, cost = 5, combat = { dam = 10, }, }

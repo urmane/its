@@ -52,3 +52,23 @@ newEntity{
         does_block_move = false,
         block_sight = false,
 }
+
+newEntity{
+        define_as = "MOUNTAIN",
+        type = "wall", subtype = "grass",
+        name = "mountain", --        image = "terrain/land.png",
+        display = '^', color=colors.LIGHT_UMBER, back_color={r=80,g=80,b=40},
+        always_remember = true,
+        does_block_move = true,
+        block_sight = true,
+}
+
+newEntity{
+        define_as = "VOLCANO",
+        type = "wall", subtype = "grass",
+        name = "volcano", --        image = "terrain/land.png",
+        display = '^', color=colors.RED, back_color={r=100,g=0,b=0},
+        always_remember = true,
+        does_block_move = true,
+        block_sight = true,
+}

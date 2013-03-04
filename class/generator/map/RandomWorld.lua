@@ -12,12 +12,12 @@ require "engine.Generator"
 module(..., package.seeall, class.inherit(engine.Generator))
 
 function _M:init(zone, map, level, data)
-        print("[ITS] Initializing generator")
 	engine.Generator.init(self, zone, map, level)
         self.data = data
+	self.map = map
 	self.width = data.width or 256
 	self.height = data.height or 256
-        self.grid_list = zone.grid_list
+        self.grid_list = self.zone.grid_list
 	self.subgen = {}
 	self.spots = {}
         self.zoom = data.zoom or 10
@@ -35,10 +35,8 @@ end
 function _M:loadMap(file)
         local t = {}
 
-        print("[ITS] RandomWorld initializing")
-
 	-- Not like a static map, but needed to read in any subgenerators / submaps
-	print("[ITS] RandomWorld using file", "/data/maps/"..file..".lua")
+	print("[ITS] RandomWorld init using file", "/data/maps/"..file..".lua")
         local f, err = loadfile("/data/maps/"..file..".lua")
         if not f and err then error(err) end
 	-- This whole parse function copied from Static.lua - not sure what I need at this point
@@ -110,34 +108,29 @@ function _M:loadMap(file)
 	-- Make sure the map file returns true
         if not ret and err then error(err) end
 
-        local m = { w=self.width, h=self.height }
+        self.map.startx = g.startx or math.floor(self.map.w / 2)
+        self.map.starty = g.starty or math.floor(self.map.h / 2)
+        self.map.endx = g.endx or math.floor(self.map.w / 2)
+        self.map.endy = g.endy or math.floor(self.map.h / 2)
 
-        m.startx = g.startx or math.floor(m.w / 2)
-        m.starty = g.starty or math.floor(m.h / 2)
-        m.endx = g.endx or math.floor(m.w / 2)
-        m.endy = g.endy or math.floor(m.h / 2)
+        self.tiles = table.merge(self.tiles, t)
 
-        self.map.map = m
-        self.tiles = t
-
-        self.map.w = m.w
-        self.map.h = m.h
-        print("[ITS] map size", m.w, m.h)
+        print("[ITS] map size", self.map.w, self.map.h)
 end
 
-function _M:resolve(typ, c)
-        if not self.tiles[c] or not self.tiles[c][typ] then return end
-        local res = self.tiles[c][typ]
-        if type(res) == "function" then
-                return self.grid_list[res()]
-        elseif type(res) == "table" and res.__CLASSNAME then
-                return res
-        elseif type(res) == "table" then
-                return self.grid_list[res[rng.range(1, #res)]]
-        else
-                return self.grid_list[res]
-        end
-end
+--function _M:resolve(typ, c)
+ --       if not self.tiles[c] or not self.tiles[c][typ] then return end
+  --      local res = self.tiles[c][typ]
+   --     if type(res) == "function" then
+    --            return self.grid_list[res()]
+     --   elseif type(res) == "table" and res.__CLASSNAME then
+      --          return res
+       -- elseif type(res) == "table" then
+--                return self.grid_list[res[rng.range(1, #res)]]
+ --       else
+  --              return self.grid_list[res]
+   --     end
+--end
 
 function _M:generate(lev, old_lev)
 	--
@@ -200,7 +193,6 @@ function _M:generate(lev, old_lev)
         table.sort(groups, function(a,b) return #a.list < #b.list end)
         local g = groups[#groups]
         if #g.list >= self.min_land then
-                print("[ITS] floodfill OK")
                 for i = 1, #groups-1 do
                         for j = 1, #groups[i].list do
                                 local jn = groups[i].list[j]
@@ -251,7 +243,10 @@ function _M:generate(lev, old_lev)
 --                self.map.room_map[self.gen_map.endx][self.gen_map.endy].special = "exit"
 --        end
 
-	print("[ITS] RandomWorld generation complete", self.data.startx, self.data.starty, self.data.endx, self.data.endy)
-        return 3, 3, 5, 5, self.spots
+	-- need to figger out where to put start/end x/y
+	print("[ITS] RandomWorld generation - start/end x/y", self.data.startx, self.data.starty, self.data.endx, self.data.endy)
+	print("[ITS] RandomWorld generation complete")
+        return 20, 20, 20, 20, self.spots
+	-- level must be connected - path from start to end
         -- return self.data.startx, self.data.starty, self.data.endx, self.data.endy, self.spots
 end

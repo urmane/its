@@ -26,6 +26,8 @@ newEntity{
     desc = [[A crunchy shell.]],
 }
 
+newEntity{ base="BASE_SUITARMOR", name="leather armor",  level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
+newEntity{ base="BASE_SUITARMOR", name="hide armor",     level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
 newEntity{ base="BASE_SUITARMOR", name="bronze armor",   level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
 newEntity{ base="BASE_SUITARMOR", name="iron armor",     level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
 newEntity{ base="BASE_SUITARMOR", name="steel armor",    level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}

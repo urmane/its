@@ -32,6 +32,8 @@ return {
         	map = {
             		class = "mod.class.generator.map.RandomWorld",
 			map = "afeedi/afeedi",
+			land = "LAND",
+			ocean = "OCEAN",
         	},
 	},
 }

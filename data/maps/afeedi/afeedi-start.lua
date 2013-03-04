@@ -22,7 +22,7 @@
 -- desert: rocky wasteland, badlands, sand desert
 -- 
 -- special: volcano
-defineTile(".", "GRASSLAND")
+defineTile(".", "LAND")
 defineTile("~", "OCEAN")
 defineTile("^", "MOUNTAIN")
 defineTile("#", "FOREST")
