@@ -36,10 +36,7 @@ newEntity{
         name = "ocean", --        image = "terrain/ocean.png",
         display = '~', color=colors.LIGHT_BLUE, back_color={r=0,g=0,b=255},
         always_remember = true,
-	-- Use for production:
-        does_block_move = true,
-	-- For testing:
-        -- does_block_move = false,
+        does_block_move = false,
         block_sight = false, --        block_sense = true, --        block_esp = true,
 }
 
@@ -59,7 +56,7 @@ newEntity{
         name = "mountain", --        image = "terrain/land.png",
         display = '^', color=colors.LIGHT_UMBER, back_color={r=80,g=80,b=40},
         always_remember = true,
-        does_block_move = true,
+        does_block_move = false,
         block_sight = true,
 }
 

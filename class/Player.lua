@@ -96,6 +96,7 @@ function _M:playerPickup()
     end
 end
 
+-- FIXME - why both playerDrop and doDrop ?
 function _M:playerDrop()
     local inven = self:getInven(self.INVEN_INVEN)
     local d d = self:showInventory("Drop object", inven, nil, function(o, item)
@@ -105,6 +106,20 @@ function _M:playerDrop()
         self.changed = true
         return true
     end)
+end
+-- FIXME - why both playerDrop and doDrop ?
+function _M:doDrop(inven, item, on_done, nb)
+    if self.no_inventory_access then return end
+    
+    if nb == nil or nb >= self:getInven(inven)[item]:getNumber() then
+        self:dropFloor(inven, item, true, true)
+    else
+        for i = 1, nb do self:dropFloor(inven, item, true) end
+    end
+    self:sortInven(inven)
+    self:useEnergy()
+    self.changed = true
+    if on_done then on_done() end
 end
 
 function _M:doWear(inven, item, o)

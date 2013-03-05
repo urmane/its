@@ -40,4 +40,15 @@ return {
 		[2] = { width = 64, height = 64, generator = { map = { class = "engine.generator.map.Static", map = "zones/gora-graveyard2", }, }, },
 		[3] = { width = 64, height = 64, generator = { map = { class = "engine.generator.map.Static", map = "zones/gora-graveyard3", }, }, },
 	},
+	on_enter = function(lev, old_lev, newzone)
+--		if lev == 3 then
+		print "[ITS] in on_enter function"
+			local Dialog = require("engine.ui.Dialog")
+			Dialog:simpleLongPopup("Terror", [[Fresh air hits your face like sweet perfume.  You have escaped Gora Prison.
+
+But the cold, the cold is still there, and it's different.  The damp prison cells held the unpleasant bone-numbing chill of water, rock and human cruelty, but this ... this cold is insidious.  Even as you pause to gain your bearings, you feel it creeping over you, slowly, malevolently ... ancient, dark, twisted cold ...
+
+Best not linger here too long.]],400)
+--		end
+	end,
 }

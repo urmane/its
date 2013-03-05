@@ -33,6 +33,7 @@ local Actor = require "mod.class.Actor"
 local Player = require "mod.class.Player"
 local NPC = require "mod.class.NPC"
 
+local PlayerDisplay = require "mod.class.PlayerDisplay"
 local HotkeysDisplay = require "engine.HotkeysDisplay"
 local ActorsSeenDisplay = require "engine.ActorsSeenDisplay"
 local LogDisplay = require "engine.LogDisplay"
@@ -58,7 +59,8 @@ function _M:init()
 end
 
 function _M:run()
-	self.flash = LogFlasher.new(0, 0, self.w, 20, nil, nil, nil, {255,255,255}, {0,0,0})
+	self.flash = LogFlasher.new(208, 0, self.w, 20, nil, nil, nil, {255,255,255}, {0,0,0})
+	self.player_display = PlayerDisplay.new(0, 0, 200, self.h, {30,30,0}, "/data/font/VeraMono.ttf", 12)
 	self.logdisplay = LogDisplay.new(0, self.h * 0.8, self.w * 0.5, self.h * 0.2, nil, nil, nil, {255,255,255}, {30,30,30})
 	self.hotkeys_display = HotkeysDisplay.new(nil, self.w * 0.5, self.h * 0.8, self.w * 0.5, self.h * 0.2, {30,30,0})
 	self.npcs_display = ActorsSeenDisplay.new(nil, self.w * 0.5, self.h * 0.8, self.w * 0.5, self.h * 0.2, {30,30,0})
@@ -118,9 +120,9 @@ function _M:newGame()
 	self.creating_player = true
 	local birth = Birther.new(nil, self.player, {"base", "role" }, function()
 		-- For real game start:
-		self:changeLevel(1, "gora-prison")
+		--self:changeLevel(1, "gora-prison")
 		-- For changing during testing:
-		--self:changeLevel(1, "gora-graveyard")
+		self:changeLevel(3, "gora-graveyard")
 		print("[PLAYER BIRTH] resolve...")
 		self.player:resolve()
 		self.player:resolve(nil, true)
@@ -209,6 +211,9 @@ function _M:changeLevel(lev, zone)
 	else
 		self.player:move(self.level.default_down.x, self.level.default_down.y, true)
 	end
+	if self.zone.on_enter then
+                self.zone.on_enter(lev, old_lev, zone)
+        end
 	self.level:addEntity(self.player)
 end
 
@@ -265,6 +270,7 @@ function _M:display(nb_keyframe)
 	end
 
 	-- We display the player's interface
+	self.player_display:toScreen(nb_keyframe)
 	self.flash:toScreen(nb_keyframe)
 	self.logdisplay:toScreen()
 	if self.show_npc_list then

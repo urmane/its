@@ -1,10 +1,35 @@
+go thru rest of overviews
+finalize the overall storyline, and sketch out the major bits needed (then redo this todo)
+	prison->sewer->graveyard->town->worldmap
+	town is a dramatic break, very big, opportunity to practice, equip up, swipe stuff
+		game adjusts to how much illegal done (wanted, reputation)
+	starting quest - get out of the prison
+	side quest - take-my-macguffin in the sewers
+	side quest - take-up-my sword in the prison, get the key from the secret room
+	side quests - collect gold/valuables/treasures, some big ones
+	side quest - assassinate
+	reputation and faction reactions change the game
+	npc chats -> quests and/or reputation / reaction changes, re-emprison (lose equip), etc
+	large-scale famous acts (ie steal X's thing)
+	overall has to be save the world
+
+Main storyline
+	escape from prison: prison->sewer->graveyard->worldmap
+	explore a bit: nearby town (Gora) with lots of opportunity
+	stuck on static-start doing a few things until can tackle the volcano
+	volcano allows access to other continents
+	more explore
+Features
+Quests
+
+
 add in static lights for torches/brazziers
 stub added: a sewers/cavern/underwater level
 stub added: the graveyard levels
-add content to graveyard levels, with an eye toward revisiting it
+stub in some terrain content to graveyard levels, with an eye toward revisiting it (need keys, or high lockpick skill)
 put a portal back from gora-graveyard3 to gora-prison-sewer, but appearance conditional on quest
-worldmap, static stub
-worldmap, static piece in stub random world generator 
+done: worldmap, static stub
+done: worldmap, static piece in stub random world generator 
 worldmap, above plus each grid enterable (random zones, some with params (ie town set on worldmap, generate on enter))
 worlmap, stub out locations (towns, cities, fortresses, keeps, towers, beast lairs, faction encampments, bandits ...)
 make lockpick talent
@@ -12,6 +37,7 @@ make lockpick talent a starting talent
 make lockpicks add to existing talent
 make doors have a lockpick value (mechanisms/levers, too)
 start player with the crappiest lockpick
+done, but should redo tied to quests: add in text popups to sewer and graveyard
 put a town near the graveyard (need a dramatic break)
 add content to sewer level, with an eye toward revisiting it
 change/consolidate a colorscheme for grids
@@ -29,20 +55,8 @@ Add in light levels, lights fade with distance to limit, gfx or gfx effects for 
 Make gold integers, not .02d
 Make gems and valuables, name with "(100gp)" or "(~100gp)"
 Need a fence to sell stolen
-finalize the overall storyline, and sketch out the major bits needed (then redo this todo)
-	prison->sewer->graveyard->town->worldmap
-	town is a dramatic break, very big, opportunity to practice, equip up, swipe stuff
-		game adjusts to how much illegal done (wanted, reputation)
-	starting quest - get out of the prison
-	side quest - take-my-macguffin in the sewers
-	side quest - take-up-my sword in the prison, get the key from the secret room
-	side quests - collect gold/valuables/treasures, some big ones
-	side quest - assassinate
-	reputation and faction reactions change the game
-	npc chats -> quests and/or reputation / reaction changes, re-emprison (lose equip), etc
-	large-scale famous acts (ie steal X's thing)
-	overall has to be save the world
 A Discovery of Witches: unknowingly let Witches loose, nice pictures
+rotworms that chase
 
 mod the player resources / stats / thief talents needed for game
 resources: air

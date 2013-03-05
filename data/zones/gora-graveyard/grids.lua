@@ -20,6 +20,15 @@
 load("/data/general/grids/basic.lua")
 
 newEntity{
+        define_as = "DEEP_WATER",
+        type = "wall", subtype = "water",
+        name = "deep water", -- image = "terrain/grass.png", add_mos={{image="terrain/troll_stew.png"}},
+        display = '~', color=colors.DARK_BLUE, back_color=colors.DARK_GREY,
+        does_block_move = false,
+	block_sight = false,
+}
+
+newEntity{
         define_as = "FENCE",
         type = "wall", subtype = "fence",
         name = "iron fence", -- image = "terrain/grass.png", add_mos={{image="terrain/troll_stew.png"}},

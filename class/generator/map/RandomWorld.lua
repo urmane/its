@@ -20,9 +20,9 @@ function _M:init(zone, map, level, data)
         self.grid_list = self.zone.grid_list
 	self.subgen = {}
 	self.spots = {}
-        self.zoom = data.zoom or 10
-        self.hurst = data.hurst or 0.75
-        self.lacunarity = data.lacunarity or 3
+        self.zoom = data.zoom or 19
+        self.hurst = data.hurst or 0.15
+        self.lacunarity = data.lacunarity or 8
         self.octave = data.octave or 1
         self.min_land = data.min_land or 12000   -- Dependent on w and h!!
         self.noise = data.noise or "simplex"
