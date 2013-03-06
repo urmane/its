@@ -34,6 +34,7 @@ newEntity{
     name = "a generic lockpick",
     desc = [[One or more strong, shaped wires or keys used to open locks.]],
     use_simple = { name = "Unlock that which is locked.", use = function(self, who)
+	    -- change range to talent range
                 local tg = {type="bolt", range=1, nolock=true}
                 local x, y = who:getTarget(tg)
                 if not x or not y then return nil end
@@ -41,8 +42,8 @@ newEntity{
 		if door.door_unlocked then
 			lock_value = door.lock_value or 10
 			skill_total = self.bonus
-			if who.knowTalent(Talents.T_LOCKPICK) then
-				skill_total = skill_total + who.getTalentLevel(T_LOCKPICK)
+			if who:knowTalent(Talents.T_LOCKPICK) then
+				skill_total = skill_total + who:getTalentLevel(T_LOCKPICK)
 			end
 			-- short term, simple test - more complicated later with ui, or maybe allow ui on test fail
 			if lock_value <= skill_total then -- possibly allow a random chance, too?
