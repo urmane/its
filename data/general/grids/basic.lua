@@ -90,5 +90,6 @@ newEntity{
 	always_remember = true,
 	block_sight = true,
 	door_unlocked = "DOOR",
+	lock_value = 10,
 }
 

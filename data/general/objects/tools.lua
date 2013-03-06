@@ -20,6 +20,7 @@
 -- thief's tools, diggers, climber, gemcutter? holy symbol, writing(scroll?), pole (why?), mechanism/device, flint-and-steel
 
 local FlyingText = require "engine.FlyingText"
+local Talents = require "engine.interface.ActorTalents"
 
 newEntity{
     define_as = "BASE_LOCKPICK",
@@ -38,27 +39,35 @@ newEntity{
                 if not x or not y then return nil end
 		local door = game.level.map(x, y, engine.Map.TERRAIN) -- only works on doors (TERRAIN) right now
 		if door.door_unlocked then
-			print("unlocking at ", x, ",", y)
-			game.level.map(x, y, engine.Map.TERRAIN, game.zone.grid_list[door.door_unlocked])
-			local sx, sy = game.level.map:getTileToScreen(x, y)
-			game.flyers:add(sx, sy, 10, 0, -1, "Unlocked!", {0,255,0}, false)
+			lock_value = door.lock_value or 10
+			skill_total = self.bonus
+			if who.knowTalent(Talents.T_LOCKPICK) then
+				skill_total = skill_total + who.getTalentLevel(T_LOCKPICK)
+			end
+			-- short term, simple test - more complicated later with ui, or maybe allow ui on test fail
+			if lock_value <= skill_total then -- possibly allow a random chance, too?
+				print("unlocking at ", x, ",", y)
+				game.level.map(x, y, engine.Map.TERRAIN, game.zone.grid_list[door.door_unlocked])
+				local sx, sy = game.level.map:getTileToScreen(x, y)
+				game.flyers:add(sx, sy, 10, 0, -1, "Unlocked!", {0,255,0}, false)
+			else
+				print("failed to unlock at ", x, ",", y)
+				local sx, sy = game.level.map:getTileToScreen(x, y)
+				game.flyers:add(sx, sy, 10, 0, -1, "Fail!", {255,0,0}, false)
+			end
+			-- regardless of success, bump skill counter based on lock difficulty
 		else
-			print("cannot unlock at", x, ",", y)
+			print("Attempt to lockpick a terrain that is not an unlockable door at", x, ",", y)
+			-- maybe popup err msg here
 		end
                 return {id=true, used=true}
         end},
 }
 
-newEntity{ base = "BASE_LOCKPICK", name = "makeshift lockpick", level_range = {1, 10}, cost = 1, }
-newEntity{ base = "BASE_LOCKPICK", name = "iron lockpick", level_range = {1, 10}, cost = 1, }
-newEntity{ base = "BASE_LOCKPICK", name = "steel lockpick", level_range = {1, 10}, cost = 1, }
-newEntity{ base = "BASE_LOCKPICK", name = "thief's tools", level_range = {1, 10}, cost = 1, }
-newEntity{ base = "BASE_LOCKPICK", name = "skelton key", level_range = {1, 10}, cost = 1, }
-newEntity{ base = "BASE_LOCKPICK", name = "locksmith's key", level_range = {1, 10}, cost = 1, }
-newEntity{ base = "BASE_LOCKPICK", name = "locksmith's tools", level_range = {1, 10}, cost = 1, }
-newEntity{ base = "BASE_LOCKPICK", name = "professional locksmith's keys", level_range = {1, 10}, cost = 1, }
-newEntity{ base = "BASE_LOCKPICK", name = "professional locksmith's tools", level_range = {1, 10}, cost = 1, }
-newEntity{ base = "BASE_LOCKPICK", name = "professional thief's tools", level_range = {1, 10}, cost = 1, }
-newEntity{ base = "BASE_LOCKPICK", name = "master locksmith's keys", level_range = {1, 10}, cost = 1, }
-newEntity{ base = "BASE_LOCKPICK", name = "master locksmith's tools", level_range = {1, 10}, cost = 1, }
-newEntity{ base = "BASE_LOCKPICK", name = "master thief's tools", level_range = {1, 10}, cost = 1, }
+newEntity{ base = "BASE_LOCKPICK", name = "makeshift lockpick",             level_range = {1, 10}, cost = 1, bonus = 10, }
+newEntity{ base = "BASE_LOCKPICK", name = "lockpick",                       level_range = {1, 10}, cost = 1, bonus = 20, }
+newEntity{ base = "BASE_LOCKPICK", name = "skelton key",                    level_range = {1, 10}, cost = 1, bonus = 30, }
+newEntity{ base = "BASE_LOCKPICK", name = "professional's lockpicks",       level_range = {1, 10}, cost = 1, bonus = 40, }
+newEntity{ base = "BASE_LOCKPICK", name = "locksmith's tools",              level_range = {1, 10}, cost = 1, bonus = 50, }
+newEntity{ base = "BASE_LOCKPICK", name = "thief's tools",                  level_range = {1, 10}, cost = 1, bonus = 60, }
+newEntity{ base = "BASE_LOCKPICK", name = "master thief's tools",           level_range = {1, 10}, cost = 1, bonus = 70, }
