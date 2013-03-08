@@ -41,6 +41,7 @@ local LogFlasher = require "engine.LogFlasher"
 local DebugConsole = require "engine.DebugConsole"
 local FlyingText = require "engine.FlyingText"
 local Tooltip = require "engine.Tooltip"
+local BigNews = require "mod.class.BigNews"
 
 local QuitDialog = require "mod.dialogs.Quit"
 
@@ -67,6 +68,7 @@ function _M:run()
 	self.tooltip = Tooltip.new(nil, nil, {255,255,255}, {30,30,30})
 	self.flyers = FlyingText.new("/data/font/DroidSans.ttf",14,"/data/font/DroidSans.ttf",18)
 	self:setFlyingText(self.flyers)
+	self.bignews = BigNews.new("/data/font/DroidSansMono.ttf", 30)
 	self.flyers:enableShadow(0.6)
 
 	self.log = function(style, ...) if type(style) == "number" then self.logdisplay(...) self.flash(style, ...) else self.logdisplay(style, ...) self.flash(self.flash.NEUTRAL, style, ...) end end
@@ -136,6 +138,7 @@ function _M:newGame()
                         -- savefile_pipe:push(self.player.name, "entity", self.party, "engine.CharacterVaultSave")
                         -- self.creating_player = false
                         -- self.player:grantQuest(self.player.starting_quest)
+                        self.player:grantQuest("start")
                         -- birth_done()
                         -- self.player:check("on_birth_done")
                         -- if __module_extra_info.birth_done_script then loadstring(__module_extra_info.birth_done_script)() end
@@ -193,6 +196,16 @@ end
 
 function _M:changeLevel(lev, zone)
 	local old_lev = (self.level and not zone) and self.level.level or -1000
+
+	if zone and self.player.on_leave_level and not self.player:on_leave_level() then
+		self.logPlayer(self.player, "#LIGHT_RED#You cannot leave!")
+                return
+	end
+
+	if zone and self.zone and self.zone.on_leave then
+                self.zone:on_leave(lev, old_lev, zone)
+        end
+
 	if zone then
 		if self.zone then
 			self.zone:leaveLevel(false, lev, old_lev)
@@ -278,6 +291,7 @@ function _M:display(nb_keyframe)
 	else
 		self.hotkeys_display:toScreen()
 	end
+	self.bignews:display(nb_keyframe)
 	if self.player then self.player.changed = false end
 
 	-- Tooltip is displayed over all else

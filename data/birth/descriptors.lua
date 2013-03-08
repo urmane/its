@@ -23,7 +23,7 @@ newBirthDescriptor{
 	desc = {
 	},
 	experience = 1.0,
-	body = { INVEN = 20, HOVER = 1, HEAD = 1, NECK = 1, TORSO = 1, CLOAK = 1, QUIVER = 1, PACK = 1, LITE = 1, WATERSKIN = 1, TOOL = 1, ARMS = 1, HANDS = 1, WEAPON = 1, SHIELD = 1, RING1 = 1, RING2 = 1, BELT = 1, FEET = 1 }, 
+	body = { INVEN = 20, HOVER = 1, HEAD = 1, NECK = 1, TORSO = 1, BELT = 1, CLOAK = 1, QUIVER = 1, PACK = 1, LITE = 1, WATERSKIN = 1, TOOL = 1, ARMS = 1, HANDS = 1, WEAPON = 1, SHIELD = 1, RING1 = 1, RING2 = 1, FEET = 1 }, 
 
 	copy = {
 		max_level = 10,
@@ -33,24 +33,24 @@ newBirthDescriptor{
 
 newBirthDescriptor{
 	type = "role",
-	name = "Destroyer",
+	name = "Thief",
 	desc =
 	{
-		"Crashhhhh!",
+		"Just trying to get by.",
 	},
 	talents = {
-		[ActorTalents.T_KICK]=1,
+		[ActorTalents.T_LOCKPICK]=1,
 	},
 }
 
-newBirthDescriptor{
-	type = "role",
-	name = "Acid-maniac",
-	desc =
-	{
-		"Zshhhhhhhh!",
-	},
-	talents = {
-		[ActorTalents.T_ACID_SPRAY]=1,
-	},
-}
+--newBirthDescriptor{
+--	type = "role",
+--	name = "Acid-maniac",
+--	desc =
+--	{
+--		"Zshhhhhhhh!",
+--	},
+--	talents = {
+--		[ActorTalents.T_ACID_SPRAY]=1,
+--	},
+--}

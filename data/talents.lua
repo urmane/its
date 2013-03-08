@@ -23,7 +23,7 @@ newTalent{
 	name = "Pick locks",
 	short_name = "Lockpick",
 	type = {"thief/mechanic", 1},
-	mode = "activated",
+	mode = "passive",
         points = 8,
         range = 1,
         cooldown = 1,

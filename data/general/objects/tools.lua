@@ -41,9 +41,9 @@ newEntity{
 		local door = game.level.map(x, y, engine.Map.TERRAIN) -- only works on doors (TERRAIN) right now
 		if door.door_unlocked then
 			lock_value = door.lock_value or 10
-			skill_total = self.bonus
+			skill_total = self.bonus or 0
 			if who:knowTalent(Talents.T_LOCKPICK) then
-				skill_total = skill_total + who:getTalentLevel(T_LOCKPICK)
+				skill_total = skill_total + who:getTalentLevel(Talents.T_LOCKPICK)
 			end
 			-- short term, simple test - more complicated later with ui, or maybe allow ui on test fail
 			if lock_value <= skill_total then -- possibly allow a random chance, too?

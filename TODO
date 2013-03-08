@@ -1,3 +1,5 @@
+copy all relevant tome non-tome-specific code, check engine files, too
+	cycle thru all, I guess
 finalize the overall storyline, and sketch out the major bits needed (then redo this todo)
 	prison->sewer->graveyard->town->worldmap
 	town is a dramatic break, very big, opportunity to practice, equip up, swipe stuff
@@ -32,9 +34,9 @@ done: worldmap, static piece in stub random world generator
 worldmap, above plus each grid enterable (random zones, some with params (ie town set on worldmap, generate on enter))
 worlmap, stub out locations (towns, cities, fortresses, keeps, towers, beast lairs, faction encampments, bandits ...)
 stubbed: make lockpick talent
-make lockpick talent a starting talent
-make lockpicks add to existing talent
-make doors have a lockpick value (mechanisms/levers, too)
+done: make lockpick talent a starting talent
+done: make lockpicks add to existing talent
+done (doors): make doors have a lockpick value (mechanisms/levers, too)
 start player with the crappiest lockpick
 done, but should redo tied to quests: add in text popups to sewer and graveyard
 put a town near the graveyard (need a dramatic break)

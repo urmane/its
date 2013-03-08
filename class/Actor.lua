@@ -29,6 +29,7 @@ require "engine.interface.ActorInventory"
 require "engine.interface.ActorTalents"
 require "engine.interface.ActorResource"
 require "engine.interface.ActorFOV"
+require "mod.class.interface.ActorPartyQuest"
 require "mod.class.interface.Combat"
 local Map = require "engine.Map"
 
@@ -43,6 +44,7 @@ module(..., package.seeall, class.inherit(
 	engine.interface.ActorTalents,
 	engine.interface.ActorResource,
 	engine.interface.ActorFOV,
+	mod.class.interface.ActorPartyQuest,
 	mod.class.interface.Combat
 ))
 
