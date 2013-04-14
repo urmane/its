@@ -202,8 +202,8 @@ function _M:changeLevel(lev, zone)
                 return
 	end
 
-	if zone and self.zone and self.zone.on_leave then
-                self.zone:on_leave(lev, old_lev, zone)
+	if self.zone and self.zone.on_leave then
+                self.zone:on_leave(lev or -1000, old_lev, zone)
         end
 
 	if zone then
@@ -410,6 +410,10 @@ function _M:setupCommands()
 		USE_TALENTS = function()
 			self.player:useTalents()
 		end,
+
+		SHOW_QUESTS = function()
+                        self:registerDialog(require("engine.dialogs.ShowQuests").new(self.player))
+                end,
 
 		SAVE_GAME = function()
 			self:saveGame()

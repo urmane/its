@@ -41,14 +41,14 @@ return {
 		[3] = { width = 64, height = 64, generator = { map = { class = "engine.generator.map.Static", map = "zones/gora-graveyard3", }, }, },
 	},
 	on_leave = function(lev, old_lev, newzone)
-                if lev == 1 then
+                if lev.level == 1 then
                         -- we know this is the first time through?
-                        local q = game.player:hasQuest("start")
-                        game.player:setQuestStatus("start", q.DONE)
+                        game.player:setQuestStatus("start", engine.Quest.COMPLETED)
                 end
         end,
 	on_enter = function(lev, old_lev, newzone)
-		if lev == 3 then
+		--if lev.level == 3 then
+		if lev and lev == 3 then
 			local Dialog = require("engine.ui.Dialog")
 			Dialog:simpleLongPopup("Terror", [[Fresh air hits your face like sweet perfume.  You have escaped Gora Prison.
 

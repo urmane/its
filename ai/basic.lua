@@ -1,4 +1,11 @@
-
+-- If no target, move in previous direction and sometimes turn in a random direction
+newAI("target_or_wander", function(self)
+	if self:runAI(self.ai_state.ai_target or "target_simple") then
+		return self:runAI(self.ai_state.ai_move or "move_simple")
+	else
+		return self:runAI("move_wander")
+	end
+end)
 
 -- If no target, move in previous direction until we hit an obstacle, then turn in a random direction
 newAI("guard_wander", function(self)

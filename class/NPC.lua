@@ -33,6 +33,33 @@ function _M:act()
 	-- Do basic actor stuff
 	if not mod.class.Actor.act(self) then return end
 
+	-- Flicker light, if needed
+	if self.lite_flicker and (rng.range(1,100) < self.lite_flicker) then
+		-- Equal chance to go up or down
+		if rng.range(1,100) < 50 and self.lite_min and self.lite > self.lite_min then
+			self.lite = self.lite - 1
+		elseif self.lite_max and self.lite < self.lite_max then
+			self.lite = self.lite + 1
+		end
+	end
+
+	-- Pulse light, if needed
+	if self.lite_pulse and (rng.range(1,100) < self.lite_pulse) then
+		if self.lite_pulse_step > 0 and self.lite_max and self.lite < self.lite_max then
+			self.lite = self.lite + self.lite_pulse_step
+		elseif self.lite_pulse_step < 0 and self.lite_min and self.lite > self.lite_min then
+			self.lite = self.lite + self.lite_pulse_step  -- remember step is now a negative number
+		end
+		if self.lite >= self.lite_max then
+			self.lite = self.lite_max
+			self.lite_pulse_step = -self.lite_pulse_step
+		elseif self.lite <= self.lite_min then
+			self.lite = self.lite_min
+			self.lite_pulse_step = -self.lite_pulse_step
+		end
+	end
+
+	
 	-- Compute FOV, if needed
 	self:computeFOV(self.sight or 20)
 

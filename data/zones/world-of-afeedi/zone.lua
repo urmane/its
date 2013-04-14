@@ -27,7 +27,7 @@ return {
 	height = 256,
 	all_lited = true,
 	startx = 30,
-	starty = 30,
+	starty = 158,
 	generator =  {
         	map = {
             		class = "mod.class.generator.map.RandomWorld",

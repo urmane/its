@@ -18,7 +18,7 @@
 -- darkgod@te4.org
 
 subGenerator{
-    x = 0, y = 0, w = 64, h = 64,
+    x = 0, y = 128, w = 64, h = 64,
     generator = "engine.generator.map.Static",
     data = {
     	map = "afeedi/afeedi-start",

@@ -33,7 +33,7 @@ done: worldmap, static stub
 done: worldmap, static piece in stub random world generator 
 worldmap, above plus each grid enterable (random zones, some with params (ie town set on worldmap, generate on enter))
 worlmap, stub out locations (towns, cities, fortresses, keeps, towers, beast lairs, faction encampments, bandits ...)
-stubbed: make lockpick talent
+done: make lockpick talent (passive, requires tool use)
 done: make lockpick talent a starting talent
 done: make lockpicks add to existing talent
 done (doors): make doors have a lockpick value (mechanisms/levers, too)

@@ -20,29 +20,29 @@
 local Talents = require("engine.interface.ActorTalents")
 
 newEntity{
-	define_as = "BASE_GUARD",
-	type = "humanoid", subtype = "guard",
-	display = "G", color=colors.WHITE,
-	desc = [[Ugly and ill-tempered.]],
+	define_as = "BASE_WISP",
+	type = "undead", subtype = "wisp",
+	display = "W", color=colors.WHITE,
+	desc = [[A small light, strangely compelling ...]],
 
-	-- ai = "dumb_talented_simple", ai_state = { talent_in=3, },
-	ai = "guard_wander",
+	--ai = "dumb_talented_simple", ai_state = { talent_in=3, },
+	ai = "target_or_wander",
 	stats = { str=5, dex=5, con=5 },
 	combat_armor = 0,
 }
 
-newEntity{ base = "BASE_GUARD",
-	name = "prisonguard", color=colors.GREEN,
+newEntity{ base = "BASE_WISP",
+	name = "will-o-wisp", color=colors.GREEN,
 	level_range = {1, 4}, exp_worth = 1,
 	rarity = 4,
-	lite = 8,		-- radius of the light this actor puts out
-        lite_flicker = 90,      -- percent chance per turn to mod lite
-        lite_min = 2,           -- min radius
-        lite_max = 8,           -- max radius
-	sight = 20,		-- absolute limit of sight
+	lite = 1,		-- radius of the light this actor puts out
+	lite_pulse = 90,        -- percent chance per turn to mod lite
+	lite_pulse_step = 1,    -- amount and step to inc/dec
+	lite_min = 0,           -- min radius
+	lite_max = 3,           -- max radius
+	sight = 5,		-- absolute limit of sight
 	sight_min = 5,		-- minimum light level this actor can distinguish
-	move_dir = 2,		-- initial move direction, they'll rotate clockwise 90 degrees for now
 	max_life = resolvers.rngavg(5,9),
-	combat = { dam=2 },
+	combat = { dam=1 },
 }
 

@@ -42,13 +42,15 @@ return {
 		[4] = { width = 40, height = 40, generator = { map = { class = "engine.generator.map.Static", map = "zones/gora-prison-sewers", }, }, },
 	},
 	on_leave = function(lev, old_lev, newzone)
-                if lev == 3 and not game.player:hasQuest("start-escape-sewers") then
+		print("[ITS] on_leave , lev, old_lev is ", lev, old_lev)
+                if old_lev == 3 and not game.player:hasQuest("start-escape-sewers") then
+			print("[ITS] setting quest")
 			-- we know this is the first time through
-			local q = game.player:hasQuest("start-escape-prison")
-                        game.player:setQuestStatus("start-escape-prison", q.DONE)
+                        game.player:setQuestStatus("start-escape-prison", engine.Quest.DONE)
                 end
         end,
 	on_enter = function(lev, old_lev, newzone)
+		print("[ITS] on_enter , lev, old_lev is ", lev, old_lev)
                 if lev == 4 and not game.player:hasQuest("start-escape-sewers") then
                         game.player:grantQuest("start-escape-sewers")
                 end
