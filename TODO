@@ -24,7 +24,7 @@ Features
 Quests
 
 
-add in static lights for torches/brazziers
+add in static lights for torches/brazziers - make them Actors so they can be shot/"killed"
 stub added: a sewers/cavern/underwater level
 stub added: the graveyard levels
 stub in some terrain content to graveyard levels, with an eye toward revisiting it (need keys, or high lockpick skill)
