@@ -1,6 +1,6 @@
 copy all relevant tome non-tome-specific code, check engine files, too
 	cycle thru all, I guess
-finalize the overall storyline, and sketch out the major bits needed (then redo this todo)
+finalize the overall storyline, and sketch out the major bits needed, do the end (simplified end-to-end) then insert (then redo this todo)
 	prison->sewer->graveyard->town->worldmap
 	town is a dramatic break, very big, opportunity to practice, equip up, swipe stuff
 		game adjusts to how much illegal done (wanted, reputation)
@@ -23,8 +23,15 @@ Main storyline
 Features
 Quests
 
-
 add in static lights for torches/brazziers - make them Actors so they can be shot/"killed"
+add lockpick gui
+	displays mfctr - if known (successful pick -> known), display other bits
+	mfctr -> rnd name, always same type: warded, (1,2,3,4,5)(wafer,pin,lever,disc)tumbler
+	displays tools: pick, key, other?
+	solve each in order - each move takes a turn (during which you cannot see the screen)
+	would be nice to have gfx, or at least color-coded status
+add Disguise talent - pass as X
+add pickpocket talent - range/invisibleness, target w/in range, turn one jump to target, turn if !seen autojump back w/ loot (carefully look at when they move)
 stub added: a sewers/cavern/underwater level
 stub added: the graveyard levels
 stub in some terrain content to graveyard levels, with an eye toward revisiting it (need keys, or high lockpick skill)

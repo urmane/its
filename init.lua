@@ -20,7 +20,7 @@
 name = "ITS"
 long_name = "In The Shadows"
 short_name = "its"
-author = { "Jim Niemira", "jimniemira@gmail.com" }
+author = { "Jim Niemira", "jim.niemira@gmail.com" }
 homepage = "http://te4.org/modules:example"
 version = {1,0,0}
 engine = {1,0,0,"te4"}
