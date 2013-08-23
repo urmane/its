@@ -17,14 +17,12 @@
 -- Nicolas Casalini "DarkGod"
 -- darkgod@te4.org
 
-load("/data/general/grids/basic.lua")
-
 newEntity{
         define_as = "DEEP_WATER",
         type = "wall", subtype = "water",
         name = "deep water", -- image = "terrain/grass.png", add_mos={{image="terrain/troll_stew.png"}},
         display = '~', color=colors.DARK_BLUE, back_color=colors.DARK_GREY,
-        does_block_move = false,
+        does_block_move = true,
 	block_sight = false,
 }
 
@@ -38,18 +36,9 @@ newEntity{
 }
 
 newEntity{
-        define_as = "GRAVESTONE",
-        type = "wall", subtype = "gravestone",
-        name = "huge gravestone", -- image = "terrain/grass.png", add_mos={{image="terrain/troll_stew.png"}},
-        display = '^', color=colors.LIGHT_RED, back_color=colors.RED,
-        does_block_move = true,
-	block_sight = true,
-}
-
-newEntity{
         define_as = "TREE",
         type = "wall", subtype = "tree",
-        name = "thick gnarled tree",
+        name = "tall tree",
 --        image = "terrain/tree.png",
         display = '#', color=colors.LIGHT_GREEN, back_color={r=44,g=95,b=43},
         always_remember = true,
@@ -57,14 +46,4 @@ newEntity{
         block_sight = true,
 --        block_sense = true,
 --        block_esp = true,
-
-newEntity{
-        define_as = "GRAVEYARD_EXIT",
-        always_remember = true,
-        show_tooltip=true,
-        name="The bridge to town.",
-        display='>', color=colors.VIOLET,
-        -- image = "terrain/stair_up_wild.png",
-        notice = true,
-        change_level=1, change_zone="gora-town",
-}}
+}

@@ -108,10 +108,10 @@ function _M:loadMap(file)
 	-- Make sure the map file returns true
         if not ret and err then error(err) end
 
-        self.map.startx = g.startx or math.floor(self.map.w / 2)
-        self.map.starty = g.starty or math.floor(self.map.h / 2)
-        self.map.endx = g.endx or math.floor(self.map.w / 2)
-        self.map.endy = g.endy or math.floor(self.map.h / 2)
+        self.map.startx = self.zone.startx or g.startx or math.floor(self.map.w / 2)
+        self.map.starty = self.zone.starty or g.starty or math.floor(self.map.h / 2)
+        self.map.endx = self.zone.endx or g.endx or math.floor(self.map.w / 2)
+        self.map.endy = self.zone.endy or g.endy or math.floor(self.map.h / 2)
 
         self.tiles = table.merge(self.tiles, t)
 
@@ -244,9 +244,10 @@ function _M:generate(lev, old_lev)
 --        end
 
 	-- need to figger out where to put start/end x/y
-	print("[ITS] RandomWorld generation - start/end x/y", self.data.startx, self.data.starty, self.data.endx, self.data.endy)
+--	print("[ITS] RandomWorld generation - start/end x/y", self.data.startx, self.data.starty, self.data.endx, self.data.endy)
+	print("[ITS] RandomWorld generation - start/end x/y", self.map.startx, self.map.starty, self.map.endx, self.map.endy)
 	print("[ITS] RandomWorld generation complete")
-        return 20, 20, 20, 20, self.spots
+--        return 20, 20, 20, 20, self.spots
 	-- level must be connected - path from start to end
-        -- return self.data.startx, self.data.starty, self.data.endx, self.data.endy, self.spots
+        return self.map.startx, self.map.starty, self.map.endx, self.map.endy, self.spots
 end

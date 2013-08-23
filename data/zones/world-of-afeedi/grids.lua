@@ -69,3 +69,26 @@ newEntity{
         does_block_move = true,
         block_sight = true,
 }
+
+newEntity{
+        define_as = "GORA",
+        always_remember = true,
+        show_tooltip=true,
+        name="The town of Gora.",
+        display='G', color=colors.VIOLET,
+        -- image = "terrain/stair_up_wild.png",
+        notice = true,
+        change_level=1, change_zone="gora-town",
+}
+
+newEntity{
+        define_as = "TOWN1",
+        always_remember = true,
+        show_tooltip=true,
+        name="A town.",
+        display='1', color=colors.VIOLET,
+        -- image = "terrain/stair_up_wild.png",
+        notice = true,
+        change_level=1, change_zone="town1",
+}
+

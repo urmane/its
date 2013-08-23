@@ -18,24 +18,24 @@
 -- darkgod@te4.org
 
 return {
-	name = "The World of Afeedi",
+	name = "The Town of "..game.markov["elvish"]:generateWord("A", 3, 9),
 	level_range = {1, 1},
 	max_level = 1,
 	decay = {300, 800},
 	persistent = "zone",
-	width = 256,
-	height = 256,
-	startx = 15,
-	starty = 171,
-	endx = 15,
-	endy = 171,
-	all_lited = true,
+	ambient_light = 8,
 	generator =  {
         	map = {
-            		class = "mod.class.generator.map.RandomWorld",
-			map = "afeedi/afeedi",
-			land = "LAND",
-			ocean = "OCEAN",
+            		class = "engine.generator.map.Static",
         	},
+		object = {
+			class = "engine.generator.object.Random",
+			nb_object = {20, 30},
+		},
+		up = "UP",
+		down = "DOWN",
+	},
+	levels = {
+		[1] = { width = 64, height = 64, generator = { map = { class = "engine.generator.map.Static", map = "zones/town1", }, }, },
 	},
 }

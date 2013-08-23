@@ -1,43 +1,16 @@
-
 -- static starting section of Afeedi
 
---startx = 62
---starty = 3
---endx = 0
---endy = 3
-
--- Inspired by DF:
--- temperature, elevation, terrain, rainfall, standing water, vegetation
--- temp: arctic, temperate, tropical
--- elevation:  mountain < everything else < ocean
---
--- drainage/rain	10%	10%		12%		23%	45%
--- 33%			desert	grassland	savannah	marsh	swamp
--- 17%			wasteland  "		"		shrubland forest
--- 50%			badlands hills		hills		hills	forest
--- glaciers at around temp 0, just above that forests become taiga, else becomes tundra
---
--- standing water: ocean, freshwater lake, river?
--- vegetation: swamp, marsh, savanna, grassland, shrubland, forest
--- desert: rocky wasteland, badlands, sand desert
--- 
--- special: volcano
 defineTile(".", "LAND")
 defineTile("~", "OCEAN")
 defineTile("^", "MOUNTAIN")
 defineTile("#", "FOREST")
 defineTile("V", "VOLCANO")
-defineTile("G", "MOUNT_GORA")
 
-defineTile("#", "WALL")
-defineTile("'", "DOOR_OPEN")
-defineTile("+", "DOOR_LOCKED")
-defineTile("=", "FENCE")
 defineTile("|", "TREE")
 defineTile("<", "UP")
 defineTile(">", "DOWN")
-defineTile("G", "FLOOR", nil, {random_filter={name="prisonguard"}})
-defineTile("P", "FLOOR", nil, {random_filter={type="humanoid", subtype="prisoner"}})
+defineTile("G", "GORA")
+defineTile("1", "TOWN1")
 
 return [[~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -92,7 +65,7 @@ return [[~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~....~~~~~.....~~~~~...................................~~~~~~
 ~~~~..~~~~~.........~~~~~~~..........~~~~~...............~~~~~~~
 ~~~~..~~~~~........~~~~~...........~~~~~................~~~~~~~~
-~~~~.~~~~~~........~~~~~~~~........~~~~~................~~~~~~~~
+~~~~1~~~~~~........~~~~~~~~........~~~~~................~~~~~~~~
 ~~~~~~~..~~~...~~..~~~~~~~~~~~..~~~~~~~~~~~............~~~~~~~~~
 ~~~~~~~.......~~...~~~~~~~~~~~~~~~~~~~~~~~~~............~~~~~~~~
 ~~~~~~~......~~~~~.~~~...~~~~~~~~~~~~~~~~~~~~............~~~~~~~

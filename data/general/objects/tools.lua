@@ -33,7 +33,9 @@ newEntity{
     -- combat = { sound = "actions/lockpick", sound_miss = "actions/melee_miss", },
     name = "a generic lockpick",
     desc = [[One or more strong, shaped wires or keys used to open locks.]],
-    use_simple = { name = "Unlock that which is locked.", use = function(self, who)
+    use_simple = {
+        name = "Unlock that which is locked.",
+	use = function(self, who)
 	    -- change range to talent range
                 local tg = {type="bolt", range=1, nolock=true}
                 local x, y = who:getTarget(tg)

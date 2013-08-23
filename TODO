@@ -1,5 +1,3 @@
-copy all relevant tome non-tome-specific code, check engine files, too
-	cycle thru all, I guess
 finalize the overall storyline, and sketch out the major bits needed, do the end (simplified end-to-end) then insert (then redo this todo)
 	prison->sewer->graveyard->town->worldmap
 	town is a dramatic break, very big, opportunity to practice, equip up, swipe stuff
@@ -23,30 +21,34 @@ Main storyline
 Features
 Quests
 
-add in static lights for torches/brazziers - make them Actors so they can be shot/"killed"
 add lockpick gui
 	displays mfctr - if known (successful pick -> known), display other bits
 	mfctr -> rnd name, always same type: warded, (1,2,3,4,5)(wafer,pin,lever,disc)tumbler
 	displays tools: pick, key, other?
 	solve each in order - each move takes a turn (during which you cannot see the screen)
 	would be nice to have gfx, or at least color-coded status
+	this might work:
+    if self.bg_image then
+        local fill = core.display.loadImage(self.bg_image)
+        local fw, fh = fill:getSize()
+        self.bg_surface = core.display.newSurface(w, h)
+        self.bg_surface:erase(0, 0, 0)
+        for i = 0, w, fw do for j = 0, h, fh do
+            self.bg_surface:merge(fill, i, j)
+        end end
+        self.bg_texture, self.bg_texture_w, self.bg_texture_h = self.bg_surface:glTexture()
+    end
+have lock+unlocked=locked door
+experience for: lock/unlock, pickpocket, disguise, on level-exit foreach actor that didn't see you
 add Disguise talent - pass as X
 add pickpocket talent - range/invisibleness, target w/in range, turn one jump to target, turn if !seen autojump back w/ loot (carefully look at when they move)
 stub added: a sewers/cavern/underwater level
 stub added: the graveyard levels
 stub in some terrain content to graveyard levels, with an eye toward revisiting it (need keys, or high lockpick skill)
 put a portal back from gora-graveyard3 to gora-prison-sewer, but appearance conditional on quest
-done: worldmap, static stub
-done: worldmap, static piece in stub random world generator 
 worldmap, above plus each grid enterable (random zones, some with params (ie town set on worldmap, generate on enter))
 worlmap, stub out locations (towns, cities, fortresses, keeps, towers, beast lairs, faction encampments, bandits ...)
-done: make lockpick talent (passive, requires tool use)
-done: make lockpick talent a starting talent
-done: make lockpicks add to existing talent
-done (doors): make doors have a lockpick value (mechanisms/levers, too)
 start player with the crappiest lockpick
-done, but should redo tied to quests: add in text popups to sewer and graveyard
-put a town near the graveyard (need a dramatic break)
 add content to sewer level, with an eye toward revisiting it
 change/consolidate a colorscheme for grids
 allow closing doors
@@ -55,7 +57,7 @@ add random prisoner chats
 add / give guards directional lights
 (some) corpses stick around, NPCs can recognize corpse and its faction for AI, kills affect rep/faction reactions
 ability to move corpses
-add pickpocket talent from X grids away (directional lights are a prereq, yes?)
+add pickpocket talent from X grids away (directional lights are a prereq, yes? no)
 pick up quests on the way (i'm dying take my macguffin, take up my sword(mayor demon))
 quest 1: Take down corrupt mayor/actually a "demon", who's part of a larger plot to, say, enslave all the <race>
 actions affect later gameplay - what taken, how many killed vs knocked out, etc - eg opening cell doors
@@ -84,3 +86,12 @@ done: add locked doors
 done: add ability for lockpick to work
 done: put locked doors in dungeon
 done: add flyingtext Unlock on unlock
+done - add in static lights for torches/brazziers - make them Actors (so they can be shot/"killed")
+done, but should redo tied to quests: add in text popups to sewer and graveyard
+done put a town near the graveyard (need a dramatic break)
+done: make lockpick talent (passive, requires tool use)
+done: make lockpick talent a starting talent
+done: make lockpicks add to existing talent
+done (doors): make doors have a lockpick value (mechanisms/levers, too)
+done: worldmap, static stub
+done: worldmap, static piece in stub random world generator 

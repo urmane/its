@@ -45,14 +45,14 @@ newEntity{ base = "BASE_LIGHT",
 }
 
 newEntity{ base = "BASE_LIGHT",
-	name = "brazier", color=colors.YELLOW,
+	name = "brazier", color=colors.ORANGE,
 	level_range = {1, 4}, exp_worth = 0,
 	rarity = 4,
 	lite = 5,		-- radius of the light this actor puts out
-	lite_pulse = 90,        -- percent chance per turn to mod lite
+	lite_pulse = 20,        -- percent chance per turn to mod lite
 	lite_pulse_step = 1,    -- amount and step to inc/dec
 	lite_min = 5,           -- min radius
-	lite_max = 8,           -- max radius
+	lite_max = 6,           -- max radius
 	sight = 0,		-- absolute limit of sight
 	sight_min = 0,		-- minimum light level this actor can distinguish
 	max_life = 1,
