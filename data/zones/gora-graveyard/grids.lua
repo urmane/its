@@ -57,6 +57,7 @@ newEntity{
         block_sight = true,
 --        block_sense = true,
 --        block_esp = true,
+}
 
 newEntity{
         define_as = "GRAVEYARD_EXIT",
@@ -67,4 +68,4 @@ newEntity{
         -- image = "terrain/stair_up_wild.png",
         notice = true,
         change_level=1, change_zone="gora-town",
-}}
+}

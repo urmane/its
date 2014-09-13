@@ -19,3 +19,15 @@
 
 load("/data/general/grids/basic.lua")
 load("/data/general/grids/town.lua")
+
+newEntity{
+        define_as = "TO_GRAVEYARD",
+        always_remember = true,
+        show_tooltip=true,
+        name="The bridge to the graveyard.",
+        display='>', color=colors.VIOLET,
+        -- image = "terrain/stair_up_wild.png",
+        notice = true,
+        change_level=1, change_zone="gora-graveyard",
+}
+
