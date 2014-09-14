@@ -2,6 +2,7 @@ finalize the overall storyline, and sketch out the major bits needed, do the end
 	prison->sewer->graveyard->town->worldmap
 	town is a dramatic break, very big, opportunity to practice, equip up, swipe stuff
 		game adjusts to how much illegal done (wanted, reputation)
+	At some point, the alarm sounds and more guards appear, searching the town
 	starting quest - get out of the prison
 	side quest - take-my-macguffin in the sewers
 	side quest - take-up-my sword in the prison, get the key from the secret room
@@ -18,12 +19,13 @@ Main storyline
 	stuck on static-start doing a few things until can tackle the volcano
 	volcano allows access to other continents
 	more explore
+	save the world
 Features
 Quests
 
 add lockpick gui
 	displays mfctr - if known (successful pick -> known), display other bits
-	mfctr -> rnd name, always same type: warded, (1,2,3,4,5)(wafer,pin,lever,disc)tumbler
+	mfctr -> rnd name, always same type: warded, (1,2,3,4,5)(wafer,pin,lever,disc)tumbler, other "tech"
 	displays tools: pick, key, other?
 	solve each in order - each move takes a turn (during which you cannot see the screen)
 	would be nice to have gfx, or at least color-coded status

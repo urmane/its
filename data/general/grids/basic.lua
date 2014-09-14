@@ -47,7 +47,7 @@ newEntity{
 
 newEntity{
 	define_as = "FLOOR",
-	name = "floor", image = "terrain/marble_floor.png",
+	name = "floor", image = "terrain/granite_floor1.png",
 	display = ' ', color_r=255, color_g=255, color_b=255, back_color=colors.DARK_GREY,
 }
 
@@ -65,7 +65,7 @@ newEntity{
 
 newEntity{
 	define_as = "DOOR",
-	name = "door", image = "terrain/granite_door1.png",
+	name = "door", image = "terrain/granite_door_closed.png",
 	display = '+', color_r=238, color_g=154, color_b=77, back_color=colors.DARK_UMBER,
 	notice = true,
 	always_remember = true,
@@ -76,7 +76,7 @@ newEntity{
 
 newEntity{
 	define_as = "DOOR_OPEN",
-	name = "open door", image = "terrain/granite_door1_open.png",
+	name = "open door", image = "terrain/granite_door_open.png",
 	display = "'", color_r=238, color_g=154, color_b=77, back_color=colors.DARK_GREY,
 	always_remember = true,
 	door_closed = "DOOR",
@@ -84,7 +84,7 @@ newEntity{
 
 newEntity{
 	define_as = "DOOR_LOCKED",
-	name = "locked door", image = "terrain/granite_door1.png",
+	name = "locked door", image = "terrain/granite_door_closed.png",
 	display = '+', color_r=238, color_g=154, color_b=77, back_color=colors.DARK_UMBER,
 	notice = true,
 	always_remember = true,
