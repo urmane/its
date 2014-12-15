@@ -4,7 +4,7 @@ finalize the overall storyline, and sketch out the major bits needed, do the end
 		game adjusts to how much illegal done (wanted, reputation)
 	At some point, the alarm sounds and more guards appear, searching the town
 	starting quest - get out of the prison
-	side quest - take-my-macguffin in the sewers
+	side quest - take-my-macguffin in the sewers - macguffins cannot disappear
 	side quest - take-up-my sword in the prison, get the key from the secret room
 	side quests - collect gold/valuables/treasures, some big ones
 	side quest - assassinate
@@ -13,12 +13,25 @@ finalize the overall storyline, and sketch out the major bits needed, do the end
 	large-scale famous acts (ie steal X's thing)
 	overall has to be save the world
 
+World
+	done-place init into random geography
+	place cities (some named and roughly placed, some completely random)
+	place any additional special maps (eg islands)
+	place mts (noblock, or add'l cost for mt moving)
+	place ice at pole
+	place forests
+	remainder is plains
+
 Main storyline
 	escape from prison: prison->sewer->graveyard->worldmap
 	explore a bit: nearby town (Gora) with lots of opportunity
 	stuck on static-start doing a few things until can tackle the volcano
 	volcano allows access to other continents
-	more explore
+	explore
+		direct to init city
+		init set of dungeons
+		plotline sends to add'l places
+		reveal more dungeons, not visible at start
 	save the world
 Features
 Quests
