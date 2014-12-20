@@ -1,10 +1,4 @@
 
--- Notes
--- 256x256 seems a good size, perhaps 1024x1024
--- start world, divide into sections, others can be completely connected
--- try use cavern noise-generated, plus Map:overlay()
--- sections, plus underwater as a mirror
-
 require "engine.class"
 local Map = require "engine.Map"
 require "engine.Generator"
@@ -17,8 +11,8 @@ function _M:init(zone, map, level, data)
 	self.map = map
 	self.width = data.width or 256
 	self.height = data.height or 256
-	self.border_div = 0           -- border width
-	self.border_terrain = "ocean" -- border terrain
+	self.border_div = data.border_div or 0
+	self.border_terrain = data.border_terrain or "ocean"
         self.grid_list = self.zone.grid_list
 	self.subgen = {}
 	self.spots = {}
@@ -144,6 +138,7 @@ end
 function _M:generate(lev, old_lev)
 	-- Random-noise generator, with Static subgenerators
 	print("[ITS] Generating RandomWorld")
+	print("ITS]hurst"..self.hurst)
         local noise = core.noise.new(2, self.hurst, self.lacunarity)
         local fills = {}
         local opens = {}

@@ -36,6 +36,14 @@ return {
 			map = "afeedi/afeedi",
 			land = "LAND",
 			ocean = "OCEAN",
+			noise = "simplex",
+			zoom = 11,
+			hurst = 0.16,
+			lacunarity = 9,
+			octave = 1,
+			border_div = 0,           -- border width
+			border_terrain = "ocean", -- border terrain
+			min_land = 12000,
         	},
 	},
 }
