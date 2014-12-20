@@ -17,6 +17,8 @@ function _M:init(zone, map, level, data)
 	self.map = map
 	self.width = data.width or 256
 	self.height = data.height or 256
+	self.border_div = 0           -- border width
+	self.border_terrain = "ocean" -- border terrain
         self.grid_list = self.zone.grid_list
 	self.subgen = {}
 	self.spots = {}
@@ -35,7 +37,8 @@ end
 function _M:loadMap(file)
         local t = {}
 
-	-- Not like a static map, but needed to read in any subgenerators / submaps
+	-- This reads in lua code specific to this zone map, including
+	-- subgenerator info, tiles, encounter placement, etc
 	print("[ITS] RandomWorld init using file", "/data/maps/"..file..".lua")
         local f, err = loadfile("/data/maps/"..file..".lua")
         if not f and err then error(err) end
@@ -61,6 +64,12 @@ function _M:loadMap(file)
                 subGenerator = function(g)
                         self.subgen[#self.subgen+1] = g
                 end,
+		setBorderDiv = function(x)
+			self.border_div = x
+		end,
+		setBorderTerrain = function(str)
+			self.border_terrain = str
+		end,
                 defineTile = function(char, grid, obj, actor, trap, status, spot)
                         t[char] = {grid=grid, object=obj, actor=actor, trap=trap, status=status, define_spot=spot}
                 end,
@@ -133,19 +142,19 @@ end
 --end
 
 function _M:generate(lev, old_lev)
-	--
-	-- First try to use Static as a subgenerator - not sure that'll work
-	--
-
+	-- Random-noise generator, with Static subgenerators
 	print("[ITS] Generating RandomWorld")
         local noise = core.noise.new(2, self.hurst, self.lacunarity)
         local fills = {}
         local opens = {}
         local list = {}
+	local border_width = 0
+
+	print("[ITS] Generating initial terrain")
         for i = 0, self.map.w - 1 do
                 opens[i] = {}
                 for j = 0, self.map.h - 1 do
-                        if noise[self.noise](noise, self.zoom * i / self.map.w, self.zoom * j / self.map.h, self.octave) > 0 then
+			if noise[self.noise](noise, self.zoom * i / self.map.w, self.zoom * j / self.map.h, self.octave) > 0 then
                                 self.map(i, j, Map.TERRAIN, self:resolve("land"))
                                 opens[i][j] = #list+1
                                 list[#list+1] = {x=i, y=j}
@@ -154,6 +163,25 @@ function _M:generate(lev, old_lev)
                         end
                 end
         end
+	if self.border_div then
+		print("[ITS] Creating border")
+		-- border is min(1, map.w/border_div)
+		if self.map.w > self.border_div then
+			border_width = self.map.w / self.border_div
+		else
+			border_width = 1
+		end
+        	for i = 0, self.map.w - 1 do
+                	for j = 0, self.map.h - 1 do
+				-- Remember 0-based vs 1-based
+                        	if i < border_width or i >= (self.map.w - border_width) or
+                           	   j < border_width or j >= (self.map.h - border_width) then
+                                	self.map(i, j, Map.TERRAIN, self:resolve(self.border_terrain))
+				end
+			end
+		end
+	end
+
 
         local floodFill floodFill = function(x, y)
                 local q = {{x=x,y=y}}

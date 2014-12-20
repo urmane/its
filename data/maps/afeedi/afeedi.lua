@@ -28,4 +28,31 @@ subGenerator{
         mountain = "MOUNTAIN",
     },
 }
+
+setBorderDiv(64)
+setBorderTerrain("ocean")
+
+-- sample code from tome, example of stuff to put in map generator
+-- Load encounters for this map
+--prepareEntitiesList("maj_eyal_encounters", "mod.class.Encounter", "/data/general/encounters/maj-eyal.lua")
+--prepareEntitiesList("maj_eyal_encounters_npcs", "mod.class.WorldNPC", "/data/general/encounters/maj-eyal-npcs.lua")
+--prepareEntitiesList("fareast_encounters", "mod.class.Encounter", "/data/general/encounters/fareast.lua")
+--prepareEntitiesList("fareast_encounters_npcs", "mod.class.WorldNPC", "/data/general/encounters/fareast-npcs.lua")
+--addData{
+--    wda = { script="eyal", zones={} },
+--    auto_placelists = { "maj_eyal_encounters", "fareast_encounters" },
+--}
+
+-- addSpot section
+--addSpot({53, 11}, "world-encounter", "maj-eyal")
+--addSpot({54, 11}, "world-encounter", "maj-eyal")
+--addSpot({53, 12}, "world-encounter", "maj-eyal")
+--addSpot({54, 12}, "world-encounter", "maj-eyal")
+
+-- addZone section
+--addZone({1, 1, 78, 43}, "zonename", "Maj'Eyal")
+--addZone({8, 14, 12, 22}, "world-encounter", "merchant-quest")
+--addZone({2, 3, 14, 12}, "world-encounter", "merchant-quest")
+
+
 return true

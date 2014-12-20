@@ -122,9 +122,9 @@ function _M:newGame()
 	self.creating_player = true
 	local birth = Birther.new(nil, self.player, {"base", "role" }, function()
 		-- For real game start:
-		self:changeLevel(1, "gora-prison")
+		--self:changeLevel(1, "gora-prison")
 		-- For changing during testing:
-		--self:changeLevel(1, "gora-town")
+		self:changeLevel(1, "gora-town")
 		print("[PLAYER BIRTH] resolve...")
 		self.player:resolve()
 		self.player:resolve(nil, true)
@@ -397,6 +397,20 @@ function _M:setupCommands()
 			if self.player.no_inventory_access then return end
 			local d
 			d = self.player:showEquipInven("Inventory", nil, function(o, inven, item, button, event)
+			    if not o then return end
+			    local ud = require("mod.dialogs.UseItemDialog").new(event == "button", self.player, o, item, inven, function(_, _, _, stop)
+			        d:generate()
+			        d:generateList()
+			        if stop then self:unregisterDialog(d) end
+			    end)
+			    self:registerDialog(ud)
+			end)
+		end,
+
+		SHOW_LOCKPICKUI = function()
+			-- if self.player.no_inventory_access then return end
+			local d
+			d = self.player:showLockpick("Lockpick", nil, function(o, inven, item, button, event)
 			    if not o then return end
 			    local ud = require("mod.dialogs.UseItemDialog").new(event == "button", self.player, o, item, inven, function(_, _, _, stop)
 			        d:generate()

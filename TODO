@@ -1,13 +1,9 @@
+Policy: the rogue is someone who does things not supposed to be done
+
 finalize the overall storyline, and sketch out the major bits needed, do the end (simplified end-to-end) then insert (then redo this todo)
 	prison->sewer->graveyard->town->worldmap
 	town is a dramatic break, very big, opportunity to practice, equip up, swipe stuff
 		game adjusts to how much illegal done (wanted, reputation)
-	At some point, the alarm sounds and more guards appear, searching the town
-	starting quest - get out of the prison
-	side quest - take-my-macguffin in the sewers - macguffins cannot disappear
-	side quest - take-up-my sword in the prison, get the key from the secret room
-	side quests - collect gold/valuables/treasures, some big ones
-	side quest - assassinate
 	reputation and faction reactions change the game
 	npc chats -> quests and/or reputation / reaction changes, re-emprison (lose equip), etc
 	large-scale famous acts (ie steal X's thing)
@@ -16,8 +12,9 @@ finalize the overall storyline, and sketch out the major bits needed, do the end
 World
 	done-place init into random geography
 	place cities (some named and roughly placed, some completely random)
-	place any additional special maps (eg islands)
-	place mts (noblock, or add'l cost for mt moving)
+		city template, include dock
+	place any additional static maps (eg islands)
+	place mts (noblock, or add'l cost for mt moving) - single noise fn with elevation more consistent
 	place ice at pole
 	place forests
 	remainder is plains
@@ -25,6 +22,7 @@ World
 Main storyline
 	escape from prison: prison->sewer->graveyard->worldmap
 	explore a bit: nearby town (Gora) with lots of opportunity
+	At some point, the alarm sounds and more guards appear, searching the town
 	stuck on static-start doing a few things until can tackle the volcano
 	volcano allows access to other continents
 	explore
@@ -34,9 +32,29 @@ Main storyline
 		reveal more dungeons, not visible at start
 	save the world
 Features
+	lockpick gui
+	endlessly hunted by "guards"
 Quests
+	starting quest - get out of the prison
+	side quest - take-my-macguffin in the sewers - macguffins cannot disappear
+	side quest - take-up-my sword in the prison, get the key from the secret room
+	side quests - collect gold/valuables/treasures, some big ones
+	side quest - assassinate
 
-add lockpick gui
+add lockpick gui (remember Policy)
+	picking locks quickly and efficiently - player can also "take all the time he needs" and autopick
+	lock - attributes, states
+		attr:
+			mfctr and series
+			difficulty (1-100)
+			level: X named:(ward/lever/wafer/pin/rotary/tubular/disc/magnet/etc)
+			mechanisms: 1-5(?)
+			features: spring, reset, trap, ...
+		mfctr->certain attrs, series->difficulty, certain attrs
+	tools - what toolset the player has equipped
+		levels are named pick, skeleton key, thieve's tools, locksmith's tools, etc
+		if tool lvl < lock lvl, ++diff
+	actions - what can be done
 	displays mfctr - if known (successful pick -> known), display other bits
 	mfctr -> rnd name, always same type: warded, (1,2,3,4,5)(wafer,pin,lever,disc)tumbler, other "tech"
 	displays tools: pick, key, other?

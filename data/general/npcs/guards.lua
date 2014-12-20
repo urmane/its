@@ -24,6 +24,7 @@ newEntity{
 	type = "humanoid", subtype = "guard",
 	display = "G", color=colors.WHITE,
 	desc = [[Ugly and ill-tempered.]],
+	image = "npcs/Trolldoll2.png",
 
 	-- ai = "dumb_talented_simple", ai_state = { talent_in=3, },
 	ai = "guard_wander",
