@@ -73,7 +73,7 @@ newEntity{
 newEntity{
         define_as = "SNOW",
         type = "wall", subtype = "grass",
-        name = "mountain", --        image = "terrain/land.png",
+        name = "snow", --        image = "terrain/land.png",
         display = '.', color=colors.WHITE, back_color={r=250,g=250,b=255},
         always_remember = true,
         does_block_move = false,
@@ -83,7 +83,7 @@ newEntity{
 newEntity{
         define_as = "ICE",
         type = "wall", subtype = "grass",
-        name = "mountain", --        image = "terrain/land.png",
+        name = "ice", --        image = "terrain/land.png",
         display = '~', color=colors.WHITE, back_color={r=200,g=200,b=255},
         always_remember = true,
         does_block_move = false,

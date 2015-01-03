@@ -156,12 +156,21 @@ function _M:generate(lev, old_lev)
                                 opens[i][j] = #list+1
                                 list[#list+1] = {x=i, y=j}
 			elseif height > 0 then
-                                self.map(i, j, Map.TERRAIN, self:resolve("land"))
+				if ( j < self.data.ice_width ) or ( j > self.map.h - self.data.ice_width ) then
+                                	self.map(i, j, Map.TERRAIN, self:resolve("snow"))
+				else
+                                	self.map(i, j, Map.TERRAIN, self:resolve("land"))
+				end
                                 opens[i][j] = #list+1
                                 list[#list+1] = {x=i, y=j}
 			elseif height > self.data.deepocean_depth then
-                                self.map(i, j, Map.TERRAIN, self:resolve("ocean"))
+				if ( j < self.data.ice_width ) or ( j > self.map.h - self.data.ice_width ) then
+                                	self.map(i, j, Map.TERRAIN, self:resolve("ice"))
+                        	else
+                                	self.map(i, j, Map.TERRAIN, self:resolve("ocean"))
+                        	end
                         else
+				-- deepocean remains deep, no ice
                                 self.map(i, j, Map.TERRAIN, self:resolve("deepocean"))
                         end
                 end

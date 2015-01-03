@@ -52,6 +52,7 @@ return {
 			border_terrain = "ocean", -- border terrain
 			mountain_height = 0.7,    -- a grid higher than this from the noise generator means mountain
 			deepocean_depth = -0.3,   -- a grid less than this from the noise generator means deepocean
+			ice_width = 25,           -- north/south pole borders, land->snow ocean->ice
 			min_land = 12000,
         	},
 	},
