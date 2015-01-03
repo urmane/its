@@ -16,10 +16,6 @@ function _M:init(zone, map, level, data)
         self.grid_list = self.zone.grid_list
 	self.subgen = {}
 	self.spots = {}
-        self.zoom = data.zoom or 19
-        self.hurst = data.hurst or 0.15
-        self.lacunarity = data.lacunarity or 8
-        self.octave = data.octave or 1
         self.min_land = data.min_land or 12000   -- Dependent on w and h!!
         self.noise = data.noise or "simplex"
 	data.__import_offset_x = data.__import_offset_x or 0
@@ -64,6 +60,11 @@ function _M:loadMap(file)
 		setBorderTerrain = function(str)
 			self.border_terrain = str
 		end,
+                addTown = function(dst, type, subtype, additional)
+                        local spot = {x=self.data.__import_offset_x+dst[1], y=self.data.__import_offset_y+dst[2], type=type or "static", subtype=subtype or "static"}
+                        table.update(spot, additional or {})
+                        self.spots[#self.spots+1] = spot
+                end,
                 defineTile = function(char, grid, obj, actor, trap, status, spot)
                         t[char] = {grid=grid, object=obj, actor=actor, trap=trap, status=status, define_spot=spot}
                 end,
@@ -138,8 +139,7 @@ end
 function _M:generate(lev, old_lev)
 	-- Random-noise generator, with Static subgenerators
 	print("[ITS] Generating RandomWorld")
-	print("ITS]hurst"..self.hurst)
-        local noise = core.noise.new(2, self.hurst, self.lacunarity)
+        local noise = core.noise.new(2, self.data.hurst, self.data.lacunarity)
         local fills = {}
         local opens = {}
         local list = {}
@@ -149,12 +149,20 @@ function _M:generate(lev, old_lev)
         for i = 0, self.map.w - 1 do
                 opens[i] = {}
                 for j = 0, self.map.h - 1 do
-			if noise[self.noise](noise, self.zoom * i / self.map.w, self.zoom * j / self.map.h, self.octave) > 0 then
+			-- code these better
+			height = noise[self.noise](noise, self.data.zoom * i / self.map.w, self.data.zoom * j / self.map.h, self.data.octave)
+			if height > self.data.mountain_height then
+                                self.map(i, j, Map.TERRAIN, self:resolve("mountain"))
+                                opens[i][j] = #list+1
+                                list[#list+1] = {x=i, y=j}
+			elseif height > 0 then
                                 self.map(i, j, Map.TERRAIN, self:resolve("land"))
                                 opens[i][j] = #list+1
                                 list[#list+1] = {x=i, y=j}
-                        else
+			elseif height > self.data.deepocean_depth then
                                 self.map(i, j, Map.TERRAIN, self:resolve("ocean"))
+                        else
+                                self.map(i, j, Map.TERRAIN, self:resolve("deepocean"))
                         end
                 end
         end
@@ -177,6 +185,7 @@ function _M:generate(lev, old_lev)
 		end
 	end
 
+-- Erm do I need any of this?
 
         local floodFill floodFill = function(x, y)
                 local q = {{x=x,y=y}}
@@ -257,6 +266,13 @@ function _M:generate(lev, old_lev)
                 --if g.define_up then self.gen_map.startx, self.gen_map.starty = ux + self.data.__import_offset_x+g.x, uy + self.data.__import_offset_y+g.y end
                 --if g.define_down then self.gen_map.endx, self.gen_map.endy = dx + self.data.__import_offset_x+g.x, dy + self.data.__import_offset_y+g.y end
         end
+
+	print("[ITS] adding towns")
+	-- go thru spots, foreach town find land i,j near spot x,y and assign
+
+	print("[ITS] adding dungeons")
+	print("[ITS] adding world npcs")
+	print("[ITS] adding world encounters")
 
 	-- Left over from Static.lua, dunno if I need these
 --        if self.gen_map.startx and self.gen_map.starty then

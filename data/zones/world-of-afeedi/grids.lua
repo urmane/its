@@ -31,6 +31,16 @@ newEntity{
 }
 
 newEntity{
+        define_as = "DEEP_OCEAN",
+        type = "wall", subtype = "grass",
+        name = "deepocean", --        image = "terrain/ocean.png",
+        display = '~', color=colors.DARK_BLUE, back_color={r=0,g=0,b=255},
+        always_remember = true,
+        does_block_move = false,
+        block_sight = false, --        block_sense = true, --        block_esp = true,
+}
+
+newEntity{
         define_as = "OCEAN",
         type = "wall", subtype = "grass",
         name = "ocean", --        image = "terrain/ocean.png",
@@ -55,6 +65,26 @@ newEntity{
         type = "wall", subtype = "grass",
         name = "mountain", --        image = "terrain/land.png",
         display = '^', color=colors.LIGHT_UMBER, back_color={r=80,g=80,b=40},
+        always_remember = true,
+        does_block_move = false,
+        block_sight = true,
+}
+
+newEntity{
+        define_as = "SNOW",
+        type = "wall", subtype = "grass",
+        name = "mountain", --        image = "terrain/land.png",
+        display = '.', color=colors.WHITE, back_color={r=250,g=250,b=255},
+        always_remember = true,
+        does_block_move = false,
+        block_sight = false,
+}
+
+newEntity{
+        define_as = "ICE",
+        type = "wall", subtype = "grass",
+        name = "mountain", --        image = "terrain/land.png",
+        display = '~', color=colors.WHITE, back_color={r=200,g=200,b=255},
         always_remember = true,
         does_block_move = false,
         block_sight = true,
