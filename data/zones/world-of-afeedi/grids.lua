@@ -102,6 +102,7 @@ newEntity{
 
 newEntity{
         define_as = "GORA",
+        type = "floor", subtype = "grass",
         always_remember = true,
         show_tooltip=true,
         name="The town of Gora.",
@@ -113,12 +114,109 @@ newEntity{
 
 newEntity{
         define_as = "TOWN1",
+        type = "floor", subtype = "grass",
         always_remember = true,
         show_tooltip=true,
-        name="A town.",
+        name="town1",
         display='1', color=colors.VIOLET,
         -- image = "terrain/stair_up_wild.png",
         notice = true,
         change_level=1, change_zone="town1",
+}
+
+newEntity{
+        define_as = "TOWN2",
+        type = "floor", subtype = "grass",
+        always_remember = true,
+        show_tooltip=true,
+        name="town2",
+        display='2', color=colors.VIOLET,
+        -- image = "terrain/stair_up_wild.png",
+        notice = true,
+        change_level=1, change_zone="town2",
+}
+
+newEntity{
+        define_as = "TOWN3",
+        type = "floor", subtype = "grass",
+        always_remember = true,
+        show_tooltip=true,
+        name="town3",
+        display='3', color=colors.VIOLET,
+        -- image = "terrain/stair_up_wild.png",
+        notice = true,
+        change_level=1, change_zone="town3",
+}
+
+newEntity{
+        define_as = "TOWN4",
+        type = "floor", subtype = "grass",
+        always_remember = true,
+        show_tooltip=true,
+        name="town4",
+        display='4', color=colors.VIOLET,
+        -- image = "terrain/stair_up_wild.png",
+        notice = true,
+        change_level=1, change_zone="town4",
+}
+
+newEntity{
+        define_as = "TOWN5",
+        type = "floor", subtype = "grass",
+        always_remember = true,
+        show_tooltip=true,
+        name="town5",
+        display='5', color=colors.VIOLET,
+        -- image = "terrain/stair_up_wild.png",
+        notice = true,
+        change_level=1, change_zone="town5",
+}
+
+newEntity{
+        define_as = "TOWN6",
+        type = "floor", subtype = "grass",
+        always_remember = true,
+        show_tooltip=true,
+        name="town6",
+        display='6', color=colors.VIOLET,
+        -- image = "terrain/stair_up_wild.png",
+        notice = true,
+        change_level=1, change_zone="town6",
+}
+
+newEntity{
+        define_as = "TOWN7",
+        type = "floor", subtype = "grass",
+        always_remember = true,
+        show_tooltip=true,
+        name="town7",
+        display='7', color=colors.VIOLET,
+        -- image = "terrain/stair_up_wild.png",
+        notice = true,
+        change_level=1, change_zone="town7",
+}
+
+newEntity{
+        define_as = "TOWN8",
+        type = "floor", subtype = "grass",
+        always_remember = true,
+        show_tooltip=true,
+        name="town8",
+        display='8', color=colors.VIOLET,
+        -- image = "terrain/stair_up_wild.png",
+        notice = true,
+        change_level=1, change_zone="town8",
+}
+
+newEntity{
+        define_as = "TOWN9",
+        type = "floor", subtype = "grass",
+        always_remember = true,
+        show_tooltip=true,
+        name="town9",
+        display='9', color=colors.VIOLET,
+        -- image = "terrain/stair_up_wild.png",
+        notice = true,
+        change_level=1, change_zone="town9",
 }
 

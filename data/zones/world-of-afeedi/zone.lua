@@ -36,13 +36,6 @@ return {
         	map = {
             		class = "mod.class.generator.map.RandomWorld",
 			map = "afeedi/afeedi",
-			deepocean = "DEEP_OCEAN",
-			ocean = "OCEAN",
-			land = "LAND",
-		        mountain = "MOUNTAIN",
-		        snow = "SNOW",
-		        ice = "ICE",
-		        trees = "TREES",
 			noise = "simplex",
 			zoom = 11,
 			hurst = 0.16,
@@ -54,6 +47,23 @@ return {
 			deepocean_depth = -0.3,   -- a grid less than this from the noise generator means deepocean
 			ice_width = 25,           -- north/south pole borders, land->snow ocean->ice
 			min_land = 12000,
+			-- terrains
+			deepocean = "DEEP_OCEAN",
+			ocean = "OCEAN",
+			land = "LAND",
+		        mountain = "MOUNTAIN",
+		        snow = "SNOW",
+		        ice = "ICE",
+		        trees = "TREES",
+		        town1 = "TOWN1",
+		        town2 = "TOWN2",
+		        town3 = "TOWN3",
+		        town4 = "TOWN4",
+		        town5 = "TOWN5",
+		        town6 = "TOWN6",
+		        town7 = "TOWN7",
+		        town8 = "TOWN8",
+		        town9 = "TOWN9",
         	},
 	},
 }

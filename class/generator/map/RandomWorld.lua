@@ -101,10 +101,10 @@ function _M:loadMap(file)
                         self.spots[#self.spots+1] = spot
                 end,
                 addZone = function(dst, type, subtype, additional)
-                        local zone = {x1=self.data.__import_offset_x+dst[1], y1=self.data.__import_offset_y+dst[2], x2=self.data.__import_offset_x+dst[3], y2=self.data.__import_offset_y+dst[4], type=type or "static", subtype=subtype or "static"}
+                        local zone = {x1=self.data.__import_offset_x+dst[1], y1=self.data.__import_offset_y+dst[2], x2=self.data.__import_offset_x+dst[3], y2=self.data.__import_offset_y+dst[4], type=type or "static", subtype=subtype or "static", additional=additional}
                         table.update(zone, additional or {})
-                        self.level.custom_zones = self.level.custom_zones or {}
-                        self.level.custom_zones[#self.level.custom_zones+1] = zone
+                        self.map.custom_zones = self.map.custom_zones or {}
+                        self.map.custom_zones[#self.map.custom_zones+1] = zone
                 end,
         }
         setfenv(f, setmetatable(g, {__index=_G}))
@@ -117,6 +117,7 @@ function _M:loadMap(file)
         self.map.endx = self.zone.endx or g.endx or math.floor(self.map.w / 2)
         self.map.endy = self.zone.endy or g.endy or math.floor(self.map.h / 2)
 
+        self.tiles = self.tiles or {}
         self.tiles = table.merge(self.tiles, t)
 
         print("[ITS] map size", self.map.w, self.map.h)
@@ -125,6 +126,7 @@ end
 --function _M:resolve(typ, c)
  --       if not self.tiles[c] or not self.tiles[c][typ] then return end
   --      local res = self.tiles[c][typ]
+-- or this:	local res = self.tiles[c]["grid"]
    --     if type(res) == "function" then
     --            return self.grid_list[res()]
      --   elseif type(res) == "table" and res.__CLASSNAME then
@@ -185,9 +187,10 @@ function _M:generate(lev, old_lev)
 		end
         	for i = 0, self.map.w - 1 do
                 	for j = 0, self.map.h - 1 do
-				-- Remember 0-based vs 1-based
-                        	if i < border_width or i >= (self.map.w - border_width) or
-                           	   j < border_width or j >= (self.map.h - border_width) then
+				-- Remember 0-based vs 1-based, north/south polar seas
+				if j < border_width or j >= (self.map.h - border_width) then
+					self.map(i, j, Map.TERRAIN, self:resolve("ice"))
+                        	elseif i < border_width or i >= (self.map.w - border_width) then
                                 	self.map(i, j, Map.TERRAIN, self:resolve(self.border_terrain))
 				end
 			end
@@ -195,7 +198,7 @@ function _M:generate(lev, old_lev)
 	end
 
 -- Erm do I need any of this?
-
+--[[
         local floodFill floodFill = function(x, y)
                 local q = {{x=x,y=y}}
                 local closed = {}
@@ -203,7 +206,7 @@ function _M:generate(lev, old_lev)
                         local n = table.remove(q, 1)
                         if opens[n.x] and opens[n.x][n.y] then
                                 closed[#closed+1] = n
-                                list[opens[n.x][n.y]] = nil
+                                list[opens[n.x][n.y] ] = nil
                                 opens[n.x][n.y] = nil
                                 q[#q+1] = {x=n.x-1, y=n.y}
                                 q[#q+1] = {x=n.x, y=n.y+1}
@@ -244,6 +247,7 @@ function _M:generate(lev, old_lev)
                 print("[ITS] map not OK - regenerate")
                 return self:generate(lev, old_lev)
         end
+--]]
 
 	self:triggerHook{"MapGeneratorRandomWorld:subgenRegister", mapfile=self.data.map, list=self.subgen}
 
@@ -276,26 +280,37 @@ function _M:generate(lev, old_lev)
                 --if g.define_down then self.gen_map.endx, self.gen_map.endy = dx + self.data.__import_offset_x+g.x, dy + self.data.__import_offset_y+g.y end
         end
 
-	print("[ITS] adding towns")
+	-- cheeseball, make this actually random
+	-- loop thru collecting spots and do a table.rng thing, or place as an island?
+	-- also needs to check no other town/dungeon is already there
+        local findRandomMapTerrain findRandomMapTerrain = function(x1, y1, x2, y2, str)
+		for i = x1, x2 do
+			for j = y1, y2 do
+				if self.map(i, j, Map.TERRAIN).name == str then
+					return i, j
+				end
+			end
+		end
+	end
+
+	print("[ITS] place additional map features")
 	-- go thru spots, foreach town find land i,j near spot x,y and assign
+        for i = 1, #self.map.custom_zones do
+		x, y = findRandomMapTerrain(self.map.custom_zones[i].x1, self.map.custom_zones[i].y1, self.map.custom_zones[i].x2, self.map.custom_zones[i].y2, "land")
+		addl = "none"
+		if self.map.custom_zones[i].additional then
+			addl = self.map.custom_zones[i].additional[1]
+		end
+		print("[ITS] Placing ",self.map.custom_zones[i].type or "nil", ",",
+			self.map.custom_zones[i].subtype, " called ", addl, " at ", x, y)
+		self.map(x, y, Map.TERRAIN, self:resolve(addl))
+		if self.map.custom_zones[i].type == "town" then
+		elseif self.map.custom_zones[i].type == "dungeon" then
+		else
+			print("[ITS] not yet placing ", self.map.custom_zones[i].type or "nil", ",", self.map.custom_zones[i].subtype)
+		end
+	end
 
-	print("[ITS] adding dungeons")
-	print("[ITS] adding world npcs")
-	print("[ITS] adding world encounters")
-
-	-- Left over from Static.lua, dunno if I need these
---        if self.gen_map.startx and self.gen_map.starty then
---                self.map.room_map[self.gen_map.startx][self.gen_map.starty].special = "exit"
---        end
---        if self.gen_map.endx and self.gen_map.endy then
---                self.map.room_map[self.gen_map.endx][self.gen_map.endy].special = "exit"
---        end
-
-	-- need to figger out where to put start/end x/y
---	print("[ITS] RandomWorld generation - start/end x/y", self.data.startx, self.data.starty, self.data.endx, self.data.endy)
-	print("[ITS] RandomWorld generation - start/end x/y", self.map.startx, self.map.starty, self.map.endx, self.map.endy)
-	print("[ITS] RandomWorld generation complete")
---        return 20, 20, 20, 20, self.spots
-	-- level must be connected - path from start to end
+	print("[ITS] RandomWorld generation complete - start/end x/y", self.map.startx, self.map.starty, self.map.endx, self.map.endy)
         return self.map.startx, self.map.starty, self.map.endx, self.map.endy, self.spots
 end
