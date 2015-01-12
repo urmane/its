@@ -113,6 +113,30 @@ newEntity{
 }
 
 newEntity{
+        define_as = "HEIGHTONSEA",
+        type = "floor", subtype = "grass",
+        always_remember = true,
+        show_tooltip=true,
+        name="The town of Heightonsea.",
+        display='H', color=colors.VIOLET,
+        -- image = "terrain/stair_up_wild.png",
+        notice = true,
+        change_level=1, change_zone="heightonsea",
+}
+
+newEntity{
+        define_as = "CASTLE_ZALA",
+        type = "floor", subtype = "grass",
+        always_remember = true,
+        show_tooltip=true,
+        name="The Castle Zala.",
+        display='Z', color=colors.VIOLET,
+        -- image = "terrain/stair_up_wild.png",
+        notice = true,
+        change_level=1, change_zone="castle-zala",
+}
+
+newEntity{
         define_as = "TOWN1",
         type = "floor", subtype = "grass",
         always_remember = true,

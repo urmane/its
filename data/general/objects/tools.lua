@@ -50,6 +50,7 @@ newEntity{
 			-- short term, simple test - more complicated later with ui, or maybe allow ui on test fail
 			if lock_value <= skill_total then -- possibly allow a random chance, too?
 				print("unlocking at ", x, ",", y)
+				print("lock_mfctr is ", door.lock_mfctr or "none")
 				game.level.map(x, y, engine.Map.TERRAIN, game.zone.grid_list[door.door_unlocked])
 				local sx, sy = game.level.map:getTileToScreen(x, y)
 				game.flyers:add(sx, sy, 10, 0, -1, "Unlocked!", {0,255,0}, false)

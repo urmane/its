@@ -47,7 +47,7 @@ return {
 			deepocean_depth = -0.3,   -- a grid less than this from the noise generator means deepocean
 			ice_width = 25,           -- north/south pole borders, land->snow ocean->ice
 			min_land = 12000,
-			-- terrains
+			-- random terrains
 			deepocean = "DEEP_OCEAN",
 			ocean = "OCEAN",
 			land = "LAND",

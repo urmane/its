@@ -11,26 +11,36 @@ finalize the overall storyline, and sketch out the major bits needed, do the end
 
 World
 	done-place init into random geography
-	place cities (some named and roughly placed, some completely random)
-		city template, include dock
-	place any additional static maps (eg islands)
-	place mts (noblock, or add'l cost for mt moving) - single noise fn with elevation more consistent
-	place ice at pole
+	done - place cities (some named and roughly placed, some completely random)
+	done - place mts (noblock, or add'l cost for mt moving) - single noise fn with elevation more consistent
+	done - place ice at pole
+	done - remainder is plains
 	place forests
-	remainder is plains
+	augment initial static map with additional locations - story phase one
+	place volano exit place
+	build out random towns, story phase two
+	create and place any additional static maps (eg islands) - story phase three
+	create mirror image world - story opt phase
 
 Main storyline
 	escape from prison: prison->sewer->graveyard->worldmap
 	explore a bit: nearby town (Gora) with lots of opportunity
 	At some point, the alarm sounds and more guards appear, searching the town
 	stuck on static-start doing a few things until can tackle the volcano
-	volcano allows access to other continents
+	volcano allows access to other continents - have the other side be placed on the main cnt so no boat needed
 	explore
 		direct to init city
-		init set of dungeons
-		plotline sends to add'l places
+		init set of cities/dungeons on starting island
+		volcano after above
+		plotline sends to add'l places in larger world
 		reveal more dungeons, not visible at start
 	save the world
+		defeat the minions at each city/dungeon
+			undead(convert) - several tombs, several std kill ways (destroy the body, sunlight, et al.)
+			force - warriors with strong armor/weapons, std military-oriented
+			fear - monsters of various powers, all uniques
+			greed - lots of (only) money, bribing, wierd
+		defeat the big bad in Gora - power of leverage, use all above plus factions
 Features
 	lockpick gui
 	endlessly hunted by "guards"
@@ -71,6 +81,8 @@ add lockpick gui (remember Policy)
         end end
         self.bg_texture, self.bg_texture_w, self.bg_texture_h = self.bg_surface:glTexture()
     end
+
+IDEAS (randomly organized):
 have lock+unlocked=locked door
 experience for: lock/unlock, pickpocket, disguise, on level-exit foreach actor that didn't see you
 add Disguise talent - pass as X
@@ -100,6 +112,8 @@ Make gems and valuables, name with "(100gp)" or "(~100gp)"
 Need a fence to sell stolen
 A Discovery of Witches: unknowingly let Witches loose, nice pictures
 rotworms that chase
+instruments - flutes, lutes, violins
+armory with several nonmagical copies of all armor types
 
 mod the player resources / stats / thief talents needed for game
 resources: air

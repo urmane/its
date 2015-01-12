@@ -82,6 +82,7 @@ newEntity{
 	door_closed = "DOOR",
 }
 
+-- putting lock_mfctr here makes them all the same for a level ... hm ...
 newEntity{
 	define_as = "DOOR_LOCKED",
 	name = "locked door", image = "terrain/granite_door_closed.png",
@@ -90,6 +91,7 @@ newEntity{
 	always_remember = true,
 	block_sight = true,
 	door_unlocked = "DOOR",
+	lock_mfctr=game.markov["elvish"]:generateWord("E", 3, 9),
 	lock_value = 10,
 }
 
