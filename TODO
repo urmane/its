@@ -51,6 +51,22 @@ Quests
 	side quests - collect gold/valuables/treasures, some big ones
 	side quest - assassinate
 
+Talents
+	move silent/stealth/etc (see what's in engine)
+		speed while sustained
+	subdue, melee/ranged (includes remote, like sleeping powder/arrows)
+	kill, melee/ranged
+	lift/push/pull body
+	hide
+	disguise -> Factions, from large/meaningless to small/secret
+	listen
+	pickpockets, melee/ranged
+	leap to shadows
+	architectural knowledge
+	bribe
+	traps - set
+	traps - detect
+
 add lockpick gui (remember Policy)
 	picking locks quickly and efficiently - player can also "take all the time he needs" and autopick
 	lock - attributes, states
@@ -83,6 +99,9 @@ add lockpick gui (remember Policy)
     end
 
 IDEAS (randomly organized):
+craftsmen to build things from simpler items
+enchanters to enchant things for you
+fronts with milestones/consequences
 have lock+unlocked=locked door
 experience for: lock/unlock, pickpocket, disguise, on level-exit foreach actor that didn't see you
 add Disguise talent - pass as X

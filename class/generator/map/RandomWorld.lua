@@ -157,6 +157,10 @@ function _M:generate(lev, old_lev)
                                 self.map(i, j, Map.TERRAIN, self:resolve("mountain"))
                                 opens[i][j] = #list+1
                                 list[#list+1] = {x=i, y=j}
+			elseif height > self.data.forest_height then
+                                self.map(i, j, Map.TERRAIN, self:resolve("trees"))
+                                opens[i][j] = #list+1
+                                list[#list+1] = {x=i, y=j}
 			elseif height > 0 then
 				if ( j < self.data.ice_width ) or ( j > self.map.h - self.data.ice_width ) then
                                 	self.map(i, j, Map.TERRAIN, self:resolve("snow"))

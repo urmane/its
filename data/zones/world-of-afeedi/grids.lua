@@ -21,13 +21,13 @@ load("/data/general/grids/basic.lua")
 
 
 newEntity{
-        define_as = "TREE",
+        define_as = "TREES",
         type = "wall", subtype = "tree",
-        name = "tree", --        image = "terrain/tree.png",
-        display = '#', color=colors.LIGHT_GREEN, back_color={r=44,g=95,b=43},
+        name = "trees", --        image = "terrain/tree.png",
+        display = '+', color=colors.LIGHT_GREEN, back_color={r=44,g=95,b=43},
         always_remember = true,
-        does_block_move = true,
-        block_sight = true, --        block_sense = true, --        block_esp = true,
+        does_block_move = false,
+        block_sight = false, --        block_sense = true, --        block_esp = true,
 }
 
 newEntity{

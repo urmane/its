@@ -43,7 +43,8 @@ return {
 			octave = 1,
 			border_div = 64,          -- border width = width/border_div
 			border_terrain = "ocean", -- border terrain
-			mountain_height = 0.7,    -- a grid higher than this from the noise generator means mountain
+			mountain_height = 0.8,    -- a grid higher than this from the noise generator means mountain
+			forest_height = 0.5,    -- using height for forests for the moment
 			deepocean_depth = -0.3,   -- a grid less than this from the noise generator means deepocean
 			ice_width = 25,           -- north/south pole borders, land->snow ocean->ice
 			min_land = 12000,
