@@ -23,7 +23,8 @@ load("/data/general/grids/basic.lua")
 newEntity{
         define_as = "TREES",
         type = "wall", subtype = "tree",
-        name = "trees", --        image = "terrain/tree.png",
+        name = "trees",
+	image = "terrain/forest.png",
         display = '+', color=colors.LIGHT_GREEN, back_color={r=44,g=95,b=43},
         always_remember = true,
         does_block_move = false,
@@ -33,7 +34,8 @@ newEntity{
 newEntity{
         define_as = "DEEP_OCEAN",
         type = "wall", subtype = "grass",
-        name = "deepocean", --        image = "terrain/ocean.png",
+        name = "deepocean",
+	image = "terrain/deepocean.png",
         display = '~', color=colors.DARK_BLUE, back_color={r=0,g=0,b=255},
         always_remember = true,
         does_block_move = false,
@@ -43,7 +45,8 @@ newEntity{
 newEntity{
         define_as = "OCEAN",
         type = "wall", subtype = "grass",
-        name = "ocean", --        image = "terrain/ocean.png",
+        name = "ocean",
+	image = "terrain/ocean.png",
         display = '~', color=colors.LIGHT_BLUE, back_color={r=0,g=0,b=255},
         always_remember = true,
         does_block_move = false,
@@ -53,7 +56,8 @@ newEntity{
 newEntity{
         define_as = "LAND",
         type = "floor", subtype = "grass",
-        name = "land", --        image = "terrain/land.png",
+        name = "land",
+	image = "terrain/plains.png",
         display = '.', color=colors.TAN, back_color={r=100,g=100,b=100},
         always_remember = true,
         does_block_move = false,
@@ -63,7 +67,8 @@ newEntity{
 newEntity{
         define_as = "MOUNTAIN",
         type = "wall", subtype = "grass",
-        name = "mountain", --        image = "terrain/land.png",
+        name = "mountain",
+	image = "terrain/mountains.png",
         display = '^', color=colors.LIGHT_UMBER, back_color={r=80,g=80,b=40},
         always_remember = true,
         does_block_move = false,
@@ -107,7 +112,7 @@ newEntity{
         show_tooltip=true,
         name="The town of Gora.",
         display='G', color=colors.VIOLET,
-        -- image = "terrain/stair_up_wild.png",
+        image = "terrain/town.png",
         notice = true,
         change_level=1, change_zone="gora-town",
 }
@@ -119,7 +124,7 @@ newEntity{
         show_tooltip=true,
         name="The town of Heightonsea.",
         display='H', color=colors.VIOLET,
-        -- image = "terrain/stair_up_wild.png",
+        image = "terrain/town.png",
         notice = true,
         change_level=1, change_zone="heightonsea",
 }
@@ -131,7 +136,7 @@ newEntity{
         show_tooltip=true,
         name="The Castle Zala.",
         display='Z', color=colors.VIOLET,
-        -- image = "terrain/stair_up_wild.png",
+        image = "terrain/town.png",
         notice = true,
         change_level=1, change_zone="castle-zala",
 }
@@ -144,7 +149,7 @@ newEntity{
         --name="town1",
         name=game.markov["elvish"]:generateWord("E", 3, 9),
         display='1', color=colors.VIOLET,
-        -- image = "terrain/stair_up_wild.png",
+        image = "terrain/town.png",
         notice = true,
         change_level=1, change_zone="town1",
 }
@@ -157,7 +162,7 @@ newEntity{
         --name="town2",
         name=game.markov["elvish"]:generateWord("E", 3, 9),
         display='2', color=colors.VIOLET,
-        -- image = "terrain/stair_up_wild.png",
+        image = "terrain/town.png",
         notice = true,
         change_level=1, change_zone="town2",
 }
@@ -170,7 +175,7 @@ newEntity{
         --name="town3",
         name=game.markov["elvish"]:generateWord("E", 3, 9),
         display='3', color=colors.VIOLET,
-        -- image = "terrain/stair_up_wild.png",
+        image = "terrain/town.png",
         notice = true,
         change_level=1, change_zone="town3",
 }
@@ -183,7 +188,7 @@ newEntity{
         --name="town4",
         name=game.markov["elvish"]:generateWord("E", 3, 9),
         display='4', color=colors.VIOLET,
-        -- image = "terrain/stair_up_wild.png",
+        image = "terrain/town.png",
         notice = true,
         change_level=1, change_zone="town4",
 }
@@ -196,7 +201,7 @@ newEntity{
         --name="town5",
         name=game.markov["elvish"]:generateWord("E", 3, 9),
         display='5', color=colors.VIOLET,
-        -- image = "terrain/stair_up_wild.png",
+        image = "terrain/town.png",
         notice = true,
         change_level=1, change_zone="town5",
 }
@@ -209,7 +214,7 @@ newEntity{
         --name="town6",
         name=game.markov["elvish"]:generateWord("E", 3, 9),
         display='6', color=colors.VIOLET,
-        -- image = "terrain/stair_up_wild.png",
+        image = "terrain/town.png",
         notice = true,
         change_level=1, change_zone="town6",
 }
@@ -222,7 +227,7 @@ newEntity{
         --name="town7",
         name=game.markov["elvish"]:generateWord("E", 3, 9),
         display='7', color=colors.VIOLET,
-        -- image = "terrain/stair_up_wild.png",
+        image = "terrain/town.png",
         notice = true,
         change_level=1, change_zone="town7",
 }
@@ -235,7 +240,7 @@ newEntity{
 --        name="town8",
         name=game.markov["elvish"]:generateWord("E", 3, 9),
         display='8', color=colors.VIOLET,
-        -- image = "terrain/stair_up_wild.png",
+        image = "terrain/town.png",
         notice = true,
         change_level=1, change_zone="town8",
 }
@@ -248,7 +253,7 @@ newEntity{
         --name="town9",
         name=game.markov["elvish"]:generateWord("E", 3, 9),
         display='9', color=colors.VIOLET,
-        -- image = "terrain/stair_up_wild.png",
+        image = "terrain/town.png",
         notice = true,
         change_level=1, change_zone="town9",
 }
