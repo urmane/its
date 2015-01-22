@@ -14,12 +14,13 @@ defineTile("E", "SEWER_EXIT")
 defineTile("<", "UP")
 defineTile("G", "FLOOR", nil, {random_filter={name="prisonguard"}})
 defineTile("P", "FLOOR", nil, {random_filter={type="humanoid", subtype="prisoner"}})
+defineTile("1", "FLOOR", nil, "PRISONER_MACGUFFIN")
 
 return [[
 ########################################
 #<.~~~##################################
 #~~~~~##################################
-#~~~~~##################################
+#~~1~~##################################
 #~~~~~##################################
 #####~##################################
 #####~##################################

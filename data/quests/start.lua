@@ -2,7 +2,7 @@
 name = "Escape From Gora Prison"
 desc = function(self, who)
 	local desc = {}
-	desc[#desc+1] = "You must escape from Gora Prison and back to the world, but you cannot get out of the main entrance."
+	desc[#desc+1] = "You must escape from Gora Prison and back to the world, but you cannot get out of the main entrance.  Look for a back way ..."
 	if self:isCompleted("start-escape-prison") then
 		desc[#desc+1] = "#LIGHT_GREEN#* You have found a way into the sewers beneath Gora Prison!#WHITE#"
 	else

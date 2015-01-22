@@ -20,6 +20,17 @@
 local Talents = require("engine.interface.ActorTalents")
 
 newEntity{
+	define_as = "BASE_PRISONER",
+	type = "humanoid", subtype = "prisoner",
+	display = "P", color=colors.WHITE,
+	desc = [[A wretched, tortured mess of rags and flesh.]],
+	image = "npcs/Trolldoll2.png",
+	ai = "none", -- ai_state = { talent_in=3, },
+	stats = { str=1, dex=1, con=1 },
+	combat_armor = 0,
+}
+
+newEntity{
 	define_as = "BASE_GUARD",
 	type = "humanoid", subtype = "guard",
 	display = "G", color=colors.WHITE,

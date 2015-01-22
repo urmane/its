@@ -124,7 +124,8 @@ function _M:newGame()
 		-- For real game start:
 		-- self:changeLevel(1, "gora-prison")
 		-- For changing during testing: can I make a cmdline option ...
-		self:changeLevel(1, "gora-town")
+		self:changeLevel(1, "gora-prison")
+		-- self:changeLevel(1, "gora-town")
 		print("[PLAYER BIRTH] resolve...")
 		self.player:resolve()
 		self.player:resolve(nil, true)
