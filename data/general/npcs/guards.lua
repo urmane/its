@@ -24,7 +24,7 @@ newEntity{
 	type = "humanoid", subtype = "prisoner",
 	display = "P", color=colors.WHITE,
 	desc = [[A wretched, tortured mess of rags and flesh.]],
-	image = "npcs/Trolldoll2.png",
+	image = "npcs/prisoner.png",
 	ai = "none", -- ai_state = { talent_in=3, },
 	stats = { str=1, dex=1, con=1 },
 	combat_armor = 0,
@@ -34,8 +34,8 @@ newEntity{
 	base = "BASE_PRISONER",
 	name = "prisoner", 
 	color=colors.WHITE,
-	level_range = {1,3}, exp_worth = 1,
-	lite = 1, -- give them a small light so they are visible
+	level_range = {1,3}, exp_worth = 1, rarity = 1,
+	lite = 1, -- give them a small light so they are visible - no, bad, but must stay 1 until Actor.lua:canSee() fixed
 	sight = 3,
 	sight_min = 1, -- prisoners see better than guards
 	max_life = 1,
