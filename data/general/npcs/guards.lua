@@ -35,6 +35,7 @@ newEntity{
 	name = "prisoner", 
 	color=colors.WHITE,
 	level_range = {1,3}, exp_worth = 1,
+	lite = 1, -- give them a small light so they are visible
 	sight = 3,
 	sight_min = 1, -- prisoners see better than guards
 	max_life = 1,
@@ -57,10 +58,10 @@ newEntity{ base = "BASE_GUARD",
 	name = "prisonguard", color=colors.GREEN,
 	level_range = {1, 4}, exp_worth = 1,
 	rarity = 4,
-	lite = 8,		-- radius of the light this actor puts out
+	lite = 5,		-- radius of the light this actor puts out
         lite_flicker = 90,      -- percent chance per turn to mod lite
-        lite_min = 2,           -- min radius
-        lite_max = 8,           -- max radius
+        lite_min = 3,           -- min radius
+        lite_max = 5,           -- max radius
 	sight = 20,		-- absolute limit of sight
 	sight_min = 5,		-- minimum light level this actor can distinguish
 	move_dir = 2,		-- initial move direction, they'll rotate clockwise 90 degrees for now

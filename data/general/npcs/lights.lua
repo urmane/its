@@ -32,6 +32,7 @@ newEntity{
 newEntity{ base = "BASE_LIGHT",
 	name = "torch", color=colors.YELLOW,
 	desc = [[A wall-mounted sconce with a lit torch.]],
+	image = "terrain/granite_floor_torch.png",
 	level_range = {1, 4}, exp_worth = 0,
 	rarity = 4,
 	lite = 3,		-- radius of the light this actor puts out
