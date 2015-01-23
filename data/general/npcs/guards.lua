@@ -31,6 +31,16 @@ newEntity{
 }
 
 newEntity{
+	base = "BASE_PRISONER",
+	name = "prisoner", 
+	color=colors.WHITE,
+	level_range = {1,3}, exp_worth = 1,
+	sight = 3,
+	sight_min = 1, -- prisoners see better than guards
+	max_life = 1,
+}
+
+newEntity{
 	define_as = "BASE_GUARD",
 	type = "humanoid", subtype = "guard",
 	display = "G", color=colors.WHITE,

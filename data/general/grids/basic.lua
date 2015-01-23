@@ -64,6 +64,13 @@ newEntity{
 }
 
 newEntity{
+	define_as = "DEEP_WATER",
+	name = "deep_water", image = "terrain/deepwater.png",
+	display = '~', color_r=0, color_g=0, color_b=255, back_color=colors.DARK_BLUE,
+}
+
+
+newEntity{
 	define_as = "DOOR",
 	name = "door", image = "terrain/granite_door_closed.png",
 	display = '+', color_r=238, color_g=154, color_b=77, back_color=colors.DARK_UMBER,
