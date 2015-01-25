@@ -25,21 +25,10 @@ newEntity{
     name = "prisoner", color=colors.WHITE,
     desc = "An old man, withered and near death.",
     level_range = {1, 4}, exp_worth = 0, rarity = 1,
-    lite = 1, -- required for now, fix class/Actor.lua:canSee()
+    lite = 1, -- required for now to make him visible, without a lightsource
     -- not sure which of these applies in the generic engine
-    rank = 1,
-    max_life = 1, life_rating = 1,
-    invulnerable = 1, never_move = 1,
+    never_move = 1,
     faction = "neutral",
-    never_anger = 1,
     can_talk = "double-macguffin-prisoner1",
---    block_move = function(self, x, y, e, act, couldpass)
---        if e and e.player and act and e:reactionToward(self) >= 0 then
---            local chat = require("engine.Chat").new("double-macguffin-prisoner1", self, e)
---            chat:invoke()
---        end
---        return true
---    end,
-
 }
 

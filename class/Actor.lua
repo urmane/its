@@ -265,7 +265,7 @@ function _M:canSee(actor, def, def_pct)
 	-- There is ambient light and self can pick up actor out of the shadows
         if ( actor == self ) or
 		( actor.lite and actor.lite > 0 ) or
-		( self.lite and ( core.fov.distance(self.x, self.y, actor.x, actor.y) <= self.lite ) ) or
+		( self.lite and self.lite > 0 and ( core.fov.distance(self.x, self.y, actor.x, actor.y) <= self.lite ) ) or
 		( game.level.data.ambient_light and self.sight_min and ( self.sight_min <= game.level.data.ambient_light ) ) then
 		-- FIXME - need to check if actor within other emitted light radii, maybe not here
 		-- Visible unless other effects prevent it, check those now

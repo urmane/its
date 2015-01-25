@@ -4,8 +4,8 @@ starty = 3
 defineTile(".", "FLOOR")
 defineTile("~", "DEEP_WATER")
 defineTile("#", "WALL")
-defineTile("'", "DOOR_OPEN")
-defineTile("+", "DOOR_LOCKED")
+defineTile("'", "CELL_DOOR")
+defineTile("+", "CELL_DOOR_LOCKED")
 defineTile("*", "FLOOR") --make me a small treasure?
 defineTile(">", "DOWN")
 defineTile("G", "FLOOR", nil, {random_filter={name="prisonguard"}})

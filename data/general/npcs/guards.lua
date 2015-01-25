@@ -35,7 +35,7 @@ newEntity{
 	name = "prisoner", 
 	color=colors.WHITE,
 	level_range = {1,3}, exp_worth = 1, rarity = 1,
-	lite = 1, -- give them a small light so they are visible - no, bad, but must stay 1 until Actor.lua:canSee() fixed
+	lite = 0,
 	sight = 3,
 	sight_min = 1, -- prisoners see better than guards
 	max_life = 1,

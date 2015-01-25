@@ -17,4 +17,16 @@
 -- Nicolas Casalini "DarkGod"
 -- darkgod@te4.org
 
-load("/data/general/npcs/wisps.lua")
+load("/data/general/npcs/guards.lua")
+load("/data/general/npcs/lights.lua")
+
+newEntity{
+    base = "BASE_PRISONER", define_as="MAX_MACGUFFIN",
+    name = "Max Macguffin", color=colors.WHITE,
+    desc = "An old man, withered and near death.",
+    level_range = {1, 4}, exp_worth = 0, rarity = 1,
+    lite = 1, -- required for now, fix class/Actor.lua:canSee()
+    faction = "neutral",
+    can_talk = "double-macguffin-max1",
+}
+
