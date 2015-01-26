@@ -75,16 +75,40 @@ function _M:display()
     local x = 2
     
     self.font:setStyle("bold")
-    self:makeTexture(("%s#{normal}#"):format(player.name), 0, h, colors.GOLD.r, colors.GOLD.g, colors.GOLD.b, self.w) h = h + self.font_h
+    self:makeTexture(("%s#{normal}#"):format(player.name), 0, h, colors.GOLD.r, colors.GOLD.g, colors.GOLD.b, self.w)
+    h = h + self.font_h
     self.font:setStyle("normal")
 
-    self:makeTexture(("Str/Dex/Con: #00ff00#%3d/%3d/%3d"):format(player:getStr(), player:getDex(), player:getCon()), x, h, 255, 255, 255) h = h + self.font_h
-    
+    self:makeTexture(("Str/Sns/End: #00ff00#%3d/%3d/%3d"):format(player:getStr(), player:getSns(), player:getEnd()), x, h, 255, 255, 255)
+    h = h + self.font_h
+    self:makeTexture(("Rct/Chr/Att: #00ff00#%3d/%3d/%3d"):format(player:getRct(), player:getChr(), player:getAtt()), x, h, 255, 255, 255)
+    h = h + self.font_h
+    self:makeTexture(("Wil/Div/Lck: #00ff00#%3d/%3d/%3d"):format(player:getWil(), player:getDiv(), player:getLck()), x, h, 255, 255, 255)
     h = h + self.font_h
 
-    self:makeTextureBar("#c00000#Life:", nil, player.life, player.max_life, player.life_regen * util.bound((player.healing_factor or 1), 0, 2.5), x, h, 255, 255, 255, colors.DARK_RED, colors.VERY_DARK_RED) h = h + self.font_h
+   -- spacer 
+   h = h + self.font_h
 
-    self:makeTextureBar("#ffcc80#Power:", nil, player:getPower(), player.max_power, player.power_regen, x, h, 255, 255, 255, colors.DARK_BLUE, {r=colors.DARK_BLUE.r/2, g=colors.DARK_BLUE.g/2, b=colors.DARK_BLUE.b/2}) h = h + self.font_h
+    self:makeTextureBar("#ffcc80#Earth:", nil, player:getEarth(), player.max_power, player.power_regen, x, h, 255, 255, 255, colors.UMBER, {r=colors.UMBER.r/2, g=colors.UMBER.g/2, b=colors.UMBER.b/2})
+    h = h + self.font_h
+
+    self:makeTextureBar("#ffcc80#Air:", nil, player:getAir(), player.max_power, player.power_regen, x, h, 0, 0, 0, colors.YELLOW, {r=colors.YELLOW.r/2, g=colors.YELLOW.g/2, b=colors.YELLOW.b/2})
+    h = h + self.font_h
+
+    self:makeTextureBar("#ffcc80#Fire:", nil, player:getFire(), player.max_power, player.power_regen, x, h, 255, 255, 255, colors.RED, {r=colors.RED.r/2, g=colors.RED.g/2, b=colors.RED.b/2})
+    h = h + self.font_h
+
+    self:makeTextureBar("#ffcc80#Water:", nil, player:getWater(), player.max_power, player.power_regen, x, h, 255, 255, 255, colors.DARK_BLUE, {r=colors.DARK_BLUE.r/2, g=colors.DARK_BLUE.g/2, b=colors.DARK_BLUE.b/2})
+    h = h + self.font_h
+
+   -- spacer 
+   h = h + self.font_h
+
+    self:makeTextureBar("#c00000#Life:", nil, player.life, player.max_life, player.life_regen * util.bound((player.healing_factor or 1), 0, 2.5), x, h, 255, 255, 255, colors.DARK_RED, colors.VERY_DARK_RED)
+    h = h + self.font_h
+
+--    self:makeTextureBar("#ffcc80#Power:", nil, player:getPower(), player.max_power, player.power_regen, x, h, 255, 255, 255, colors.DARK_BLUE, {r=colors.DARK_BLUE.r/2, g=colors.DARK_BLUE.g/2, b=colors.DARK_BLUE.b/2})
+--    h = h + self.font_h
 
     if savefile_pipe.saving then
         h = h + self.font_h

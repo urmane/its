@@ -113,8 +113,8 @@ Stats: %d /  %d / %d
 	self.level,
 	self.life, self.life * 100 / self.max_life,
 	self:getStr(),
-	self:getDex(),
-	self:getCon(),
+	self:getSns(),
+	self:getEnd(),
 	self.desc or ""
 	)
 end

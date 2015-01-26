@@ -34,7 +34,7 @@ local Player = require "mod.class.Player"
 local NPC = require "mod.class.NPC"
 
 local PlayerDisplay = require "mod.class.PlayerDisplay"
-local HotkeysDisplay = require "engine.HotkeysDisplay"
+local HotkeysDisplay = require "engine.HotkeysIconsDisplay"
 local ActorsSeenDisplay = require "engine.ActorsSeenDisplay"
 local LogDisplay = require "engine.LogDisplay"
 local LogFlasher = require "engine.LogFlasher"
@@ -63,7 +63,7 @@ function _M:run()
 	self.flash = LogFlasher.new(208, 0, self.w, 20, nil, nil, nil, {255,255,255}, {0,0,0})
 	self.player_display = PlayerDisplay.new(0, 0, 200, self.h, {30,30,0}, "/data/font/VeraMono.ttf", 12)
 	self.logdisplay = LogDisplay.new(0, self.h * 0.8, self.w * 0.5, self.h * 0.2, nil, nil, nil, {255,255,255}, {30,30,30})
-	self.hotkeys_display = HotkeysDisplay.new(nil, self.w * 0.5, self.h * 0.8, self.w * 0.5, self.h * 0.2, {30,30,0})
+	self.hotkeys_display = HotkeysDisplay.new(nil, self.w * 0.5, self.h * 0.8, self.w * 0.5, self.h * 0.2, {30,30,0}, nil, nil, 64, 64)
 	self.npcs_display = ActorsSeenDisplay.new(nil, self.w * 0.5, self.h * 0.8, self.w * 0.5, self.h * 0.2, {30,30,0})
 	self.tooltip = Tooltip.new(nil, nil, {255,255,255}, {30,30,30})
 	self.flyers = FlyingText.new("/data/font/DroidSans.ttf",14,"/data/font/DroidSans.ttf",18)
@@ -112,11 +112,11 @@ function _M:newGame()
 	self.markov["english"]= {}
 	self.markov["english"]= Markov:new()
 	self.markov["english"]:loadChain("/data/markov/englishProper.lua")
-	local testname = self.markov["elvish"]:generateWord("E", 3, 9)
+	local testname = self.markov["elvish"]:generateWord("L", 3, 9)
 	print("new elvish markov word is ", testname)
-	testname = self.markov["dwarvish"]:generateWord("K", 5, 10)
+	testname = self.markov["dwarvish"]:generateWord("D", 5, 10)
 	print("new dwarvish markov word is ", testname)
-	testname = self.markov["english"]:generateWord("N", 5, 12)
+	testname = self.markov["english"]:generateWord("T", 5, 12)
 	print("new english markov word is ", testname)
 
 	self.creating_player = true

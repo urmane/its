@@ -65,6 +65,7 @@ return {
 		        town7 = "TOWN7",
 		        town8 = "TOWN8",
 		        town9 = "TOWN9",
+		        islol = "ISLOL",
         	},
 	},
 }

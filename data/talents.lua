@@ -1,5 +1,5 @@
--- ToME - Tales of Middle-Earth
--- Copyright (C) 2009, 2010, 2011, 2012 Nicolas Casalini
+-- ToME - Tales of Maj'Eyal
+-- Copyright (C) 2009 - 2014 Nicolas Casalini
 --
 -- This program is free software: you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -17,247 +17,68 @@
 -- Nicolas Casalini "DarkGod"
 -- darkgod@te4.org
 
+local tacticals = {}
+local Entity = require "engine.Entity"
 
-newTalentType{ type="thief/mechanic", name = "mechanic", description = "Mechanical techniques" }
-newTalent{
-	name = "Pick locks",
-	short_name = "Lockpick",
-	type = {"thief/mechanic", 1},
-	mode = "passive",
-        points = 8,
-        range = 1,
-        cooldown = 1,
-        power = 2,
-        info = "Skill at opening locks",
-        action = function(self, t)
-                local tg = {type="hit", range=self:getTalentRange(t)}
-                local x, y, target = self:getTarget(tg)
-                if not x or not y or not target then return nil end
-                if core.fov.distance(self.x, self.y, x, y) > 1 then return nil end
+local oldNewTalent = Talents.newTalent
+Talents.newTalent = function(self, t)
+    assert(engine.interface.ActorTalents.talents_types_def[t.type[1]], "No talent category "..tostring(t.type[1]).." for talent "..t.name)
+    if engine.interface.ActorTalents.talents_types_def[t.type[1]].generic then t.generic = true end
+    -- examples from TOME
+    -- if engine.interface.ActorTalents.talents_types_def[t.type[1]].no_silence then t.no_silence = true end
+    -- if engine.interface.ActorTalents.talents_types_def[t.type[1]].is_spell then t.is_spell = true end
+    -- if engine.interface.ActorTalents.talents_types_def[t.type[1]].is_mind then t.is_mind = true end
+    -- if engine.interface.ActorTalents.talents_types_def[t.type[1]].is_nature then t.is_nature = true end
+    -- if engine.interface.ActorTalents.talents_types_def[t.type[1]].is_unarmed then t.is_unarmed = true end
+    -- if engine.interface.ActorTalents.talents_types_def[t.type[1]].autolearn_mindslayer then t.autolearn_mindslayer = true end
 
-                target:knockback(self.x, self.y, 2 + self:getDex())
-                return true
-        end,
-	on_learn = function(self) return "Hey, I learned how to pick locks!" end,
-	on_unlearn = function(self) return "Hey, I forgot how to pick locks!" end,
-}
-newTalent{
-	name = "Disarm Trap",
-	short_name = "Disarm Trap",
-	type = {"thief/mechanic", 1},
-	info = "Skill at disarming traps",
-}
-newTalent{
-	name = "Disable Mechanism",
-	short_name = "Disable",
-	type = {"thief/mechanic", 1},
-	info = "Skill at disabling mechanisms",
-}
-newTalent{
-	name = "Autounlock",
-	short_name = "Autounlock",
-	type = {"thief/mechanic", 1},
-	info = "Automatically open locks you pass near",
-	mode = "sustained",
-	require = { stat = { str = 10, dex = 10 }, talent = { Talents.T_LOCKPICK }, },
-}
+    -- not sure what this is
+    if t.tactical then
+        local tacts = {}
+        for tact, val in pairs(t.tactical) do
+            tact = tact:lower()
+            tacts[tact] = val
+            tacticals[tact] = true
+        end
+        t.tactical = tacts
+    end
 
-newTalentType{ type="physical/acrobatics", name = "acrobatics", description = "Acrobatic abilities" }
-newTalent{
-	name = "Evade",
-	type = {"physical/acrobatics", 1},
-	info = "Evade physical blows",
-}
-newTalent{
-	name = "Climb walls",
-	type = {"physical/acrobatics", 1},
-	info = "Climb walls",
-}
-newTalent{
-	name = "Avoid Trap",
-	type = {"physical/acrobatics", 1},
-	info = "Avoid traps",
-}
+    -- find image name from talent name
+    if not t.image then
+        t.image = "talents/"..(t.short_name or t.name):lower():gsub("[^a-z0-9_]", "_")..".png"
+    end
+    if fs.exists("/data/gfx/"..t.image) then t.display_entity = Entity.new{image=t.image, is_talent=true}
+    else t.display_entity = Entity.new{image="talents/default.png", is_talent=true}
+    end
+    return oldNewTalent(self, t)
+end
 
-newTalentType{ type="thief/sneaking", name = "sneaking", description = "Abilities to pass unnoticed" }
-newTalent{
-	name = "Move Silent",
-	type = {"thief/sneaking", 1},
-	info = "Move silently",
-}
-newTalent{
-	name = "Sneak",
-	type = {"thief/sneaking", 1},
-	info = "Move unnoticed",
-}
+-- Not sure I need this, it's from TOME
+damDesc = function(self, type, dam)
+    -- Increases damage
+    if self.inc_damage then
+        local inc = self:combatGetDamageIncrease(type)
+        dam = dam + (dam * inc / 100)
+    end
+    return dam
+end
 
-newTalentType{ type="thief/hiding", name = "hiding", description = "Abilities to avoid notice" }
-newTalent{
-	name = "Hide in Shadows",
-	type = {"thief/hiding", 1},
-	info = "Hide unmoving and unnoticed",
-}
-newTalent{
-	name = "Create Shadows",
-	type = {"thief/hiding", 1},
-	info = "Hide unmoving and unnoticed",
-}
-newTalent{
-	name = "Hide in Plain Sight",
-	type = {"thief/hiding", 1},
-	info = "Hide unmoving and unnoticed",
-}
-newTalent{
-	name = "Disappear",
-	type = {"thief/hiding", 1},
-	info = "Become completely unnoticeable",
-}
+Talents.damDesc = damDesc
+Talents.main_env = getfenv(1)
 
-newTalentType{ type="thief/acquisition", name = "acquisition", description = "Acquiring items from others" }
-newTalent{
-	name = "Pick Pockets",
-	type = {"thief/acquisition", 1},
-	info = "Liberate items from the confines of other pockets",
-}
-newTalent{
-	name = "Swipe",
-	type = {"thief/acquisition", 1},
-	info = "Take items without others seeing you",
-}
+load("/data/talents/acquisition.lua")
+load("/data/talents/acrobatics.lua")
+load("/data/talents/advanced-mechanic.lua")
+load("/data/talents/assassination.lua")
+load("/data/talents/disguise.lua")
+load("/data/talents/distraction.lua")
+load("/data/talents/hiding.lua")
+load("/data/talents/mechanic.lua")
+load("/data/talents/ranged-subdual.lua")
+load("/data/talents/sensing.lua")
+load("/data/talents/sneaking.lua")
+load("/data/talents/subdual.lua")
+load("/data/talents/unarmed.lua")
 
-newTalentType{ type="role/distraction", name = "distraction", description = "Abilities to redirect attention" }
-newTalent{
-	name = "Create Noise",
-	type = {"role/distraction", 1},
-	info = "Create a noise that appears to come from the target location",
-}
-newTalent{
-	name = "Pique Interest",
-	type = {"role/distraction", 1},
-	info = "Target becomes interested in something",
-}
-newTalent{
-	name = "Illusory Movement",
-	type = {"role/distraction", 1},
-	info = "Create a momentary illusory visual movement that appears to come from the target location",
-}
-
-
-newTalentType{ type="awareness/sensing", name = "sensing", description = "Abilities to heightened senses" }
-newTalent{
-	name = "Notice - Visual",
-	short_name = "Seeing",
-	type = {"awareness/sensing", 1},
-	info = "Heightened visual awareness",
-	mode = "sustained",
-}
-newTalent{
-	name = "Notice - Auditory",
-	short_name = "Hearing",
-	type = {"awareness/sensing", 1},
-	info = "Heightened auditory awareness",
-	mode = "sustained",
-}
-
-newTalentType{ type="combat/subdual", name = "subdual", description = "Subdual combat techniques" }
-newTalent{
-	name = "Knockout",
-	short_name = "Knockout",
-	type = {"combat/subdual", 1},
-	info = "Render target unconscious with a blow to the head",
-	mode = "activated",
-}
-newTalent{
-	name = "Sleeper Hold",
-	short_name = "Sleeper",
-	type = {"combat/subdual", 1},
-	info = "Attempt to render target unconscious by choking",
-	mode = "activated",
-}
-newTalent{
-	name = "Nerve Strike",
-	short_name = "Nerve Strike",
-	type = {"combat/subdual", 1},
-	info = "Disable target with a precise nerve strike",
-	mode = "activated",
-}
-
-newTalentType{ type="combat/assassination", name = "assassination", description = "Assassination techniques" }
-newTalent{
-	name = "Backstab",
-	short_name = "Backstab",
-	type = {"combat/assassination", 1},
-	info = "An unexpected strike doing extra damage",
-	mode = "activated",
-}
-newTalent{
-	name = "Vital Strike",
-	short_name = "Vital Strike",
-	type = {"combat/assassination", 1},
-	info = "Cause massive damage with a shot to the vitals",
-	mode = "activated",
-}
-newTalent{
-	name = "Assassinate",
-	short_name = "Assassinate",
-	type = {"combat/assassination", 1},
-	info = "Attempt to instantly kill target",
-	mode = "activated",
-}
-
-newTalentType{ type="combat/unarmed", name = "unarmed", description = "Unarmed combat techniques" }
-newTalent{
-	name = "Disarm",
-	short_name = "Disarm",
-	type = {"combat/unarmed", 1},
-	info = "Disarm target",
-	mode = "activated",
-}
-newTalent{
-	name = "Throw",
-	short_name = "Throw",
-	type = {"combat/unarmed", 1},
-	info = "Throw target",
-	mode = "activated",
-}
-
-newTalent{
-	name = "Kick",
-	type = {"combat/unarmed", 1},
-	points = 1,
-	cooldown = 6,
-	power = 2,
-	range = 1,
-	action = function(self, t)
-		local tg = {type="hit", range=self:getTalentRange(t)}
-		local x, y, target = self:getTarget(tg)
-		if not x or not y or not target then return nil end
-		if core.fov.distance(self.x, self.y, x, y) > 1 then return nil end
-
-		target:knockback(self.x, self.y, 2 + self:getDex())
-		return true
-	end,
-	info = function(self, t)
-		return "Kick!"
-	end,
-}
-
-newTalent{
-	name = "Acid Spray",
-	type = {"combat/unarmed", 1},
-	points = 1,
-	cooldown = 6,
-	power = 2,
-	range = 6,
-	action = function(self, t)
-		local tg = {type="ball", range=self:getTalentRange(t), radius=1, talent=t}
-		local x, y = self:getTarget(tg)
-		if not x or not y then return nil end
-		self:project(tg, x, y, DamageType.ACID, 1 + self:getDex(), {type="acid"})
-		return true
-	end,
-	info = function(self, t)
-		return "Zshhhhhhhhh!"
-	end,
-}
-
+print("[TALENTS TACTICS]")
+for k, _ in pairs(tacticals) do print(" * ", k) end

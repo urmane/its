@@ -38,19 +38,22 @@ newBirthDescriptor{
 	{
 		"Just trying to get by.",
 	},
+	stats = { str=1, rct=3, chr=1, },
+	talents_types = {
+	        ["thief/mechanic"]={true, 0.3},
+	        ["thief/hiding"]={true, 0.3},
+	        ["awareness/sensing"]={true, 0.3},
+	},
 	talents = {
 		[ActorTalents.T_LOCKPICK]=1,
+		[ActorTalents.T_HIDE]=1,
+		[ActorTalents.T_PERCEIVE]=1,
 	},
+	-- default load-out:
+	-- copy = {
+	-- resolvers.equipbirth{ id=true,
+	-- {type="weapon", subtype="greatsword", name="iron greatsword", autoreq=true, ego_chance=-1000, ego_chance=-1000},
+	-- {type="armor", subtype="heavy", name="iron mail armour", autoreq=true, ego_chance=-1000, ego_chance=-1000},
+	-- },
+   	-- },
 }
-
---newBirthDescriptor{
---	type = "role",
---	name = "Acid-maniac",
---	desc =
---	{
---		"Zshhhhhhhh!",
---	},
---	talents = {
---		[ActorTalents.T_ACID_SPRAY]=1,
---	},
---}
