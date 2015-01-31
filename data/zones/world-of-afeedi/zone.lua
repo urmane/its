@@ -19,6 +19,7 @@
 
 return {
 	name = "The World of Afeedi",
+	zone_key = "world-of-afeedi",
 	level_range = {1, 1},
 	max_level = 1,
 	decay = {300, 800},

@@ -18,7 +18,7 @@ World/general
 	done - remainder is plains
 	done - place forests
 	augment initial static map with additional locations - story phase one
-	place volano exit place (then change terrains back to blocking)
+	done - place volano exit place (then change terrains back to blocking)
 	done - add player stats (use LA?) and update display
 	done - add talent/trees
 	give player starting talents/equip by class

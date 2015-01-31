@@ -122,10 +122,10 @@ function _M:newGame()
 	self.creating_player = true
 	local birth = Birther.new(nil, self.player, {"base", "role" }, function()
 		-- For real game start:
-		-- self:changeLevel(1, "gora-prison")
+		self:changeLevel(1, "gora-prison")
 		-- For changing during testing: can I make a cmdline option ...
-		self:changeLevel(4, "gora-prison")
-		-- self:changeLevel(1, "gora-town")
+		--self:changeLevel(4, "gora-prison")
+		--self:changeLevel(1, "gora-town")
 		print("[PLAYER BIRTH] resolve...")
 		self.player:resolve()
 		self.player:resolve(nil, true)
@@ -197,34 +197,82 @@ end
 
 function _M:changeLevel(lev, zone)
 	local old_lev = (self.level and not zone) and self.level.level or -1000
+	local target_x = nil
+	local target_y = nil
+	local old_zone_name = nil
+	local new_zone_name = nil
+	local coords = nil
 
 	if zone and self.player.on_leave_level and not self.player:on_leave_level() then
 		self.logPlayer(self.player, "#LIGHT_RED#You cannot leave!")
                 return
 	end
 
+	if self.zone then
+		old_zone_name = self.zone.zone_key or self.zone.name or "none"
+	end
+
 	if self.zone and self.zone.on_leave then
                 self.zone:on_leave(lev or -1000, old_lev, zone)
         end
 
+	-- Changing zones
 	if zone then
+		if type(zone) == "string" then
+			new_zone_name = zone
+		else
+			new_zone_name = zone.zone_key or zone.name or "none"
+		end
+	print ("[ITS] Leaving zone ", old_zone_name, "and entering new zone ", new_zone_name)
+		-- Cleanup
 		if self.zone then
+			-- Save the departure point in the old zone, keyed on new zone name
+			coords = {game.player.x, game.player.y}
+			if not self.zone.entered_from then
+				self.zone.entered_from = {}
+	                end
+			print ("[ITS] save departure point x,y ", game.player.x, game.player.y, " to zone ", new_zone_name)
+			self.zone.entered_from[new_zone_name] = coords
 			self.zone:leaveLevel(false, lev, old_lev)
 			self.zone:leave()
 		end
+		-- Change zones
 		if type(zone) == "string" then
 			self.zone = Zone.new(zone)
 		else
 			self.zone = zone
 		end
+		-- Get previous departure point, if any
+		if self.zone.entered_from and self.zone.entered_from[old_zone_name] then
+			coords = self.zone.entered_from[old_zone_name]
+			if coords then target_x, target_y = coords[1], coords[2] end
+			print ("[ITS] read landing spot x,y ", target_x, target_y, "from ", old_zone_name)
+		end
 	end
+
+	-- Generate new level
 	self.zone:getLevel(self, lev, old_lev)
 
-	if lev > old_lev then
+	-- Move player to correct spot
+	if target_x then
+		self.player:move(target_x, target_y, true)
+	elseif lev > old_lev then
 		self.player:move(self.level.default_up.x, self.level.default_up.y, true)
+		coords = {self.level.default_up.x, self.level.default_up.y}
 	else
 		self.player:move(self.level.default_down.x, self.level.default_down.y, true)
+		coords = {self.level.default_down.x, self.level.default_down.y}
 	end
+
+	-- If these don't already exist, save the way back
+	if old_zone_name and not target_x then
+		if not self.zone.entered_from then
+                        self.zone.entered_from = {}
+                end
+		self.zone.entered_from[old_zone_name] = coords
+		print ("[ITS] save new landing spot x,y ", game.player.x, game.player.y, " from zone ", old_zone_name)
+	end
+
 	if self.zone.on_enter then
                 self.zone.on_enter(lev, old_lev, zone)
         end

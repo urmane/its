@@ -18,7 +18,8 @@
 -- darkgod@te4.org
 
 return {
-	name = "Underworld"
+	name = "Underworld",
+	zone_key = "underworld",
 	level_range = {1, 1},
 	max_level = 1,
 	decay = {300, 800},

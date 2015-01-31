@@ -19,6 +19,7 @@
 
 return {
 	name = "The Castle Zala.",
+	zone_key = "castle-zala",
 	level_range = {1, 1},
 	max_level = 1,
 	decay = {300, 800},

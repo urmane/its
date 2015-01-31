@@ -19,6 +19,7 @@
 
 return {
 	name = "Gora Prison",
+	zone_key = "gora-prison",
 	level_range = {1, 3},
 	max_level = 3,
 	decay = {300, 800},

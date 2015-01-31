@@ -33,3 +33,13 @@ newAI("guard_wander", function(self)
 	end
 end)
 
+		--e = require("engine/Emote").new("Help me ...", 60, colors.GREY)
+		--e:display(self.x, self.y)
+		--self:setEmote(require("engine/Emote").new("Help me ...", 60, colors.GREY))
+		--game.map.displayEmotes(1)
+		--return true
+newAI("prisoner", function(self)
+	if self:canSee(game.player) and self:hasLOS(game.player.x,game.player.y,nil,nil,self.x,self.y) then
+		return self:setEmote(require("engine/Emote").new("Help me ...", 60, colors.GREY))
+	end
+end)

@@ -19,6 +19,7 @@
 
 return {
 	name = "Gora Graveyard",
+	zone_key = "gora-graveyard",
 	level_range = {1, 3},
 	max_level = 3,
 	decay = {300, 800},

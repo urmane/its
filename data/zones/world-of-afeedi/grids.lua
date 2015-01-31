@@ -101,8 +101,9 @@ newEntity{
         name = "volcano", --        image = "terrain/land.png",
         display = '^', color=colors.RED, back_color={r=100,g=0,b=0},
         always_remember = true,
-        does_block_move = true,
+        does_block_move = false,
         block_sight = true,
+        change_level=1, change_zone="kholbadul",
 }
 
 newEntity{
@@ -256,5 +257,17 @@ newEntity{
         image = "terrain/town.png",
         notice = true,
         change_level=1, change_zone="town9",
+}
+
+newEntity{
+        define_as = "ISLOL",
+        type = "floor", subtype = "grass",
+        always_remember = true,
+        show_tooltip=true,
+        name="The Temple of Islol",
+        display='T', color=colors.VIOLET,
+        image = "terrain/dungeon.png",
+        notice = true,
+        change_level=1, change_zone="islol",
 }
 

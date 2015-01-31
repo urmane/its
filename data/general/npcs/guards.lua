@@ -25,7 +25,8 @@ newEntity{
 	display = "P", color=colors.WHITE,
 	desc = [[A wretched, tortured mess of rags and flesh.]],
 	image = "npcs/prisoner.png",
-	ai = "none", -- ai_state = { talent_in=3, },
+	faction = "neutral",
+	ai = "prisoner", -- ai_state = { talent_in=3, },
 	stats = { str=1, dex=1, con=1 },
 	combat_armor = 0,
 }

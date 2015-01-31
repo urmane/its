@@ -26,9 +26,17 @@ newEntity{
     desc = [[A crunchy shell.]],
 }
 
-newEntity{ base="BASE_SUITARMOR", name="leather armor",  level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_SUITARMOR", name="hide armor",     level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_SUITARMOR", name="bronze armor",   level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_SUITARMOR", name="iron armor",     level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
-newEntity{ base="BASE_SUITARMOR", name="steel armor",    level_range = {1, 10}, cost = 5, wielder = { combat_def = 3, combat_armor = 7, fatigue = 20, },}
+local function newArmor(name, image, color, cost, enc, rarity, min_level, max_level, def, armor)
+        newEntity{ base = "BASE_SUITARMOR", --define_as = "GEM_"..name:gsub(" ", "_"):upper(),
+                name = name:lower(),
+                image = image, color = color, rarity = rarity, cost = cost, encumber = enc,
+                level_range = {min_level, max_level},
+        }
+end
 
+newArmor("leather armor", "object/armor.png", colors.UMBER, 1, 20, 1, 1, 10, 1, 1)
+newArmor("hide armor", "object/armor.png", colors.UMBER, 1, 20, 1, 1, 10, 1, 1)
+newArmor("bronze armor", "object/armor.png", colors.UMBER, 1, 20, 1, 1, 10, 1, 1)
+newArmor("iron armor", "object/armor.png", colors.UMBER, 1, 20, 1, 1, 10, 1, 1)
+newArmor("steel armor", "object/armor.png", colors.UMBER, 1, 20, 1, 1, 10, 1, 1)
+newArmor("powered armor", "object/armor.png", colors.UMBER, 1, 20, 1, 1, 10, 1, 1)

@@ -57,7 +57,7 @@ addZone({1,1,255,255}, "town", "random", {"rtown8"})
 addZone({1,1,255,255}, "town", "random", {"rtown9"})
 
 -- Special dungeons
-addZone({65,128,255,172}, "dungeon", "static", {"islol"})
+addZone({65,150,255,170}, "dungeon", "static", {"islol"})
 addZone({1,1,255,255}, "dungeon", "static", {"dungeon1"})
 addZone({1,1,255,255}, "dungeon", "static", {"dungeon2"})
 addZone({1,1,255,255}, "dungeon", "static", {"dungeon3"})

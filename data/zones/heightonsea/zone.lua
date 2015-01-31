@@ -19,6 +19,7 @@
 
 return {
 	name = "The Town of Heightonsea",
+	zone_key = "heightonsea",
 	level_range = {1, 1},
 	max_level = 1,
 	decay = {300, 800},

@@ -18,7 +18,8 @@
 -- darkgod@te4.org
 
 return {
-	name = "The Temple of Islol"
+	name = "The Temple of Islol",
+	zone_key = "islol",
 	level_range = {1, 1},
 	max_level = 1,
 	decay = {300, 800},

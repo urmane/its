@@ -308,6 +308,13 @@ function _M:generate(lev, old_lev)
 		print("[ITS] Placing ",self.map.custom_zones[i].type or "nil", ",",
 			self.map.custom_zones[i].subtype, " called ", addl, " at ", x, y)
 		self.map(x, y, Map.TERRAIN, self:resolve(addl))
+		
+		coords = {x, y}
+		if not self.zone.entered_from then
+                	self.zone.entered_from = {}
+		end
+                self.zone.entered_from[addl] = coords
+
 		if self.map.custom_zones[i].type == "town" then
 		elseif self.map.custom_zones[i].type == "dungeon" then
 		else

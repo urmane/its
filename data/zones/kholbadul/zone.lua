@@ -18,7 +18,8 @@
 -- darkgod@te4.org
 
 return {
-	name = "Kholbadul"
+	name = "Kholbadul",
+	zone_key = "kholbadul",
 	level_range = {1, 1},
 	max_level = 1,
 	decay = {300, 800},

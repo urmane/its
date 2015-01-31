@@ -17,6 +17,7 @@
 -- Nicolas Casalini "DarkGod"
 -- darkgod@te4.org
 
+load("/data/general/objects/coins.lua")
 load("/data/general/grids/basic.lua")
 
 newEntity{

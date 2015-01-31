@@ -60,6 +60,9 @@ function _M:init(t, no_default)
 	-- Default melee barehanded damage
 	self.combat = { dam=1 }
 
+	-- Moneys held
+	self.gold = 0
+
 	engine.Actor.init(self, t, no_default)
 	engine.interface.ActorTemporaryEffects.init(self, t)
 	engine.interface.ActorLife.init(self, t)
