@@ -37,18 +37,21 @@ newEntity{
 local function newCoin(name, image, subtype, cost, rarity, min_level, max_level, min_count, max_count)
 	print ("defining ", name:gsub(" ", "_"):upper())
 	newEntity{
-		base = "BASE_COIN", --define_as = "COIN"..name:gsub(" ", "_"):upper(),
+		base = "BASE_COIN",
 		define_as = name:gsub(" ", "_"):upper(),
-		name = name:lower(), slot="TORSO",
+		name = name:lower(),
 		image = image, subtype = subtype, rarity = rarity, cost = cost,
 		level_range = {min_level, max_level},
---		on_prepickup = function(self, who, id)
---			local count = rng(self.min_count, self.max_count)
---        		who:incMoney(self.cost * self.count)
---			game.logPlayer(who, "Counted ", count, self.name)
---        		game.level.map:removeObject(who.x, who.y, id)
---        		return true
---		end
+		--min_count = min_count, max_count = max_count,
+		-- FIXME
+		on_prepickup = function(self, who, id)
+			local count = rng.range(min_count, max_count)
+			game.logPlayer(who, "Counting %d %s", count, self.name)
+        		game.player.incMaxGold(game.player, cost * count)
+			game.logPlayer(who, "Added %0.2f gold", cost * count)
+        		game.level.map:removeObject(who.x, who.y, id)
+        		return true
+		end
 	}
 end
 

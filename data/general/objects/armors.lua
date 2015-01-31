@@ -27,6 +27,7 @@ newEntity{
 }
 
 local function newArmor(name, image, color, cost, enc, rarity, min_level, max_level, def, armor)
+	print ("defining ",name:lower())
         newEntity{ base = "BASE_SUITARMOR", --define_as = "GEM_"..name:gsub(" ", "_"):upper(),
                 name = name:lower(),
                 image = image, color = color, rarity = rarity, cost = cost, encumber = enc,

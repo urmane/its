@@ -6,7 +6,7 @@ defineTile("~", "DEEP_WATER")
 defineTile("#", "WALL")
 defineTile("'", "CELL_DOOR")
 defineTile("+", "CELL_DOOR_LOCKED")
-defineTile("$", "FLOOR", "COPPER_COINS") --make me a small treasure?
+defineTile("$", "FLOOR", "COPPER_COINS")
 defineTile(">", "DOWN")
 defineTile("G", "FLOOR", nil, {random_filter={name="prisonguard"}})
 defineTile("p", "FLOOR", nil, {random_filter={name="prisoner"}})
