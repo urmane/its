@@ -7,6 +7,11 @@ defineTile("#", "WALL")
 defineTile("'", "CELL_DOOR")
 defineTile("+", "CELL_DOOR_LOCKED")
 defineTile("$", "FLOOR", "COPPER_COINS")
+defineTile("1", "FLOOR", "SILVER_COINS")
+defineTile("2", "FLOOR", "GOLD_COINS")
+defineTile("3", "FLOOR", "ELECTRUM_COINS")
+defineTile("4", "FLOOR", "PLATINUM_COINS")
+defineTile("5", "FLOOR", "PURSE_OF_COPPER_COINS")
 defineTile(">", "DOWN")
 defineTile("G", "FLOOR", nil, {random_filter={name="prisonguard"}})
 defineTile("p", "FLOOR", nil, {random_filter={name="prisoner"}})
@@ -14,13 +19,13 @@ defineTile("t", "FLOOR", nil, {random_filter={name="torch"}})
 defineTile("b", "FLOOR", nil, {random_filter={name="brazier"}})
 
 return [[
-###############......*#########################################
+###############......$#########################################
 #.....#########.#########################################.....#
 #.....#########.#########################################.....#
 #.....#.#p#p#p#.....#.#.#.#.#######p#.#.#p#######.#.#.#p#.....#
 ####..#'#+#+#+#.....#+#+#+#+#######+#+#+#+#######+#+#+#+#..####
 #t.............................t.............................t#
-#......$$$....................................................#
+#......12345..................................................#
 #..#.............#...........................#.............#..#
 #...............................................G.............#
 #.............................................................#

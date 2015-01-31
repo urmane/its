@@ -43,11 +43,14 @@ local function newCoin(name, image, subtype, cost, rarity, min_level, max_level,
 		image = image, subtype = subtype, rarity = rarity, cost = cost,
 		level_range = {min_level, max_level},
 		--min_count = min_count, max_count = max_count,
-		-- FIXME
 		on_prepickup = function(self, who, id)
 			local count = rng.range(min_count, max_count)
 			game.logPlayer(who, "Counting %d %s", count, self.name)
+			-- Ponder - liquid vs networth?  ;-)
+			-- actual coin incs max and current, jewelry incs max only?
+			-- liquid used for bribes ...
         		game.player.incMaxGold(game.player, cost * count)
+        		game.player.incGold(game.player, cost * count)
 			game.logPlayer(who, "Added %0.2f gold", cost * count)
         		game.level.map:removeObject(who.x, who.y, id)
         		return true

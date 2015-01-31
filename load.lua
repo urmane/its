@@ -50,7 +50,7 @@ ActorTalents:loadDefinition("/data/talents.lua")
 ActorTemporaryEffects:loadDefinition("/data/timed_effects.lua")
 
 -- Actor resources
-ActorResource:defineResource("Gold", "gold", nil, nil, "Gold, gold, gold!")
+ActorResource:defineResource("Gold", "gold", nil, nil, "Total liquid assets compared to total net worth.")
 ActorResource:defineResource("Power", "power", nil, "power_regen", "Power represent your ability to use special talents.")
 ActorResource:defineResource("breath", "breath", nil, "power_regen", "Holding your breath.")
 ActorResource:defineResource("Earth", "earth", nil, "power_regen", "Earth mana.")

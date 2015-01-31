@@ -89,6 +89,9 @@ function _M:display()
    -- spacer 
    h = h + self.font_h
 
+    self:makeTextureBar("#ffcc80#Gold:", nil, player:getGold(), player.max_gold, 0, x, h, 255, 255, 255, colors.GOLD, {r=colors.GOLD.r/2, g=colors.GOLD.g/2, b=colors.GOLD.b/2})
+    h = h + self.font_h
+
     self:makeTextureBar("#ffcc80#Earth:", nil, player:getEarth(), player.max_power, player.power_regen, x, h, 255, 255, 255, colors.UMBER, {r=colors.UMBER.r/2, g=colors.UMBER.g/2, b=colors.UMBER.b/2})
     h = h + self.font_h
 
