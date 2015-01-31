@@ -25,7 +25,9 @@ World/general
 	add lots of weapons/armor, make sure they're leveled somehow
 	add lots of monsters, look for a way to organize(genus/species/etc)/and conf-file/table them for easy input
 	done - find a way to add variable coins
-	add gems/randomly priced-ID'd jewelry/art ...
+	done - add randomly priced-ID'd jewelry/art ...
+	add stores to sell treasures
+	add gems
 	build out random towns, story phase two
 	create and place any additional static maps (eg islands) - story phase three
 	create mirror image world - story opt phase
