@@ -39,6 +39,7 @@ newBirthDescriptor{
 		"Just trying to get by.",
 	},
 	stats = { str=1, rct=3, chr=1, },
+	sight = 8,
 	talents_types = {
 	        ["thief/mechanic"]={true, 0.3},
 	        ["thief/hiding"]={true, 0.3},
@@ -50,10 +51,9 @@ newBirthDescriptor{
 		[ActorTalents.T_PERCEIVE]=1,
 	},
 	-- default load-out:
-	-- copy = {
-	-- resolvers.equipbirth{ id=true,
-	-- {type="weapon", subtype="greatsword", name="iron greatsword", autoreq=true, ego_chance=-1000, ego_chance=-1000},
-	-- {type="armor", subtype="heavy", name="iron mail armour", autoreq=true, ego_chance=-1000, ego_chance=-1000},
-	-- },
-   	-- },
+	copy = {
+	resolvers.equipbirth{ id=true,
+	{type="tool", subtype="lockpick", name="makeshift lockpick", autoreq=true, ego_chance=-1000, ego_chance=-1000},
+	},
+   	},
 }

@@ -48,8 +48,7 @@ return {
                 end
         end,
 	on_enter = function(lev, old_lev, newzone)
-		--if lev.level == 3 then
-		if lev and lev == 3 then
+		if lev and lev == 1 then
 			local Dialog = require("engine.ui.Dialog")
 			Dialog:simpleLongPopup("Terror", [[Fresh air hits your face like sweet perfume.  You have escaped Gora Prison.
 

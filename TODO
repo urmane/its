@@ -21,23 +21,24 @@ World/general
 	done - place volano exit place (then change terrains back to blocking)
 	done - add player stats (use LA?) and update display
 	done - add talent/trees
-	give player starting talents/equip by class
+	done - give player starting talents by class
+	give player starting equip by class
 	add lots of weapons/armor, make sure they're leveled somehow
 	add lots of monsters, look for a way to organize(genus/species/etc)/and conf-file/table them for easy input
+	done - add gems
 	done - find a way to add variable coins
 	done - add randomly priced-ID'd jewelry/art ...
 	add stores to sell treasures
-	add gems
 	build out random towns, story phase two
 	create and place any additional static maps (eg islands) - story phase three
 	create mirror image world - story opt phase
 
 Main storyline
-	escape from prison: prison->sewer->graveyard->worldmap
+	done - escape from prison: prison->sewer->graveyard->worldmap
 	explore a bit: nearby town (Gora) with lots of opportunity
 	At some point, the alarm sounds and more guards appear, searching the town
 	stuck on static-start doing a few things until can tackle the volcano
-	volcano allows access to other continents - have the other side be placed on the main cnt so no boat needed
+	done - volcano allows access to other continents - have the other side be placed on the main cnt so no boat needed
 	explore
 		direct to init city
 		init set of cities/dungeons on starting island
@@ -53,11 +54,12 @@ Main storyline
 		defeat the big bad in Gora - power of leverage, use all above plus factions
 
 NPCs
-	look up tree(Luketa, megaclassification), test hierarchical
 	undead
 	living
 
 Features
+	directional cone lights / visual, to allow sneak up behind?
+	speed changes by ai state
 	lockpick gui
 	endlessly hunted by "guards"
 Quests

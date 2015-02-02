@@ -41,8 +41,8 @@ addZone({1,51,255,75}, "town", "static", {"town3"})
 addZone({1,76,255,100}, "town", "static", {"town4"})
 addZone({1,101,255,126}, "town", "static", {"town5"})
 addZone({1,126,255,150}, "town", "static", {"town6"})
-addZone({1,151,255,175}, "town", "static", {"town7"})
-addZone({1,176,255,200}, "town", "static", {"town8"})
+addZone({65,151,255,175}, "town", "static", {"town7"})
+addZone({65,176,255,200}, "town", "static", {"town8"})
 addZone({1,201,255,255}, "town", "static", {"town9"})
 
 -- Random towns

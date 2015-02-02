@@ -38,7 +38,7 @@ newEntity{
 	image = "terrain/deepocean.png",
         display = '~', color=colors.DARK_BLUE, back_color={r=0,g=0,b=255},
         always_remember = true,
-        does_block_move = false,
+        does_block_move = true,
         block_sight = false, --        block_sense = true, --        block_esp = true,
 }
 
@@ -49,7 +49,7 @@ newEntity{
 	image = "terrain/ocean.png",
         display = '~', color=colors.LIGHT_BLUE, back_color={r=0,g=0,b=255},
         always_remember = true,
-        does_block_move = false,
+        does_block_move = true,
         block_sight = false, --        block_sense = true, --        block_esp = true,
 }
 
@@ -71,7 +71,7 @@ newEntity{
 	image = "terrain/mountains.png",
         display = '^', color=colors.LIGHT_UMBER, back_color={r=80,g=80,b=40},
         always_remember = true,
-        does_block_move = false,
+        does_block_move = true,
         block_sight = true,
 }
 
@@ -101,7 +101,7 @@ newEntity{
         name = "volcano", --        image = "terrain/land.png",
         display = '^', color=colors.RED, back_color={r=100,g=0,b=0},
         always_remember = true,
-        does_block_move = false,
+        does_block_move = false, -- cuz we move onto it
         block_sight = true,
         change_level=1, change_zone="kholbadul",
 }

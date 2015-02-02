@@ -80,6 +80,9 @@ ActorStats:defineStat("Luck",		"lck", 10, 1, 100, "How lucky you are.")
 ActorAI:loadDefinition("/engine/ai/")
 ActorAI:loadDefinition("/mod/ai/")
 
+-- custom resolvers
+dofile("/mod/resolvers.lua")
+
 -- Equipment slots
 ActorInventory:defineInventory("HOVER", "circling my head", true, "Orbital")
 ActorInventory:defineInventory("HEAD", "protecting my head", true, "Head")

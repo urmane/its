@@ -27,7 +27,7 @@ newEntity{
         display='>', color=colors.VIOLET,
 	-- image = "terrain/stair_up_wild.png",
         notice = true,
-        change_level=3, change_zone="gora-graveyard",
+        change_level=1, change_zone="gora-graveyard",
 }
 
 -- These are barred gate/doors, not solid, so they do not block sight

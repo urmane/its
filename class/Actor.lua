@@ -261,6 +261,44 @@ end
 function _M:canSee(actor, def, def_pct)
 	if not actor then return false, 0 end
 
+	-- New algorithm:
+	-- absolute light power scales 0 (pitch black) to 100 (noon sun) (more possible, I guess ...)
+	-- lite field is radius in grids, 1-10 maps to 0-100 absolute ? skip inverse square law for now?
+	-- abs_light_level at x,y is ambient plus actor.lite * 10 (no falloff at zero)
+	-- 	plus (self.lite < distance(src,tgt) ? 0 : (self.lite * 10) * falloff(distance(src,tgt)))
+	-- if self.sight_min >= abs_light_level, should be visible, check hide/other
+	-- note that this means light radius != sight distance!
+	-- Can always see self
+	if actor == self then return true, 100 end
+	-- Is he too far away for my ability to see?
+	if not (self.x and self.y and actor.x and actor.y) then return false, 0 end
+	local dist = core.fov.distance(self.x, self.y, actor.x, actor.y)
+	if self.sight and self.sight < dist then return false, 0 end
+
+	-- How well lit is the target, and can I perceive that?
+	local light_level = 0
+	-- start with ambient light
+	if game.level and game.level.data and game.level.data.ambient_light then
+		light_level = game.level.data.ambient_light
+	end
+	-- add any actor lite
+	if actor.lite then -- No falloff at source
+		light_level = light_level + actor.lite
+	end
+	-- add any of my lite, if in range
+	if self.lite and self.lite > 0 and dist <= self.lite then
+		-- Really should use inverse square root falloff instead of linear
+		light_level = light_level + ((self.lite - dist) * 10)
+	end
+	-- compare my minimal perception with the absolute light level at target
+	if self.sight_min and self.sight_min > light_level then
+		return false, 0
+	end
+	-- if we get here, target is visually available, check Hide, etc
+
+	return true, 100
+
+--[[
 	-- Check for light / visibility
 	-- Actor can always see self or
 	-- Actor is emitting light (we already know he's within sight radius) or
@@ -269,7 +307,7 @@ function _M:canSee(actor, def, def_pct)
         if ( actor == self ) or
 		( actor.lite and actor.lite > 0 ) or
 		( self.lite and self.lite > 0 and ( core.fov.distance(self.x, self.y, actor.x, actor.y) <= self.lite ) ) or
-		( game.level.data.ambient_light and self.sight_min and ( self.sight_min <= game.level.data.ambient_light ) ) then
+		( game.level and game.level.data.ambient_light and self.sight_min and ( self.sight_min <= game.level.data.ambient_light ) ) then
 		-- FIXME - need to check if actor within other emitted light radii, maybe not here
 		-- Visible unless other effects prevent it, check those now
 
@@ -289,6 +327,7 @@ function _M:canSee(actor, def, def_pct)
 		end
 	end
 	return false, 0
+--]]
 end
 
 --- Can the target be applied some effects

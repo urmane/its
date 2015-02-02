@@ -38,7 +38,7 @@ newEntity{
 	level_range = {1,3}, exp_worth = 1, rarity = 1,
 	lite = 0,
 	sight = 3,
-	sight_min = 1, -- prisoners see better than guards
+	sight_min = 10, -- prisoners see better than guards
 	max_life = 1,
 }
 
@@ -50,6 +50,7 @@ newEntity{
 	image = "npcs/Trolldoll2.png",
 
 	-- ai = "dumb_talented_simple", ai_state = { talent_in=3, },
+	global_speed_base = 0.75,
 	ai = "guard_wander",
 	stats = { str=5, dex=5, con=5 },
 	combat_armor = 0,
@@ -63,8 +64,8 @@ newEntity{ base = "BASE_GUARD",
         lite_flicker = 90,      -- percent chance per turn to mod lite
         lite_min = 3,           -- min radius
         lite_max = 5,           -- max radius
-	sight = 20,		-- absolute limit of sight
-	sight_min = 5,		-- minimum light level this actor can distinguish
+	sight = 10,		-- absolute limit of sight
+	sight_min = 20,		-- minimum light level this actor can distinguish
 	move_dir = 2,		-- initial move direction, they'll rotate clockwise 90 degrees for now
 	max_life = resolvers.rngavg(5,9),
 	combat = { dam=2 },
