@@ -24,7 +24,8 @@ return {
 	max_level = 1,
 	decay = {300, 800},
 	persistent = "zone",
-	ambient_light = 8,
+	all_lited = true,
+	ambient_light = 90,
 	generator =  {
         	map = {
             		class = "engine.generator.map.Static",

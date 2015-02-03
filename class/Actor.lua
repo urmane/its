@@ -97,6 +97,10 @@ end
 function _M:move(x, y, force)
 	local moved = false
 	local ox, oy = self.x, self.y
+	if self:attr("never_move") then
+	    game.logPlayer(self, "You cannot move.")
+	    return moved
+	end
 	if force or self:enoughEnergy() then
 		moved = engine.Actor.move(self, x, y, force)
 		if not force and moved and (self.x ~= ox or self.y ~= oy) and not self.did_energy then self:useEnergy() end
@@ -294,7 +298,14 @@ function _M:canSee(actor, def, def_pct)
 	if self.sight_min and self.sight_min > light_level then
 		return false, 0
 	end
+
 	-- if we get here, target is visually available, check Hide, etc
+	-- Note that this means the default is seen
+	if actor.attr("hide") and actor.attr("hide") > 0 then
+        if self.getSns() < actor.attr("hide") then
+            return false, 0
+        end
+	end
 
 	return true, 100
 

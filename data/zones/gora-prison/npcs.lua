@@ -27,7 +27,7 @@ newEntity{
     level_range = {1, 4}, exp_worth = 0, rarity = 1,
     lite = 1, -- required for now to make him visible, without a lightsource
     -- not sure which of these applies in the generic engine
-    never_move = 1,
+    --never_move = 1,
     faction = "neutral",
     can_talk = "double-macguffin-prisoner1",
 }

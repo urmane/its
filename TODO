@@ -27,14 +27,37 @@ World/general
 	add lots of monsters, look for a way to organize(genus/species/etc)/and conf-file/table them for easy input
 	done - add gems
 	done - find a way to add variable coins
-	done - add randomly priced-ID'd jewelry/art ...
+	done(sorta) - add randomly priced-ID'd jewelry/art ...
 	add stores to sell treasures
 	build out random towns, story phase two
 	create and place any additional static maps (eg islands) - story phase three
 	create mirror image world - story opt phase
+defineTile = function(char, grid, obj, actor, trap, status, spot)
 
 Main storyline
 	done - escape from prison: prison->sewer->graveyard->worldmap
+supernatural aid - the monster, raw unthinking destruction, chaos made flesh, bogeyman, ripper, source of fear and nightmare
+threshold - disguise, the mayor is a demon
+the guardian - the burden - a friend in the prison, asking for support almost certain to end in disaster
+	macguffin necklace, make the dialog autoappear, make player auto take it, make "son" a gravestone
+	old man is the patron at the end
+the guide - madness, clear thinking breaks down
+the initiation - wrath, vengeance cannot be denied, the offenders must pay
+the road of trials - courage, emotinal fortitude
+temptation - lust, unbridled desire
+the abyss - misfortune
+apotheosis - defeat, failure to achieve the goal
+meeting with the goddess - creation, something brought into existence where before thee was nothing
+atonement with the father - contentment, satisfied with current wealth, more is not necessary
+the ultimate boon - tranquility absence of conflict, peaceful and still.  the calm before the storm ...
+price of the boon - balance, all force are evenly matched or cancelled by opposing forces
+refusal of the return - health
+the magic flight - gnosis, firm understanding of good and evil allows a choice
+rescue from without - prodigy, golden child love and admired by all
+return across the threshold - obsession, fixated on one person
+master of two worlds - confession, secret must be revealed
+freedom to live - teh patron, material assistance
+
 	explore a bit: nearby town (Gora) with lots of opportunity
 	At some point, the alarm sounds and more guards appear, searching the town
 	stuck on static-start doing a few things until can tackle the volcano

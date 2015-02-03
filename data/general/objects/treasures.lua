@@ -32,7 +32,6 @@ newEntity{
 	desc = [[Something valuable to sell.]],
 }
 
-
 local function newTreasure(name, image, subtype, rarity, min_level, max_level, basecost, enc)
 	newEntity{
 		base = "BASE_TREASURE",

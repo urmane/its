@@ -1,0 +1,10 @@
+newEntity{ define_as = "BASE_STORE",
+    type = "store", subtype="store",
+    identified=true,
+    display = '1',
+    knownBy = function() return true end,
+    triggered = function() end,
+    is_store = true,
+    z = 18,
+    _noalpha = true,
+}
