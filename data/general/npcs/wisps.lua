@@ -26,7 +26,7 @@ newEntity{
 	desc = [[A small light, strangely compelling ...]],
 
 	--ai = "dumb_talented_simple", ai_state = { talent_in=3, },
-	ai = "target_or_wander",
+	ai = "move_wander",
 	stats = { str=5, dex=5, con=5 },
 	combat_armor = 0,
 }

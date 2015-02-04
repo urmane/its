@@ -1,8 +1,38 @@
+--[[
+Cannot subclass Map, get this:
+
+Initiated zone  Gora Prison     with base_level 1
+Loading zone persistance level  gora-prison     1
+Creating level  gora-prison     1
+Lua Error: /engine/Map.lua:238: attempt to index field 'viewport' (a nil value)
+        At [C]:-1 __index
+        At /engine/Map.lua:238 makeCMap
+        At /engine/Map.lua:283 loaded
+        At /engine/Map.lua:215 init
+        At /engine/class.lua:39 new
+        At /engine/Zone.lua:879 newLevel
+        At /engine/Zone.lua:829 getLevel
+        At /mod/class/Game.lua:254 changeLevel
+        At /mod/class/Game.lua:125 at_end
+        At /engine/Birther.lua:271 next
+        At /engine/Birther.lua:147 on_register
+        At /engine/Game.lua:328 registerDialog
+        At /mod/class/Game.lua:150 newGame
+        At /mod/class/Game.lua:85 run
+        At /engine/Module.lua:850 instanciate
+        At /engine/utils.lua:2199 showMainMenu
+        At /engine/init.lua:156 
+        At [C]:-1 dofile
+        At /loader/init.lua:196 
+]]--
+
+
 require "engine.class"
---local Map = require "engine.Map"
+require "engine.Map"
+local Map = require "engine.Map"
 
 --- Represents a level map, handles display and various low level map work
-module(..., package.seeall, class.inherit(Map))
+module(..., package.seeall, class.inherit(engine.Map))
 
 --- Displays the map on screen
 -- @param x the coord where to start drawing, if null it uses self.display_x
