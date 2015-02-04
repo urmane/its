@@ -1,5 +1,3 @@
--- ToME - Tales of Middle-Earth
--- Copyright (C) 2009, 2010, 2011, 2012 Nicolas Casalini
 --
 -- This program is free software: you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -14,8 +12,6 @@
 -- You should have received a copy of the GNU General Public License
 -- along with this program.  If not, see <http://www.gnu.org/licenses/>.
 --
--- Nicolas Casalini "DarkGod"
--- darkgod@te4.org
 
 newBirthDescriptor{
 	type = "base",
@@ -39,7 +35,7 @@ newBirthDescriptor{
 		"Just trying to get by.",
 	},
 	stats = { str=1, rct=3, chr=1, },
-	sight = 8,
+	sight = 7,
     sight_min = 25,
 	talents_types = {
 	        ["thief/mechanic"]={true, 0.3},

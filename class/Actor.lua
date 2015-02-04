@@ -265,6 +265,11 @@ end
 function _M:canSee(actor, def, def_pct)
 	if not actor then return false, 0 end
 
+    -- magic:
+    if self.player and type(def) == "nil" and actor and actor._mo then
+        actor._mo:onSeen(res)
+    end
+
 	-- New algorithm:
 	-- absolute light power scales 0 (pitch black) to 100 (noon sun) (more possible, I guess ...)
 	-- lite field is radius in grids, 1-10 maps to 0-100 absolute ? skip inverse square law for now?
@@ -301,11 +306,13 @@ function _M:canSee(actor, def, def_pct)
 
 	-- if we get here, target is visually available, check Hide, etc
 	-- Note that this means the default is seen
+--[[
 	if actor.attr("hide") and actor.attr("hide") > 0 then
         if self.getSns() < actor.attr("hide") then
             return false, 0
         end
 	end
+]]--
 
 	return true, 100
 
