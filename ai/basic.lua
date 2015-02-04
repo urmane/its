@@ -1,15 +1,34 @@
--- If no target, move in previous direction and sometimes turn in a random direction
-newAI("target_or_wander", function(self)
-	if self:runAI(self.ai_state.ai_target or "target_simple") then
-		return self:runAI(self.ai_state.ai_move or "move_simple")
-	else
-		return self:runAI("move_wander")
-	end
+-- ITS AIs
+-- These AI are modified from engine base:
+-- -ITS does not assume enemies are seen, algorithm is more subtle, see Actor:canSee()
+-- -ITS allows initially moving items - guards follow psuedo-"routes" for instance
+
+-- Find an hostile target
+-- this requires the ActorFOV interface, or an interface that provides self.fov.actors*
+-- modified from TOME original
+newAI("its_target_simple", function(self)
+    if self.ai_target.actor and not self.ai_target.actor.dead and rng.percent(90) then return true end
+
+    -- Find closer enemy and target it
+    -- Get list of actors ordered by distance
+    local arr = self.fov.actors_dist
+    local act
+    for i = 1, #arr do
+        act = self.fov.actors_dist[i]
+--      print("AI looking for target", self.uid, self.name, "::", act.uid, act.name, self.fov.actors[act].sqdist)
+        -- find the closest enemy
+        if act and self:canSee(act,true,100) and self:reactionToward(act) < 0 and not act.dead then
+            self:setTarget(act)
+            self:check("on_acquire_target", act)
+            return true
+        end
+    end
 end)
 
 -- If no target, move in previous direction until we hit an obstacle, then turn in a random direction
-newAI("guard_wander", function(self)
-	if self:runAI(self.ai_state.ai_target or "target_simple") then
+-- may want to modify move_simple/last_seen  to search - the guard is aware
+newAI("its_guard_wander", function(self)
+	if self:runAI(self.ai_state.ai_target or "its_target_simple") then
 		return self:runAI(self.ai_state.ai_move or "move_simple")
 	else
 		local counter = 0

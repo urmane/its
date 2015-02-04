@@ -287,7 +287,7 @@ function _M:canSee(actor, def, def_pct)
 	end
 	-- add any actor lite
 	if actor.lite then -- No falloff at source
-		light_level = light_level + actor.lite
+		light_level = light_level + (actor.lite * 10)
 	end
 	-- add any of my lite, if in range
 	if self.lite and self.lite > 0 and dist <= self.lite then

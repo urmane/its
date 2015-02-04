@@ -85,11 +85,16 @@ function _M:display()
     h = h + self.font_h
     self:makeTexture(("Wil/Div/Lck: #00ff00#%3d/%3d/%3d"):format(player:getWil(), player:getDiv(), player:getLck()), x, h, 255, 255, 255)
     h = h + self.font_h
+    self:makeTexture(("Level/Exp: #00ff00#%3d/%3d"):format(player.level or 1, player.exp or 0), x, h, 255, 255, 255)
+    h = h + self.font_h
 
    -- spacer 
    h = h + self.font_h
 
-    self:makeTextureBar("#ffcc80#Gold:", nil, player:getGold(), player.max_gold, 0, x, h, 255, 255, 255, colors.GOLD, {r=colors.GOLD.r/2, g=colors.GOLD.g/2, b=colors.GOLD.b/2})
+    self:makeTextureBar("#c00000#Life:", nil, player.life, player.max_life, player.life_regen * util.bound((player.healing_factor or 1), 0, 2.5), x, h, 255, 255, 255, colors.DARK_RED, colors.VERY_DARK_RED)
+    h = h + self.font_h
+
+    self:makeTextureBar("#c00000#Breath:", nil, player.breath, player.max_breath, player.breath_regen, x, h, 255, 255, 255, colors.DARK_BLUE, colors.DARK_BLUE)
     h = h + self.font_h
 
     self:makeTextureBar("#ffcc80#Earth:", nil, player:getEarth(), player.max_power, player.power_regen, x, h, 255, 255, 255, colors.UMBER, {r=colors.UMBER.r/2, g=colors.UMBER.g/2, b=colors.UMBER.b/2})
@@ -107,7 +112,7 @@ function _M:display()
    -- spacer 
    h = h + self.font_h
 
-    self:makeTextureBar("#c00000#Life:", nil, player.life, player.max_life, player.life_regen * util.bound((player.healing_factor or 1), 0, 2.5), x, h, 255, 255, 255, colors.DARK_RED, colors.VERY_DARK_RED)
+    self:makeTextureBar("#ffcc80#Gold:", nil, player:getGold(), player.max_gold, 0, x, h, 255, 255, 255, colors.GOLD, {r=colors.GOLD.r/2, g=colors.GOLD.g/2, b=colors.GOLD.b/2})
     h = h + self.font_h
 
 --    self:makeTextureBar("#ffcc80#Power:", nil, player:getPower(), player.max_power, player.power_regen, x, h, 255, 255, 255, colors.DARK_BLUE, {r=colors.DARK_BLUE.r/2, g=colors.DARK_BLUE.g/2, b=colors.DARK_BLUE.b/2})

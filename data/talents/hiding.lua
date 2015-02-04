@@ -21,7 +21,6 @@ newTalent{
     end,
 }
 
-
 newTalent{
     name = "Hide The Body",
     type = {"thief/hiding", 1},
