@@ -27,6 +27,7 @@ local Zone = require "engine.Zone"
 local Map = require "engine.Map"
 local Level = require "engine.Level"
 local Birther = require "engine.Birther"
+local Shader = require "engine.Shader"
 
 local Grid = require "mod.class.Grid"
 local Actor = require "mod.class.Actor"
@@ -48,6 +49,9 @@ local QuitDialog = require "mod.dialogs.Quit"
 local Markov = require "mod.class.Markov"
 
 module(..., package.seeall, class.inherit(engine.GameTurnBased, engine.interface.GameTargeting))
+
+-- Tell the engine that we have a fullscreen shader that supports gamma correction
+support_shader_gamma = true
 
 function _M:init()
 	engine.GameTurnBased.init(self, engine.KeyBind.new(), 1000, 100)
@@ -122,9 +126,9 @@ function _M:newGame()
 	self.creating_player = true
 	local birth = Birther.new(nil, self.player, {"base", "role" }, function()
 		-- For real game start:
-		--self:changeLevel(1, "gora-prison")
+		self:changeLevel(1, "gora-prison")
 		-- For changing during testing: can I make a cmdline option ...
-		self:changeLevel(4, "gora-prison")
+		--self:changeLevel(4, "gora-prison")
 		--self:changeLevel(1, "gora-town")
 		print("[PLAYER BIRTH] resolve...")
 		self.player:resolve()
@@ -169,6 +173,43 @@ function _M:setupDisplayMode()
 		engine.interface.GameTargeting.init(self)
 		self.level.map:moveViewSurround(self.player.x, self.player.y, 8, 8)
 	end
+    self:createFBOs()
+end
+
+function _M:createFBOs()
+    print("[GAME] Creating FBOs")
+
+    -- Create the framebuffer
+    self.fbo = core.display.newFBO(Map.viewport.width, Map.viewport.height)
+    if self.fbo then
+        self.fbo_shader = Shader.new("main_fbo")
+        self.posteffects = {
+            wobbling = Shader.new("main_fbo/wobbling"),
+            underwater = Shader.new("main_fbo/underwater"),
+            motionblur = Shader.new("main_fbo/motionblur"),
+            blur = Shader.new("main_fbo/blur"),
+        }
+        self.posteffects_use = { self.fbo_shader.shad }
+        if not self.fbo_shader.shad then self.fbo = nil self.fbo_shader = nil end 
+        self.fbo2 = core.display.newFBO(Map.viewport.width, Map.viewport.height)
+    end
+    
+    if self.player then self.player:updateMainShader() end
+
+    self.full_fbo = core.display.newFBO(self.w, self.h)
+    if self.full_fbo then self.full_fbo_shader = Shader.new("full_fbo") if not self.full_fbo_shader.shad then self.full_fbo = nil self.full_fbo_shader = nil end end
+
+    if self.fbo and self.fbo2 then core.particles.defineFramebuffer(self.fbo)
+    else core.particles.defineFramebuffer(nil) end
+
+    if self.target then self.target:enableFBORenderer("ui/targetshader.png", "target_fbo") end
+
+    Map:enableFBORenderer("target_fbo")
+
+--  self.mm_fbo = core.display.newFBO(200, 200)
+--  if self.mm_fbo then self.mm_fbo_shader = Shader.new("mm_fbo") if not self.mm_fbo_shader.shad then self.mm_fbo = nil self.mm_fbo_shader = nil end end
+
+    self:setGamma(config.settings.gamma_correction / 100)
 end
 
 function _M:save()
@@ -315,6 +356,8 @@ function _M:display(nb_keyframe)
 	-- If switching resolution, blank everything but the dialog
 	if self.change_res_dialog then engine.GameTurnBased.display(self, nb_keyframe) return end
 
+    if self.full_fbo then self.full_fbo:use(true) end
+
 	-- Now the map, if any
 	if self.level and self.level.map and self.level.map.finished then
 		-- Display the map and compute FOV for the player if needed
@@ -322,10 +365,19 @@ function _M:display(nb_keyframe)
 			self.player:playerFOV()
 		end
 
-		self.level.map:display(nil, nil, nb_keyframe)
-
-		-- Display the targetting system if active
-		self.target:display()
+        -- Display using Framebuffer, so that we can use shaders and all
+        local map = game.level.map
+        if self.fbo then
+            self.fbo:use(true)
+            map:display(0, 0, nb_keyframe)
+            self.fbo:use(false, self.full_fbo)
+            self.fbo:toScreen(map.display_x, map.display_y, map.viewport.width, map.viewport.height, self.fbo_shader.shad)
+            if self.target then self.target:display() end
+        else -- Basic display; no FBOs
+		    self.level.map:display(nil, nil, nb_keyframe)
+		    -- Display the targetting system if active
+		    self.target:display()
+        end
 
 		-- And the minimap
 		self.level.map:minimapDisplay(self.w - 200, 20, util.bound(self.player.x - 25, 0, self.level.map.w - 50), util.bound(self.player.y - 25, 0, self.level.map.h - 50), 50, 50, 0.6)
@@ -347,6 +399,11 @@ function _M:display(nb_keyframe)
 	self:targetDisplayTooltip()
 
 	engine.GameTurnBased.display(self, nb_keyframe)
+
+    if self.full_fbo then
+      self.full_fbo:use(false)
+      self.full_fbo:toScreen(0, 0, self.w, self.h, self.full_fbo_shader.shad)
+   end
 end
 
 --- Setup the keybinds

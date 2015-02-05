@@ -31,3 +31,14 @@ newEntity{
         change_level=1, change_zone="gora-graveyard",
 }
 
+newEntity{
+        define_as = "TO_CASTLEKURTOK",
+        always_remember = true,
+        show_tooltip=true,
+        name="The stairs to the castle.",
+        display='>', color=colors.VIOLET,
+        -- image = "terrain/stair_up_wild.png",
+        notice = true,
+        change_level=1, change_zone="castle-kurtok",
+}
+

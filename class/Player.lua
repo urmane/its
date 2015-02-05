@@ -71,6 +71,8 @@ end
 function _M:act()
 	if not mod.class.Actor.act(self) then return end
 
+    self:updateMainShader()
+
 	-- Clean log flasher
 	game.flash:empty()
 
@@ -344,3 +346,15 @@ function _M:on_quest_status(quest, status, sub)
         end
 end
 
+function _M:resetMainShader()
+--    self.shader_old_life = nil
+--    self.old_air = nil
+--    self.old_psi = nil
+--    self.old_healwarn = nil
+    self:updateMainShader()
+end
+
+function _M:updateMainShader()
+    if game.fbo_shader then
+    end
+end

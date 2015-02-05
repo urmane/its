@@ -20,14 +20,18 @@
 load("/data/general/npcs/guards.lua")
 
 newEntity{
-    base = "BASE_PRISONER", define_as="STRAWMAN",
-    name = "prisoner", color=colors.WHITE,
-    desc = "An old man, withered and near death.",
-    level_range = {1, 4}, exp_worth = 0, rarity = 1,
-    lite = 1, -- required for now to make him visible, without a lightsource
-    -- not sure which of these applies in the generic engine
-    --never_move = 1,
-    faction = "neutral",
-    can_talk = "save-the-world",
+        base = "BASE_GUARD",
+        define_as = "BIGBAD",
+        name = "bigbad", 
+        color=colors.WHITE,
+        level_range = {1,3}, exp_worth = 1, rarity = 1,
+        lite = 0,
+        sight = 3,
+        sight_min = 10,
+        max_life = 1,
+    on_die = function(self, who)
+        game.player:setQuestStatus("save-the-world", engine.Quest.COMPLETED, "foo")
+    end,
+
 }
 

@@ -8,6 +8,7 @@ newTalent{
     mode = "sustained",
     cooldown = 8,
     activate = function(self, t)
+        game.fbo_shader:setUniform("colorize",{0.7, 0.7, 0.7,1})
         return {
             move = self:addTemporaryValue("never_move", 1),
             hide = self:addTemporaryValue("hide", self.level or 1),
@@ -17,6 +18,7 @@ newTalent{
     deactivate = function(self, t, p)
         self:removeTemporaryValue("never_move", p.move)
         self:removeTemporaryValue("hide", p.hide)
+        game.fbo_shader:setUniform("colorize",{0, 0, 0,1})
         return true
     end,
 }

@@ -42,7 +42,7 @@ newEntity{
         name = "iron fence", -- image = "terrain/grass.png", add_mos={{image="terrain/troll_stew.png"}},
         display = '=', color=colors.LIGHT_RED, back_color=colors.RED,
         does_block_move = true,
-	block_sight = false,
+    	block_sight = false,
 }
 
 newEntity{
@@ -56,4 +56,14 @@ newEntity{
         block_sight = true,
 --        block_sense = true,
 --        block_esp = true,
+}
+
+newEntity{
+        define_as = "FOUNTAIN",
+        type = "wall", subtype = "fountain",
+        name = "fountain",
+        image = "terrain/fountain.png", --add_mos={{image="terrain/troll_stew.png"}},
+        display = '~', color=colors.LIGHT_BLUE, back_color=colors.BLUE,
+        does_block_move = true,
+    	block_sight = false,
 }

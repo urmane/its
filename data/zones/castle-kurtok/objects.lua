@@ -17,17 +17,7 @@
 -- Nicolas Casalini "DarkGod"
 -- darkgod@te4.org
 
-load("/data/general/npcs/guards.lua")
-
-newEntity{
-    base = "BASE_PRISONER", define_as="STRAWMAN",
-    name = "prisoner", color=colors.WHITE,
-    desc = "An old man, withered and near death.",
-    level_range = {1, 4}, exp_worth = 0, rarity = 1,
-    lite = 1, -- required for now to make him visible, without a lightsource
-    -- not sure which of these applies in the generic engine
-    --never_move = 1,
-    faction = "neutral",
-    can_talk = "save-the-world",
-}
-
+load "/data/general/objects/swords.lua"
+load "/data/general/objects/helmets.lua"
+load "/data/general/objects/armors.lua"
+load "/data/general/objects/tools.lua"

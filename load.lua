@@ -29,7 +29,11 @@ local ActorLevel = require "engine.interface.ActorLevel"
 local ActorTemporaryEffects = require "engine.interface.ActorTemporaryEffects"
 local Birther = require "engine.Birther"
 local Store = require "engine.Store"
+local WorldAchievements = require "engine.interface.WorldAchievements"
 local Faction = require "engine.Faction"
+
+-- Achievements
+WorldAchievements:loadDefinition("/data/achievements/")
 
 -- Useful keybinds
 KeyBind:load("move,hotkeys,inventory,actions,interface,debug")
@@ -113,4 +117,4 @@ Birther:loadDefinition("/data/birth/descriptors.lua")
 -- Uncomment this for hex mode
 -- core.fov.set_algorithm("hex")
 
-return {require "mod.class.Game" }
+return {require "mod.class.Game", require "mod.class.World"}

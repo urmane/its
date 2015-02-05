@@ -18,8 +18,8 @@
 -- darkgod@te4.org
 
 return {
-	name = "The Town of Gora",
-	zone_key = "gora-town",
+	name = "Castle Kurtok",
+	zone_key = "castle-kurtok",
 	level_range = {1, 1},
 	max_level = 1,
 	decay = {300, 800},
@@ -38,12 +38,8 @@ return {
 		down = "DOWN",
 	},
 	levels = {
-		[1] = { width = 64, height = 64, generator = { map = { class = "engine.generator.map.Static", map = "zones/gora-town", }, }, },
+		[1] = { width = 64, height = 64, generator = { map = { class = "engine.generator.map.Static", map = "zones/castle-kurtok", }, }, },
 	},
-    on_enter = function(lev, old_lev, newzone)
-        -- Fountain particles
-        game.level.map:particleEmitter(31,31,1,"fountain")
-    end,
 --	on_leave = function(lev, old_lev, newzone)
 --                if lev.level == 1 then
 --                        -- we know this is the first time through?

@@ -1,5 +1,5 @@
--- ToME - Tales of Middle-Earth
--- Copyright (C) 2009, 2010, 2011, 2012 Nicolas Casalini
+-- ToME - Tales of Maj'Eyal
+-- Copyright (C) 2009 - 2014 Nicolas Casalini
 --
 -- This program is free software: you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -17,17 +17,14 @@
 -- Nicolas Casalini "DarkGod"
 -- darkgod@te4.org
 
-load("/data/general/npcs/guards.lua")
-
-newEntity{
-    base = "BASE_PRISONER", define_as="STRAWMAN",
-    name = "prisoner", color=colors.WHITE,
-    desc = "An old man, withered and near death.",
-    level_range = {1, 4}, exp_worth = 0, rarity = 1,
-    lite = 1, -- required for now to make him visible, without a lightsource
-    -- not sure which of these applies in the generic engine
-    --never_move = 1,
-    faction = "neutral",
-    can_talk = "save-the-world",
+return {
+	frag = "target_fbo",
+	vert = nil,
+	args = {
+		fboTex = { texture = 0 },
+		targetSkin = { texture = 1 },
+		scrollOffset = {0, 0},
+	},
+	clone = false,
+	permanent = true,
 }
-
