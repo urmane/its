@@ -20,11 +20,30 @@
 load("/data/general/grids/basic.lua")
 
 newEntity{
-        define_as = "DEEP_WATER",
-        type = "wall", subtype = "water",
-        name = "deep water", -- image = "terrain/grass.png", add_mos={{image="terrain/troll_stew.png"}},
-        display = '~', color=colors.DARK_BLUE, back_color=colors.DARK_GREY,
-        does_block_move = false,
+    define_as = "GRASS",
+    type = "floor", subtype = "grass",
+    name = "grass",
+    image = "terrain/graveyard/grass.png", --add_mos={{image="terrain/troll_stew.png"}},
+    display = '.', color=colors.DARK_GREEN, back_color=colors.DARK_GREEN,
+    does_block_move = false,
+	block_sight = false,
+}
+newEntity{
+    define_as = "DIRT_PATH",
+    type = "floor", subtype = "dirt",
+    name = "dirt path",
+    image = "terrain/dirtpath.png", --add_mos={{image="terrain/troll_stew.png"}},
+    display = '.', color=colors.UMBER, back_color=colors.UMBER,
+    does_block_move = false,
+	block_sight = false,
+}
+
+newEntity{
+    define_as = "DEEP_WATER",
+    type = "wall", subtype = "water",
+    name = "deep water", -- image = "terrain/grass.png", add_mos={{image="terrain/troll_stew.png"}},
+    display = '~', color=colors.DARK_BLUE, back_color=colors.DARK_GREY,
+    does_block_move = false,
 	block_sight = false,
 }
 

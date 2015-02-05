@@ -27,12 +27,12 @@ newEntity{
 }
 
 newEntity{
-        define_as = "PAVED_ROAD",
-        type = "floor", subtype = "grass",
-        name = "paved road",
-	image = "terrain/town_paved_road.png", -- add_mos={{image="terrain/troll_stew.png"}},
-        display = '=', color=colors.DARK_GREY, back_color=colors.BLACK,
-        does_block_move = false,
+    define_as = "PAVED_ROAD",
+    type = "floor", subtype = "grass",
+    name = "paved road",
+	image = "terrain/town/pavedroad.png", -- add_mos={{image="terrain/troll_stew.png"}},
+    display = '=', color=colors.DARK_GREY, back_color=colors.BLACK,
+    does_block_move = false,
 	block_sight = false,
 }
 
