@@ -46,10 +46,20 @@ newEntity{
 }
 
 newEntity{
+    define_as = "GRASS",
+    type = "floor", subtype = "grass",
+    name = "grass",
+    image = "terrain/town/grass.png", --add_mos={{image="terrain/troll_stew.png"}},
+    display = '.', color=colors.LIGHT_GREEN, back_color=colors.GREEN,
+    does_block_move = false,
+    block_sight = false,
+}
+
+newEntity{
         define_as = "TREE",
         type = "wall", subtype = "tree",
         name = "tall tree",
---        image = "terrain/tree.png",
+        image = "terrain/town/tree.png",
         display = '#', color=colors.LIGHT_GREEN, back_color={r=44,g=95,b=43},
         always_remember = true,
         does_block_move = true,
