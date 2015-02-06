@@ -1,5 +1,8 @@
 Policy: the rogue is someone who does things not supposed to be done
 
+defineTile = function(char, grid, obj, actor, trap, status, spot)
+
+High level
 finalize the overall storyline, and sketch out the major bits needed, do the end (simplified end-to-end) then insert (then redo this todo)
 	prison->sewer->graveyard->town->worldmap
 	town is a dramatic break, very big, opportunity to practice, equip up, swipe stuff
@@ -10,6 +13,7 @@ finalize the overall storyline, and sketch out the major bits needed, do the end
 	overall has to be save the world
 
 World/general
+Specific:
 	worldmap, underworld, undersea - all "worldmaps", each with zones (that might connect to >1 worldmap)
 	done-place init into random geography
 	done - place cities (some named and roughly placed, some completely random)
@@ -18,6 +22,7 @@ World/general
 	done - remainder is plains
 	done - place forests
 	augment initial static map with additional locations - story phase one
+	At some point, the alarm sounds and more guards appear, searching the town
 	done - place volano exit place (then change terrains back to blocking)
 	done - add player stats (use LA?) and update display
 	done - add talent/trees
@@ -32,7 +37,6 @@ World/general
 	build out random towns, story phase two
 	create and place any additional static maps (eg islands) - story phase three
 	create mirror image world - story opt phase
-defineTile = function(char, grid, obj, actor, trap, status, spot)
 
 Main storyline
 	done - escape from prison: prison->sewer->graveyard->worldmap
@@ -58,12 +62,8 @@ return across the threshold - obsession, fixated on one person
 master of two worlds - confession, secret must be revealed
 freedom to live - teh patron, material assistance
 
-	explore a bit: nearby town (Gora) with lots of opportunity
-	At some point, the alarm sounds and more guards appear, searching the town
-	stuck on static-start doing a few things until can tackle the volcano
-	done - volcano allows access to other continents - have the other side be placed on the main cnt so no boat needed
 	explore
-		direct to init city
+		direct to init city - start chase
 		init set of cities/dungeons on starting island
 		volcano after above
 		plotline sends to add'l places in larger world
@@ -77,8 +77,6 @@ freedom to live - teh patron, material assistance
 		defeat the big bad in Gora - power of leverage, use all above plus factions
 
 NPCs
-	undead
-	living
 
 Features
 	directional cone lights / visual, to allow sneak up behind?

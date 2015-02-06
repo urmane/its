@@ -3,6 +3,10 @@
 -- -ITS does not assume enemies are seen, algorithm is more subtle, see Actor:canSee()
 -- -ITS allows initially moving items - guards follow psuedo-"routes" for instance
 
+newAI("none", function(self)
+    return true
+end)
+
 -- Find an hostile target
 -- this requires the ActorFOV interface, or an interface that provides self.fov.actors*
 -- modified from TOME original
@@ -52,13 +56,47 @@ newAI("its_guard_wander", function(self)
 	end
 end)
 
-		--e = require("engine/Emote").new("Help me ...", 60, colors.GREY)
-		--e:display(self.x, self.y)
-		--self:setEmote(require("engine/Emote").new("Help me ...", 60, colors.GREY))
-		--game.map.displayEmotes(1)
-		--return true
 newAI("prisoner", function(self)
 	if self:canSee(game.player) and self:hasLOS(game.player.x,game.player.y,nil,nil,self.x,self.y) then
-		return self:setEmote(require("engine/Emote").new("Help me ...", 60, colors.GREY))
+		--return self:setEmote(require("engine/Emote").new("Help me ...", 60, colors.GREY))
+		return self:setEmote(require("engine/Emote").new(rng.table{
+            "Help me ...", "Please ...", "Good sir!", "Hey!", "Guards!!", "How'd you get out?!",
+            "Guards! Guards!", "Get me out!", "You there!"},
+            30, colors.DARK_GREY))
+	end
+end)
+
+-- Pinball, similar to guard wander above - move until blocked
+newAI("pinball", function(self)
+    if not self.move_dir then
+        self.move_dir = 1
+    end
+    local counter = 0
+    local number_attempts = 4
+    local x, y = util.dirToCoord(self.move_dir)
+    while ( counter < 4 ) and not self:canMove(self.x + x, self.y + y) do
+        if not self:canMove(self.x + x, self.y + y) then
+            counter = counter + 1
+            local dir = rng.range(1, 3)
+            if     (dir == 1) then self.move_dir = util.dirSides(self.move_dir)["hard_left"]
+            elseif (dir == 2) then self.move_dir = util.dirSides(self.move_dir)["hard_right"]
+            else                   self.move_dir = util.opposedDir(self.move_dir) end
+            x, y = util.dirToCoord(self.move_dir)
+        end
+    end
+    if (counter >= 4) then
+        return self:runAI("move_wander")
+    else
+        return self:moveDir(self.move_dir)
+    end
+end)
+
+newAI("townperson", function(self)
+    self:runAI("pinball")
+	if self:canSee(game.player) and self:hasLOS(game.player.x,game.player.y,nil,nil,self.x,self.y) then
+		return self:setEmote(require("engine/Emote").new(rng.table{
+            "Hello.", "Howdy.", "Good sir!", "Hey!", "Hrmph.", "...", "... tell ME to go ...",
+            "Let him!  Let him!", "A stranger...?", "You there!", "Step aside!"},
+            30, colors.DARK_GREY))
 	end
 end)

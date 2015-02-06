@@ -39,7 +39,8 @@ newEntity{
 newEntity{
         define_as = "FENCE",
         type = "wall", subtype = "fence",
-        name = "iron fence", -- image = "terrain/grass.png", add_mos={{image="terrain/troll_stew.png"}},
+        name = "iron fence",
+        image = "terrain/town/fence.png", --add_mos={{image="terrain/troll_stew.png"}},
         display = '=', color=colors.LIGHT_RED, back_color=colors.RED,
         does_block_move = true,
     	block_sight = false,

@@ -126,10 +126,11 @@ function _M:newGame()
 	self.creating_player = true
 	local birth = Birther.new(nil, self.player, {"base", "role" }, function()
 		-- For real game start:
-		self:changeLevel(1, "gora-prison")
+		--self:changeLevel(1, "gora-prison")
 		-- For changing during testing: can I make a cmdline option ...
 		--self:changeLevel(4, "gora-prison")
-		--self:changeLevel(1, "gora-town")
+		self:changeLevel(1, "gora-town")
+		--self:changeLevel(1, "gora-graveyard")
 		print("[PLAYER BIRTH] resolve...")
 		self.player:resolve()
 		self.player:resolve(nil, true)
@@ -382,6 +383,10 @@ function _M:display(nb_keyframe)
 		-- And the minimap
 		self.level.map:minimapDisplay(self.w - 200, 20, util.bound(self.player.x - 25, 0, self.level.map.w - 50), util.bound(self.player.y - 25, 0, self.level.map.h - 50), 50, 50, 0.6)
 	end
+
+    if self.level and self.level.map then
+        self.level.map:displayEmotes(nb_keyframe or 1)
+    end
 
 	-- We display the player's interface
 	self.player_display:toScreen(nb_keyframe)

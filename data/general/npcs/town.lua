@@ -17,18 +17,27 @@
 -- Nicolas Casalini "DarkGod"
 -- darkgod@te4.org
 
-load("/data/general/npcs/guards.lua")
-load("/data/general/npcs/town.lua")
+local Talents = require("engine.interface.ActorTalents")
 
 newEntity{
-    base = "BASE_PRISONER", define_as="STRAWMAN",
-    name = "prisoner", color=colors.WHITE,
-    desc = "An old man, withered and near death.",
-    level_range = {1, 4}, exp_worth = 0, rarity = 1,
-    lite = 1, -- required for now to make him visible, without a lightsource
-    -- not sure which of these applies in the generic engine
-    --never_move = 1,
-    faction = "neutral",
-    can_talk = "save-the-world",
+	define_as = "BASE_TOWNPERSON",
+	type = "humanoid", subtype = "townperson",
+	display = "p", color=colors.WHITE,
+	desc = [[A good citizen, salt of the earth.]],
+	image = "npcs/townperson.png",
+	faction = "neutral",
+	ai = "townperson",
+	stats = { str=1, dex=1, con=1 },
+	combat_armor = 0,
 }
 
+newEntity{
+	base = "BASE_TOWNPERSON",
+	name = "townperson", 
+	color=colors.WHITE,
+	level_range = {1,3}, exp_worth = 1, rarity = 1,
+	lite = 3,
+	sight = 3,
+	sight_min = 40,
+	max_life = 1,
+}

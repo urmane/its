@@ -28,11 +28,15 @@ Lua Error: /engine/Map.lua:238: attempt to index field 'viewport' (a nil value)
 
 
 require "engine.class"
-require "engine.Map"
+--require "engine.Map"
 local Map = require "engine.Map"
 
+print("[ITS] Loading Map")
+
 --- Represents a level map, handles display and various low level map work
-module(..., package.seeall, class.inherit(engine.Map))
+module(..., package.seeall, class.inherit(Map))
+
+--[[
 
 --- Displays the map on screen
 -- @param x the coord where to start drawing, if null it uses self.display_x
@@ -57,3 +61,19 @@ function _M:display(x, y, nb_keyframe, always_show, prevfbo)
 	self.changed = false
 	self.clean_fov = true
 end
+
+--- Temp debug fn
+function _M:displayEmotes(nb_keyframes)
+    local del = {}
+    local e = next(self.emotes)
+    --local sx, sy = self._map:getScroll()
+    while e do
+        print("[DBG] display emote here")
+        e = next(self.emotes, e)
+    end
+    for i = 1, #del do self.emotes[del[i] ] = nil end
+end
+
+--]]
+
+

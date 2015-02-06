@@ -29,15 +29,7 @@ In The Shadows
 
 Life has never treated you well.  For as long as you remember, you've had to fight for survival, with only your wits and your skill to keep you fed, keep you warm.
 
-With the discovery of Castle Kurtok, you made your way to (the town).  Not for adventure, of course, but because there'd be lots of other people there - adventurers, tourists, merchants.  You were sure there'd be lots of extra food and clothing, perhaps even a few coins sitting unused in a purse ...
-
-Alas, the town guard was strangely efficient.  You were surprised when they caught you red-handed, so soon after arriving.  You're a petty thief, but by no means a novice; you've been doing this for years.  You're still not sure how they got on to you.
-
-Irrelevant, now.  You have bigger problems.
-
-You've learned that you're a small fish in a big pond, and the big fish are much, much better at this game than you are.  The entire town is a trap.  The Castle has been found, that part is true, but it's not simply an adventuring free-for-all.  The caves have been blocked off, and viewing galleries constructed over all the horrors from the ancient construction ... it's an arena, and you are the newest gladiator.
-
-Well, that's fine.  You've spent your whole life doing this.  This audience will get more than it bargained for.
+With the discovery of Castle Kurtok, coming to Mount Gora was a no-brainer.  Not for adventure, of course, but because there'd be lots of other people there - adventurers, tourists, merchants.  You were sure there'd be lots of extra food and clothing, perhaps even a few coins sitting unused in a purse ...
 ]]
 starter = "mod.load"
 show_only_on_cheat = false

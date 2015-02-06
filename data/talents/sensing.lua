@@ -5,7 +5,7 @@ newTalent{
     type = {"awareness/sensing", 1},
     info = "Pause and take it all in",
     mode = "activated",
-    image = "talents/hide.png",
+    image = "talents/perceive.png",
 }
 newTalent{
     name = "Notice - Visual",
