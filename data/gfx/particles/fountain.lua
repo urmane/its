@@ -20,15 +20,15 @@
 base_size = 32
 
 return { generator = function()
-	local ad = rng.range(250, 290)
+	local ad = rng.range(240, 300)
 	local a = math.rad(ad)
 	local dir = math.rad(ad + 90)
-	local r = rng.range(5, 20)
+	local r = rng.range(3, 20)
 
 	return {
 		trail = 0,
 		life = 60,
-		size = 4, sizev = -0.1, sizea = -0.1,
+		size = 4, sizev = -0.05, sizea = -0.05,
 
 		x = r * math.cos(a), xv = 0, xa = 0,
 		y = r * math.sin(a), yv = 0, ya = 0,
@@ -38,7 +38,7 @@ return { generator = function()
 		r = 0,   rv = 0, ra = 0,
 		g = 0,   gv = 0.1, ga = 0,
 		b = 0.9, bv = 0, ba = 0,
-		a = 1,   av = -0.1, aa = 0,
+		a = 1,   av = -0.04, aa = 0,
 	}
 end, },
 function(self)
