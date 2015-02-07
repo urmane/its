@@ -43,11 +43,13 @@ local DebugConsole = require "engine.DebugConsole"
 local FlyingText = require "engine.FlyingText"
 local Tooltip = require "engine.Tooltip"
 local BigNews = require "mod.class.BigNews"
+local Calendar = require "mod.class.Calendar"
 
 local QuitDialog = require "mod.dialogs.Quit"
 
 local Markov = require "mod.class.Markov"
 
+--module(..., package.seeall, class.inherit(engine.GameTurnBased, engine.interface.GameMusic, engine.interface.GameSound, engine.interface.GameTargeting))
 module(..., package.seeall, class.inherit(engine.GameTurnBased, engine.interface.GameTargeting))
 
 -- Tell the engine that we have a fullscreen shader that supports gamma correction
@@ -64,6 +66,7 @@ function _M:init()
 end
 
 function _M:run()
+    self.calendar = Calendar.new("/data/calendar.lua", "Today is the %s %s of the %s year of the Age of NoAge.\nThe time is %02d:%02d.", 1, 1, 1)
 	self.flash = LogFlasher.new(208, 0, self.w, 20, nil, nil, nil, {255,255,255}, {0,0,0})
 	self.player_display = PlayerDisplay.new(0, 0, 200, self.h, {30,30,0}, "/data/font/VeraMono.ttf", 12)
 	self.logdisplay = LogDisplay.new(0, self.h * 0.8, self.w * 0.5, self.h * 0.2, nil, nil, nil, {255,255,255}, {30,30,30})
@@ -346,8 +349,19 @@ end
 --- Called every game turns
 -- Does nothing, you can override it
 function _M:onTurn()
+    -- Allow zones to run turn logic
+    if self.zone then
+        if self.zone.on_turn then self.zone:on_turn() end
+    end
+
 	-- The following happens only every 10 game turns (once for every turn of 1 mod speed actors)
 	if self.turn % 10 ~= 0 then return end
+
+    -- log day turnover (really?)
+    if not self.day_of_year or self.day_of_year ~= self.calendar:getDayOfYear(self.turn) then
+        self.log(self.calendar:getTimeDate(self.turn))
+        self.day_of_year = self.calendar:getDayOfYear(self.turn)
+    end
 
 	-- Process overlay effects
 	self.level.map:processEffects()
