@@ -28,6 +28,7 @@ newEntity{
     lite = 1, -- required for now to make him visible, without a lightsource
     -- not sure which of these applies in the generic engine
     --never_move = 1,
+    ai = "none",
     faction = "neutral",
     can_talk = "double-macguffin-prisoner1",
 }

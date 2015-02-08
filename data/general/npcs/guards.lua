@@ -26,7 +26,6 @@ newEntity{
 	desc = [[A wretched, tortured mess of rags and flesh.]],
 	image = "npcs/prisoner.png",
 	faction = "neutral",
-	ai = "prisoner", -- ai_state = { talent_in=3, },
 	stats = { str=1, dex=1, con=1 },
 	combat_armor = 0,
 }
@@ -36,6 +35,7 @@ newEntity{
 	name = "prisoner", 
 	color=colors.WHITE,
 	level_range = {1,3}, exp_worth = 1, rarity = 1,
+	ai = "prisoner", -- ai_state = { talent_in=3, },
 	lite = 0,
 	sight = 3,
 	sight_min = 10, -- prisoners see better than guards
