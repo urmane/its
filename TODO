@@ -15,6 +15,7 @@ finalize the overall storyline, and sketch out the major bits needed, do the end
 World/general
 Specific:
 	worldmap, underworld, undersea - all "worldmaps", each with zones (that might connect to >1 worldmap)
+	make a config settings?
 	done-place init into random geography
 	done - place cities (some named and roughly placed, some completely random)
 	done - place mts (noblock, or add'l cost for mt moving) - single noise fn with elevation more consistent
@@ -71,9 +72,9 @@ freedom to live - teh patron, material assistance
 	save the world
 		defeat the minions at each city/dungeon
 			undead(convert) - several tombs, several std kill ways (destroy the body, sunlight, et al.)
-			force - warriors with strong armor/weapons, std military-oriented
 			fear - monsters of various powers, all uniques
 			greed - lots of (only) money, bribing, wierd
+			force - warriors with strong armor/weapons, std military-oriented
 		defeat the big bad in Gora - power of leverage, use all above plus factions
 
 NPCs

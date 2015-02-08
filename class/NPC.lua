@@ -84,8 +84,10 @@ function _M:tooltip()
 	return str..([[
 
 Target: %s
+X,Y: %d,%d
 UID: %d]]):format(
 	self.ai_target.actor and self.ai_target.actor.name or "none",
+    self.x or -1, self.y or -1,
 	self.uid)
 end
 

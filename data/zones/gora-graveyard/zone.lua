@@ -24,7 +24,7 @@ return {
 	max_level = 3,
 	decay = {300, 800},
 	persistent = "zone",
-	ambient_light = 2,
+	ambient_light = 40,
 	generator =  {
         	map = {
             		class = "engine.generator.map.Static",
@@ -41,12 +41,27 @@ return {
 		[2] = { width = 64, height = 64, generator = { map = { class = "engine.generator.map.Static", map = "zones/gora-graveyard2", }, }, },
 		[3] = { width = 64, height = 64, generator = { map = { class = "engine.generator.map.Static", map = "zones/gora-graveyard3", }, }, },
 	},
+
+    post_process = function(l)
+        print("[DBG] in post_process, level is ", l.level)
+        if l.level == 1 then
+            -- light fog
+            game.state:makeWeatherShader(l, "weather_vapours", {move_factor=160000, evolve_factor=100000, color={0.8, 1, 1, 0.5}, zoom=0.5})
+        elseif l.level == 2 then
+            game.state:makeWeatherShader(l, "weather_vapours", {move_factor=130000, evolve_factor=90000, color={0.8, 1, 1, 0.7}, zoom=0.5})
+        elseif l.level >= 3 then
+            -- heavy fog
+            game.state:makeWeatherShader(l, "weather_vapours", {move_factor=100000, evolve_factor=80000, color={0.8, 1, 1, 0.9}, zoom=0.3})
+        end
+    end,
+
 	on_leave = function(lev, old_lev, newzone)
                 if lev.level == 1 then
                         -- we know this is the first time through?
                         game.player:setQuestStatus("start", engine.Quest.COMPLETED)
                 end
         end,
+
 	on_enter = function(lev, old_lev, newzone)
 		if lev and lev == 1 then
 			local Dialog = require("engine.ui.Dialog")

@@ -19,6 +19,8 @@
 
 require "engine.class"
 require "engine.GameTurnBased"
+require "engine.interface.GameMusic"
+require "engine.interface.GameSound"
 require "engine.interface.GameTargeting"
 require "engine.KeyBind"
 local Savefile = require "engine.Savefile"
@@ -44,19 +46,22 @@ local FlyingText = require "engine.FlyingText"
 local Tooltip = require "engine.Tooltip"
 local BigNews = require "mod.class.BigNews"
 local Calendar = require "mod.class.Calendar"
+local GameState = require "mod.class.GameState"
 
 local QuitDialog = require "mod.dialogs.Quit"
 
 local Markov = require "mod.class.Markov"
 
---module(..., package.seeall, class.inherit(engine.GameTurnBased, engine.interface.GameMusic, engine.interface.GameSound, engine.interface.GameTargeting))
-module(..., package.seeall, class.inherit(engine.GameTurnBased, engine.interface.GameTargeting))
+module(..., package.seeall, class.inherit(engine.GameTurnBased, engine.interface.GameMusic, engine.interface.GameSound, engine.interface.GameTargeting))
+--module(..., package.seeall, class.inherit(engine.GameTurnBased, engine.interface.GameTargeting))
 
 -- Tell the engine that we have a fullscreen shader that supports gamma correction
 support_shader_gamma = true
 
 function _M:init()
 	engine.GameTurnBased.init(self, engine.KeyBind.new(), 1000, 100)
+    engine.interface.GameMusic.init(self)
+    engine.interface.GameSound.init(self)
 
 	-- Pause at birth
 	self.paused = true
@@ -126,13 +131,14 @@ function _M:newGame()
 	testname = self.markov["english"]:generateWord("T", 5, 12)
 	print("new english markov word is ", testname)
 
+    self.state = GameState.new()
 	self.creating_player = true
 	local birth = Birther.new(nil, self.player, {"base", "role" }, function()
 		-- For real game start:
 		--self:changeLevel(1, "gora-prison")
 		-- For changing during testing: can I make a cmdline option ...
-		--self:changeLevel(4, "gora-prison")
-		self:changeLevel(1, "gora-town")
+		self:changeLevel(4, "gora-prison")
+		--self:changeLevel(1, "gora-town")
 		--self:changeLevel(1, "gora-graveyard")
 		print("[PLAYER BIRTH] resolve...")
 		self.player:resolve()
@@ -385,6 +391,12 @@ function _M:display(nb_keyframe)
         if self.fbo then
             self.fbo:use(true)
             map:display(0, 0, nb_keyframe)
+            if self.level.data.weather_particle then
+                self.state:displayWeather(self.level, self.level.data.weather_particle, nb_keyframes)
+            end
+            if self.level.data.weather_shader then
+                self.state:displayWeatherShader(self.level, self.level.data.weather_shader, map.display_x, map.display_y, nb_keyframes)
+            end
             self.fbo:use(false, self.full_fbo)
             self.fbo:toScreen(map.display_x, map.display_y, map.viewport.width, map.viewport.height, self.fbo_shader.shad)
             if self.target then self.target:display() end
