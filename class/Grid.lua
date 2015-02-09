@@ -20,6 +20,7 @@
 require "engine.class"
 require "engine.Grid"
 local DamageType = require "engine.DamageType"
+local Dialog = require "engine.ui.Dialog"
 
 module(..., package.seeall, class.inherit(engine.Grid))
 
@@ -47,6 +48,26 @@ function _M:block_move(x, y, e, act, couldpass)
 			if self.can_pass[what] and self.can_pass[what] <= check then return false end
 		end
 	end
+
+    -- Check for bump effects
+    if e and act and self.does_block_move and e.player and self.on_block_bump then
+        self.on_block_bump(e)
+        if self.on_block_bump_msg then
+            --game.logSeen({x=x, y=y}, "%s", self.on_block_bump_msg)
+            Dialog.simplePopup("Message", self.on_block_bump_msg)
+        end
+    end
+
+    -- Check for block changes
+    if e and act and self.does_block_move and e.player and game.level.map.attrs(x, y, "on_block_change") then
+        local ng = game.zone:makeEntityByName(game.level, "terrain", game.level.map.attrs(x, y, "on_block_change"))
+        if ng then
+            game.zone:addEntity(game.level, ng, "terrain", x, y)
+            if game.level.map.attrs(x, y, "on_block_change_msg") then game.logSeen({x=x, y=y}, "%s", game.level.map.attrs(x, y, "on_block_bump_msg")) end
+            game.level.map.attrs(x, y, "on_block_change", false)
+            game.level.map.attrs(x, y, "on_block_change_msg", false)
+        end
+    end
 
 	return self.does_block_move
 end

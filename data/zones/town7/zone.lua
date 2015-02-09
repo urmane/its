@@ -38,6 +38,6 @@ return {
 		down = "DOWN",
 	},
 	levels = {
-		[1] = { width = 64, height = 64, generator = { map = { class = "engine.generator.map.Static", map = "zones/town8", }, }, },
+		[1] = { width = 64, height = 64, generator = { map = { class = "engine.generator.map.Static", map = "zones/town7", }, }, },
 	},
 }

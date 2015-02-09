@@ -19,4 +19,5 @@
 
 load("/data/general/grids/basic.lua")
 load("/data/general/grids/town.lua")
+load("/data/general/grids/graveyard.lua")
 

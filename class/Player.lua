@@ -212,12 +212,16 @@ function _M:playerFOV()
         end
 
 	-- ambient light is a level property, and lets you see a small number of grids around you if you're not holding a light.
-	-- right now this is binary - next step make it graduated, and based on actor's sight strength
-	-- right now this is also player-only - consider moving all sense code up to Actor
-	if game.level.data.ambient_light and game.level.data.ambient_light > 0 and self.lite == 0 then
+	-- right now this is player-only - consider moving all sense code up to Actor
+	if self.lite == 0 and game.level.data.ambient_light and game.level.data.ambient_light > 0 then
 		-- assume ambient_light always < limit of sight for now
 		--self:computeFOV(game.level.map.ambient_light, "block_sight", function(x, y, dx, dy, sqdist) game.level.map.seens(x, y, fovdist[sqdist]) end, true, true, true)
-		self:computeFOV(game.level.data.ambient_light/10, "block_sight", function(x, y, dx, dy, sqdist) game.level.map.remembers(x, y, true) end, true, true, true)
+        local range = 1
+        if self.sight_min and game.level.data.ambient_light > self.sight_min then
+            range = game.level.data.ambient_light/10
+        end
+		--self:computeFOV(game.level.data.ambient_light/10, "block_sight", function(x, y, dx, dy, sqdist) game.level.map.remembers(x, y, true) end, true, true, true)
+		self:computeFOV(range, "block_sight", function(x, y, dx, dy, sqdist) game.level.map.remembers(x, y, true) end, true, true, true)
 	end
 
 end

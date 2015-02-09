@@ -56,7 +56,7 @@ function _M:displayWeatherShader(level, ps, x, y, nb_keyframes)
         if ps[j].shad then
             ps[j]:setUniform("mapCoord", mapcoords)
             ps[j].shad:use(true)
-            core.display.drawQuad(x, y, level.map.viewport.width, level.map.viewport.height, 255, 255, 255, 255)
+            core.display.drawQuad(0, 0, level.map.viewport.width, level.map.viewport.height, 255, 255, 255, 255)
             ps[j].shad:use(false)
         end
     end

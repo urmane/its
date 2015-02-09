@@ -40,7 +40,24 @@ Specific:
 	create mirror image world - story opt phase
 
 Main storyline
-	done - escape from prison: prison->sewer->graveyard->worldmap
+	init
+		done - escape from prison: prison->sewer->graveyard->worldmap
+		init set of cities/dungeons on starting island
+		gain some skills
+	Nature selects you as champion for this world
+	Gain the power of the elements
+		fire - open path to volcano, with quest therein
+	Defeat the minions
+		undead(convert) - several tombs, several std kill ways (destroy the body, sunlight, et al.)
+		fear - monsters of various powers, all uniques
+		greed - lots of (only) money, bribing, wierd
+		force - warriors with strong armor/weapons, std military-oriented
+	Defeat the big bad
+		big bad escapes into Castle Kurtok; chase him through rando zones, maybe across the world
+	Optionals:
+		Famous locations/bosses to do tasks at; steal an X, do the thing ...
+
+Story forge:
 supernatural aid - the monster, raw unthinking destruction, chaos made flesh, bogeyman, ripper, source of fear and nightmare
 threshold - disguise, the mayor is a demon
 the guardian - the burden - a friend in the prison, asking for support almost certain to end in disaster
@@ -62,20 +79,8 @@ rescue from without - prodigy, golden child love and admired by all
 return across the threshold - obsession, fixated on one person
 master of two worlds - confession, secret must be revealed
 freedom to live - teh patron, material assistance
+end Story Forge
 
-	explore
-		direct to init city - start chase
-		init set of cities/dungeons on starting island
-		volcano after above
-		plotline sends to add'l places in larger world
-		reveal more dungeons, not visible at start
-	save the world
-		defeat the minions at each city/dungeon
-			undead(convert) - several tombs, several std kill ways (destroy the body, sunlight, et al.)
-			fear - monsters of various powers, all uniques
-			greed - lots of (only) money, bribing, wierd
-			force - warriors with strong armor/weapons, std military-oriented
-		defeat the big bad in Gora - power of leverage, use all above plus factions
 
 NPCs
 

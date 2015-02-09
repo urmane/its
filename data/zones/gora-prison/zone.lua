@@ -42,18 +42,24 @@ return {
 		[3] = { width = 70, height = 70, generator = { map = { class = "engine.generator.map.Static", map = "zones/gora-prison3", }, }, },
 		[4] = { width = 40, height = 40, generator = { map = { class = "engine.generator.map.Static", map = "zones/gora-prison-sewers", }, }, },
 	},
+
+    post_process = function(l)
+        if l.level == 4 then
+        -- sewer gas, euw
+        game.state:makeWeatherShader(l, "weather_vapours", {move_factor=500000, evolve_factor=100000, color={0, 1, 0, 0.2}, zoom=0.5})
+        end
+    end,
+
 	on_leave = function(lev, old_lev, newzone)
-		print("[ITS] on_leave , lev, old_lev is ", lev, old_lev)
-                if old_lev == 3 and not game.player:hasQuest("start-escape-sewers") then
-			print("[ITS] setting quest")
+        if old_lev == 3 and not game.player:hasQuest("start-escape-sewers") then
 			-- we know this is the first time through
-                        game.player:setQuestStatus("start-escape-prison", engine.Quest.DONE)
-                end
-        end,
+            game.player:setQuestStatus("start-escape-prison", engine.Quest.DONE)
+        end
+    end,
+
 	on_enter = function(lev, old_lev, newzone)
-		print("[ITS] on_enter , lev, old_lev is ", lev, old_lev)
-                if lev == 4 and not game.player:hasQuest("start-escape-sewers") then
-                        game.player:grantQuest("start-escape-sewers")
-                end
-        end,
+        if lev == 4 and not game.player:hasQuest("start-escape-sewers") then
+            game.player:grantQuest("start-escape-sewers")
+        end
+    end,
 }

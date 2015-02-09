@@ -43,7 +43,6 @@ return {
 	},
 
     post_process = function(l)
-        print("[DBG] in post_process, level is ", l.level)
         if l.level == 1 then
             -- light fog
             game.state:makeWeatherShader(l, "weather_vapours", {move_factor=160000, evolve_factor=100000, color={0.8, 1, 1, 0.5}, zoom=0.5})
