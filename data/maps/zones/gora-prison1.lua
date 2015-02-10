@@ -17,11 +17,13 @@ defineTile("G", "FLOOR", nil, {random_filter={name="prisonguard"}})
 defineTile("p", "FLOOR", nil, {random_filter={name="prisoner"}})
 defineTile("t", "FLOOR", nil, {random_filter={name="torch"}})
 defineTile("b", "FLOOR", nil, {random_filter={name="brazier"}})
+defineTile("T", "FLOOR", "DECORATION_TABLE")
+defineTile("C", "FLOOR", "DECORATION_CHAIR")
 
 return [[
 ###############......$#########################################
 #.....#########.#########################################.....#
-#.....#########.#########################################.....#
+#.CTC.#########.#########################################.CTC.#
 #.....#.#p#p#p#.....#.#.#.#.#######p#.#.#p#######.#.#.#p#.....#
 ####..#'#+#+#+#.....#+#+#+#+#######+#+#+#+#######+#+#+#+#..####
 #t.............................t.............................t#

@@ -62,7 +62,10 @@ return {
 	on_enter = function(lev, old_lev, newzone)
         if lev == 2 and not game.state.storyflags["entered-gora-prison2"] then
             game.state.storyflags["entered-gora-prison2"] = true
-            Dialog:simplePopup("Big", "There are certainly a lot of prisoners ... why is this prison so big ... ?")
+            Dialog:simplePopup("Big", "There are certainly a lot of prisoners ... why is this prison so big ... ?  If the layout holds, there should be another staircase in the opposite corner of this floor.")
+        elseif lev == 3 and not game.state.storyflags["entered-gora-prison3"] then
+            game.state.storyflags["entered-gora-prison3"] = true
+            Dialog:simplePopup("Lowest level", "This looks like the lowest floor.  You hear water to the South ... ah, sewers ...")
         elseif lev == 4 and not game.player:hasQuest("start-escape-sewers") then
             game.player:grantQuest("start-escape-sewers")
         end
