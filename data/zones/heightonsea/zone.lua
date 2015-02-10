@@ -24,20 +24,18 @@ return {
 	max_level = 1,
 	decay = {300, 800},
 	persistent = "zone",
-	ambient_light = 80,
+    all_lited = true,
+	ambient_light = 100,
 	generator =  {
-        	map = {
-            		class = "engine.generator.map.Static",
-        	},
-		object = {
-			class = "engine.generator.object.Random",
-			nb_object = {20, 30},
-		},
+        map = {
+         		class = "engine.generator.map.Static",
+        },
 		up = "UP",
 		down = "DOWN",
 	},
 	levels = {
-		[1] = { width = 64, height = 64, generator = { map = { class = "engine.generator.map.Static", map = "zones/heightonsea", }, }, },
+		[1] = { width = 64, height = 64, generator = { map = { class = "engine.generator.map.Static", map = "zones/heightonsea1", }, }, },
+		[2] = { width = 15, height = 15, generator = { map = { class = "engine.generator.map.Static", map = "zones/heightonsea2", }, }, },
 	},
 --	on_leave = function(lev, old_lev, newzone)
 --                if lev.level == 1 then

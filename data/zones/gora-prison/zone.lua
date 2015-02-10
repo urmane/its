@@ -17,6 +17,8 @@
 -- Nicolas Casalini "DarkGod"
 -- darkgod@te4.org
 
+local Dialog = require "engine.ui.Dialog"
+
 return {
 	name = "Gora Prison",
 	zone_key = "gora-prison",
@@ -58,7 +60,10 @@ return {
     end,
 
 	on_enter = function(lev, old_lev, newzone)
-        if lev == 4 and not game.player:hasQuest("start-escape-sewers") then
+        if lev == 2 and not game.state.storyflags["entered-gora-prison2"] then
+            game.state.storyflags["entered-gora-prison2"] = true
+            Dialog:simplePopup("Big", "There are certainly a lot of prisoners ... why is this prison so big ... ?")
+        elseif lev == 4 and not game.player:hasQuest("start-escape-sewers") then
             game.player:grantQuest("start-escape-sewers")
         end
     end,

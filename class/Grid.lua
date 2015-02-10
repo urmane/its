@@ -53,8 +53,9 @@ function _M:block_move(x, y, e, act, couldpass)
     if e and act and self.does_block_move and e.player and self.on_block_bump then
         self.on_block_bump(e)
         if self.on_block_bump_msg then
+            local title = self.on_block_bump_msg_title or "Message"
             --game.logSeen({x=x, y=y}, "%s", self.on_block_bump_msg)
-            Dialog.simplePopup("Message", self.on_block_bump_msg)
+            Dialog:simplePopup(title, self.on_block_bump_msg)
         end
     end
 

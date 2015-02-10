@@ -21,3 +21,50 @@ load("/data/general/grids/basic.lua")
 load("/data/general/grids/town.lua")
 load("/data/general/grids/graveyard.lua")
 
+newEntity{
+--    base = "GRAVESTONE",
+    define_as = "VERY_OLD_GRAVESTONE",
+    name = "a very old gravestone",
+    image = "terrain/graveyard/gravestone.png", --add_mos={{image="terrain/troll_stew.png"}},
+    display = '^', color=colors.LIGHT_RED, back_color=colors.RED,
+    does_block_move = true,
+    block_sight = true,
+    on_block_bump = function(e)
+        -- actor is always player, yes?
+    end,
+    on_block_bump_msg_title = "Old Gravestone",
+    on_block_bump_msg = "You touch the necklace to the very old gravestone",
+}
+
+newEntity{
+    base = "DOWN",
+    define_as = "DOWN",
+    image = "terrain/stairs-down.png",
+}
+
+newEntity{
+    define_as = "FIRE",
+    name = "fire",
+    image = "terrain/fire.png",
+    display = '%', color=colors.LIGHT_RED, back_color=colors.RED,
+    does_block_move = true,
+    block_sight = false,
+}
+
+newEntity{
+    define_as = "AIR",
+    name = "tornado",
+    image = "terrain/tornado.png",
+    display = '&', color=colors.YELLOW, back_color=colors.YELLOW,
+    does_block_move = true,
+    block_sight = false,
+}
+
+newEntity{
+    define_as = "WATER",
+    name = "water",
+    image = "terrain/deepwater.png",
+    display = '&', color=colors.LIGHT_BLUE, back_color=colors.BLUE,
+    does_block_move = true,
+    block_sight = false,
+}

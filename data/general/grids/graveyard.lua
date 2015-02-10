@@ -3,7 +3,7 @@ newEntity{
     define_as = "GRAVESTONE",
     type = "wall", subtype = "gravestone",
     name = "a gravestone",
-    image = "terrain/graveyard/gravestone.png", add_mos={{image="terrain/troll_stew.png"}},
+    image = "terrain/graveyard/gravestone.png", --add_mos={{image="terrain/troll_stew.png"}},
     display = '^', color=colors.LIGHT_RED, back_color=colors.RED,
     does_block_move = true,
 	block_sight = true,

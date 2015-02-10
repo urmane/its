@@ -25,6 +25,7 @@ newEntity{
 	display = "*", color=colors.YELLOW,
 	desc = [[A stationary light.]],
 	ai = "none",
+    faction = "neutral",
 	stats = { str=5, dex=5, con=5 },
 	combat_armor = 0,
 }
