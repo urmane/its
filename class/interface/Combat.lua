@@ -31,6 +31,7 @@ module(..., package.seeall, class.make)
 -- Talk ? attack ? displace ?
 function _M:bumpInto(target)
 	local reaction = self:reactionToward(target)
+    print("[DBG]name "..self.name.." reactionToward "..target.name.." is "..reaction)
 	if reaction < 0 then
 		return self:attackTarget(target)
 	elseif reaction >= 0 then

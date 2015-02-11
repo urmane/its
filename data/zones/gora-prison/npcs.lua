@@ -19,6 +19,7 @@
 
 load("/data/general/npcs/guards.lua")
 load("/data/general/npcs/lights.lua")
+load("/data/general/npcs/rodents.lua")
 
 newEntity{
     base = "BASE_PRISONER", define_as="PRISONER_MACGUFFIN",

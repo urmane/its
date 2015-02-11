@@ -64,6 +64,17 @@ newEntity{
 }
 
 newEntity{
+	define_as = "WALLGRATE",
+	name = "wall", image = "terrain/granite_wallgrate1.png",
+	display = '#', color_r=255, color_g=255, color_b=255, back_color=colors.GREY,
+	always_remember = true,
+	does_block_move = true,
+	block_sight = false,
+	can_pass = {pass_wall=1},
+	dig = "FLOOR",
+}
+
+newEntity{
 	define_as = "DEEP_WATER",
 	name = "deep_water", image = "terrain/deepwater.png",
 	display = '~', color_r=0, color_g=0, color_b=255, back_color=colors.DARK_BLUE,

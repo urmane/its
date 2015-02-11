@@ -39,11 +39,17 @@ WorldAchievements:loadDefinition("/data/achievements/")
 KeyBind:load("move,hotkeys,inventory,actions,interface,debug")
 
 -- Politics
+-- explicit "neutral"
+-- explicit "animal"
+-- explicit "all" reaction, change code to match
 Faction:add{ name="Operation Entertainment", reaction={players=-100} }
 Faction:add{ name="The Guild", reaction={players=-10} }
 Faction:add{ name="Secret Brotherhood", reaction={} }
 Faction:add{ name="Order Of The Sword", reaction={} }
-Faction:add{ name="neutral", reaction={players=1} }
+--Faction:add{ name="neutral", reaction={players=0} }
+Faction:add{ name="animal", reaction={} }
+Faction:setInitialReaction("players", "neutral", 0, true)
+Faction:setInitialReaction("players", "animal", -1, true)
 
 -- Damage types
 DamageType:loadDefinition("/data/damage_types.lua")
