@@ -17,30 +17,7 @@
 -- Nicolas Casalini "DarkGod"
 -- darkgod@te4.org
 
-load("/data/general/npcs/guards.lua")
-load("/data/general/npcs/lights.lua")
-
-newEntity{
-    define_as="PRIEST",
-    name = "priest", color=colors.WHITE,
-    desc = "A priest.",
-    image = "npcs/Nature.png",
-    level_range = {1, 4}, exp_worth = 0, rarity = 1,
-    lite = 1, -- required for now, fix class/Actor.lua:canSee()
-    ai = "none",
-    faction = "neutral",
-    can_talk = "double-macguffin-priest1",
-}
-
-newEntity{
-    define_as="NATURE",
-    name = "woman", color=colors.WHITE,
-    desc = "A voluptuous woman.",
-    image = "npcs/Nature.png",
-    level_range = {1, 4}, exp_worth = 0, rarity = 1,
-    lite = 1, -- required for now, fix class/Actor.lua:canSee()
-    ai = "none",
-    faction = "neutral",
-    can_talk = "nature1",
-}
-
+load "/data/general/objects/swords.lua"
+load "/data/general/objects/helmets.lua"
+load "/data/general/objects/armors.lua"
+load "/data/general/objects/tools.lua"

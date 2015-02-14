@@ -14,7 +14,7 @@ newChat {
 
 newChat {
 	id = "help",
-	text = [[Give this necklace to my son, in Heightonsea to the SouthWest of here ... it is all that remains of me ...
+	text = [[Please give this necklace to my son Latiyus; you can find him in the church in Heightonsea to the SouthWest of here ... it is all that remains of me ...
 (The old man dies.)]],
 	answers = {
 	{"<take the necklace>", action=function(npc, player) player:grantQuest("double-macguffin") end },

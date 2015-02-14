@@ -73,7 +73,7 @@ newEntity{
         define_as = "FOUNTAIN",
         type = "wall", subtype = "fountain",
         name = "fountain",
-        image = "terrain/fountain.png", --add_mos={{image="terrain/troll_stew.png"}},
+        image = "terrain/town/fountain.png", --add_mos={{image="terrain/troll_stew.png"}},
         display = '~', color=colors.LIGHT_BLUE, back_color=colors.BLUE,
         does_block_move = true,
     	block_sight = false,

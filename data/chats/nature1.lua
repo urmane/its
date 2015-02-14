@@ -14,7 +14,7 @@ newChat {
 
 newChat {
 	id = "help",
-	text = [[Go do the elemental quests.]],
+	text = [[Go do the elemental quests. Start at Murmon, in the middle of this land.]],
 	answers = {
 	{"Fine.", action=function(npc, player) player:grantQuest("elemental-quests") end },
 	},

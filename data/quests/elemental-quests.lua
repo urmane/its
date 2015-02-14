@@ -6,7 +6,7 @@ desc = function(self, who)
 	if self:isCompleted("earth-quest-completed") then
 		desc[#desc+1] = "#LIGHT_GREEN#* You have completed the Earth Quest!#WHITE#"
 	else
-		desc[#desc+1] = "#SLATE#* You must complete the Earth Quest.#WHITE#"
+		desc[#desc+1] = "#SLATE#* You must explore Murmon, in the middle of Atarlo, and do the thing.#WHITE#"
 	end
 	if self:isCompleted("air-quest-completed") then
 		desc[#desc+1] = "#LIGHT_GREEN#* You have completed the Air Quest!#WHITE#"
