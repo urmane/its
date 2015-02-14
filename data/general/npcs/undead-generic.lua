@@ -15,7 +15,7 @@ newEntity{
 newEntity{ base = "BASE_ZOMBIE",
 	name = "zombie", color=colors.WHITE,
 	level_range = {1, 4}, exp_worth = 1,
-    image = "npcs/zombie.png",
+    image = "npcs/undead/zombie.png",
 	rarity = 1,
 	lite = 0,		-- radius of the light this actor puts out
 	sight = 4,		-- absolute limit of sight

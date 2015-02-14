@@ -47,13 +47,13 @@ newEntity{
 
 newEntity{
 	define_as = "FLOOR",
-	name = "floor", image = "terrain/granite_floor1.png",
+	name = "floor", image = "terrain/granite/floor_1.png",
 	display = ' ', color_r=255, color_g=255, color_b=255, back_color=colors.DARK_GREY,
 }
 
 newEntity{
 	define_as = "WALL",
-	name = "wall", image = "terrain/granite_wall1.png",
+	name = "wall", image = "terrain/granite/wall_1.png",
 	display = '#', color_r=255, color_g=255, color_b=255, back_color=colors.GREY,
 	always_remember = true,
 	does_block_move = true,

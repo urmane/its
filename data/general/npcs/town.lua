@@ -24,7 +24,7 @@ newEntity{
 	type = "humanoid", subtype = "townperson",
 	display = "p", color=colors.WHITE,
 	desc = [[A good citizen, salt of the earth.]],
-	image = "npcs/townperson.png",
+	image = "npcs/town/townperson.png",
 	faction = "neutral",
 	ai = "townperson",
 	stats = { str=1, dex=1, con=1 },

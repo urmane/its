@@ -24,7 +24,7 @@ newEntity{
 	type = "humanoid", subtype = "prisoner",
 	display = "P", color=colors.WHITE,
 	desc = [[A wretched, tortured mess of rags and flesh.]],
-	image = "npcs/prisoner.png",
+	image = "npcs/prisoners/prisoner.png",
 	faction = "neutral",
 	stats = { str=1, dex=1, con=1 },
 	combat_armor = 0,

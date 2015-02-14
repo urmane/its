@@ -6,7 +6,7 @@ newEntity{
 	type = "rodent", --subtype = "prisoner",
 	display = "r", color=colors.UMBER,
 	desc = [[A rodent.]],
-	image = "npcs/rodent.png",
+	image = "npcs/rodents/rodent.png",
 	faction = "animal",
 	stats = { str=5, dex=5, con=5 },
 	combat_armor = 0,
@@ -15,7 +15,7 @@ newEntity{
 newEntity{
 	base = "BASE_RODENT",
 	name = "giant rat", subtype = "giantrat",
-    image = "npcs/giantrat.png",
+    image = "npcs/rodents/giantrat.png",
 	color=colors.UMBER,
 	level_range = {1,3}, exp_worth = 1, rarity = 1,
 	ai = "its_target_simple", -- ai_state = { talent_in=3, },

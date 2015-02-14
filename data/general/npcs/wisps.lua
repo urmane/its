@@ -33,6 +33,7 @@ newEntity{
 
 newEntity{ base = "BASE_WISP",
 	name = "will-o-wisp", color=colors.GREEN,
+    image = "npcs/lights/willowisp.png",
 	level_range = {1, 4}, exp_worth = 1,
 	rarity = 4,
 	lite = 1,		-- radius of the light this actor puts out
