@@ -37,6 +37,7 @@ newBirthDescriptor{
 	stats = { str=1, rct=3, chr=1, },
 	sight = 7,
     sight_min = 25,
+    move_others = true,
 	talents_types = {
 	        ["thief/mechanic"]={true, 0.3},
 	        ["thief/hiding"]={true, 0.3},

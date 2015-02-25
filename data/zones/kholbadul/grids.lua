@@ -17,7 +17,7 @@
 -- Nicolas Casalini "DarkGod"
 -- darkgod@te4.org
 
-load("/data/general/grids/basic.lua")
+load("/data/general/grids/redgranite.lua")
 load("/data/general/grids/town.lua")
 
 newEntity{

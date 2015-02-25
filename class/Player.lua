@@ -53,6 +53,7 @@ function _M:init(t, no_default)
 	t.faction = t.faction or "players"
 
 	t.lite = t.lite or 0
+    t.move_others = true -- used for bump-displacing
 
 	mod.class.Actor.init(self, t, no_default)
 	engine.interface.PlayerHotkeys.init(self, t)
@@ -361,4 +362,28 @@ end
 function _M:updateMainShader()
     if game.fbo_shader then
     end
+end
+
+-- testing only
+-- "language" is just "font name" for starters/testing
+-- at some point change it to map language to either foreign font or English (if known)
+function _M:showForeignPopup(title, text, language)
+
+    if title then print("title is ", title) else print("title is none") end
+    if text then print("text is ", text) else print("text is none") end
+    if language then print("language is ", language) else print("language is none") end
+
+    local font = core.display.newFont("/data/font/"..language..".otf", 28)
+    local w, h = font:size(text)
+    local tw, th = font:size(title)
+    local d = Dialog.new(title, math.max(w, tw) + 64, math.max(h, th) + 64, nil, nil, nil, font)
+    d:keyCommands{__DEFAULT=function() game:unregisterDialog(d) if fct then fct() end end}
+    d:mouseZones{{x=0, y=0, w=game.w, h=game.h, norestrict=true, fct=function(b) if b ~= "none" then game:unregisterDialog(d) end end, norestrict=true}}
+    d.drawDialog = function(self, s)
+        --s:drawColorStringCentered(self.font, text, 2, 2, self.iw - 2, self.ih - 2)
+        s:drawColorStringCentered(self.font, text, 16, 8, self.iw - 32, self.ih - 8)
+        self.changed = false
+    end
+    game:registerDialog(d)
+    return d
 end

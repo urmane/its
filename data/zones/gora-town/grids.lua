@@ -20,6 +20,7 @@
 load("/data/general/grids/basic.lua")
 load("/data/general/grids/town.lua")
 load("/data/general/grids/graveyard.lua")
+load("/data/general/grids/sign.lua")
 
 newEntity{
         define_as = "TO_GRAVEYARD",
