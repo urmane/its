@@ -207,9 +207,23 @@ function _M:playerFOV()
         local uid, e = next(game.level.entities)
         while uid do
         	if e ~= self and e.lite and e.lite > 0 and e.computeFOV then
-                	e:computeFOV(e.lite, "block_sight", function(x, y, dx, dy, sqdist) game.level.map:applyExtraLite(x, y, fovdist[sqdist]) end, true, true)
+                if e.move_dir and e.lite_angle then
+                    -- If lite_angle is set, they have a non-circular lite
+                    -- Move_dir must also be set - if it's not, they have a circular lite but angled FOV
+                    e:computeFOVBeam(e.lite, e.move_dir, e.lite_angle, "block_sight",
+                                     function(x, y, dx, dy, sqdist)
+                                         game.level.map:applyExtraLite(x, y, fovdist[sqdist])
+                                     end,
+                                     true, true)
+                else
+                    e:computeFOV(e.lite, "block_sight",
+                                 function(x, y, dx, dy, sqdist)
+                                     game.level.map:applyExtraLite(x, y, fovdist[sqdist])
+                                 end,
+                                 true, true)
                 end
-                uid, e = next(game.level.entities, uid)
+            end
+            uid, e = next(game.level.entities, uid)
         end
 
 	-- ambient light is a level property, and lets you see a small number of grids around you if you're not holding a light.

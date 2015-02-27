@@ -50,14 +50,16 @@ newEntity{
 	image = "npcs/Trolldoll2.png",
 
 	-- ai = "dumb_talented_simple", ai_state = { talent_in=3, },
-	global_speed_base = 0.75,
+    normal_speed = 0.33,
+    pursuit_speed = 0.9,
+	global_speed = 0.33,
 	ai = "its_guard_wander",
 	stats = { str=5, dex=5, con=5 },
 	combat_armor = 0,
     on_acquire_target = function(act)
         if act.x and act.y then
             local sx, sy = game.level.map:getTileToScreen(act.x, act.y)
-            game.flyers:add(sx, sy, 20, 0, -1, "Aware!", {255,0,0}, false)
+            game.flyers:add(sx, sy, 20, 0, -1, "Halt!", {255,0,0}, false)
         end
     end,
 }
@@ -71,8 +73,9 @@ newEntity{ base = "BASE_GUARD",
         lite_min = 3,           -- min radius
         lite_max = 5,           -- max radius
 	sight = 5,		-- absolute limit of sight in grids
-	sight_min = 20,		-- minimum light level this actor can distinguish
-	move_dir = 2,		-- initial move direction, they'll rotate clockwise 90 degrees for now
+	sight_min = 20,	-- minimum light level this actor can distinguish
+	move_dir = 2,	-- initial move direction, they'll rotate clockwise 90 degrees for now
+	lite_angle = 90,-- angle of light projected, in direction move_dir
 	max_life = resolvers.rngavg(5,9),
 	combat = { dam=2 },
 }

@@ -85,7 +85,7 @@ end Story Forge
 NPCs
 
 Features
-	directional cone lights / visual, to allow sneak up behind?
+	done - directional cone lights / visual, to allow sneak up behind
 	speed changes by ai state
 	lockpick gui
 	endlessly hunted by "guards"
@@ -144,6 +144,21 @@ add lockpick gui (remember Policy)
     end
 
 IDEAS (randomly organized):
+
+stats: innate ratings
+talents: abilities
+terrain: types
+	how to: interact with non-terrain perm objs (like levers) - engine design, must be terrain type and "on_bump"
+trap: special effect triggered by movement onto terrain (part of engine) - terrain type and "on_move"
+actions: move, bump(attack/talk), use talent, pickup/drop/throw/use object,
+effect types: damage, buff, debuff, force/allow action, destroy obj/actor, create obj/actor (opt. consume x,y,z),
+transform obj/actor/terrain
+effect targets: actor, object, terrain; target types: x, multiple x, all x in area, 
+events: scheduled or triggered events; could be popups, [dis]appearing obj/actor/terrain, almost anything
+light: levels per grid; initially ambient and light source radius
+stores
+
+bump - water source to drink, altar to pray, craftsman to hire/build, locked door to crash?
 craftsmen to build things from simpler items
 enchanters to enchant things for you
 fronts with milestones/consequences

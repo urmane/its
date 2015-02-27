@@ -24,6 +24,9 @@ newAI("its_target_simple", function(self)
         if act and self:canSee(act,true,100) and self:reactionToward(act) < 0 and not act.dead then
             self:setTarget(act)
             self:check("on_acquire_target", act)
+            if self.pursuit_speed then
+                self.global_speed = self.pursuit_speed
+            end
             return true
         end
     end

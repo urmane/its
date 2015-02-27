@@ -61,7 +61,13 @@ function _M:act()
 
 	
 	-- Compute FOV, if needed
-	self:computeFOV(self.sight or 20)
+    if self.move_dir then
+        -- Note that we are equating sight angle and lighting angle, if any
+        -- Otherwise assume any actor with a move_dir has directional sight
+	    self:computeFOVBeam(self.sight or 20, self.move_dir, self.lite_angle or 45)
+    else
+	    self:computeFOV(self.sight or 20)
+    end
 
 	-- Let the AI think .... beware of Shub !
 	-- If AI did nothing, use energy anyway
