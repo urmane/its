@@ -1,10 +1,10 @@
-newEntity{ define_as = "BASE_STORE",
-    type = "store", subtype="store",
-    identified=true,
-    display = '1',
-    knownBy = function() return true end,
-    triggered = function() end,
-    is_store = true,
-    z = 18,
-    _noalpha = true,
+newEntity{
+	define_as = "FENCE",
+	name="Pawn Shop",
+	subtype="fence",
+	display='1', color=colors.LIGHT_RED,
+	store = {
+    	purse = 100,
+    	--filters = {},
+	},
 }

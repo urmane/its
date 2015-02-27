@@ -85,9 +85,9 @@ function resolvers.calc.store(t, e)
         end
         return true
     end
-    --e.store = game:getStore(t)
-    --e.store.faction = e.store_faction
---  print("[STORE] created for entity", t, e, e.name)
+    e.store = game:getStore(t)
+    e.store.faction = e.store_faction
+    print("[STORE] created for entity", t, e, e.name)
 
     -- Delete the origin field
     return nil

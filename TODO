@@ -144,7 +144,9 @@ add lockpick gui (remember Policy)
     end
 
 IDEAS (randomly organized):
-
+----------
+Interaction types and possibilities:
+types of things, things to do:
 stats: innate ratings
 talents: abilities
 terrain: types
@@ -157,7 +159,7 @@ effect targets: actor, object, terrain; target types: x, multiple x, all x in ar
 events: scheduled or triggered events; could be popups, [dis]appearing obj/actor/terrain, almost anything
 light: levels per grid; initially ambient and light source radius
 stores
-
+----------------
 bump - water source to drink, altar to pray, craftsman to hire/build, locked door to crash?
 craftsmen to build things from simpler items
 enchanters to enchant things for you

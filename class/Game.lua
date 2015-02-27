@@ -47,6 +47,7 @@ local Tooltip = require "engine.Tooltip"
 local BigNews = require "mod.class.BigNews"
 local Calendar = require "mod.class.Calendar"
 local GameState = require "mod.class.GameState"
+local Store = require "mod.class.Store"
 
 local QuitDialog = require "mod.dialogs.Quit"
 
@@ -135,10 +136,10 @@ function _M:newGame()
 	self.creating_player = true
 	local birth = Birther.new(nil, self.player, {"base", "role" }, function()
 		-- For real game start:
-		self:changeLevel(1, "gora-prison")
+		--self:changeLevel(1, "gora-prison")
 		-- For changing during testing: can I make a cmdline option ...
 		--self:changeLevel(4, "gora-prison")
-		--self:changeLevel(1, "gora-town")
+		self:changeLevel(1, "gora-town")
 		--self:changeLevel(1, "gora-graveyard")
 		print("[PLAYER BIRTH] resolve...")
 		self.player:resolve()
@@ -231,6 +232,10 @@ function _M:getSaveDescription()
 		name = self.player.name,
 		description = ([[Exploring level %d of %s.]]):format(self.level.level, self.zone.name),
 	}
+end
+
+function _M:getStore(def)
+	return Store.stores_def[def]:clone()
 end
 
 function _M:leaveLevel(level, lev, old_lev)

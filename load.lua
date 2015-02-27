@@ -28,7 +28,7 @@ local ActorInventory = require "engine.interface.ActorInventory"
 local ActorLevel = require "engine.interface.ActorLevel"
 local ActorTemporaryEffects = require "engine.interface.ActorTemporaryEffects"
 local Birther = require "engine.Birther"
-local Store = require "engine.Store"
+local Store = require "mod.class.Store"
 local WorldAchievements = require "engine.interface.WorldAchievements"
 local Faction = require "engine.Faction"
 
@@ -118,7 +118,7 @@ ActorInventory:defineInventory("FEET", "on my feet", true, "Feet")
 Birther:loadDefinition("/data/birth/descriptors.lua")
 
 -- Stores
--- Store:loadStores("/data/general/stores/basic.lua")
+Store:loadStores("/data/general/stores/basic.lua")
 
 -- Uncomment this for hex mode
 -- core.fov.set_algorithm("hex")
