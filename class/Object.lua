@@ -20,6 +20,15 @@ function _M:init(t, no_default)
     engine.interface.ActorTalents.init(self, t)
 end
 
+function _M:getPrice()
+    return self.cost or 1
+end
+
+-- b is boolean to make it identified to the player
+function _M:identify(b)
+    return true
+end
+
 function _M:canAct()
     if self.power_regen or self.use_talent then return true end
     return false

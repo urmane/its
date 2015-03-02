@@ -26,6 +26,7 @@ return {
 	persistent = "zone",
 	all_lited = true,
 	ambient_light = 100,
+	ambient_music = "prison2.ogg",
 	generator =  {
         	map = {
             		class = "engine.generator.map.Static",
@@ -38,7 +39,9 @@ return {
 		down = "DOWN",
 	},
 	levels = {
-		[1] = { all_lited = true, width = 64, height = 64, generator = { map = { class = "engine.generator.map.Static", map = "zones/gora-town", }, }, },
+		[1] = { all_lited = true, width = 64, height = 64,
+				generator = { map = { class = "engine.generator.map.Static", map = "zones/gora-town", }, },
+				},
 	},
     on_enter = function(lev, old_lev, newzone)
         -- Fountain particles

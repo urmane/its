@@ -87,7 +87,7 @@ end
 -- @return true if allowed to buy
 function _M:tryBuy(who, o, item, nb)
 	local price = self:getObjectPrice(o, "buy")
-	if who.money >= price * nb then
+	if who.gold >= price * nb then
 		return nb, price * nb
 	else
 		Dialog:simplePopup("Not enough gold", "You do not have enough gold!")
@@ -117,8 +117,8 @@ end
 function _M:onBuy(who, o, item, nb, before)
 	if before then return end
 	local price = self:getObjectPrice(o, "buy")
-	if who.money >= price * nb then
-		who:incMoney(- price * nb)
+	if who.gold >= price * nb then
+		who:incGold(- price * nb)
 		game.log("Bought: %s for %0.2f gold.", o:getName{do_color=true}, price * nb)
 	end
 end
@@ -136,7 +136,7 @@ function _M:onSell(who, o, item, nb, before)
 	local price = self:getObjectPrice(o, "sell")
 	if price <= 0 or nb <= 0 then return end
 	price = math.min(price * nb, self.store.purse * nb)
-	who:incMoney(price)
+	who:incGold(price)
 	o:forAllStack(function(so) so.__force_store_forget = true end) -- Make sure the store does forget about it when it restocks
 	game.log("Sold: %s for %0.2f gold.", o:getName{do_color=true}, price)
 end
@@ -184,11 +184,11 @@ end
 -- @return a string (possibly multiline) describing the object
 function _M:descObject(who, what, o)
 	if what == "buy" then
-		local desc = tstring({"font", "bold"}, {"color", "GOLD"}, ("Buy for: %0.2f gold (You have %0.2f gold)"):format(self:getObjectPrice(o, "buy"), who.money), {"font", "normal"}, {"color", "LAST"}, true, true)
+		local desc = tstring({"font", "bold"}, {"color", "GOLD"}, ("Buy for: %0.2f gold (You have %0.2f gold)"):format(self:getObjectPrice(o, "buy"), who.gold), {"font", "normal"}, {"color", "LAST"}, true, true)
 		desc:merge(o:getDesc())
 		return desc
 	else
-		local desc = tstring({"font", "bold"}, {"color", "GOLD"}, ("Sell for: %0.2f gold (You have %0.2f gold)"):format(self:getObjectPrice(o, "sell"), who.money), {"font", "normal"}, {"color", "LAST"}, true, true)
+		local desc = tstring({"font", "bold"}, {"color", "GOLD"}, ("Sell for: %0.2f gold (You have %0.2f gold)"):format(self:getObjectPrice(o, "sell"), who.gold), {"font", "normal"}, {"color", "LAST"}, true, true)
 		desc:merge(o:getDesc())
 		return desc
 	end
@@ -205,7 +205,7 @@ end
 -- @param o the object
 -- @return a string describing the price
 function _M:descObjectPrice(who, what, o)
-	return self:getObjectPrice(o, what), who.money
+	return self:getObjectPrice(o, what), who.gold
 end
 
 --- Actor interacts with the store

@@ -103,6 +103,13 @@ function _M:run()
 	-- Setup the targetting system
 	engine.interface.GameTargeting.init(self)
 
+	-- Things to do at tick end
+	-- Run music
+	self:onTickEnd(function()
+		print("[DBG]ontick end, playing music")
+		self:playMusic()
+	end)
+
 	-- Ok everything is good to go, activate the game in the engine!
 	self:setCurrent()
 
@@ -136,10 +143,10 @@ function _M:newGame()
 	self.creating_player = true
 	local birth = Birther.new(nil, self.player, {"base", "role" }, function()
 		-- For real game start:
-		--self:changeLevel(1, "gora-prison")
+		self:changeLevel(1, "gora-prison")
 		-- For changing during testing: can I make a cmdline option ...
 		--self:changeLevel(4, "gora-prison")
-		self:changeLevel(1, "gora-town")
+		--self:changeLevel(1, "gora-town")
 		--self:changeLevel(1, "gora-graveyard")
 		print("[PLAYER BIRTH] resolve...")
 		self.player:resolve()
@@ -167,6 +174,8 @@ end
 
 function _M:loaded()
 	engine.GameTurnBased.loaded(self)
+	engine.interface.GameMusic.loaded(self)
+    engine.interface.GameSound.loaded(self)
 	Zone:setup{npc_class="mod.class.NPC", grid_class="mod.class.Grid", object_class="mod.class.Object"}
 	Map:setViewerActor(self.player)
 	Map:setViewPort(200, 20, self.w - 200, math.floor(self.h * 0.80) - 20, 48, 48, nil, 22, true)
@@ -261,7 +270,7 @@ function _M:changeLevel(lev, zone)
 
 	if zone and self.player.on_leave_level and not self.player:on_leave_level() then
 		self.logPlayer(self.player, "#LIGHT_RED#You cannot leave!")
-                return
+        return
 	end
 
 	if self.zone then
@@ -269,8 +278,8 @@ function _M:changeLevel(lev, zone)
 	end
 
 	if self.zone and self.zone.on_leave then
-                self.zone:on_leave(lev or -1000, old_lev, zone)
-        end
+        self.zone:on_leave(lev or -1000, old_lev, zone)
+    end
 
 	-- Changing zones
 	if zone then
@@ -286,7 +295,7 @@ function _M:changeLevel(lev, zone)
 			coords = {game.player.x, game.player.y}
 			if not self.zone.entered_from then
 				self.zone.entered_from = {}
-	                end
+	        end
 			print ("[ITS] save departure point x,y ", game.player.x, game.player.y, " to zone ", new_zone_name)
 			self.zone.entered_from[new_zone_name] = coords
 			self.zone:leaveLevel(false, lev, old_lev)
@@ -330,8 +339,27 @@ function _M:changeLevel(lev, zone)
 	end
 
 	if self.zone.on_enter then
-                self.zone.on_enter(lev, old_lev, zone)
+        self.zone.on_enter(lev, old_lev, zone)
+    end
+
+    -- Music, sound, noises, dressing
+    print("[ITS] preparing to do music")
+    local musics = {}
+    local keep_musics = false
+    if self.level.data.ambient_music then
+    	print("[DBG]there is level ambient music")
+        if self.level.data.ambient_music ~= "last" then
+            if type(self.level.data.ambient_music) == "string" then musics[#musics+1] = self.level.data.ambient_music
+            elseif type(self.level.data.ambient_music) == "table" then for i, name in ipairs(self.level.data.ambient_music) do musics[#musics+1] = name end
+            elseif type(self.level.data.ambient_music) == "function" then for i, name in ipairs{self.level.data.ambient_music()} do musics[#musics+1] = name end
+            end
+        elseif self.level.data.ambient_music == "last" then
+            keep_musics = true
         end
+    end
+    if not keep_musics then self:playAndStopMusic(unpack(musics)) end
+    print("[ITS] done prep music")
+
 	self.level:addEntity(self.player)
 end
 

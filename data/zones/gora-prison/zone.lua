@@ -27,6 +27,7 @@ return {
 	decay = {300, 800},
 	persistent = "zone",
 	ambient_light = 20,
+	ambient_music = "prison2.ogg",
 	generator =  {
         	map = {
             		class = "engine.generator.map.Static",

@@ -5,6 +5,8 @@ newEntity{
 	display='1', color=colors.LIGHT_RED,
 	store = {
     	purse = 100,
-    	--filters = {},
+    	filters = {
+    		{type="gem", id=true,},
+    	},
 	},
 }
