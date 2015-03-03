@@ -85,7 +85,41 @@ end
 function _M:worldDirectorAI()
 end
 
+function _M:makeAmbientSounds(level, t)
+    local s = {}
+    level.data.ambient_bg_sounds = s
+
+    for chan, data in pairs(t) do
+        data.name = chan
+        s[#s+1] = data
+    end
+end
+
 function _M:playAmbientSounds(level, s, nb_keyframes)
+    if not nb_keyframes then return end
+    for i = 1, #s do
+        local data = s[i]
+
+        if data._sound then if not data._sound:playing() then data._sound = nil end end
+
+--        if not data._sound and nb_keyframes > 0 and rng.chance(math.ceil(data.chance / nb_keyframes)) then  
+        if not data._sound and nb_keyframes > 0 and rng.chance(data.chance) then  
+        --if not data._sound and nb_keyframes > 0 then
+            local f = rng.table(data.files)
+            data._sound = game:playSound(f)
+            local pos = {x=0,y=0,z=0}
+            if data.random_pos then
+                local a, r = rng.float(0, 2 * math.pi), rng.float(1, data.random_pos.rad or 10)
+                pos.x = math.cos(a) * r
+                pos.y = math.sin(a) * r
+            end
+          print("===playing", data.name, f, data._sound)
+            if data._sound then
+                if data.volume_mod then data._sound:volume(data._sound:volume() * data.volume_mod) end
+                if data.pitch then data._sound:pitch(data.pitch) end
+            end
+        end
+    end
 end
 
 function _M:dayNightCycle()

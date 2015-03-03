@@ -143,11 +143,11 @@ function _M:newGame()
 	self.creating_player = true
 	local birth = Birther.new(nil, self.player, {"base", "role" }, function()
 		-- For real game start:
-		self:changeLevel(1, "gora-prison")
+		--self:changeLevel(1, "gora-prison")
 		-- For changing during testing: can I make a cmdline option ...
 		--self:changeLevel(4, "gora-prison")
 		--self:changeLevel(1, "gora-town")
-		--self:changeLevel(1, "gora-graveyard")
+		self:changeLevel(1, "gora-graveyard")
 		print("[PLAYER BIRTH] resolve...")
 		self.player:resolve()
 		self.player:resolve(nil, true)
@@ -406,9 +406,10 @@ function _M:onTurn()
 	self.level.map:processEffects()
 end
 
-function _M:display(nb_keyframe)
+-- nb_keyframes is the number of normalized frames that have passed since last call
+function _M:display(nb_keyframes)
 	-- If switching resolution, blank everything but the dialog
-	if self.change_res_dialog then engine.GameTurnBased.display(self, nb_keyframe) return end
+	if self.change_res_dialog then engine.GameTurnBased.display(self, nb_keyframes) return end
 
     if self.full_fbo then self.full_fbo:use(true) end
 
@@ -423,7 +424,7 @@ function _M:display(nb_keyframe)
         local map = game.level.map
         if self.fbo then
             self.fbo:use(true)
-            map:display(0, 0, nb_keyframe)
+            map:display(0, 0, nb_keyframes)
             if self.level.data.weather_particle then
                 self.state:displayWeather(self.level, self.level.data.weather_particle, nb_keyframes)
             end
@@ -434,7 +435,7 @@ function _M:display(nb_keyframe)
             self.fbo:toScreen(map.display_x, map.display_y, map.viewport.width, map.viewport.height, self.fbo_shader.shad)
             if self.target then self.target:display() end
         else -- Basic display; no FBOs
-		    self.level.map:display(nil, nil, nb_keyframe)
+		    self.level.map:display(nil, nil, nb_keyframes)
 		    -- Display the targetting system if active
 		    self.target:display()
         end
@@ -443,26 +444,30 @@ function _M:display(nb_keyframe)
 		self.level.map:minimapDisplay(self.w - 200, 20, util.bound(self.player.x - 25, 0, self.level.map.w - 50), util.bound(self.player.y - 25, 0, self.level.map.h - 50), 50, 50, 0.6)
 	end
 
+	-- Play any ambient sounds
+	if self.level and self.level.data and self.level.data.ambient_bg_sounds then
+		self.state:playAmbientSounds(self.level, self.level.data.ambient_bg_sounds, nb_keyframes)
+	end
     if self.level and self.level.map then
-        self.level.map:displayEmotes(nb_keyframe or 1)
+        self.level.map:displayEmotes(nb_keyframes or 1)
     end
 
 	-- We display the player's interface
-	self.player_display:toScreen(nb_keyframe)
-	self.flash:toScreen(nb_keyframe)
+	self.player_display:toScreen(nb_keyframes)
+	self.flash:toScreen(nb_keyframes)
 	self.logdisplay:toScreen()
 	if self.show_npc_list then
 		self.npcs_display:toScreen()
 	else
 		self.hotkeys_display:toScreen()
 	end
-	self.bignews:display(nb_keyframe)
+	self.bignews:display(nb_keyframes)
 	if self.player then self.player.changed = false end
 
 	-- Tooltip is displayed over all else
 	self:targetDisplayTooltip()
 
-	engine.GameTurnBased.display(self, nb_keyframe)
+	engine.GameTurnBased.display(self, nb_keyframes)
 
     if self.full_fbo then
       self.full_fbo:use(false)

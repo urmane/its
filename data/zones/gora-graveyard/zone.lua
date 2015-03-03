@@ -25,6 +25,7 @@ return {
 	decay = {300, 800},
 	persistent = "zone",
 	ambient_light = 40,
+	ambient_music = "creepy-dungeon-ambience.ogg",
 	generator =  {
         	map = {
             		class = "engine.generator.map.Static",

@@ -47,10 +47,17 @@ return {
 	},
 
     post_process = function(l)
+    	if l.level == 1 then
+    		
+    	end
         if l.level == 4 then
-        -- sewer gas, euw
-        game.state:makeWeatherShader(l, "weather_vapours", {move_factor=500000, evolve_factor=100000, color={0, 1, 0, 0.2}, zoom=0.5})
-        end
+        	-- sewer gas, euw
+        	game.state:makeWeatherShader(l, "weather_vapours", {move_factor=500000, evolve_factor=100000, color={0, 1, 0, 0.2}, zoom=0.5})
+        	l.data.ambient_music="ambient-water-drip-echo.ogg"
+    		--game.state:makeAmbientSounds(l, 
+        	--	{drip={ chance=1, volume_mod=0.3, pitch=1.0, files={"ambient/ambient-water-drip-echo"}},
+        	--})
+    	end
     end,
 
 	on_leave = function(lev, old_lev, newzone)
