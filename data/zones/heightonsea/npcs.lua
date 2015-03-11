@@ -24,7 +24,7 @@ newEntity{
     define_as="PRIEST",
     name = "priest", color=colors.WHITE,
     desc = "A priest.",
-    image = "npcs/Nature.png",
+    image = "npcs/unique/Nature.png",
     level_range = {1, 4}, exp_worth = 0, rarity = 1,
     lite = 1, -- required for now, fix class/Actor.lua:canSee()
     ai = "none",
@@ -36,7 +36,7 @@ newEntity{
     define_as="NATURE",
     name = "woman", color=colors.WHITE,
     desc = "A voluptuous woman.",
-    image = "npcs/Nature.png",
+    image = "npcs/unique/Nature.png",
     level_range = {1, 4}, exp_worth = 0, rarity = 1,
     lite = 1, -- required for now, fix class/Actor.lua:canSee()
     ai = "none",

@@ -35,8 +35,6 @@ newBirthDescriptor{
 		"Just trying to get by.",
 	},
 	stats = { str=1, rct=3, chr=1, },
-	sight = 7,
-    sight_min = 25,
     move_others = true,
 	talents_types = {
 	        ["thief/mechanic"]={true, 0.3},
@@ -50,8 +48,10 @@ newBirthDescriptor{
 	},
 	-- default load-out:
 	copy = {
-	resolvers.equipbirth{ id=true,
+	    sight = 7,
+        sight_min = 20,
+	    resolvers.equipbirth{ id=true,
 	{type="tool", subtype="lockpick", name="makeshift lockpick", autoreq=true, ego_chance=-1000, ego_chance=-1000},
-	},
+	    },
    	},
 }

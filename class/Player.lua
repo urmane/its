@@ -204,27 +204,27 @@ function _M:playerFOV()
 
 	-- make other static and actor's lites visible
 	-- from TOME module
-        local uid, e = next(game.level.entities)
-        while uid do
-        	if e ~= self and e.lite and e.lite > 0 and e.computeFOV then
-                if e.move_dir and e.lite_angle then
-                    -- If lite_angle is set, they have a non-circular lite
-                    -- Move_dir must also be set - if it's not, they have a circular lite but angled FOV
-                    e:computeFOVBeam(e.lite, e.move_dir, e.lite_angle, "block_sight",
-                                     function(x, y, dx, dy, sqdist)
-                                         game.level.map:applyExtraLite(x, y, fovdist[sqdist])
-                                     end,
-                                     true, true)
-                else
-                    e:computeFOV(e.lite, "block_sight",
+    local uid, e = next(game.level.entities)
+    while uid do
+    	if e ~= self and e.lite and e.lite > 0 and e.computeFOV then
+            if e.move_dir and e.lite_angle then
+                -- If lite_angle is set, they have a non-circular lite
+                -- Move_dir must also be set - if it's not, they have a circular lite but angled FOV
+                e:computeFOVBeam(e.lite, e.move_dir, e.lite_angle, "block_sight",
                                  function(x, y, dx, dy, sqdist)
                                      game.level.map:applyExtraLite(x, y, fovdist[sqdist])
                                  end,
                                  true, true)
-                end
+            else
+                e:computeFOV(e.lite, "block_sight",
+                             function(x, y, dx, dy, sqdist)
+                                 game.level.map:applyExtraLite(x, y, fovdist[sqdist])
+                             end,
+                             true, true)
             end
-            uid, e = next(game.level.entities, uid)
         end
+        uid, e = next(game.level.entities, uid)
+    end
 
 	-- ambient light is a level property, and lets you see a small number of grids around you if you're not holding a light.
 	-- right now this is player-only - consider moving all sense code up to Actor
@@ -236,8 +236,8 @@ function _M:playerFOV()
             range = game.level.data.ambient_light/10
         end
 		--self:computeFOV(game.level.data.ambient_light/10, "block_sight", function(x, y, dx, dy, sqdist) game.level.map.remembers(x, y, true) end, true, true, true)
-		self:computeFOV(range, "block_sight", function(x, y, dx, dy, sqdist) game.level.map.remembers(x, y, true) end, true, true, true)
-	end
+        self:computeFOV(range, "block_sight", function(x, y, dx, dy, sqdist) game.level.map.remembers(x, y, true) end, true, true, true)
+ 	end
 
 end
 

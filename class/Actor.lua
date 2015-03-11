@@ -264,6 +264,9 @@ end
 -- Check for telepathy, invisibility, stealth, ...
 function _M:canSee(actor, def, def_pct)
 	if not actor then return false, 0 end
+	if self.player then
+		print("checking against actor ", actor.name or "none".." uid "..actor.uid)
+	end
 
     -- magic:
     if self.player and type(def) == "nil" and actor and actor._mo then
@@ -279,10 +282,28 @@ function _M:canSee(actor, def, def_pct)
 	-- note that this means light radius != sight distance!
 	-- Can always see self
 	if actor == self then return true, 100 end
+
 	-- Is he too far away for my ability to see?
-	if not (self.x and self.y and actor.x and actor.y) then return false, 0 end
+	-- NB: for the player, self.x/y might be "none" at level create!
+	if not (self.x and self.y and actor.x and actor.y) then
+		if self.player then
+			print("reason1 player cannot see "..actor.name.." uid "..actor.uid)
+			print("   self.x is ", self.x or "none")
+			print("   self.x is ", self.x or "none")
+			print("   self.x is ", self.x or "none")
+			print("   self.x is ", self.x or "none")
+		end
+		return false, 0
+	end
 	local dist = core.fov.distance(self.x, self.y, actor.x, actor.y)
-	if self.sight and self.sight < dist then return false, 0 end
+	if self.sight and self.sight < dist then
+		if self.player then
+			print("reason2 player cannot see "..actor.name.." uid "..actor.uid)
+			print("   self.sight is"..self.sight)
+			print("   dist is"..dist)
+		end
+		return false, 0
+	end
 
 	-- How well lit is the target, and can I perceive that?
 	local light_level = 0
@@ -301,6 +322,10 @@ function _M:canSee(actor, def, def_pct)
 	end
 	-- compare my minimal perception with the absolute light level at target
 	if self.sight_min and self.sight_min > light_level then
+		if self.player then
+			print("reason3 player cannot see "..actor.name.." uid "..actor.uid)
+			print("   self.sight_min is"..self.sight_min)
+		end
 		return false, 0
 	end
 
@@ -313,7 +338,7 @@ function _M:canSee(actor, def, def_pct)
         end
 	end
 ]]--
-
+	if self.player then print(self.name.." can see "..actor.name.." uid "..actor.uid) end
 	return true, 100
 
 --[[

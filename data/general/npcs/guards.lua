@@ -36,7 +36,7 @@ newEntity{
 	color=colors.WHITE,
 	level_range = {1,3}, exp_worth = 1, rarity = 1,
 	ai = "prisoner", -- ai_state = { talent_in=3, },
-	lite = 0,
+	lite = 1,
 	sight = 3,
 	sight_min = 10, -- prisoners see better than guards
 	max_life = 1,

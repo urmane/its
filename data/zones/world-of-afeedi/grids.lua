@@ -131,6 +131,18 @@ newEntity{
 }
 
 newEntity{
+    define_as = "MURMON",
+    type = "floor", subtype = "grass",
+    always_remember = true,
+    show_tooltip=true,
+    name="Murmon",
+    display='M', color=colors.VIOLET,
+    image = "terrain/world/dungeon.png",
+    notice = true,
+    change_level=1, change_zone="murmon",
+}
+
+newEntity{
     define_as = "CASTLE_ZALA",
     type = "floor", subtype = "grass",
     always_remember = true,

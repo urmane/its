@@ -12,7 +12,7 @@ defineTile(">", "DOWN")
 defineTile("G", "GORA")
 defineTile("H", "HEIGHTONSEA")
 defineTile("Z", "CASTLE_ZALA")
-defineTile("M", "Murmon")
+defineTile("M", "MURMON")
 
 return [[~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

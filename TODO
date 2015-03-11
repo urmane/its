@@ -1,7 +1,3 @@
-Policy: the rogue is someone who does things not supposed to be done
-
-defineTile = function(char, grid, obj, actor, trap, status, spot)
-
 High level
 finalize the overall storyline, and sketch out the major bits needed, do the end (simplified end-to-end) then insert (then redo this todo)
 	prison->sewer->graveyard->town->worldmap
@@ -12,91 +8,88 @@ finalize the overall storyline, and sketch out the major bits needed, do the end
 	large-scale famous acts (ie steal X's thing)
 	overall has to be save the world
 
-World/general
-Specific:
-	worldmap, underworld, undersea - all "worldmaps", each with zones (that might connect to >1 worldmap)
-	make a config settings?
-	done-place init into random geography
-	done - place cities (some named and roughly placed, some completely random)
-	done - place mts (noblock, or add'l cost for mt moving) - single noise fn with elevation more consistent
-	done - place ice at pole
-	done - remainder is plains
-	done - place forests
-	augment initial static map with additional locations - story phase one
-	At some point, the alarm sounds and more guards appear, searching the town
-	done - place volano exit place (then change terrains back to blocking)
-	done - add player stats (use LA?) and update display
-	done - add talent/trees
-	done - give player starting talents by class
-	give player starting equip by class
-	add lots of weapons/armor, make sure they're leveled somehow
-	add lots of monsters, look for a way to organize(genus/species/etc)/and conf-file/table them for easy input
-	done - add gems
-	done - find a way to add variable coins
-	done(sorta) - add randomly priced-ID'd jewelry/art ...
-	add stores to sell treasures
-	build out random towns, story phase two
-	create and place any additional static maps (eg islands) - story phase three
-	create mirror image world - story opt phase
+World/General:
+worldmap, underworld, undersea - all "worldmaps", each with zones (that might connect to >1 worldmap)
+make a config settings?
+done-place init into random geography
+done - place cities (some named and roughly placed, some completely random)
+done - place mts (noblock, or add'l cost for mt moving) - single noise fn with elevation more consistent
+done - place ice at pole
+done - remainder is plains
+done - place forests
+augment initial static map with additional locations - story phase one
+At some point, the alarm sounds and more guards appear, searching the town
+done - place volano exit place (then change terrains back to blocking)
+done - add player stats (use LA?) and update display
+done - add talent/trees
+done - give player starting talents by class
+give player starting equip by class
+add lots of weapons/armor, make sure they're leveled somehow
+add lots of monsters, look for a way to organize(genus/species/etc)/and conf-file/table them for easy input
+done - add gems
+done - find a way to add variable coins
+done(sorta) - add randomly priced-ID'd jewelry/art ...
+done(fences only)add stores to sell treasures
+build out random towns, story phase two
+create and place any additional static maps (eg islands) - story phase three
+create mirror image world - story opt phase
 
-Main storyline
-	init
-		done - escape from prison: prison->sewer->graveyard->worldmap
-		init set of cities/dungeons on starting island
-		gain some skills
-	Nature selects you as champion for this world
-	Gain the power of the elements
-		fire - open path to volcano, with quest therein
-	Defeat the minions
-		undead(convert) - several tombs, several std kill ways (destroy the body, sunlight, et al.)
-		fear - monsters of various powers, all uniques
-		greed - lots of (only) money, bribing, wierd
-		force - warriors with strong armor/weapons, std military-oriented
-	Defeat the big bad
-		big bad escapes into Castle Kurtok; chase him through rando zones, maybe across the world
-	Optionals:
-		Famous locations/bosses to do tasks at; steal an X, do the thing ...
+Main Storyline:
+init
+	done - escape from prison: prison->sewer->graveyard->worldmap
+	init set of cities/dungeons on starting island
+	gain some skills
+Nature selects you as champion for this world
+Gain the power of the elements
+	Murmon, earth
+	Tomb, allows access to volcano
+	Fire, volcano, then underworld, access to world
+	allows access to Gora Graveyard 2, defeat the undead/earth elemental X
+	water, mirror image, free travel
+	gora sewers defeat the water x
+Defeat the minions
+	undead(convert) - several tombs, several std kill ways (destroy the body, sunlight, et al.)
+	fear - monsters of various powers, all uniques
+	greed - lots of (only) money, bribing, wierd
+	force - warriors with strong armor/weapons, std military-oriented
+Defeat the big bad
+	big bad escapes into Castle Kurtok; chase him through rando zones, maybe across the world
+Optionals:
+	Famous locations/bosses to do tasks at; steal an X, do the thing ...
 
-Story forge:
-supernatural aid - the monster, raw unthinking destruction, chaos made flesh, bogeyman, ripper, source of fear and nightmare
-threshold - disguise, the mayor is a demon
-the guardian - the burden - a friend in the prison, asking for support almost certain to end in disaster
-	macguffin necklace, make the dialog autoappear, make player auto take it, make "son" a gravestone
-	old man is the patron at the end
-the guide - madness, clear thinking breaks down
-the initiation - wrath, vengeance cannot be denied, the offenders must pay
-the road of trials - courage, emotinal fortitude
-temptation - lust, unbridled desire
-the abyss - misfortune
-apotheosis - defeat, failure to achieve the goal
-meeting with the goddess - creation, something brought into existence where before thee was nothing
-atonement with the father - contentment, satisfied with current wealth, more is not necessary
-the ultimate boon - tranquility absence of conflict, peaceful and still.  the calm before the storm ...
-price of the boon - balance, all force are evenly matched or cancelled by opposing forces
-refusal of the return - health
-the magic flight - gnosis, firm understanding of good and evil allows a choice
-rescue from without - prodigy, golden child love and admired by all
-return across the threshold - obsession, fixated on one person
-master of two worlds - confession, secret must be revealed
-freedom to live - teh patron, material assistance
-end Story Forge
+Sounds to record:
+done - understand playSoundNear - appears to be for playing sounds at !player-location
+guards: random "Hum", "Hah", sigh, whistle
+guards: on_aware "Hey!", "You!", "Stop!", "Freeze!"
+zombie: random "rrr"  "Rrrrr", etc
+zombie: on_aware "RRR!"
+torch,brazier: random, sparks?
 
+NPCs:
 
-NPCs
+Features:
+done - directional cone lights / LOS, to allow sneak up behind
+done - speed changes by ai state
+lockpick gui
+endlessly hunted by "guards"
 
-Features
-	done - directional cone lights / visual, to allow sneak up behind
-	speed changes by ai state
-	lockpick gui
-	endlessly hunted by "guards"
-Quests
-	starting quest - get out of the prison
-	side quest - take-my-macguffin in the sewers - macguffins cannot disappear
-	side quest - take-up-my sword in the prison, get the key from the secret room
-	side quests - collect gold/valuables/treasures, some big ones
-	side quest - assassinate
+Quests:
+done - starting quest - get out of the prison
+done: side quest - take-my-macguffin in the sewers - macguffins cannot disappear -> elemental quest
+done: assign elemental quests
+earth quest - Murmon
+earth-subsequent - after earth, return to Gora Graveyard to defeat the undead/earth elemental/whatever
+tomb dungeon - allows access to volcano
+fire quest - volcano, allows access to world
+water quest - undersea mirror image map
+water-subsequent - after water, return to Gora Sewers to defeat the x
+air quest - 
+side quest - take-up-my sword in the prison, get the key from the secret room
+side quests - collect gold/valuables/treasures, some big ones
+side quest - assassinate
 
 Talents
+done: hide
 	move silent/stealth/etc (see what's in engine)
 		speed while sustained
 	subdue, melee/ranged (includes remote, like sleeping powder/arrows)
@@ -143,70 +136,15 @@ add lockpick gui (remember Policy)
         self.bg_texture, self.bg_texture_w, self.bg_texture_h = self.bg_surface:glTexture()
     end
 
-IDEAS (randomly organized):
-----------
-Interaction types and possibilities:
-types of things, things to do:
-stats: innate ratings
-talents: abilities
-terrain: types
-	how to: interact with non-terrain perm objs (like levers) - engine design, must be terrain type and "on_bump"
-trap: special effect triggered by movement onto terrain (part of engine) - terrain type and "on_move"
-actions: move, bump(attack/talk), use talent, pickup/drop/throw/use object,
-effect types: damage, buff, debuff, force/allow action, destroy obj/actor, create obj/actor (opt. consume x,y,z),
-transform obj/actor/terrain
-effect targets: actor, object, terrain; target types: x, multiple x, all x in area, 
-events: scheduled or triggered events; could be popups, [dis]appearing obj/actor/terrain, almost anything
-light: levels per grid; initially ambient and light source radius
-stores
-----------------
-bump - water source to drink, altar to pray, craftsman to hire/build, locked door to crash?
-craftsmen to build things from simpler items
-enchanters to enchant things for you
-fronts with milestones/consequences
-have lock+unlocked=locked door
-experience for: lock/unlock, pickpocket, disguise, on level-exit foreach actor that didn't see you
-add Disguise talent - pass as X
-add pickpocket talent - range/invisibleness, target w/in range, turn one jump to target, turn if !seen autojump back w/ loot (carefully look at when they move)
-stub added: a sewers/cavern/underwater level
-stub added: the graveyard levels
-stub in some terrain content to graveyard levels, with an eye toward revisiting it (need keys, or high lockpick skill)
-put a portal back from gora-graveyard3 to gora-prison-sewer, but appearance conditional on quest
-worldmap, above plus each grid enterable (random zones, some with params (ie town set on worldmap, generate on enter))
-worlmap, stub out locations (towns, cities, fortresses, keeps, towers, beast lairs, faction encampments, bandits ...)
-start player with the crappiest lockpick
-add content to sewer level, with an eye toward revisiting it
-change/consolidate a colorscheme for grids
-allow closing doors
-add prisoners (dumb first)
-add random prisoner chats
-add / give guards directional lights
-(some) corpses stick around, NPCs can recognize corpse and its faction for AI, kills affect rep/faction reactions
-ability to move corpses
-add pickpocket talent from X grids away (directional lights are a prereq, yes? no)
-pick up quests on the way (i'm dying take my macguffin, take up my sword(mayor demon))
-quest 1: Take down corrupt mayor/actually a "demon", who's part of a larger plot to, say, enslave all the <race>
-actions affect later gameplay - what taken, how many killed vs knocked out, etc - eg opening cell doors
-Add in light levels, lights fade with distance to limit, gfx or gfx effects for various levels
-Make gold integers, not .02d
-Make gems and valuables, name with "(100gp)" or "(~100gp)"
-Need a fence to sell stolen
-A Discovery of Witches: unknowingly let Witches loose, nice pictures
-rotworms that chase
-instruments - flutes, lutes, violins
-armory with several nonmagical copies of all armor types
-
-mod the player resources / stats / thief talents needed for game
-resources: air
-stats: stealth?  Dex, str, con, chr, int (for lore? player provides int, call it something else)
-attrs: reputation
-talents: lockpick (tool use), pickpocket, hide, move silent, knockout, find mechanisms/disarm traps, climb, shoot, force lock
-backstab(bonus on attacks if target unaware, includes shoot), poison weapon (temporary), poison target (?)
-flash bombs (disablers), noisemakers (distractors), smoke bomb (both), disguise, fake death?
-resist charms, confuse, poison, etc;, Evade, Dodge, Tumble, Leap, appraise, Negotiate, bluff
-unarmed combat (weapons make noise, implement noise) - silencing strike, sleeper hold, etc
-equipments: normal and special arrows, poison, climbing equip (rope, claws, maybe sideways view)
-
+done: the graveyard levels
+done - start player with the crappiest lockpick
+done - add prisoners (dumb first)
+done - add random prisoner chats
+done - add / give guards directional lights
+done - Add in light levels, lights fade with distance to limit, gfx or gfx effects for various levels
+done - Make gold integers, not .02d
+halfdone - Make gems and valuables, name with "(100gp)" or "(~100gp)"
+done-ish - Need a fence to sell stolen
 done: put in several more dungeon levels
 done: add in lockpicks / thieves tools as objects
 done: test/add ability to equip them

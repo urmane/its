@@ -25,45 +25,54 @@ return {
 	decay = {300, 800},
 	persistent = "zone",
 	ambient_light = 60,
-    width = 40, height = 40,
+    width = 16, height = 16,
 	generator =  {
         map = {
             class = "engine.generator.map.Maze",
-            up = "OLD_FLOOR",
-            down = "OLD_FLOOR",
-            wall = "OLD_WALL",
-            floor = "OLD_FLOOR",
-            widen_w = 3, widen_h = 3,
+            up = "UP",
+            down = "DOWN",
+            wall = "WALL",
+            floor = "FLOOR",
+            --widen_w = 3, widen_h = 3,
         },
-		object = {
-			class = "engine.generator.object.Random",
-			nb_object = {20, 30},
-		},
-        actor = {
-            class = "mod.class.generator.actor.Random",
-            nb_npc = {35, 40},
-        },
-        trap = {
-            class = "engine.generator.trap.Random",
-            nb_trap = {0, 0},
-        },
+		--object = {
+		--	class = "engine.generator.object.Random",
+		--	nb_object = {20, 30},
+		--},
+        --actor = {
+        --    class = "mod.class.generator.actor.Random",
+        --    nb_npc = {35, 40},
+        --},
+        --trap = {
+        --    class = "engine.generator.trap.Random",
+        --    nb_trap = {0, 0},
+        --},
 		up = "UP",
 		down = "DOWN",
 	},
 	levels = {
 		[1] = {
             generator = { map = {
+                width = 16, height = 16,
                 up = "TO_AFEEDI",
+                down = "DOWN",
+                wall = "WALL",
+                floor = "FLOOR",
             }, },
         },
-        -- code from tome maze:
---        [4] = {
---            no_level_connectivity = true,
---            generator = { map = {
---                force_last_stair = true,
---                down = "QUICK_EXIT",
---            }, },
---        },
+        [2] = {
+            generator = { map = {
+                width = 48, height = 48,
+                --up = "TO_AFEEDI",
+            }, },
+        },
+        [3] = {
+            generator = { map = {
+                width = 64, height = 64,
+                widen_w = 3, widen_h = 3,
+                --up = "TO_AFEEDI",
+            }, },
+        },
 	},
 --	on_leave = function(lev, old_lev, newzone)
 --                if lev.level == 1 then

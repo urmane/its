@@ -26,7 +26,6 @@ return {
 	persistent = "zone",
 	all_lited = true,
 	ambient_light = 100,
-	ambient_music = "prison2.ogg",
 	generator =  {
         	map = {
             		class = "engine.generator.map.Static",
