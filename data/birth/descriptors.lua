@@ -51,7 +51,7 @@ newBirthDescriptor{
 	    sight = 7,
         sight_min = 20,
 	    resolvers.equipbirth{ id=true,
-	{type="tool", subtype="lockpick", name="makeshift lockpick", autoreq=true, ego_chance=-1000, ego_chance=-1000},
+	{type="tool", subtype="lockpick", name="makeshift lockpick", autoreq=true, ego_chance=-1000},
 	    },
    	},
 }

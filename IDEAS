@@ -1,5 +1,18 @@
 Policy: the rogue is someone who does things not supposed to be done
 
+Thief: a thief steals things
+get into places (means many types of barriers, secrets, alternates, tools)
+not combat-heavy (means many/most combats not winnable, and effects pose challenges outside combat proper)
+alternate combat - knockouts (and move/hide bodies, means enemies notice bodies), distract, gas/drug
+avoid detection, and escape (means many ways to be detected, and ways to change/avoid/mitigate)
+different ways/manners to move/hide/sneak/cover tracks
+steal (or plant) items (means many types of things to take, hold, sell, deliver, fence, spend, etc.)
+information (means have a specific "information" panel in the UI - treat (some) info as items)
+information can be provided to zero or more people, to different effect
+lots of secrets, hidden places/paths/items (means lots of search/conceal/hidden things)
+bypass security (means lots of ways to protect valuables, and lots of tools to use on those protections)
+
+
 High level
 finalize the overall storyline, and sketch out the major bits needed, do the end (simplified end-to-end) then insert (then redo this todo)
 	prison->sewer->graveyard->town->worldmap
@@ -9,6 +22,12 @@ finalize the overall storyline, and sketch out the major bits needed, do the end
 	npc chats -> quests and/or reputation / reaction changes, re-emprison (lose equip), etc
 	large-scale famous acts (ie steal X's thing)
 	overall has to be save the world
+
+AI
+state, action, things that change state
+animals: normal-stay, normal-wander, normal-patrol, fight-stay, fight-chase, flee-only, flee-fight
+human: animal plus normal-patrol, investigate (fast-move to target-grid, then slow-tight-wander about it; timeout to return to normal)
+current-state,event,new-state
 
 Story forge:
 supernatural aid - the monster, raw unthinking destruction, chaos made flesh, bogeyman, ripper, source of fear and nightmare
