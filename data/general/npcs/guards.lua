@@ -80,3 +80,19 @@ newEntity{ base = "BASE_GUARD",
 	combat = { dam=2 },
 }
 
+newEntity{ base = "BASE_GUARD",
+	name = "eliteprisonguard", color=colors.BLUE,
+	level_range = {2, 5}, exp_worth = 2,
+	rarity = 4,
+	lite = 5,		-- radius of the light this actor puts out
+        lite_flicker = 90,      -- percent chance per turn to mod lite
+        lite_min = 3,           -- min radius
+        lite_max = 5,           -- max radius
+	sight = 5,		-- absolute limit of sight in grids
+	sight_min = 20,	-- minimum light level this actor can distinguish
+	move_dir = 2,	-- initial move direction, they'll rotate clockwise 90 degrees for now
+	lite_angle = 90,-- angle of light projected, in direction move_dir
+	max_life = resolvers.rngavg(5,9),
+	combat = { dam=2 },
+}
+
