@@ -50,12 +50,17 @@ function _M:block_move(x, y, e, act, couldpass)
 	end
 
     -- Check for bump effects
+    -- on_block_bump is a function defined on the entity
+    -- on_block_bump_msg is an attr defined on the grid (for uniques) and on the entity (for generics)
     if e and act and self.does_block_move and e.player and self.on_block_bump then
         self.on_block_bump(e)
+        -- do the general one first
         if self.on_block_bump_msg then
-            local title = self.on_block_bump_msg_title or "Message"
-            --game.logSeen({x=x, y=y}, "%s", self.on_block_bump_msg)
-            Dialog:simplePopup(title, self.on_block_bump_msg)
+        	game.log("%s", self.on_block_bump_msg)
+        end
+        -- if there's a unique do that, too
+        if game.level.map.attrs(x, y, "on_block_bump_msg") then
+        	game.log("%s", game.level.map.attrs(x, y, "on_block_bump_msg"))
         end
     end
 
@@ -63,8 +68,11 @@ function _M:block_move(x, y, e, act, couldpass)
     if e and act and self.does_block_move and e.player and game.level.map.attrs(x, y, "on_block_change") then
         local ng = game.zone:makeEntityByName(game.level, "terrain", game.level.map.attrs(x, y, "on_block_change"))
         if ng then
+            if game.level.map.attrs(x, y, "on_block_change_msg") then
+				--game.logSeen({x=x, y=y}, "%s", game.level.map.attrs(x, y, "on_block_bump_msg"))
+				game.log("%s", game.level.map.attrs(x, y, "on_block_change_msg"))
+	    	end
             game.zone:addEntity(game.level, ng, "terrain", x, y)
-            if game.level.map.attrs(x, y, "on_block_change_msg") then game.logSeen({x=x, y=y}, "%s", game.level.map.attrs(x, y, "on_block_bump_msg")) end
             game.level.map.attrs(x, y, "on_block_change", false)
             game.level.map.attrs(x, y, "on_block_change_msg", false)
         end

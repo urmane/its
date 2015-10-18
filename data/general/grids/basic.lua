@@ -57,6 +57,9 @@ newEntity{
 	display = '#', color_r=255, color_g=255, color_b=255, back_color=colors.GREY,
 	always_remember = true,
 	does_block_move = true,
+	on_block_bump = function(e)
+	end,
+	on_block_bump_msg = "You bump the wall.",
 	can_pass = {pass_wall=1},
 	block_sight = true,
 	air_level = -20,

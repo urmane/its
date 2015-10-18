@@ -55,6 +55,7 @@ end Story Forge
 
 
 Interaction types and possibilities:
+on step, noise (trigger?) in radius set awareness
 types of things, things to do:
 stats: innate ratings
 talents: abilities
