@@ -40,10 +40,11 @@ return {
 		down = "DOWN",
 	},
 	levels = {
-		[1] = { width = 70, height = 70, generator = { map = { class = "engine.generator.map.Static", map = "zones/gora-prison1", }, }, },
-		[2] = { width = 70, height = 70, generator = { map = { class = "engine.generator.map.Static", map = "zones/gora-prison2", }, }, },
-		[3] = { width = 70, height = 70, generator = { map = { class = "engine.generator.map.Static", map = "zones/gora-prison3", }, }, },
-		[4] = { width = 40, height = 40, generator = { map = { class = "engine.generator.map.Static", map = "zones/gora-prison-sewers", }, }, },
+        --[1] = { width = 70, height = 70, generator = { map = { class = "engine.generator.map.Static", map = "zones/gora-prison1", }, }, },
+		[1] = { width = 70, height = 70, generator = { map = { map = "zones/gora-prison1", }, }, },
+		[2] = { width = 70, height = 70, generator = { map = { map = "zones/gora-prison2", }, }, },
+		[3] = { width = 70, height = 70, generator = { map = { map = "zones/gora-prison3", }, }, },
+		[4] = { width = 40, height = 40, generator = { map = { map = "zones/gora-prison-sewers", }, }, },
 	},
 
     post_process = function(l)
