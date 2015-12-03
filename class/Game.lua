@@ -316,7 +316,6 @@ function _M:changeLevel(lev, zone)
 	end
 
 	-- Generate new level
-	print ("[DEBUG]going from lev", lev, " from old_lev", old_lev)
 	self.zone:getLevel(self, lev, old_lev)
 
 	-- Move player to correct spot

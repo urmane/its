@@ -17,7 +17,7 @@
 -- Nicolas Casalini "DarkGod"
 -- darkgod@te4.org
 
-local Dialog = require "engine.ui.Dialog"
+--local Dialog = require "engine.ui.Dialog"
 
 return {
 	name = "Gora Prison",
@@ -29,9 +29,9 @@ return {
 	ambient_light = 20,
 	ambient_music = "prison2.ogg",
 	generator =  {
-        	map = {
-            		class = "engine.generator.map.Static",
-        	},
+        map = {
+            class = "engine.generator.map.Static",
+        },
 		object = {
 			class = "engine.generator.object.Random",
 			nb_object = {20, 30},
@@ -41,16 +41,13 @@ return {
 	},
 	levels = {
         --[1] = { width = 70, height = 70, generator = { map = { class = "engine.generator.map.Static", map = "zones/gora-prison1", }, }, },
-		[1] = { width = 70, height = 70, generator = { map = { map = "zones/gora-prison1", }, }, },
-		[2] = { width = 70, height = 70, generator = { map = { map = "zones/gora-prison2", }, }, },
-		[3] = { width = 70, height = 70, generator = { map = { map = "zones/gora-prison3", }, }, },
+		[1] = { width = 64, height = 55, generator = { map = { map = "zones/gora-prison1", }, }, },
+		[2] = { width = 64, height = 55, generator = { map = { map = "zones/gora-prison2", }, }, },
+		[3] = { width = 64, height = 55, generator = { map = { map = "zones/gora-prison3", }, }, },
 		[4] = { width = 40, height = 40, generator = { map = { map = "zones/gora-prison-sewers", }, }, },
 	},
 
     post_process = function(l)
-    	if l.level == 1 then
-    		
-    	end
         if l.level == 4 then
         	-- sewer gas, euw
         	game.state:makeWeatherShader(l, "weather_vapours", {move_factor=500000, evolve_factor=100000, color={0, 1, 0, 0.2}, zoom=0.5})
