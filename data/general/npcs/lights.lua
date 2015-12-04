@@ -26,6 +26,8 @@ newEntity{
 	desc = [[A stationary light.]],
 	ai = "none",
     faction = "neutral",
+	--never_move = 1, -- never_move is more for a Player temp stat
+	cant_be_moved = 1,
 	stats = { str=5, dex=5, con=5 },
 	combat_armor = 0,
 }

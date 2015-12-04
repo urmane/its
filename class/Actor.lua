@@ -265,7 +265,7 @@ end
 function _M:canSee(actor, def, def_pct)
 	if not actor then return false, 0 end
 	if self.player then
-		print("checking against actor ", actor.name or "none".." uid "..actor.uid)
+		print("[DBG-canSee]checking against actor ", actor.name or "none".." uid "..actor.uid)
 	end
 
     -- magic:
@@ -287,20 +287,20 @@ function _M:canSee(actor, def, def_pct)
 	-- NB: for the player, self.x/y might be "none" at level create!
 	if not (self.x and self.y and actor.x and actor.y) then
 		if self.player then
-			print("reason1 player cannot see "..actor.name.." uid "..actor.uid)
-			print("   self.x is ", self.x or "none")
-			print("   self.x is ", self.x or "none")
-			print("   self.x is ", self.x or "none")
-			print("   self.x is ", self.x or "none")
+			print("[DBG-canSee]reason1 player cannot see "..actor.name.." uid "..actor.uid)
+			print("[DBG-canSee]   self.x is ", self.x or "none")
+			print("[DBG-canSee]   self.x is ", self.x or "none")
+			print("[DBG-canSee]   self.x is ", self.x or "none")
+			print("[DBG-canSee]   self.x is ", self.x or "none")
 		end
 		return false, 0
 	end
 	local dist = core.fov.distance(self.x, self.y, actor.x, actor.y)
 	if self.sight and self.sight < dist then
 		if self.player then
-			print("reason2 player cannot see "..actor.name.." uid "..actor.uid)
-			print("   self.sight is"..self.sight)
-			print("   dist is"..dist)
+			print("[DBG-canSee]reason2 player cannot see "..actor.name.." uid "..actor.uid)
+			print("[DBG-canSee]   self.sight is "..self.sight)
+			print("[DBG-canSee]   dist is "..dist)
 		end
 		return false, 0
 	end

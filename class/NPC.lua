@@ -110,7 +110,11 @@ end
 -- @param cache if true it will use the cache given by the map, for the map actor. It can be used for other actors is they have the same block settings
 function _M:computeFOV(radius, block, apply, force, no_store, cache)
         -- If we did not move, do not update
-        if not self.x or not self.y or (not force and self.fov_last_x == self.x and self.fov_last_y == self.y and self.fov_computed) then return end
+        if not self.x or not self.y or
+            (not force and self.fov_last_x == self.x and self.fov_last_y == self.y and self.fov_computed) then
+            print ("[DBG-computeFOV] no FOV computed for ", self.name)
+            return
+        end
         radius = radius or 20
         block = block or "block_sight"
 
