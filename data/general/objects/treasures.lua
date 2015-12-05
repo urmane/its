@@ -56,6 +56,8 @@ local function newTreasure(name, image, subtype, rarity, min_level, max_level, b
 	}
 end
 
+newTreasure("a few coins", "treasure/few-coins.png", "furniture", 1, 1, 10, 100, 50)
+newTreasure("many coins", "treasure/many-coins.png", "furniture", 1, 1, 10, 100, 50)
 newTreasure("Persian rug",   "treasure/coins.png", "furniture", 1, 1, 10, 100, 50)
 newTreasure("small painting",   "treasure/coins.png", "furniture", 1, 1, 10, 100, 5)
 newTreasure("painting",   "treasure/coins.png", "furniture", 1, 1, 10, 100, 40)

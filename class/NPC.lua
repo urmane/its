@@ -112,7 +112,7 @@ function _M:computeFOV(radius, block, apply, force, no_store, cache)
         -- If we did not move, do not update
         if not self.x or not self.y or
             (not force and self.fov_last_x == self.x and self.fov_last_y == self.y and self.fov_computed) then
-            print ("[DBG-computeFOV] no FOV computed for ", self.name)
+            --print ("[DBG-computeFOV] no FOV computed for ", self.name)
             return
         end
         radius = radius or 20
