@@ -5,12 +5,13 @@
 -- quality to value multiplier
 local quality = {
 	{"roughly-made", 1},
-	{"amateurish", 5},
-	{"mediocre", 10},
+	{"amateurish", 3},
+	{"mediocre", 6},
+	{"average", 10},
 	{"fine", 20},
 	{"excellent", 50},
-	{"masterpiece", 100},
-	{"legendary", 1000},
+	{"masterpiece", 200},
+	{"legendary", 2000},
 	}
 
 -- size to encumbrance multiplier

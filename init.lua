@@ -22,8 +22,8 @@ long_name = "In The Shadows"
 short_name = "its"
 author = { "Jim Niemira", "jim.niemira@gmail.com" }
 homepage = "http://te4.org/modules:example"
-version = {1,0,0}
-engine = {1,0,0,"te4"}
+version = {0,0,1}
+engine = {1,3,3,"te4"}
 description = [[
 In The Shadows
 

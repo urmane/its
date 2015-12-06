@@ -1,3 +1,26 @@
+This is the todo list, currently divided into:
+- sprints (roughly related items for minor version rev)
+- semi-organized lists of item details
+
+Sprints:
+- enhance town
+	- keys and keyed doors; door to Caste Kurtok keyed
+	- add gold bricks gfx
+	- pile guarded in castle by elite guards - treasury
+	- keyed door - armory
+	- keyed doors - empties for later
+- NPC facing indicator
+- NPC suspicion indicator (green-yellow-red, high alpha?)
+- Awareness / AI tied to suspicion flag
+- qt5 + tiled (after 1.4 released)
+- scripts to copy/mod colors in gfx, then move gfx to "src" and script mods to final dests (mostly terrain?)
+- move from lit/not lit grids to variable - might be much work
+- Player visibility indicator
+- AI - assure they change state normal/suspcious/active, then back down if not directly viewing - careful considering the back to normal shift
+- Sound - on Player:move, same precomp'd dist array as vis, if n > e.hearing then e.ai_suspicion++
+- Smell - leaves a trail that decays (but never goes to zero) - ai can search surrounding grids for vals
+
+Semi-Organized todo:
 High level
 finalize the overall storyline, and sketch out the major bits needed, do the end (simplified end-to-end) then insert (then redo this todo)
 	prison->sewer->graveyard->town->worldmap
@@ -35,7 +58,7 @@ create and place any additional static maps (eg islands) - story phase three
 create mirror image world - story opt phase
 
 Main Storyline:
-init
+inita
 	done - escape from prison: prison->sewer->graveyard->worldmap
 	init set of cities/dungeons on starting island
 	gain some skills
@@ -89,6 +112,21 @@ side quests - collect gold/valuables/treasures, some big ones
 side quest - assassinate
 
 Talents
+sync with data in data/talents
+category:talent
+trap:detect:sustained
+trap:set:active
+stealth:hide
+stealth:dodge
+stealth:move silent
+awareness:vision
+awareness:awareness (thruwalls)
+assassin:killing blow
+distract:phantom noise
+distract:phantom movement
+prestidigitation:pick pockets
+mechanic:pick locks
+
 done: hide
 	move silent/stealth/etc (see what's in engine)
 		speed while sustained

@@ -54,7 +54,6 @@ local QuitDialog = require "mod.dialogs.Quit"
 local Markov = require "mod.class.Markov"
 
 module(..., package.seeall, class.inherit(engine.GameTurnBased, engine.interface.GameMusic, engine.interface.GameSound, engine.interface.GameTargeting))
---module(..., package.seeall, class.inherit(engine.GameTurnBased, engine.interface.GameTargeting))
 
 -- Tell the engine that we have a fullscreen shader that supports gamma correction
 support_shader_gamma = true
@@ -380,6 +379,8 @@ function _M:tick()
 		-- Fun stuff: this can make the game realtime, although calling it in display() will make it work better
 		-- (since display is on a set FPS while tick() ticks as much as possible
 		-- engine.GameEnergyBased.tick(self)
+	else
+		engine.Game.tick(self)
 	end
 	-- When paused (waiting for player input) we return true: this means we wont be called again until an event wakes us
 	if self.paused and not savefile_pipe.saving then return true end
