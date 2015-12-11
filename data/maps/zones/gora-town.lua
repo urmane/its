@@ -11,6 +11,7 @@ defineTile("~", "DEEP_WATER")
 defineTile("#", "WALL")
 defineTile("_", "WALL", nil, nil, nil, {on_block_change="GRASS", on_block_change_msg="You've discovered a secret passage!"})
 defineTile("^", "GRAVESTONE")
+defineTile("d", "DOOR")
 defineTile("'", "DOOR_OPEN")
 defineTile("+", "DOOR_LOCKED")
 defineTile("=", "FENCE")
@@ -26,23 +27,44 @@ defineTile("1", nil, nil, nil, "FENSTER_FENCE")
 defineTile("2", "FLOOR", nil, "STRAWMAN")
 
 subGenerator{
-    x = 0, y = 14, w = 27, h = 38,
+    x = 0, y = 14, w = 28, h = 38,
     generator = "engine.generator.map.Town",
     data = {
-		building_chance = 70,
-        max_building_w = 8, max_building_h = 8,
+		building_chance = 90,
+		lshape_chance = 80,
+		double_lshape_chance = 80,
+        max_building_w = 9, max_building_h = 9,
         edge_entrances = {6,4},
         floor = "WALL",
         wall = "WALL",
         door = "DOOR",
         external_floor = "GRASS",
-        up = "UP",
-        down = "down",
+        up = "GRASS",
+        down = "GRASS",
         nb_rooms = false,
         rooms = false,
     },
 }
 
+subGenerator{
+    x = 34, y = 6, w = 29, h = 37,
+    generator = "engine.generator.map.Town",
+    data = {
+		building_chance = 90,
+		lshape_chance = 80,
+		double_lshape_chance = 80,
+        max_building_w = 9, max_building_h = 9,
+        edge_entrances = {6,4},
+        floor = "WALL",
+        wall = "WALL",
+        door = "DOOR",
+        external_floor = "GRASS",
+        up = "GRASS",
+        down = "GRASS",
+        nb_rooms = false,
+        rooms = false,
+    },
+}
 
 return [[||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 |^^^.s.........................................................|
@@ -50,9 +72,9 @@ G::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::W
 |................p.............:.....p.........................|
 |_|||||=======================.:.==============================|
 |.###.......#.......###........:...............................|
-|.#########.#.#####.#.#.#####..:..##+##........................|
-|.#1#|......#.#...#.#+#.#...#..:..#...#........................|
-|g...|###p....+.###.....#...+..:..#####........................|
+|.#########.#.#####.#.#.#####..:...............................|
+|.#1#|......#.#...#.#+#.#...#..:...............................|
+|g...|###p....+.###.....#...+..:...............................|
 |=====........###.#######...#..:...............................|
 |.#......######.+.+.....#####..:...............................|
 |.###.##...+..###.#######......:...............................|
