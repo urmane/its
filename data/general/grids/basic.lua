@@ -83,7 +83,6 @@ newEntity{
 	display = '~', color_r=0, color_g=0, color_b=255, back_color=colors.DARK_BLUE,
 }
 
-
 newEntity{
 	define_as = "DOOR",
 	name = "door", image = "terrain/granite_door_closed.png",

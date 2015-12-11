@@ -11,6 +11,7 @@ Sprints:
 	- keyed doors - empties for later
 - NPC facing indicator
 - NPC suspicion indicator (green-yellow-red, high alpha?)
+- complete skeleton of talents, how to review?
 - Awareness / AI tied to suspicion flag
 - qt5 + tiled (after 1.4 released)
 - scripts to copy/mod colors in gfx, then move gfx to "src" and script mods to final dests (mostly terrain?)
@@ -121,11 +122,13 @@ stealth:dodge
 stealth:move silent
 awareness:vision
 awareness:awareness (thruwalls)
+awareness:cornerFOV better
 assassin:killing blow
 distract:phantom noise
 distract:phantom movement
 prestidigitation:pick pockets
 mechanic:pick locks
+?:encumbered movement
 
 done: hide
 	move silent/stealth/etc (see what's in engine)

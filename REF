@@ -2,3 +2,5 @@ Policy: the rogue is someone who does things not supposed to be done
 
 Reference:
 defineTile = function(char, grid, obj, actor, trap, status, spot)
+
+http://te4.org/wiki/T4_Modules_Howto_Guide

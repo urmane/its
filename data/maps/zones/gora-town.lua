@@ -25,6 +25,25 @@ defineTile("1", nil, nil, nil, "FENSTER_FENCE")
 
 defineTile("2", "FLOOR", nil, "STRAWMAN")
 
+subGenerator{
+    x = 0, y = 14, w = 27, h = 38,
+    generator = "engine.generator.map.Town",
+    data = {
+		building_chance = 70,
+        max_building_w = 8, max_building_h = 8,
+        edge_entrances = {6,4},
+        floor = "WALL",
+        wall = "WALL",
+        door = "DOOR",
+        external_floor = "GRASS",
+        up = "UP",
+        down = "down",
+        nb_rooms = false,
+        rooms = false,
+    },
+}
+
+
 return [[||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 |^^^.s.........................................................|
 G::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::W

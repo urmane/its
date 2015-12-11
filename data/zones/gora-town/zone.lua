@@ -27,9 +27,9 @@ return {
 	all_lited = true,
 	ambient_light = 100,
 	generator =  {
-        	map = {
-            		class = "engine.generator.map.Static",
-        	},
+    	map = {
+        	class = "engine.generator.map.Static",
+        },
 		object = {
 			class = "engine.generator.object.Random",
 			nb_object = {20, 30},

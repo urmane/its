@@ -142,11 +142,11 @@ function _M:newGame()
 	self.creating_player = true
 	local birth = Birther.new(nil, self.player, {"base", "role" }, function()
 		-- For real game start:
-		self:changeLevel(1, "gora-prison")
+		--self:changeLevel(1, "gora-prison")
 		-- For changing during testing: can I make a cmdline option ...
 		--self:changeLevel(4, "gora-prison")
 		--self:changeLevel(1, "gora-graveyard")
-		--self:changeLevel(1, "gora-town")
+		self:changeLevel(1, "gora-town")
 		print("[PLAYER BIRTH] resolve...")
 		self.player:resolve()
 		self.player:resolve(nil, true)

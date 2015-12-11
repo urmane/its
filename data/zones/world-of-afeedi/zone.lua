@@ -34,25 +34,25 @@ return {
 	-- first pass - randomly generated world
 	-- second pass - add a second underwater "level" based on mirror image of land/water
 	generator =  {
-        	map = {
-            		class = "mod.class.generator.map.RandomWorld",
-			map = "afeedi/afeedi",
-			noise = "simplex",
-			zoom = 11,
-			hurst = 0.16,
-			lacunarity = 9,
-			octave = 1,
-			border_div = 64,          -- border width = width/border_div
-			border_terrain = "ocean", -- border terrain
-			mountain_height = 0.8,    -- a grid higher than this from the noise generator means mountain
-			forest_height = 0.5,    -- using height for forests for the moment
-			deepocean_depth = -0.3,   -- a grid less than this from the noise generator means deepocean
-			ice_width = 25,           -- north/south pole borders, land->snow ocean->ice
-			min_land = 12000,
-			-- random terrains
-			deepocean = "DEEP_OCEAN",
-			ocean = "OCEAN",
-			land = "LAND",
+        map = {
+            class = "mod.class.generator.map.RandomWorld",
+				map = "afeedi/afeedi",
+				noise = "simplex",
+				zoom = 11,
+				hurst = 0.16,
+				lacunarity = 9,
+				octave = 1,
+				border_div = 64,          -- border width = width/border_div
+				border_terrain = "ocean", -- border terrain
+				mountain_height = 0.8,    -- a grid higher than this from the noise generator means mountain
+				forest_height = 0.5,    -- using height for forests for the moment
+				deepocean_depth = -0.3,   -- a grid less than this from the noise generator means deepocean
+				ice_width = 25,           -- north/south pole borders, land->snow ocean->ice
+				min_land = 12000,
+				-- random terrains
+				deepocean = "DEEP_OCEAN",
+				ocean = "OCEAN",
+				land = "LAND",
 		        mountain = "MOUNTAIN",
 		        snow = "SNOW",
 		        ice = "ICE",
