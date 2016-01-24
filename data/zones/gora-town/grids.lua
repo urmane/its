@@ -44,11 +44,14 @@ newEntity{
         change_level=1, change_zone="castle-kurtok",
 }
 
-newEntity{ base = "DOOR_OPEN",
+newEntity{
+        base = "DOOR_OPEN",
     define_as = "DOOR_HOUSE",
-    name = "house door"
+    name = "house door",
     on_move = function(self, x, y, who)
-        require("engine.ui.Dialog"):yesnoPopup("This is a house", "This is a placeholder sentence.", function(ret)
+        require("engine.ui.Dialog"):yesnoPopup("This is a house",
+                "You can choose to spend X gold on equipment to loot this house for random return.",
+                function(ret)
             if ret then return end
             --local o = game.zone:makeEntityByName(game.level, "object", "CORRUPTED_SANDQUEEN_HEART", true)
             if true then

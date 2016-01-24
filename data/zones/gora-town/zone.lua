@@ -42,6 +42,16 @@ return {
 				generator = { map = { map = "zones/gora-town", }, },
 				},
 	},
+	post_process = function(l)
+        if l.level == 1 then
+        	-- sewer gas, euw
+        	--game.state:makeWeatherShader(l, "weather_vapours", {move_factor=500000, evolve_factor=100000, color={0, 1, 0, 0.2}, zoom=0.5})
+        	l.data.ambient_music="Brandon_Liew_-_05_-_Nostalgia_Drama__Romance.ogg"
+    		--game.state:makeAmbientSounds(l, 
+        	--	{drip={ chance=1, volume_mod=0.3, pitch=1.0, files={"ambient/ambient-water-drip-echo"}},
+        	--})
+    	end
+    end,
     on_enter = function(lev, old_lev, newzone)
         -- Fountain particles
         game.level.map:particleEmitter(31,31,1,"fountain")

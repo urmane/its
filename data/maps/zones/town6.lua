@@ -14,6 +14,26 @@ defineTile("|", "TREE")
 defineTile("W", "TO_WORLDMAP")
 defineTile(">", "DOWN")
 
+subGenerator{
+    x = 2, y = 2, w = 60, h = 60,
+    generator = "engine.generator.map.Town",
+    data = {
+        building_chance = 90,
+        lshape_chance = 80,
+        double_lshape_chance = 80,
+        max_building_w = 9, max_building_h = 9,
+        edge_entrances = {6,4},
+        floor = "WALL",
+        wall = "WALL",
+        door = "DOOR_HOUSE",
+        external_floor = "FLOOR",
+        up = "FLOOR",
+        down = "FLOOR",
+        nb_rooms = false,
+        rooms = false,
+    },
+}
+
 return [[||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 |..............................................................|
 |..............................................................|

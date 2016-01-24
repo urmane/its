@@ -38,13 +38,12 @@ newBirthDescriptor{
     move_others = true,
 	talents_types = {
 	        ["thief/mechanic"]={true, 0.3},
-	        ["thief/hiding"]={true, 0.3},
-	        ["awareness/sensing"]={true, 0.3},
+	        ["thief/stealth"]={true, 0.3},
+	        ["thief/thief"]={true, 0.3},
 	},
 	talents = {
 		[ActorTalents.T_LOCKPICK]=1,
 		[ActorTalents.T_HIDE]=1,
-		[ActorTalents.T_PERCEIVE]=1,
 	},
 	-- default load-out:
 	copy = {

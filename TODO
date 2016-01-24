@@ -3,6 +3,7 @@ This is the todo list, currently divided into:
 - semi-organized lists of item details
 
 Sprints:
+done: reorg Talents tree
 - enhance town
 	- keys and keyed doors; door to Caste Kurtok keyed
 	- add gold bricks gfx
@@ -59,23 +60,35 @@ create and place any additional static maps (eg islands) - story phase three
 create mirror image world - story opt phase
 
 Main Storyline:
-inita
+init
 	done - escape from prison: prison->sewer->graveyard->worldmap
 	init set of cities/dungeons on starting island
-	gain some skills
-Nature selects you as champion for this world
-Gain the power of the elements
-	Murmon, earth
-	Tomb, allows access to volcano
-	Fire, volcano, then underworld, access to world
-	allows access to Gora Graveyard 2, defeat the undead/earth elemental X
-	water, mirror image, free travel
-	gora sewers defeat the water x
-Defeat the minions
-	undead(convert) - several tombs, several std kill ways (destroy the body, sunlight, et al.)
-	fear - monsters of various powers, all uniques
-	greed - lots of (only) money, bribing, wierd
-	force - warriors with strong armor/weapons, std military-oriented
+Nature selects you as secret anti-champion for this world
+Murmon, Earth element zone
+	Gain Speed tree, vs-Earth anti-element
+Tomb
+	Allows immediate access to volcano
+	Completing Tomb not strictly necessary here, very dangerous
+	Access to Gora Graveyard 2 Specials (vsUndead)
+Volcano, Fire element zone
+	Gain Shadow tree, vs-fire anti-element
+	Gain access to rest of world
+	Underworld visit part, but locked
+Insert world-oriented quests here	
+Castle Kurtok "rooftop", Air element zone
+	Gain Control tree, vs-Air anti-element
+Gora sewers, Water element zone
+	Gain Death tree, vs-Water anti-element
+	Gain world mirror image, free travel
+		Ability to visit Underworld not stated, but complete first quest by (re)visiting Father's Son
+		(Specials vsFear)
+insert additionals here
+Defeat the minions:
+	undead Lt, Gora Graveyard 3 - several tombs, several std kill ways (destroy the body, sunlight, et al.)
+	fear Lt, map corner island town, monsters of various powers, all uniques
+	greed Lt, lots of (only) money, bribing, wierd, hyperbolic valuables and equipment available
+	force Lt, Underwater City, warriors with strong armor/weapons, std military-oriented
+Become the God of Thieves
 Defeat the big bad
 	big bad escapes into Castle Kurtok; chase him through rando zones, maybe across the world
 Optionals:
@@ -97,54 +110,62 @@ done - speed changes by ai state
 lockpick gui
 endlessly hunted by "guards"
 
-Quests:
+Additional Quests, asside from main storyline:
 done - starting quest - get out of the prison
 done: side quest - take-my-macguffin in the sewers - macguffins cannot disappear -> elemental quest
 done: assign elemental quests
-earth quest - Murmon
-earth-subsequent - after earth, return to Gora Graveyard to defeat the undead/earth elemental/whatever
-tomb dungeon - allows access to volcano
-fire quest - volcano, allows access to world
-water quest - undersea mirror image map
-water-subsequent - after water, return to Gora Sewers to defeat the x
-air quest - 
 side quest - take-up-my sword in the prison, get the key from the secret room
 side quests - collect gold/valuables/treasures, some big ones
 side quest - assassinate
 
 Talents
-sync with data in data/talents
-category:talent
-trap:detect:sustained
-trap:set:active
-stealth:hide
-stealth:dodge
-stealth:move silent
-awareness:vision
-awareness:awareness (thruwalls)
-awareness:cornerFOV better
-assassin:killing blow
-distract:phantom noise
-distract:phantom movement
-prestidigitation:pick pockets
-mechanic:pick locks
-?:encumbered movement
+Talent Tree view / interface
+Default Trees
+Awareness:Vision:activated
+Awareness:Listen:activated
+Awareness:Environment:activated (thruwalls)
+Awareness:See Around Corners:activated (better cornerFOV)
+Mechanic:Pick Locks:activated
+Mechanic:Disarm Trap:activated
+Mechanic:Disable Mechanism:activated
+Mechanic:Set Trap:activated
+Stealth:Hide:activated - done
+Stealth:Move Silent:sustained
+Stealth:Leap To Shadows:activated
+Thief:Pick Pockets:activated
+Thief:Sap:activated
+Thief:Backstab:activated
+Politics:Flattery:activated
+Politics:Bribe:activated
+Politics:Disguise:sustained
 
-done: hide
-	move silent/stealth/etc (see what's in engine)
-		speed while sustained
-	subdue, melee/ranged (includes remote, like sleeping powder/arrows)
-	kill, melee/ranged
-	lift/push/pull body
-	hide
-	disguise -> Factions, from large/meaningless to small/secret
-	listen
-	pickpockets, melee/ranged
-	leap to shadows
-	architectural knowledge
-	bribe
-	traps - set
-	traps - detect
+Anti-Elemental Trees
+Speed:Avoid Trap:sustained
+Speed:Shadowjump:activated
+Shadow:Hide In Plain Sight:sustained
+Shadow:Create Shadow:activated
+Control:Phantom Noise:activated
+Control:Illusory Movement:activated
+Control:Summon Shadows:activated
+Control:Anti-Door:sustained?
+Death:Nerve Strike:activated
+Death:Assassinate:activated
+
+Consider these:
+Climb walls?
+Dodge
+lift/push/pull body - needs "body"
+ranged / subdual ?  Easy-ish, but not sure it fits the theme
+	Maybe special case, like "put out light with arrow", "temp blind target"
+
+
+Stats:
+STR - carry loot, attacking
+SPD - run
+TouCH - lockpick, pickpock
+DEX - dodge
+StealTH - sneak, hide
+AIM? or just DEX - aim, ranged, knockout
 
 add lockpick gui (remember Policy)
 	picking locks quickly and efficiently - player can also "take all the time he needs" and autopick
