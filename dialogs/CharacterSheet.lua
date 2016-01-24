@@ -131,15 +131,15 @@ function _M:drawDialog(kind)
         -- start on second column
         
         s:drawStringBlended(self.font, "STR : "..(player:getStr()), w, h, 0, 255, 255, true) h = h + self.font_h
---        s:drawStringBlended(self.font, "DEX : "..(player:getDex()), w, h, 255, 0, 255, true) h = h + self.font_h
+        s:drawStringBlended(self.font, "DEX : "..(player:getDex()), w, h, 255, 0, 255, true) h = h + self.font_h
 --        s:drawStringBlended(self.font, "CON : "..(player:getCon()), w, h, 255, 255, 0, true) h = h + self.font_h
         s:drawStringBlended(self.font, "SNS : "..(player:getSns()), w, h, 0, 255, 255, true) h = h + self.font_h
-        s:drawStringBlended(self.font, "END : "..(player:getEnd()), w, h, 0, 255, 255, true) h = h + self.font_h
+--        s:drawStringBlended(self.font, "END : "..(player:getEnd()), w, h, 0, 255, 255, true) h = h + self.font_h
+        s:drawStringBlended(self.font, "COG : "..(player:getCog()), w, h, 0, 255, 255, true) h = h + self.font_h
         s:drawStringBlended(self.font, "RCT : "..(player:getRct()), w, h, 0, 255, 255, true) h = h + self.font_h
         s:drawStringBlended(self.font, "CHR : "..(player:getChr()), w, h, 0, 255, 255, true) h = h + self.font_h
-        s:drawStringBlended(self.font, "ATT : "..(player:getAtt()), w, h, 0, 255, 255, true) h = h + self.font_h
         s:drawStringBlended(self.font, "WIL : "..(player:getWil()), w, h, 0, 255, 255, true) h = h + self.font_h
-        s:drawStringBlended(self.font, "DIV : "..(player:getDiv()), w, h, 0, 255, 255, true) h = h + self.font_h
+        s:drawStringBlended(self.font, "ATT : "..(player:getAtt()), w, h, 0, 255, 255, true) h = h + self.font_h
         s:drawStringBlended(self.font, "LCK : "..(player:getLck()), w, h, 0, 255, 255, true) h = h + self.font_h
         
     elseif kind=="attack" then

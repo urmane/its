@@ -71,16 +71,16 @@ ActorResource:defineResource("Water", "water", nil, "power_regen", "Water mana."
 
 -- Actor stats
 -- Body
-ActorStats:defineStat("Strength",	"str", 10, 1, 100, "Strength defines your character's ability to apply physical force. It increases your melee damage, damage with heavy weapons, your chance to resist physical effects, and carrying capacity.")
+ActorStats:defineStat("Strength",	"str", 10, 1, 100, "Strength defines your character's physical strength. It increases your carrying capacity.")
+ActorStats:defineStat("Dexterity",	"dex", 10, 1, 100, "Dexterity defines your character's agility and alertness.")
 ActorStats:defineStat("Senses",  	"sns", 10, 1, 100, "Senses defines how good your perception of your environment is.")
-ActorStats:defineStat("Endurance",  	"end", 10, 1, 100, "Endurance defines how long you can engage in strenuous activity before tiring out.")
 -- Mind
+ActorStats:defineStat("Cognitive",	"cog", 10, 1, 100, "Mental acuity, general knowledge, and deduction.")
 ActorStats:defineStat("Reaction",	"rct", 10, 1, 100, "Reaction defines how fast you can react.")
 ActorStats:defineStat("Charisma",	"chr", 10, 1, 100, "Personal magnetism.")
-ActorStats:defineStat("Attunement",	"att", 10, 1, 100, "How attuned you are to magic.")
 -- Spirit
 ActorStats:defineStat("Will",		"wil", 10, 1, 100, "How much willpower you have.")
-ActorStats:defineStat("Divinity",	"div", 10, 1, 100, "How pious you are.")
+ActorStats:defineStat("Attunement",	"att", 10, 1, 100, "How attuned you are to your surroundings.")
 ActorStats:defineStat("Luck",		"lck", 10, 1, 100, "How lucky you are.")
 --ActorStats:defineStat("Dexterity",	"dex", 10, 1, 100, "Dexterity defines your character's ability to be agile and alert. It increases your chance to hit, your ability to avoid attacks and your damage with light weapons.")
 --ActorStats:defineStat("Constitution",	"con", 10, 1, 100, "Constitution defines your character's ability to withstand and resist damage. It increases your maximum life and physical resistance.")

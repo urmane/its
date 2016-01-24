@@ -3,7 +3,7 @@ This is the todo list, currently divided into:
 - semi-organized lists of item details
 
 Sprints:
-done: reorg Talents tree
+done: reorg Talents tree, stats
 - enhance town
 	- keys and keyed doors; door to Caste Kurtok keyed
 	- add gold bricks gfx
@@ -161,11 +161,11 @@ ranged / subdual ?  Easy-ish, but not sure it fits the theme
 
 Stats:
 STR - carry loot, attacking
-SPD - run
-TouCH - lockpick, pickpock
-DEX - dodge
-StealTH - sneak, hide
-AIM? or just DEX - aim, ranged, knockout
+SPD - run - no, use DEX
+TouCH - lockpick, pickpock - no use DEX
+DEX - general touch, sep from Reaction
+StealTH - sneak, hide - talent, not stat
+AIM? or just DEX - aim, ranged, knockout - no use DEX
 
 add lockpick gui (remember Policy)
 	picking locks quickly and efficiently - player can also "take all the time he needs" and autopick

@@ -79,11 +79,11 @@ function _M:display()
     h = h + self.font_h
     self.font:setStyle("normal")
 
-    self:makeTexture(("Str/Sns/End: #00ff00#%3d/%3d/%3d"):format(player:getStr(), player:getSns(), player:getEnd()), x, h, 255, 255, 255)
+    self:makeTexture(("Str/Dex/Sns: #00ff00#%3d/%3d/%3d"):format(player:getStr(), player:getDex(), player:getSns()), x, h, 255, 255, 255)
     h = h + self.font_h
-    self:makeTexture(("Rct/Chr/Att: #00ff00#%3d/%3d/%3d"):format(player:getRct(), player:getChr(), player:getAtt()), x, h, 255, 255, 255)
+    self:makeTexture(("Cog/Rct/Chr: #00ff00#%3d/%3d/%3d"):format(player:getCog(), player:getRct(), player:getChr()), x, h, 255, 255, 255)
     h = h + self.font_h
-    self:makeTexture(("Wil/Div/Lck: #00ff00#%3d/%3d/%3d"):format(player:getWil(), player:getDiv(), player:getLck()), x, h, 255, 255, 255)
+    self:makeTexture(("Wil/Att/Lck: #00ff00#%3d/%3d/%3d"):format(player:getWil(), player:getAtt(), player:getLck()), x, h, 255, 255, 255)
     h = h + self.font_h
     self:makeTexture(("Level/Exp: #00ff00#%3d/%3d"):format(player.level or 1, player.exp or 0), x, h, 255, 255, 255)
     h = h + self.font_h
