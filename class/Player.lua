@@ -196,11 +196,14 @@ end
 function _M:playerFOV()
 	-- Clean FOV before computing it
 	game.level.map:cleanFOV()
+
 	-- Compute both the normal and the lite FOV, using cache
-	self:computeFOV(self.sight or 20, "block_sight", function(x, y, dx, dy, sqdist)
-		game.level.map:apply(x, y, fovdist[sqdist])
-	end, true, false, true)
-	self:computeFOV(self.lite, "block_sight", function(x, y, dx, dy, sqdist) game.level.map:applyLite(x, y) end, true, true, true)
+	self:computeFOV(self.sight or 20, "block_sight",
+        function(x, y, dx, dy, sqdist) game.level.map:apply(x, y, fovdist[sqdist]) end,
+        true, false, true)
+	self:computeFOV(self.lite, "block_sight",
+        function(x, y, dx, dy, sqdist) game.level.map:applyLite(x, y) end,
+        true, true, true)
 
 	-- make other static and actor's lites visible
 	-- from TOME module
@@ -226,19 +229,15 @@ function _M:playerFOV()
         uid, e = next(game.level.entities, uid)
     end
 
-	-- ambient light is a level property, and lets you see a small number of grids around you if you're not holding a light.
-	-- right now this is player-only - consider moving all sense code up to Actor
-	if self.lite == 0 and game.level.data.ambient_light and game.level.data.ambient_light > 0 then
-		-- assume ambient_light always < limit of sight for now
-		--self:computeFOV(game.level.map.ambient_light, "block_sight", function(x, y, dx, dy, sqdist) game.level.map.seens(x, y, fovdist[sqdist]) end, true, true, true)
-        local range = 1
-        if self.sight_min and game.level.data.ambient_light > self.sight_min then
-            range = game.level.data.ambient_light/10
-        end
-		--self:computeFOV(game.level.data.ambient_light/10, "block_sight", function(x, y, dx, dy, sqdist) game.level.map.remembers(x, y, true) end, true, true, true)
-        self:computeFOV(range, "block_sight", function(x, y, dx, dy, sqdist) game.level.map.remembers(x, y, true) end, true, true, true)
- 	end
-
+    -- ambient light is a level property, and lets you see a small number of grids around you if you're not holding a light.
+    -- right now this is player-only - consider moving all sense code up to Actor
+    if self.lite == 0 and game.level.data.ambient_light and game.level.data.ambient_light > 0 then
+        -- assume ambient_light always < limit of sight for now
+        print("[DBG]running ambient light for player at ", game.level.data.ambient_light + self.sight_min) --- need to convert ambient_light level to range
+        self:computeFOV(game.level.data.ambient_light + self.sight_min, "block_sight",
+            function(x, y, dx, dy, sqdist) game.level.map:applyExtraLite(x, y) end,
+            true, true, true)
+    end
 end
 
 --- Called before taking a hit, overload mod.class.Actor:onTakeHit() to stop resting and running

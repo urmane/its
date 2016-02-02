@@ -38,7 +38,7 @@ newEntity{
 	ai = "prisoner", -- ai_state = { talent_in=3, },
 	lite = 1,
 	sight = 3,
-	sight_min = 10, -- prisoners see better than guards
+	sight_min = 3, -- prisoners see better than guards
 	max_life = 1,
 }
 
@@ -69,11 +69,11 @@ newEntity{ base = "BASE_GUARD",
 	level_range = {1, 4}, exp_worth = 1,
 	rarity = 4,
 	lite = 5,		-- radius of the light this actor puts out
-        lite_flicker = 90,      -- percent chance per turn to mod lite
-        lite_min = 3,           -- min radius
-        lite_max = 5,           -- max radius
+    lite_flicker = 90,      -- percent chance per turn to mod lite
+    lite_min = 3,           -- min radius
+    lite_max = 5,           -- max radius
 	sight = 5,		-- absolute limit of sight in grids
-	sight_min = 20,	-- minimum light level this actor can distinguish
+	sight_min = 1,	-- minimum light level this actor can distinguish
 	move_dir = 2,	-- initial move direction, they'll rotate clockwise 90 degrees for now
 	lite_angle = 90,-- angle of light projected, in direction move_dir
 	max_life = resolvers.rngavg(5,9),
@@ -85,11 +85,11 @@ newEntity{ base = "BASE_GUARD",
 	level_range = {2, 5}, exp_worth = 2,
 	rarity = 4,
 	lite = 5,		-- radius of the light this actor puts out
-        lite_flicker = 90,      -- percent chance per turn to mod lite
-        lite_min = 3,           -- min radius
-        lite_max = 5,           -- max radius
+    lite_flicker = 90,      -- percent chance per turn to mod lite
+    lite_min = 3,           -- min radius
+    lite_max = 5,           -- max radius
 	sight = 5,		-- absolute limit of sight in grids
-	sight_min = 20,	-- minimum light level this actor can distinguish
+	sight_min = 1,	-- minimum light level this actor can distinguish
 	move_dir = 2,	-- initial move direction, they'll rotate clockwise 90 degrees for now
 	lite_angle = 90,-- angle of light projected, in direction move_dir
 	max_life = resolvers.rngavg(5,9),

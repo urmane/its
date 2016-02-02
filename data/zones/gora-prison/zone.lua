@@ -26,7 +26,7 @@ return {
 	max_level = 3,
 	decay = {300, 800},
 	persistent = "zone",
-	ambient_light = 20,
+	ambient_light = 2,
 	ambient_music = "prison2.ogg",
 	generator =  {
         map = {

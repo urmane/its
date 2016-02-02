@@ -25,7 +25,7 @@ return {
 	decay = {300, 800},
 	persistent = "zone",
 	all_lited = true,
-	ambient_light = 100,
+	ambient_light = 10,
 	generator =  {
     	map = {
         	class = "engine.generator.map.Static",
@@ -46,7 +46,7 @@ return {
         if l.level == 1 then
         	-- sewer gas, euw
         	--game.state:makeWeatherShader(l, "weather_vapours", {move_factor=500000, evolve_factor=100000, color={0, 1, 0, 0.2}, zoom=0.5})
-        	l.data.ambient_music="Brandon_Liew_-_05_-_Nostalgia_Drama__Romance.ogg"
+        	l.data.ambient_music="Brandon_Liew_-_05_-_Nostalgia_Drama__Romance.oggul"
     		--game.state:makeAmbientSounds(l, 
         	--	{drip={ chance=1, volume_mod=0.3, pitch=1.0, files={"ambient/ambient-water-drip-echo"}},
         	--})

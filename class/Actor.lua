@@ -260,7 +260,7 @@ function _M:worthExp(target)
 end
 
 --- Can self see the target actor
--- This does not check LOS or such, only the actual ability to see it.<br/>
+-- This does not check LOS or such, only the actual ability to see it.
 -- Check for telepathy, invisibility, stealth, ...
 function _M:canSee(actor, def, def_pct)
 	if not actor then return false, 0 end

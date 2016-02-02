@@ -48,7 +48,7 @@ newBirthDescriptor{
 	-- default load-out:
 	copy = {
 	    sight = 7,
-        sight_min = 20,
+        sight_min = 1,
 	    resolvers.equipbirth{ id=true,
 	{type="tool", subtype="lockpick", name="makeshift lockpick", autoreq=true, ego_chance=-1000},
 	    },

@@ -44,7 +44,7 @@ newEntity{ base = "BASE_LIGHT",
 	lite_min = 2,           -- min radius
 	lite_max = 4,           -- max radius
 	sight = 1,		-- absolute limit of sight
-	sight_min = 1,		-- minimum light level this actor can distinguish
+	sight_min = 0,		-- minimum light level this actor can distinguish
 	max_life = 1,
 	combat = { dam=1 },
 }
@@ -60,7 +60,7 @@ newEntity{ base = "BASE_LIGHT",
 	lite_min = 1,           -- min radius
 	lite_max = 2,           -- max radius
 	sight = 1,		-- absolute limit of sight
-	sight_min = 1,		-- minimum light level this actor can distinguish
+	sight_min = 0,		-- minimum light level this actor can distinguish
 	max_life = 1,
 	combat = { dam=1 },
 }
