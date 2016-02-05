@@ -233,7 +233,6 @@ function _M:playerFOV()
     -- right now this is player-only - consider moving all sense code up to Actor
     if self.lite == 0 and game.level.data.ambient_light and game.level.data.ambient_light > 0 then
         -- assume ambient_light always < limit of sight for now
-        print("[DBG]running ambient light for player at ", game.level.data.ambient_light + self.sight_min) --- need to convert ambient_light level to range
         self:computeFOV(game.level.data.ambient_light + self.sight_min, "block_sight",
             function(x, y, dx, dy, sqdist) game.level.map:applyExtraLite(x, y) end,
             true, true, true)

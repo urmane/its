@@ -17,11 +17,19 @@
 -- Nicolas Casalini "DarkGod"
 -- darkgod@te4.org
 
-load "/data/general/objects/swords.lua"
-load "/data/general/objects/helmets.lua"
-load "/data/general/objects/armors.lua"
-load "/data/general/objects/tools.lua"
-load "/data/general/objects/coins.lua"
-load "/data/general/objects/treasures.lua"
-load "/data/general/objects/gems.lua"
-load "/data/general/objects/dressing.lua"
+local Talents = require("engine.interface.ActorTalents")
+
+load("/data/general/npcs/base-animal.lua")
+
+newEntity{
+	base = "BASE_ANIMAL",
+	define_as = "BASE_FELINE",
+    keywords = {feline=true},
+	display = "X",
+    color=colors.WHITE,
+	image = "npcs/trolldoll.png",
+	stats = { str=1, dex=1, con=1 },
+	combat_armor = 0,
+    sight = 2,
+    sight_min = 0,
+}

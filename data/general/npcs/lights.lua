@@ -30,6 +30,8 @@ newEntity{
 	cant_be_moved = 1,
 	stats = { str=5, dex=5, con=5 },
 	combat_armor = 0,
+    on_acquire_target = {},
+    on_bump = {},
 }
 
 newEntity{ base = "BASE_LIGHT",
