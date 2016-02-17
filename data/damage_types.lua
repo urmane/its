@@ -65,7 +65,7 @@ newDamageType{
 }
 
 newDamageType{
-	name = "physical", type = "PHYSICAL",
+	name = "physical", type = "PHYSICAL", text_color = "#WHITE#",
 }
 
 -- Elemental damage
@@ -75,15 +75,17 @@ newDamageType{
 }
 
 newDamageType{
-	name = "water", type = "WATER", text_color = "#WHITE#",
-	death_message = {"drowned"}
+	name = "cold", type = "COLD", text_color = "#BLUE#",
+	death_message = {"frozen"}
 }
 
+-- concussive
 newDamageType{
 	name = "earth", type = "EARTH", text_color = "#BROWN#",
 	death_message = {"entombed"}
 }
 
+-- blinds, disorients, suffocates
 newDamageType{
 	name = "air", type = "AIR", text_color = "#YELLOW#",
 	death_message = {"blown apart"}
@@ -96,21 +98,24 @@ newDamageType{
 }
 
 -- Fire and air
+-- steam lingers, drifts, and burns
 newDamageType{
 	name = "steam", type = "STEAM", text_color = "#YELLOW#",
 	death_message = {"scalded"}
 }
 
 -- Water and earth
+-- Mud slows, concusses, slowly suffocates
 newDamageType{
 	name = "mud", type = "MUD", text_color = "#BROWN#",
-	death_message = {"dirtified"}
+	death_message = {"suffocated"}
 }
 
 -- Water and air
+-- Mist obscures vision and quickly drowns
 newDamageType{
 	name = "mist", type = "MIST", text_color = "#GREEN#",
-	death_message = {"moistened"}
+	death_message = {"drowned"}
 }
 
 -- Fire and water
@@ -140,6 +145,13 @@ newDamageType{
 	death_message = {"diseased"}
 }
 
+-- sharp
+newDamageType{
+	name = "lacerative", type = "LACERATIVE", text_color = "#RED#",
+	death_message = {"sliced"}
+}
+
+-- blunt
 newDamageType{
 	name = "concussive", type = "CONCUSSIVE", text_color = "#RED#",
 	death_message = {"traumatized"}
@@ -174,3 +186,7 @@ newDamageType{
 	name = "divine", type = "DIVINE", text_color = "#PURPLE#",
 	death_message = {"divined"}
 }
+
+-- Magical?
+-- does magic damage directly, or just cause other types of damage?
+-- Curses!

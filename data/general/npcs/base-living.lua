@@ -29,5 +29,5 @@ newEntity{
 	combat_armor = 0,
     sight = 2,
     sight_min = 0,
-    ai = "its_target_simple",
+    --ai = "its_target_simple",
 }

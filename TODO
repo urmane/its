@@ -65,19 +65,23 @@ init
 	init set of cities/dungeons on starting island
 Nature selects you as secret anti-champion for this world
 Murmon, Earth element zone
+	Collect Gravity Lens plot item
 	Gain Speed tree, vs-Earth anti-element
 Tomb
 	Allows immediate access to volcano
 	Completing Tomb not strictly necessary here, very dangerous
 	Access to Gora Graveyard 2 Specials (vsUndead)
 Volcano, Fire element zone
+	Collect Molten Heart plot iem
 	Gain Shadow tree, vs-fire anti-element
 	Gain access to rest of world
 	Underworld visit part, but locked
 Insert world-oriented quests here	
 Castle Kurtok "rooftop", Air element zone
+	Collect Cloud 
 	Gain Control tree, vs-Air anti-element
 Gora sewers, Water element zone
+	Collect / Drink Primordial Soup
 	Gain Death tree, vs-Water anti-element
 	Gain world mirror image, free travel
 		Ability to visit Underworld not stated, but complete first quest by (re)visiting Father's Son
@@ -85,9 +89,13 @@ Gora sewers, Water element zone
 insert additionals here
 Defeat the minions:
 	undead Lt, Gora Graveyard 3 - several tombs, several std kill ways (destroy the body, sunlight, et al.)
+		Collect his x
 	fear Lt, map corner island town, monsters of various powers, all uniques
+		Collect her x
 	greed Lt, lots of (only) money, bribing, wierd, hyperbolic valuables and equipment available
+		Collect its x
 	force Lt, Underwater City, warriors with strong armor/weapons, std military-oriented
+		Collect his x
 Become the God of Thieves
 Defeat the big bad
 	big bad escapes into Castle Kurtok; chase him through rando zones, maybe across the world
@@ -102,7 +110,45 @@ zombie: random "rrr"  "Rrrrr", etc
 zombie: on_aware "RRR!"
 torch,brazier: random, sparks?
 
-NPCs:
+done - initial NPC tree:
+living
+	animal (egos: zombie, ghostly)
+		humanoid (egos: vampiric)
+			kobold
+			human
+				guard?
+			giant
+				fire, hill, cloud, sea, storm, etc
+			ogre
+		lizard
+			snake
+				Snakeman
+			dragon
+		insect
+		amphibian
+			giant frog
+			giant toad
+		rodent
+			giant rat
+		canine
+			wolf
+		ursine
+			bear
+		feline
+			tiger
+	plant
+		insensate
+		sentient
+	fungus
+	jelly
+supernatural
+	divine
+	extraplanar
+undead (specific instances, plus can be an ego for animals)
+automaton
+
+NPC egos:
+(NB: may have to force declare *all* egos, to avoid zombie guards next to non-zombie guards.  Or subclass per zone.)
 
 Features:
 done - directional cone lights / LOS, to allow sneak up behind

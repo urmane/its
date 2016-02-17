@@ -8,7 +8,7 @@ newEntity{
 	type = "humanoid",
 	subtype = "kobold",
 	display = "k",
-	-- image=
+	image = "npcs/kobold.png",
 	color=colors.WHITE,
 	back_color=colors.BLACK,
 	desc = [[Ugly and green!]],

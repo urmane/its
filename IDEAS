@@ -25,9 +25,17 @@ finalize the overall storyline, and sketch out the major bits needed, do the end
 
 AI
 state, action, things that change state
-animals: normal-stay, normal-wander, normal-patrol, fight-stay, fight-chase, flee-only, flee-fight
-human: animal plus normal-patrol, investigate (fast-move to target-grid, then slow-tight-wander about it; timeout to return to normal)
-current-state,event,new-state
+fns that encapsulate behaviors, and events that change to a different behavior
+animal behaviors:
+animal-stay, animal-wander, animal-patrol,
+animal-defend, animal-pursue,
+animal-flee, animal-flee-only
+animal state changers: notice player(actor?), hp below injury_flee_pct
+
+human behaviors:
+human-stay, human-wander, human-patrol, human-fastmove, human-investigate,
+human-defend, human-pursue,
+human-flee, human-flee-only, 
 
 Story forge:
 supernatural aid - the monster, raw unthinking destruction, chaos made flesh, bogeyman, ripper, source of fear and nightmare

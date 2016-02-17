@@ -26,6 +26,27 @@ newEntity{
     desc = [[A long, sharp object used for poking holes in bad guys.]],
 }
 
-newEntity{ base = "BASE_SWORD", name = "brass sword",    level_range = {1, 10}, cost = 5, combat = { dam = 10, }, }
-newEntity{ base = "BASE_SWORD", name = "iron sword",     level_range = {1, 10}, cost = 5, combat = { dam = 10, }, }
-newEntity{ base = "BASE_SWORD", name = "steel sword",    level_range = {1, 10}, cost = 5, combat = { dam = 10, }, }
+local function newSword(name, levmin, levmax, cost, d)
+newEntity{
+	base = "BASE_SWORD",
+	name = name.." sword",
+	level_range = {levmin, levmax},
+	cost = cost,
+	combat = { dam = d, },
+}
+end
+
+newSword("brass",    1, 10, 1, 10)
+newSword("iron",     1, 10, 2, 20)
+newSword("steel",    1, 10, 3, 30)
+newSword("coral",    1, 10, 4, 40)
+newSword("crystal",  1, 10, 5, 50)
+newSword("carnite",  1, 10, 6, 60)
+newSword("arkidine", 1, 10, 7, 70)
+newSword("energy",   1, 10, 8, 80)
+newSword("power",    1, 10, 9, 90)
+newSword("force",    1, 10, 10, 100)
+newSword("nanite",   1, 10, 11, 110)
+newSword("gravity",  1, 10, 12, 120)
+newSword("null",     1, 10, 13, 130)
+

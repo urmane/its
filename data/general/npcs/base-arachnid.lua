@@ -17,23 +17,19 @@
 -- Nicolas Casalini "DarkGod"
 -- darkgod@te4.org
 
-load("/data/general/npcs/guards.lua")
-load("/data/general/npcs/lights.lua")
-load("/data/general/npcs/rodents.lua")
+local Talents = require("engine.interface.ActorTalents")
 
-load("/data/general/npcs/snakes.lua")
-load("/data/general/npcs/spiders.lua")
+load("/data/general/npcs/base-animal.lua")
 
 newEntity{
-    base = "BASE_PRISONER", define_as="PRISONER_MACGUFFIN",
-    name = "prisoner", color=colors.WHITE,
-    desc = "An old man, withered and near death.",
-    level_range = {1, 4}, exp_worth = 0, rarity = 1,
-    lite = 1, -- required for now to make him visible, without a lightsource
-    -- not sure which of these applies in the generic engine
-    --never_move = 1,
-    ai = "none",
-    faction = "neutral",
-    can_talk = "double-macguffin-prisoner1",
+	base = "BASE_ANIMAL",
+	define_as = "BASE_ARACHNID",
+    keywords = {arachnid=true},
+	display = "X",
+    color=colors.WHITE,
+	image = "npcs/arachnids/spider.png",
+	stats = { str=1, dex=1, con=1 },
+	combat_armor = 0,
+    sight = 2,
+    sight_min = 0,
 }
-

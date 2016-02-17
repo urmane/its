@@ -265,7 +265,7 @@ end
 function _M:canSee(actor, def, def_pct)
 	if not actor then return false, 0 end
 	if self.player then
-		print("[DBG-canSee]checking against actor ", actor.name or "none".." uid "..actor.uid)
+		--print("[DBG-canSee]checking against actor ", actor.name or "none".." uid "..actor.uid)
 	end
 
     -- magic:
@@ -280,6 +280,14 @@ function _M:canSee(actor, def, def_pct)
 	-- 	plus (self.lite < distance(src,tgt) ? 0 : (self.lite * 10) * falloff(distance(src,tgt)))
 	-- if self.sight_min >= abs_light_level, should be visible, check hide/other
 	-- note that this means light radius != sight distance!
+
+	-- New new algorithm:
+	-- sight is the limit of sight, regardless
+	-- lite is (appears to be for the engine) binary yes or no
+	-- if an actor carries a lite > 0 they are visibile
+	-- else if they are inside my self.lite they are visibile
+	-- else if there is game.level.data.ambient_light > 0 and they are inside my self.sight_min + ambient_light they are visible
+	-- else not
 	-- Can always see self
 	if actor == self then return true, 100 end
 
@@ -305,29 +313,52 @@ function _M:canSee(actor, def, def_pct)
 		return false, 0
 	end
 
-	-- How well lit is the target, and can I perceive that?
-	local light_level = 0
-	-- start with ambient light
-	if game.level and game.level.data and game.level.data.ambient_light then
-		light_level = game.level.data.ambient_light
+	-- Must have light, either theirs, ours, or ambient
+	if actor.lite and actor.lite > 0 then
+		--print ("[DBG-canSee] seen: actor "..actor.name.." is carrying a lite")
+	else
+		--print ("[DBG-canSee] continue: actor "..actor.name.." is not carrying a lite")
+		if self.lite and self.lite > 0 and dist <= self.lite then
+			--print ("[DBG-canSee] seen: actor "..actor.name.." is inside my lite radius")
+		else
+			--print ("[DBG-canSee] continue: actor "..actor.name.." is not inside my lite radius")
+			if self.sight_min and self.sight_min > 0 and
+				game.level and game.level.data and game.level.data.ambient_light and
+				dist <= (self.sight_min + game.level.data.ambient_light) then
+				--print ("[DBG-canSee] seen: actor "..actor.name.." is visible in ambient light")
+			else
+				--print ("[DBG-canSee] unseen: actor "..actor.name.." is not visible in any light")
+				return false, 0
+			end
+		end
 	end
-	-- add any actor lite
-	if actor.lite then -- No falloff at source
-		light_level = light_level + (actor.lite * 10)
-	end
-	-- add any of my lite, if in range
-	if self.lite and self.lite > 0 and dist <= self.lite then
-		-- Really should use inverse square root falloff instead of linear
-		light_level = light_level + ((self.lite - dist) * 10)
-	end
-	-- compare my minimal perception with the absolute light level at target
-	if self.sight_min and self.sight_min > light_level then
-		-- if self.player then
-		-- 	print("vision too weak, player cannot see "..actor.name.." uid "..actor.uid)
-		-- 	print("   self.sight_min is"..self.sight_min)
-		-- end
-		return false, 0
-	end
+	-- if we get here, target is lit, somehow, and visible
+
+
+	-- -- How well lit is the target, and can I perceive that?
+	-- local light_level = 0
+	-- -- start with ambient light
+	-- if game.level and game.level.data and game.level.data.ambient_light then
+	-- 	light_level = game.level.data.ambient_light
+	-- end
+	-- -- add any actor lite
+	-- if actor.lite then -- No falloff at source
+	-- 	light_level = light_level + (actor.lite * 10)
+	-- end
+	-- -- add any of my lite, if in range
+	-- if self.lite and self.lite > 0 and dist <= self.lite then
+	-- 	-- Really should use inverse square root falloff instead of linear
+	-- 	light_level = light_level + ((self.lite - dist) * 10)
+	-- end
+	-- -- compare my minimal perception with the absolute light level at target
+	-- if self.sight_min and self.sight_min > light_level then
+	-- 	-- if self.player then
+	-- 	-- 	print("vision too weak, player cannot see "..actor.name.." uid "..actor.uid)
+	-- 	-- 	print("   self.sight_min is"..self.sight_min)
+	-- 	-- end
+	-- 	return false, 0
+	-- end
+
 
 	-- if we get here, target is visually available, check Hide, etc
 	-- Note that this means the default is seen

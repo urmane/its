@@ -23,10 +23,9 @@ newEntity{
     image = "npcs/rodents/giantrat.png",
 	color=colors.UMBER,
 	level_range = {1,3}, exp_worth = 1, rarity = 1,
-	ai = "its_target_simple", -- ai_state = { talent_in=3, },
 	--lite = 1,
 	sight = 3,
-	sight_min = 4,
+	sight_min = 1,
     max_life = resolvers.rngavg(1,4),
     combat = { dam=1 },
 }

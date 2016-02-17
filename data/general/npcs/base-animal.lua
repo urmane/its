@@ -28,6 +28,7 @@ newEntity{
 	display = "X",
     color=colors.WHITE,
 	image = "npcs/trolldoll.png",
+    ai = "its_animal_wander",
 	stats = { str=1, dex=1, con=1 },
 	combat_armor = 0,
     sight = 2,
