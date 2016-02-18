@@ -26,7 +26,7 @@ return {
 	max_level = 3,
 	decay = {300, 800},
 	persistent = "zone",
-	ambient_light = 2,
+	ambient_light = 4,
 	ambient_music = "prison2.ogg",
 	generator =  {
         map = {
@@ -43,7 +43,7 @@ return {
         --[1] = { width = 70, height = 70, generator = { map = { class = "engine.generator.map.Static", map = "zones/gora-prison1", }, }, },
 		[1] = { width = 64, height = 64, generator = { map = { map = "zones/gora-prison1", }, }, },
 		[2] = { width = 64, height = 64, generator = { map = { map = "zones/gora-prison2", }, }, },
-		[3] = { width = 64, height = 64, generator = { map = { map = "zones/gora-prison3", }, }, },
+		[3] = { width = 64, height = 65, generator = { map = { map = "zones/gora-prison3", }, }, },
 		[4] = { width = 40, height = 40, generator = { map = { map = "zones/gora-prison-sewers", }, }, },
 	},
 
@@ -71,7 +71,7 @@ return {
             Dialog:simplePopup("Big", "There are certainly a lot of prisoners ... why is this prison so big ... ?  If the layout holds, there should be another staircase in the opposite corner of this floor.")
         elseif lev == 3 and not game.state.storyflags["entered-gora-prison3"] then
             game.state.storyflags["entered-gora-prison3"] = true
-            Dialog:simplePopup("Lowest level", "This looks like the lowest floor.  You hear water to the South ... ah, sewers ...")
+            Dialog:simplePopup("Lowest level", "This looks like the lowest floor.  You hear water to the South ... ah, sewers.  That's your way out.")
         elseif lev == 4 and not game.player:hasQuest("start-escape-sewers") then
             game.player:grantQuest("start-escape-sewers")
         end

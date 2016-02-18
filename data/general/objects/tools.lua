@@ -19,8 +19,8 @@
 
 -- thief's tools, diggers, climber, gemcutter? holy symbol, writing(scroll?), pole (why?), mechanism/device, flint-and-steel
 
-local FlyingText = require "engine.FlyingText"
-local Talents = require "engine.interface.ActorTalents"
+--local FlyingText = require "engine.FlyingText"
+--local Talents = require "engine.interface.ActorTalents"
 
 newEntity{
     define_as = "BASE_LOCKPICK",
@@ -35,37 +35,38 @@ newEntity{
     desc = [[One or more strong, shaped wires or keys used to open locks.]],
     use_simple = {
         name = "Unlock that which is locked.",
-	use = function(self, who)
-	    -- change range to talent range
-                local tg = {type="bolt", range=1, nolock=true}
-                local x, y = who:getTarget(tg)
-                if not x or not y then return nil end
-		local door = game.level.map(x, y, engine.Map.TERRAIN) -- only works on doors (TERRAIN) right now
-		if door.door_unlocked then
-			lock_value = door.lock_value or 10
-			skill_total = self.bonus or 0
-			if who:knowTalent(Talents.T_LOCKPICK) then
-				skill_total = skill_total + who:getTalentLevel(Talents.T_LOCKPICK)
-			end
-			-- short term, simple test - more complicated later with ui, or maybe allow ui on test fail
-			if lock_value <= skill_total then -- possibly allow a random chance, too?
-				print("unlocking at ", x, ",", y)
-				print("lock_mfctr is ", door.lock_mfctr or "none")
-				game.level.map(x, y, engine.Map.TERRAIN, game.zone.grid_list[door.door_unlocked])
-				local sx, sy = game.level.map:getTileToScreen(x, y)
-				game.flyers:add(sx, sy, 10, 0, -1, "Unlocked!", {0,255,0}, false)
-			else
-				print("failed to unlock at ", x, ",", y)
-				local sx, sy = game.level.map:getTileToScreen(x, y)
-				game.flyers:add(sx, sy, 10, 0, -1, "Fail!", {255,0,0}, false)
-			end
+		use = function(self, who)
+	    	-- change range to talent range
+            local tg = {type="bolt", range=1, nolock=true}
+            local x, y = who:getTarget(tg)
+            if not x or not y then return nil end
+			local door = game.level.map(x, y, engine.Map.TERRAIN) -- only works on doors (TERRAIN) right now
+			if door.door_unlocked then
+				lock_value = door.lock_value or 10
+				skill_total = self.bonus or 0
+				if who:knowTalent(engine.interface.ActorTalents.T_LOCKPICK) then
+					skill_total = skill_total + who:getTalentLevel(engine.interface.ActorTalents.T_LOCKPICK)
+				end
+				-- short term, simple test - more complicated later with ui, or maybe allow ui on test fail
+				if lock_value <= skill_total then -- possibly allow a random chance, too?
+					print("unlocking at ", x, ",", y)
+					print("lock_mfctr is ", door.lock_mfctr or "none")
+					game.level.map(x, y, engine.Map.TERRAIN, game.zone.grid_list[door.door_unlocked])
+					local sx, sy = game.level.map:getTileToScreen(x, y)
+					game.flyers:add(sx, sy, 10, 0, -1, "Unlocked!", {0,255,0}, false)
+				else
+					print("failed to unlock at ", x, ",", y)
+					local sx, sy = game.level.map:getTileToScreen(x, y)
+					game.flyers:add(sx, sy, 10, 0, -1, "Fail!", {255,0,0}, false)
+				end
 			-- regardless of success, bump skill counter based on lock difficulty
-		else
-			print("Attempt to lockpick a terrain that is not an unlockable door at", x, ",", y)
-			-- maybe popup err msg here
-		end
-                return {id=true, used=true}
-        end},
+			else
+				print("Attempt to lockpick a terrain that is not an unlockable door at", x, ",", y)
+				-- maybe popup err msg here
+			end
+            return {id=true, used=true}
+        end
+    },
 }
 
 newEntity{ base = "BASE_LOCKPICK", name = "makeshift lockpick",             level_range = {1, 10}, cost = 1, bonus = 10, }

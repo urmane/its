@@ -1,4 +1,5 @@
 newTalentType{ type="thief/mechanic", name = "mechanic", description = "Mechanical techniques" }
+
 newTalent{
     name = "Pick locks",
     short_name = "Lockpick",
@@ -21,6 +22,7 @@ newTalent{
     on_learn = function(self) return "Hey, I learned how to pick locks!" end,
     on_unlearn = function(self) return "Hey, I forgot how to pick locks!" end,
 }
+
 newTalent{
     name = "Disarm Trap",
     short_name = "Disarm Trap",
@@ -28,6 +30,7 @@ newTalent{
     mode = "activated",
     info = "Skill at disarming traps",
 }
+
 newTalent{
     name = "Disable Mechanism",
     short_name = "Disable",
@@ -35,6 +38,7 @@ newTalent{
     mode = "activated",
     info = "Skill at disabling mechanisms",
 }
+
 newTalent{
     name = "Set Trap",
     short_name = "Set Trap",

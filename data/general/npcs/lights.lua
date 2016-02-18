@@ -31,7 +31,13 @@ newEntity{
 	stats = { str=5, dex=5, con=5 },
 	combat_armor = 0,
     on_acquire_target = {},
-    on_bump = {},
+    on_bump = function(act)
+        if act.x and act.y then
+            local sx, sy = game.level.map:getTileToScreen(act.x, act.y)
+            game.flyers:add(sx, sy, 20, 0, -1, "Ouch, hot!", {255,0,0}, false)
+        end
+    end,
+
 }
 
 newEntity{ base = "BASE_LIGHT",

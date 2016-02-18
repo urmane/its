@@ -17,12 +17,53 @@ defineTile("|", "TREE")
 defineTile("W", "TO_WORLDMAP")
 --defineTile("M", "GRASS", nil, "MAX_MACGUFFIN")
 defineTile(">", "DOWN")
-defineTile("M", "VERY_OLD_GRAVESTONE", nil, nil, nil, {on_block_change="DOWN", on_block_change_msg="You've discovered a secret passage!"})
+defineTile("M", "VERY_OLD_GRAVESTONE", nil, nil, nil, {on_block_change="DOWN", on_block_change_msg="You've discovered a secret staircase!"})
 defineTile("t", "PAVED_ROAD", nil, {random_filter={name="torch"}})
 defineTile("T", "GRASS", nil, {random_filter={name="torch"}})
 defineTile("A", "ALTAR")
 defineTile(",", "FLOOR")
 defineTile("P", "FLOOR", nil, "PRIEST")
+
+subGenerator{
+    x = 2, y = 2, w = 28, h = 28,
+    generator = "engine.generator.map.Town",
+    data = {
+		building_chance = 90,
+		lshape_chance = 80,
+		double_lshape_chance = 80,
+        max_building_w = 9, max_building_h = 9,
+        edge_entrances = {6,4},
+        floor = "WALL",
+        wall = "WALL",
+        door = "DOOR_HOUSE",
+        external_floor = "GRASS",
+        up = "GRASS",
+        down = "GRASS",
+        nb_rooms = false,
+        rooms = false,
+    },
+}
+
+subGenerator{
+    x = 35, y = 1, w = 30, h = 30,
+    generator = "engine.generator.map.Town",
+    data = {
+		building_chance = 90,
+		lshape_chance = 80,
+		double_lshape_chance = 80,
+        max_building_w = 9, max_building_h = 9,
+        edge_entrances = {6,4},
+        floor = "WALL",
+        wall = "WALL",
+        door = "DOOR_HOUSE",
+        external_floor = "GRASS",
+        up = "GRASS",
+        down = "GRASS",
+        nb_rooms = false,
+        rooms = false,
+    },
+}
+
 
 return [[||||||||||||||||||||||||||||||:W::||||||||||||||||||||||||||||||
 |.............................::::.............................|
