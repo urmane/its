@@ -61,11 +61,12 @@ end)
 
 newAI("prisoner", function(self)
 	if self:canSee(game.player) and self:hasLOS(game.player.x,game.player.y,nil,nil,self.x,self.y) then
+        return self:setRandomEmote()
 		--return self:setEmote(require("engine/Emote").new("Help me ...", 60, colors.GREY))
-		return self:setEmote(require("engine/Emote").new(rng.table{
-            "Help me ...", "Please ...", "Good sir!", "Hey!", "Guards!!", "How'd you get out?!",
-            "Guards! Guards!", "Get me out!", "You there!"},
-            30, colors.DARK_GREY))
+		-- return self:setEmote(require("engine/Emote").new(rng.table{
+  --           "Help me ...", "Please ...", "Good sir!", "Hey!", "Guards!!", "How'd you get out?!",
+  --           "Guards! Guards!", "Get me out!", "You there!"},
+  --           30, colors.DARK_GREY))
 	end
 end)
 
@@ -97,9 +98,6 @@ end)
 newAI("townperson", function(self)
     self:runAI("pinball")
 	if self:canSee(game.player) and self:hasLOS(game.player.x,game.player.y,nil,nil,self.x,self.y) then
-		return self:setEmote(require("engine/Emote").new(rng.table{
-            "Hello.", "Howdy.", "Good sir!", "Hey!", "Hrmph.", "...", "... tell ME to go ...",
-            "Let him!  Let him!", "A stranger...?", "You there!", "Step aside!"},
-            30, colors.DARK_GREY))
+        return self:setRandomEmote("townperson")
 	end
 end)

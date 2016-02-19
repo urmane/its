@@ -24,9 +24,9 @@ local function newCoin(name, image, subtype, cost, rarity, min_level, max_level,
 			-- Ponder - liquid vs networth?  ;-)
 			-- actual coin incs max and current, jewelry incs max only?
 			-- liquid used for bribes ...
-        	game.player.incMaxGold(game.player, self.cost * self.count)
-        	game.player.incGold(game.player, self.cost * self.count)
-			game.logPlayer(who, "Added %0.2f gold", self.cost * self.count)
+        	game.player.incMaxGold(game.player, self.cost * count)
+        	game.player.incGold(game.player, self.cost * count)
+			game.logPlayer(who, "Added %0.2f gold", self.cost * count)
         	game.level.map:removeObject(who.x, who.y, id)
         	return true
 		end

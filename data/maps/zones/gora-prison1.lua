@@ -20,8 +20,8 @@ defineTile("T", "FLOOR", "DECORATION_TABLE")
 defineTile("C", "FLOOR", "DECORATION_CHAIR")
 defineTile("T", "FLOOR")
 defineTile("C", "FLOOR")
-defineTile("r", "FLOOR", nil, {random_filter={type="rodent", subtype="giantrat"}})
-defineTile("s", "FLOOR", nil, {random_filter={type="snake", subtype="snake"}})
+--defineTile("r", "FLOOR", nil, {random_filter={type="rodent", subtype="giantrat"}})
+--defineTile("s", "FLOOR", nil, {random_filter={type="snake", subtype="snake"}})
 defineTile("S", "FLOOR", nil, {random_filter={type="spider", subtype="spider"}})
 
 return [[###############......$#########################################
@@ -32,7 +32,7 @@ return [[###############......$#########################################
 #t.............................t.............................t#
 #.............................................................#
 #..#......$12345.#...........................#.............#..#
-#......rrrssSS..................................G.............#
+#...............................................G.............#
 #.............................................................#
 #.....#+#+#+#+#.....#+#+#+#+#.....#+#+#+#+#.....#+#+#+#+#.....#
 #.....#p#.#.#p#.....#p#p#.#.#.....#p#.#.#.#.....#.#.#p#.#.....#

@@ -20,6 +20,7 @@
 require "engine.class"
 local ActorAI = require "engine.interface.ActorAI"
 local Faction = require "engine.Faction"
+--local Game = require "mod.class.Game"
 require "mod.class.Actor"
 
 module(..., package.seeall, class.inherit(mod.class.Actor, engine.interface.ActorAI))
@@ -27,6 +28,31 @@ module(..., package.seeall, class.inherit(mod.class.Actor, engine.interface.Acto
 function _M:init(t, no_default)
 	mod.class.Actor.init(self, t, no_default)
 	ActorAI.init(self, t)
+    _M.random_emotes = {}
+    self:loadRandomEmotes("/data/general/npcs/emotes")
+end
+
+function _M:newRandomEmotes(name, t)
+    _M.random_emotes[name] = t
+end
+
+function _M:loadRandomEmotes(dir)
+    for i, file in ipairs(fs.list(dir)) do
+        if file:find("%.lua$") then
+            local f, err = loadfile(dir.."/"..file)
+            if not f and err then error(err) end
+            setfenv(f, setmetatable({
+                --Game = require("mod.class.Game"),
+                newRandomEmotes = function(name, t) self:newRandomEmotes(name, t) end,
+            }, {__index=_G}))
+            f()
+        end
+    end
+end
+
+function _M:setRandomEmote(name)
+    n = name or self.name or "default"
+    self:setEmote(require("engine/Emote").new(rng.table(_M.random_emotes[n]), 30, colors.DARK_GREY))
 end
 
 function _M:act()

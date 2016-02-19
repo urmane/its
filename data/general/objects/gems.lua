@@ -38,12 +38,57 @@ local function newGem(name, image, subtype, cost, rarity, min_level, max_level)
 	}
 end
 
+-- Groups, species, varieties
+-- First, second, or third water
+-- perfect, included
+
+-- Organics
 newGem("Black Pearl"," object/gem.png", "black", 1000, 100, 8, 10)
 newGem("Pearl",     "object/gem.png", "white", 1000, 100, 8, 10)
-newGem("Opal",     "object/gem.png", "white", 1000, 100, 8, 10)
-newGem("Emerald",   "object/gem.png", "white", 1000, 100, 8, 10)
+newGem("Amber",     "object/gem.png", "white", 1000, 100, 8, 10)
+newGem("Coral",     "object/gem.png", "white", 1000, 100, 8, 10)
+newGem("Ivory",     "object/gem.png", "white", 1000, 100, 8, 10)
+newGem("Jet",     "object/gem.png", "white", 1000, 100, 8, 10)
+newGem("Blue Amber",     "object/gem.png", "white", 1000, 100, 8, 10)
+
+-- Rocks
+newGem("Lapis Lazuli", "object/gem.png", "white", 1000, 100, 8, 10)
+newGem("Obsidian", "object/gem.png", "white", 1000, 100, 8, 10)
+newGem("Jade",     "object/gem.png", "white", 1000, 100, 8, 10)
 newGem("Turquoise", "object/gem.png", "white", 1000, 100, 8, 10)
-newGem("Sapphire",  "object/gem.png", "white", 1000, 100, 8, 10)
+
+-- Quartzes
+newGem("Quartz",   "object/gem.png", "white", 1000, 100, 8, 10)
+newGem("Amethyst",   "object/gem.png", "white", 1000, 100, 8, 10)
+newGem("Citrine",   "object/gem.png", "white", 1000, 100, 8, 10)
+newGem("Jasper",   "object/gem.png", "white", 1000, 100, 8, 10)
+newGem("Tiger-eye",   "object/gem.png", "white", 1000, 100, 8, 10)
+newGem("Opal",     "object/gem.png", "white", 1000, 100, 8, 10)
+
+
+-- Beryls
+newGem("Aquamarine",   "object/gem.png", "white", 1000, 100, 8, 10)
+newGem("Red Beryl",   "object/gem.png", "white", 1000, 100, 8, 10)
+newGem("Goshenite",   "object/gem.png", "white", 1000, 100, 8, 10)
+newGem("Heliodor",   "object/gem.png", "white", 1000, 100, 8, 10)
+newGem("Morganite",   "object/gem.png", "white", 1000, 100, 8, 10)
 newGem("Emerald",   "object/gem.png", "white", 1000, 100, 8, 10)
+
+-- Corundums
+newGem("Sapphire",  "object/gem.png", "white", 1000, 100, 8, 10)
 newGem("Ruby",      "object/gem.png", "white", 1000, 100, 8, 10)
+
 newGem("Diamond",   "object/gem.png", "white", 1000, 100, 8, 10)
+
+--super-rares
+-- "Zektzerite"
+-- "Serendibite"
+-- "Poudrettiete"
+-- "Grandidierite"
+-- "Musgravite"
+-- "Taaffeite"
+-- "Chambersite"
+-- "Jeremejevite"
+-- "Red Beryl"
+-- "Hibonite"
+-- "Painite"
