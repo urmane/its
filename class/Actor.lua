@@ -103,7 +103,13 @@ function _M:move(x, y, force)
 	end
 	if force or self:enoughEnergy() then
 		moved = engine.Actor.move(self, x, y, force)
-		if not force and moved and (self.x ~= ox or self.y ~= oy) and not self.did_energy then self:useEnergy() end
+		if not force and moved and (self.x ~= ox or self.y ~= oy) and not self.did_energy then
+			self:useEnergy()
+			spd = self.move_speed or "normal"
+			if self.move_sounds and self.move_sounds[spd] then
+				game:playSoundNear(self, self.move_sounds[spd])
+			end
+		end
 	end
 	self.did_energy = nil
 	return moved

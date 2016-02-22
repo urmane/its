@@ -44,6 +44,7 @@ newBirthDescriptor{
 	talents = {
 		[ActorTalents.T_LOCKPICK]=1,
 		[ActorTalents.T_HIDE]=1,
+		[ActorTalents.T_LEAP]=1,
 	},
 	-- default load-out:
 	copy = {

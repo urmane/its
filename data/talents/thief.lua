@@ -5,6 +5,12 @@ newTalent{
     type = {"thief/thief", 1},
     info = "Liberate items from the confines of pockets",
     mode = "activated",
+    -- Naw, allow pick pockets while Hide is on, I like that tactic
+    -- on_pre_use = function(self, t)
+    --     if self:attr("never_move") then return false end
+    --     return true
+    -- end,
+
 }
 
 newTalent{
