@@ -21,3 +21,24 @@ load "/data/general/objects/swords.lua"
 load "/data/general/objects/helmets.lua"
 load "/data/general/objects/armors.lua"
 load "/data/general/objects/tools.lua"
+
+newEntity{
+	define_as = "GRAVITYLENS",
+	quest = true, -- not in base?
+	plot = true, -- not in base?
+	unique = true,
+	identified = true, -- not in base?
+	name = "Gravity Lens",
+	image = ".png",
+	level_range = {100,100},
+	display = "|",
+	color = colors.VIOLET,
+	encumber = 0,
+	desc = [[A large crystal lens, it seems to warp even the light around it.]],
+	on_pickup = function(self, who)
+		if who == game.player then
+			who:setQuestStatus("", engine.Quest.COMPLETED, "gravitylens")
+			return true
+		end
+	end,
+}

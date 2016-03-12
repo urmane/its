@@ -8,7 +8,7 @@ config.settings.its.autosave = true
 -- DEBUG mode
 config.settings.cheat = true
 --config.settings.its.cheat_start_zone = "gora-town"
-config.settings.its.cheat_start_zone = "gora-prison"
+config.settings.its.cheat_start_zone = "castle-zala"
 --config.settings.its.cheat_start_zone = "gora-graveyard"
 
 

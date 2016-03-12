@@ -21,56 +21,51 @@ return {
 	name = "Murmon",
 	zone_key = "murmon",
 	level_range = {1, 1},
-	max_level = 1,
+	max_level = 3,
 	decay = {300, 800},
 	persistent = "zone",
-	ambient_light = 60,
-    width = 16, height = 16,
+	ambient_light = 1,
+    width = 64, height = 64,
 	generator =  {
         map = {
-            class = "engine.generator.map.Maze",
+            class = "engine.generator.map.Cavern",
+            zoom = 30,
             up = "UP",
             down = "DOWN",
             wall = "WALL",
             floor = "FLOOR",
-            --widen_w = 3, widen_h = 3,
+            door = "FLOOR",
         },
-		--object = {
-		--	class = "engine.generator.object.Random",
-		--	nb_object = {20, 30},
-		--},
-        --actor = {
-        --    class = "mod.class.generator.actor.Random",
-        --    nb_npc = {35, 40},
-        --},
-        --trap = {
-        --    class = "engine.generator.trap.Random",
-        --    nb_trap = {0, 0},
-        --},
-		up = "UP",
-		down = "DOWN",
+		object = {
+			class = "engine.generator.object.Random",
+			nb_object = {20, 30},
+		},
+        actor = {
+           class = "engine.generator.actor.Random",
+           nb_npc = {45, 50},
+        },
+  --       trap = {
+  --          class = "engine.generator.trap.Random",
+  --          nb_trap = {0, 0},
+  --       },
 	},
 	levels = {
 		[1] = {
             generator = { map = {
-                width = 16, height = 16,
-                up = "TO_AFEEDI",
-                down = "DOWN",
-                wall = "WALL",
-                floor = "FLOOR",
+                up = "TO_WORLDMAP",
             }, },
         },
         [2] = {
             generator = { map = {
-                width = 48, height = 48,
-                --up = "TO_AFEEDI",
+                width = 256, height = 256,
+                zoom = 20,
             }, },
         },
         [3] = {
+            no_level_connectivity = true,
             generator = { map = {
-                width = 64, height = 64,
-                widen_w = 3, widen_h = 3,
-                --up = "TO_AFEEDI",
+                width = 256, height = 256,
+                zoom = 10,
             }, },
         },
 	},
