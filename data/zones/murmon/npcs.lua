@@ -18,3 +18,4 @@
 -- darkgod@te4.org
 
 load("/data/general/npcs/lights.lua")
+load("/data/general/npcs/rodents.lua")

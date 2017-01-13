@@ -37,7 +37,9 @@ return {
 		down = "DOWN",
 	},
 	levels = {
-		[1] = { width = 64, height = 64, generator = { map = { class = "engine.generator.map.Static", map = "zones/castle-zala", }, }, },
+		[1] = {
+			width = 64, height = 64,
+			generator = { map = { class = "engine.generator.map.Static", map = "zones/castle-zala", }, }, },
 	},
 --	on_leave = function(lev, old_lev, newzone)
 --                if lev.level == 1 then

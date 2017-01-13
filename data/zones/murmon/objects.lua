@@ -29,7 +29,7 @@ newEntity{
 	unique = true,
 	identified = true, -- not in base?
 	name = "Gravity Lens",
-	image = ".png",
+	image = "objects/plot/gravitylens.png",
 	level_range = {100,100},
 	display = "|",
 	color = colors.VIOLET,
@@ -38,6 +38,8 @@ newEntity{
 	on_pickup = function(self, who)
 		if who == game.player then
 			who:setQuestStatus("", engine.Quest.COMPLETED, "gravitylens")
+			who.talents_types_mastery["anti-elemental/speed"] = who.talents_types_mastery["anti-elemental/speed"] or 1
+			game.logPlayer(who, "#00FFFF#You gain knowledge of the Speed talents!")
 			return true
 		end
 	end,
