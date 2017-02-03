@@ -29,7 +29,7 @@ return {
 	generator =  {
         map = {
             class = "engine.generator.map.Cavern",
-            zoom = 30,
+            zoom = 5 , --zoom = 30,
             up = "UP",
             down = "DOWN",
             wall = "WALL",
@@ -57,18 +57,44 @@ return {
         },
         [2] = {
             generator = { map = {
-                width = 256, height = 256,
+                --width = 256, height = 256,
+                width = 32, height = 32,
                 zoom = 20,
             }, },
         },
         [3] = {
             no_level_connectivity = true,
             generator = { map = {
-                width = 256, height = 256,
+                --width = 256, height = 256,
+                width = 32, height = 32,
                 zoom = 10,
             }, },
         },
 	},
+    post_process = function(level)
+        --if level.level == 1 then
+            local g = game.zone:makeEntityByName(level, "object", "GRAVITYLENS", true)
+            print("[DBG]testtest")
+            if g then
+                local x, y = rng.range(10, level.map.w-11), rng.range(10, level.map.h-11)
+                --local x, y = rng.range(10, game.player.x-11), rng.range(10, game.player.y-11)
+                local tries = 0
+                while (level.map:checkEntity(x, y, engine.Map.TERRAIN, "block_move") or level.map(x, y, engine.Map.OBJECT)) and tries < 100 do
+                    x, y = rng.range(10, level.map.w-11), rng.range(10, level.map.h-11)
+                    tries = tries + 1
+                end
+                if tries < 100 then
+                    game.zone:addEntity(level, g, "terrain", x, y)
+                    print("[DBG]GRAVITYLENS is at %s, %s", x, y)
+                    level.spots[#level.spots+1] = {x=x, y=y, check_connectivity="entrance", type="special", subtype="artifact"} --?
+                else
+                    level.force_recreate = true
+                end
+            else
+                print("[DBG] cannot make gravitylens")
+            end
+        --end
+    end,
 --	on_leave = function(lev, old_lev, newzone)
 --                if lev.level == 1 then
 --                        -- we know this is the first time through?

@@ -33,6 +33,8 @@ newEntity{
 	level_range = {100,100},
 	display = "|",
 	color = colors.VIOLET,
+	notice = true,
+	always_remember = true,
 	encumber = 0,
 	desc = [[A large crystal lens, it seems to warp even the light around it.]],
 	on_pickup = function(self, who)

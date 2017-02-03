@@ -6,6 +6,8 @@ GUI:
  ☐ Facing indicator
  ☐ NPC suspicion indicator
  ☐ Visual indicator of how much light player is in: circular/oval like xbox Thief
+ ☐ Visual indicator of how much noise I'm making
+ ☐ Visual indicator of how "stealth"ed/visible I am
  ☐ Visual indicator of "smell trail" ... but when/how to see this ...
  ☐ particles for fog, snow, dust
  ☐ footprints (as mos_* grids a la TOME)
