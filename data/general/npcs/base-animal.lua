@@ -36,7 +36,7 @@ newEntity{
     on_acquire_target = function(act)
         if act.x and act.y then
             local sx, sy = game.level.map:getTileToScreen(act.x, act.y)
-            game.flyers:add(sx, sy, 20, 0, -1, "Aware!", {255,0,0}, false)
+            game.flyers:add(sx, sy, 20, 0, -1, "Seen!", {255,0,0}, false)
         end
     end,
     on_bump = function(act)

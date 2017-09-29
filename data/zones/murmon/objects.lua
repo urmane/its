@@ -37,7 +37,12 @@ newEntity{
 	always_remember = true,
 	encumber = 0,
 	desc = [[A large crystal lens, it seems to warp even the light around it.]],
+	on_prepickup = function(self, who)
+		print("[DBG] Gravitylens prepickup")
+		return false
+	end,
 	on_pickup = function(self, who)
+		print("[DBG] I've been picked up")
 		if who == game.player then
 			who:setQuestStatus("", engine.Quest.COMPLETED, "gravitylens")
 			who.talents_types_mastery["anti-elemental/speed"] = who.talents_types_mastery["anti-elemental/speed"] or 1

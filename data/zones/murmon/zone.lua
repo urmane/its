@@ -79,12 +79,15 @@ return {
                 local x, y = rng.range(10, level.map.w-11), rng.range(10, level.map.h-11)
                 --local x, y = rng.range(10, game.player.x-11), rng.range(10, game.player.y-11)
                 local tries = 0
+                --
+                -- Um, do I need this?  this is not a terrain...
+                --
                 while (level.map:checkEntity(x, y, engine.Map.TERRAIN, "block_move") or level.map(x, y, engine.Map.OBJECT)) and tries < 100 do
                     x, y = rng.range(10, level.map.w-11), rng.range(10, level.map.h-11)
                     tries = tries + 1
                 end
                 if tries < 100 then
-                    game.zone:addEntity(level, g, "terrain", x, y)
+                    game.zone:addEntity(level, g, "object", x, y)
                     print("[DBG]GRAVITYLENS is at %s, %s", x, y)
                     level.spots[#level.spots+1] = {x=x, y=y, check_connectivity="entrance", type="special", subtype="artifact"} --?
                 else
