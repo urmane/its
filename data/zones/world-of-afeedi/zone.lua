@@ -31,6 +31,7 @@ return {
 	endx = 15,
 	endy = 171,
 	all_lited = true,
+    ambient_light = 10,
 	hidden_zones = ("tomb"),
 	-- first pass - randomly generated world
 	-- second pass - add a second underwater "level" based on mirror image of land/water
@@ -70,7 +71,7 @@ return {
 	        islol = "ISLOL",
     	},
 	},
-	post_process = funtion(level)
+--	post_process = funtion(level)
 		-- This block of code reveals zones on the main map that have prereqs completed
 		-- Could potentially loop through a list of known "X"s:
 
@@ -105,5 +106,5 @@ return {
 
   --	end
 
-    end
+--  end,
 }

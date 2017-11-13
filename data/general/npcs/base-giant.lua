@@ -31,5 +31,5 @@ newEntity{
 	stats = { str=1, dex=1, con=1 },
 	combat_armor = 0,
     sight = 2,
-    sight_min = 0,
+    nightvision = 0,
 }

@@ -127,7 +127,8 @@ end
 --- this replaces function computeFOV from engine/interface/ActorFOV.lua
 --- might also need to mod function computeFOVBeam from engine/interface/ActorFOV.lua
 
---- Computes actor's FOV
+--- Computes NPC's actual FOV
+--- May need to augment with additional senses
 -- @param radius the FOV radius, defaults to 20
 -- @param block the property to look for FOV blocking, defaults to "block_sight"
 -- @param apply an apply function that will be called on each seen grids, defaults to nil

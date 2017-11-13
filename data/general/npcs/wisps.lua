@@ -42,7 +42,7 @@ newEntity{ base = "BASE_WISP",
 	lite_min = 0,           -- min radius
 	lite_max = 3,           -- max radius
 	sight = 5,		-- absolute limit of sight
-	sight_min = 5,		-- minimum light level this actor can distinguish
+	nightvision = 5,		-- minimum light level this actor can distinguish
 	max_life = resolvers.rngavg(5,9),
 	combat = { dam=1 },
 }

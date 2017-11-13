@@ -19,7 +19,7 @@ newEntity{ base = "BASE_ZOMBIE",
 	rarity = 1,
 	lite = 0,		-- radius of the light this actor puts out
 	sight = 4,		-- absolute limit of sight
-	sight_min = 10,		-- minimum light level this actor can distinguish
+	nightvision = 10,		-- minimum light level this actor can distinguish
 	max_life = resolvers.rngavg(5,9),
 	combat = { dam=2 },
 }

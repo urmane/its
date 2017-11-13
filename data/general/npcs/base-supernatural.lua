@@ -28,5 +28,5 @@ newEntity{
 	stats = { str=1, dex=1, con=1 },
 	combat_armor = 0,
     sight = 8,
-    sight_min = 1,
+    nightvision = 1,
 }

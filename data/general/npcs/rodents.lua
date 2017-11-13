@@ -25,7 +25,7 @@ newEntity{
 	level_range = {1,3}, exp_worth = 1, rarity = 1,
 	--lite = 1,
 	sight = 3,
-	sight_min = 1,
+	nightvision = 1,
     max_life = resolvers.rngavg(1,4),
     combat = { dam=1 },
 }

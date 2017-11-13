@@ -44,7 +44,7 @@ newEntity{
 	on_pickup = function(self, who)
 		print("[DBG] I've been picked up")
 		if who == game.player then
-			who:setQuestStatus("", engine.Quest.COMPLETED, "gravitylens")
+			who:setQuestStatus("elemental-quests", engine.Quest.COMPLETED, "earth-quest")
 			who.talents_types_mastery["anti-elemental/speed"] = who.talents_types_mastery["anti-elemental/speed"] or 1
 			game.logPlayer(who, "#00FFFF#You gain knowledge of the Speed talents!")
 			return true

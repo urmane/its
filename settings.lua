@@ -6,10 +6,11 @@ config.settings.its = config.settings.its or {}
 config.settings.its.autosave = true
 
 -- DEBUG mode
-config.settings.cheat = true
+config.settings.cheat = false
+config.settings.debugprint = true
 --config.settings.its.cheat_start_zone = "gora-town"
-config.settings.its.cheat_start_zone = "murmon"
---config.settings.its.cheat_start_zone = "gora-graveyard"
+--config.settings.its.cheat_start_zone = "murmon"
+config.settings.its.cheat_start_zone = "gora-graveyard"
 
 
 print("[ITS] ITS settings loaded")

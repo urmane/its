@@ -268,6 +268,8 @@ end
 --- Can self see the target actor
 -- This does not check LOS or such, only the actual ability to see it.
 -- Check for telepathy, invisibility, stealth, ...
+-- How is this def_pct used, and how is the pct returned as 2nd arg used?
+--   Provocative, might be useful instead of / in addition to light_level
 function _M:canSee(actor, def, def_pct)
 	if not actor then return false, 0 end
 	if self.player then
@@ -279,25 +281,13 @@ function _M:canSee(actor, def, def_pct)
         actor._mo:onSeen(res)
     end
 
-	-- New algorithm:
-	-- absolute light power scales 0 (pitch black) to 100 (noon sun) (more possible, I guess ...)
-	-- lite field is radius in grids, 1-10 maps to 0-100 absolute ? skip inverse square law for now?
-	-- abs_light_level at x,y is ambient plus actor.lite * 10 (no falloff at zero)
-	-- 	plus (self.lite < distance(src,tgt) ? 0 : (self.lite * 10) * falloff(distance(src,tgt)))
-	-- if self.sight_min >= abs_light_level, should be visible, check hide/other
-	-- note that this means light radius != sight distance!
+	-- new new new algorithm
+	-- if carrying lite, works "normal".  For ITS, normally we won't have a lite
+	-- ambient light only used if not carrying lite
+	-- in that case acts like lite rad of ambient + self.nightvision
+	-- and can see distant lites (how to implement separate from "normal"?)
 
-	-- New new algorithm:
-	-- sight is the limit of sight, regardless
-	-- lite is (appears to be for the engine) binary yes or no
-	-- if an actor carries a lite > 0 they are visibile
-	-- else if they are inside my self.lite they are visibile
-	-- else if there is game.level.data.ambient_light > 0 and they are inside my self.sight_min + ambient_light they are visible
-	-- else not
-	-- Can always see self
-	if actor == self then return true, 100 end
-
-	-- Is he too far away for my ability to see?
+	-- Error conditions
 	-- NB: for the player, self.x/y might be "none" at level create!
 	if not (self.x and self.y and actor.x and actor.y) then
 		-- if self.player then
@@ -309,6 +299,12 @@ function _M:canSee(actor, def, def_pct)
 		-- end
 		return false, 0
 	end
+
+	-- Can always see self
+	if actor == self then return true, 100 end
+
+	-- Is he too far away for my ability to see?
+	-- NB: check this against the FOV fns, this might be a redundant check
 	local dist = core.fov.distance(self.x, self.y, actor.x, actor.y)
 	if self.sight and self.sight < dist then
 		-- if self.player then
@@ -320,53 +316,34 @@ function _M:canSee(actor, def, def_pct)
 	end
 
 	-- Must have light, either theirs, ours, or ambient
+	-- NB: should just be able to see if map:x,y is lit, or ambient
 	if actor.lite and actor.lite > 0 then
 		--print ("[DBG-canSee] seen: actor "..actor.name.." is carrying a lite")
+		return true, 100
 	else
 		--print ("[DBG-canSee] continue: actor "..actor.name.." is not carrying a lite")
 		if self.lite and self.lite > 0 and dist <= self.lite then
 			--print ("[DBG-canSee] seen: actor "..actor.name.." is inside my lite radius")
+			return true, 100
 		else
 			--print ("[DBG-canSee] continue: actor "..actor.name.." is not inside my lite radius")
-			if self.sight_min and self.sight_min > 0 and
-				game.level and game.level.data and game.level.data.ambient_light and
-				dist <= (self.sight_min + game.level.data.ambient_light) then
-				--print ("[DBG-canSee] seen: actor "..actor.name.." is visible in ambient light")
+			if game.level and game.level.data and game.level.data.ambient_light then
+				if (self.nightvision and dist <= (game.level.data.ambient_light + self.nightvision)) or
+				    dist <= game.level.data.ambient_light then
+					--print ("[DBG-canSee] seen: actor "..actor.name.." is visible in ambient light")
+					return true, 100
+				else
+					return false, 0
+				end
 			else
 				--print ("[DBG-canSee] unseen: actor "..actor.name.." is not visible in any light")
 				return false, 0
 			end
 		end
 	end
+
+	-- redo the above loop if we need to check additional states - eg invisibility
 	-- if we get here, target is lit, somehow, and visible
-
-
-	-- -- How well lit is the target, and can I perceive that?
-	-- local light_level = 0
-	-- -- start with ambient light
-	-- if game.level and game.level.data and game.level.data.ambient_light then
-	-- 	light_level = game.level.data.ambient_light
-	-- end
-	-- -- add any actor lite
-	-- if actor.lite then -- No falloff at source
-	-- 	light_level = light_level + (actor.lite * 10)
-	-- end
-	-- -- add any of my lite, if in range
-	-- if self.lite and self.lite > 0 and dist <= self.lite then
-	-- 	-- Really should use inverse square root falloff instead of linear
-	-- 	light_level = light_level + ((self.lite - dist) * 10)
-	-- end
-	-- -- compare my minimal perception with the absolute light level at target
-	-- if self.sight_min and self.sight_min > light_level then
-	-- 	-- if self.player then
-	-- 	-- 	print("vision too weak, player cannot see "..actor.name.." uid "..actor.uid)
-	-- 	-- 	print("   self.sight_min is"..self.sight_min)
-	-- 	-- end
-	-- 	return false, 0
-	-- end
-
-
-	-- if we get here, target is visually available, check Hide, etc
 	-- Note that this means the default is seen
 --[[
 	if actor.attr("hide") and actor.attr("hide") > 0 then
@@ -375,39 +352,57 @@ function _M:canSee(actor, def, def_pct)
         end
 	end
 ]]--
-	-- if self.player then print(self.name.." can see "..actor.name.." uid "..actor.uid) end
 	return true, 100
+end
 
---[[
-	-- Check for light / visibility
-	-- Actor can always see self or
-	-- Actor is emitting light (we already know he's within sight radius) or
-	-- We have a lite and he's inside the radius or
-	-- There is ambient light and self can pick up actor out of the shadows
-        if ( actor == self ) or
-		( actor.lite and actor.lite > 0 ) or
-		( self.lite and self.lite > 0 and ( core.fov.distance(self.x, self.y, actor.x, actor.y) <= self.lite ) ) or
-		( game.level and game.level.data.ambient_light and self.sight_min and ( self.sight_min <= game.level.data.ambient_light ) ) then
-		-- FIXME - need to check if actor within other emitted light radii, maybe not here
-		-- Visible unless other effects prevent it, check those now
-
-		-- Check for stealth. Checks against the target cunning and level
-		if actor:attr("stealth") and actor ~= self then
-			local def = self.level / 2 + self:getCun(25)
-			local hit, chance = self:checkHit(def, actor:attr("stealth") + (actor:attr("inc_stealth") or 0), 0, 100)
-			if not hit then
-				return false, chance
-			end
-		end
-
-		if def ~= nil then
-			return def, def_pct
-		else
-			return true, 100
-		end
+function _M:canHear(actor, def, def_pct)
+	if not actor then return false, 0 end
+	if self.player then
+		--print("[DBG-canSee]checking against actor ", actor.name or "none".." uid "..actor.uid)
 	end
-	return false, 0
---]]
+
+    -- magic:
+    if self.player and type(def) == "nil" and actor and actor._mo then
+        actor._mo:onHeard(res)
+    end
+
+    if actor == self then return true, 100 end
+
+    return true, 100
+end
+
+
+function _M:canFeel(actor, def, def_pct)
+	if not actor then return false, 0 end
+	if self.player then
+		--print("[DBG-canSee]checking against actor ", actor.name or "none".." uid "..actor.uid)
+	end
+
+    -- magic:
+    if self.player and type(def) == "nil" and actor and actor._mo then
+        actor._mo:onFelt(res)
+    end
+
+    if actor == self then return true, 100 end
+
+    return true, 100
+end
+
+
+function _M:canSmell(actor, def, def_pct)
+	if not actor then return false, 0 end
+	if self.player then
+		--print("[DBG-canSee]checking against actor ", actor.name or "none".." uid "..actor.uid)
+	end
+
+    -- magic:
+    if self.player and type(def) == "nil" and actor and actor._mo then
+        actor._mo:onSmelt(res)
+    end
+
+    if actor == self then return true, 100 end
+
+    return true, 100
 end
 
 --- Can the target be applied some effects

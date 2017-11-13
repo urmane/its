@@ -32,7 +32,7 @@ newEntity{
 	stats = { str=1, dex=1, con=1 },
 	combat_armor = 0,
     sight = 2,
-    sight_min = 0,
+    nightvision = 0,
     on_acquire_target = function(act)
         if act.x and act.y then
             local sx, sy = game.level.map:getTileToScreen(act.x, act.y)

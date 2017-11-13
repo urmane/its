@@ -51,11 +51,13 @@ return {
 	},
 	levels = {
 		[1] = {
+            ambient_light = 3,
             generator = { map = {
                 up = "TO_WORLDMAP",
             }, },
         },
         [2] = {
+            ambient_light = 2,
             generator = { map = {
                 --width = 256, height = 256,
                 width = 32, height = 32,
@@ -63,6 +65,7 @@ return {
             }, },
         },
         [3] = {
+            ambient_light = 1,
             no_level_connectivity = true,
             generator = { map = {
                 --width = 256, height = 256,
@@ -81,7 +84,7 @@ return {
                 local tries = 0
                 --
                 -- Um, do I need this?  this is not a terrain...
-                --
+                -- Yes, duh, otherwise player cannot pick it up
                 while (level.map:checkEntity(x, y, engine.Map.TERRAIN, "block_move") or level.map(x, y, engine.Map.OBJECT)) and tries < 100 do
                     x, y = rng.range(10, level.map.w-11), rng.range(10, level.map.h-11)
                     tries = tries + 1

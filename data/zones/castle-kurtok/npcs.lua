@@ -27,7 +27,7 @@ newEntity{
         level_range = {1,3}, exp_worth = 1, rarity = 1,
         lite = 0,
         sight = 3,
-        sight_min = 10,
+        nightvision = 10,
         max_life = 1,
     on_die = function(self, who)
         game.player:setQuestStatus("save-the-world", engine.Quest.COMPLETED, "foo")

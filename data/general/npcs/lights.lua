@@ -46,13 +46,13 @@ newEntity{ base = "BASE_LIGHT",
 	image = "npcs/lights/torch.png",
 	level_range = {1, 4}, exp_worth = 0,
 	rarity = 4,
-	lite = 3,		-- radius of the light this actor puts out
+	lite = 4,		-- radius of the light this actor puts out
 	lite_pulse = 90,        -- percent chance per turn to mod lite
 	lite_pulse_step = 1,    -- amount and step to inc/dec
 	lite_min = 2,           -- min radius
 	lite_max = 4,           -- max radius
-	sight = 1,		-- absolute limit of sight
-	sight_min = 0,		-- minimum light level this actor can distinguish
+	sight = 4,		-- absolute limit of sight
+	nightvision = 0,		-- minimum light level this actor can distinguish
 	max_life = 1,
 	combat = { dam=1 },
 }
@@ -62,13 +62,13 @@ newEntity{ base = "BASE_LIGHT",
 	desc = [[A low, wide brass pan full of glowing coals.]],
 	level_range = {1, 4}, exp_worth = 0,
 	rarity = 4,
-	lite = 5,		-- radius of the light this actor puts out
+	lite = 2,		-- radius of the light this actor puts out
 	lite_pulse = 20,        -- percent chance per turn to mod lite
 	lite_pulse_step = 1,    -- amount and step to inc/dec
 	lite_min = 1,           -- min radius
 	lite_max = 2,           -- max radius
-	sight = 1,		-- absolute limit of sight
-	sight_min = 0,		-- minimum light level this actor can distinguish
+	sight = 2,		-- absolute limit of sight
+	nightvision = 0,		-- minimum light level this actor can distinguish
 	max_life = 1,
 	combat = { dam=1 },
 }

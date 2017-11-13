@@ -38,6 +38,6 @@ newEntity{
 	level_range = {1,3}, exp_worth = 1, rarity = 1,
 	lite = 3,
 	sight = 3,
-	sight_min = 40,
+	nightvision = 40,
 	max_life = 1,
 }

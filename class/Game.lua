@@ -548,6 +548,9 @@ function _M:setupCommands()
 
 		-- Actions
 		CHANGE_LEVEL = function()
+			if not self.level and self.level.map then
+				self.log("You cannot do that here.")
+			end
 			local e = self.level.map(self.player.x, self.player.y, Map.TERRAIN)
 			if self.player:enoughEnergy() and e.change_level then
 				self:changeLevel(e.change_zone and e.change_level or self.level.level + e.change_level, e.change_zone)

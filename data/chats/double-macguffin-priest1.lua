@@ -31,7 +31,7 @@ newChat {
 
 The man falls to his knees and bows before you.]],
 	answers = {
-	{"Thanks.", action=function(npc, player) player:setQuestStatus("double-macguffin",engine.Quest.COMPLETED) end},
+	{"Uh, thanks.", action=function(npc, player) player:setQuestStatus("double-macguffin",engine.Quest.COMPLETED) end},
 	},
 }
 

@@ -231,9 +231,14 @@ function _M:playerFOV()
 
     -- ambient light is a level property, and lets you see a small number of grids around you if you're not holding a light.
     -- right now this is player-only - consider moving all sense code up to Actor
+    -- in any case, only the player's ambient vision shows on the map
     if self.lite == 0 and game.level.data.ambient_light and game.level.data.ambient_light > 0 then
         -- assume ambient_light always < limit of sight for now
-        self:computeFOV(math.max(game.level.data.ambient_light, self.sight_min), "block_sight",
+        local d = 0
+        if self.nightvision then
+            d = self.nightvision
+        end
+        self:computeFOV(game.level.data.ambient_light + d, "block_sight",
             function(x, y, dx, dy, sqdist) game.level.map:applyExtraLite(x, y) end,
             true, true, true)
     end
