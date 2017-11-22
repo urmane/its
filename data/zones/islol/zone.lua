@@ -1,5 +1,5 @@
--- ToME - Tales of Middle-Earth
--- Copyright (C) 2009, 2010, 2011, 2012 Nicolas Casalini
+-- ITS - In The Shadows
+-- Copyright (C) 2015, 2016, 2017 James Niemira
 --
 -- This program is free software: you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -14,8 +14,8 @@
 -- You should have received a copy of the GNU General Public License
 -- along with this program.  If not, see <http://www.gnu.org/licenses/>.
 --
--- Nicolas Casalini "DarkGod"
--- darkgod@te4.org
+-- James Niemira "urmane"
+-- jim.niemira@gmail.com
 
 return {
 	name = "The Temple of Islol",

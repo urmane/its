@@ -1,7 +1,5 @@
--- based on weather_vapours.lua from TOME:
--- 
--- ToME - Tales of Maj'Eyal
--- Copyright (C) 2009 - 2014 Nicolas Casalini
+-- ITS - In The Shadows
+-- Copyright (C) 2015, 2016, 2017 James Niemira
 --
 -- This program is free software: you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -16,9 +14,10 @@
 -- You should have received a copy of the GNU General Public License
 -- along with this program.  If not, see <http://www.gnu.org/licenses/>.
 --
-
--- Nicolas Casalini "DarkGod"
--- darkgod@te4.org
+-- James Niemira "urmane"
+-- jim.niemira@gmail.com
+-- based on weather_vapours.lua from TOME:
+-- 
 
 return {
     frag = "weather_vapours",
