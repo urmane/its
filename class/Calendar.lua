@@ -13,8 +13,8 @@ DAYS_PER_YEAR = 360
 YEAR = DAY * DAYS_PER_YEAR
 
 MOON1_CYCLE = 30
-MOON2_CYCLE = 60
-MOON3_CYCLE = 360
+MOON2_CYCLE = 90
+MOON3_CYCLE = 75
 
 --- Create a calendar
 -- @param definition the file to load that returns a table containing calendar months

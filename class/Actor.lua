@@ -265,6 +265,13 @@ function _M:worthExp(target)
 	return self.level * mult * self.exp_worth
 end
 
+-- FIXME dinna work, need to figure out why
+function _M:senseDebug( sns, str1)
+	if config.settings.its.debugsense then
+		print(string.format("[DBG-%s] %s", sns, str1)
+	end
+end
+
 --- Can self see the target actor
 -- This does not check LOS or such, only the actual ability to see it.
 -- Check for telepathy, invisibility, stealth, ...
@@ -273,7 +280,8 @@ end
 function _M:canSee(actor, def, def_pct)
 	if not actor then return false, 0 end
 	if self.player then
-		--print("[DBG-canSee]checking against actor ", actor.name or "none".." uid "..actor.uid)
+		self:senseDebug("vision", string.format("Player at %s, %s", self.x or "none", self.y or "none"))
+		self:senseDebug("vision", string.format("checking against actor %s, uid %s", actor.name or "none", actor.uid))
 	end
 
     -- magic:
@@ -281,7 +289,7 @@ function _M:canSee(actor, def, def_pct)
         actor._mo:onSeen(res)
     end
 
-	-- new new new algorithm
+	-- algorithm
 	-- if carrying lite, works "normal".  For ITS, normally we won't have a lite
 	-- ambient light only used if not carrying lite
 	-- in that case acts like lite rad of ambient + self.nightvision
@@ -290,13 +298,6 @@ function _M:canSee(actor, def, def_pct)
 	-- Error conditions
 	-- NB: for the player, self.x/y might be "none" at level create!
 	if not (self.x and self.y and actor.x and actor.y) then
-		-- if self.player then
-		-- 	print("[DBG-canSee]not on map, player cannot see "..actor.name.." uid "..actor.uid)
-		-- 	print("[DBG-canSee]   self.x is ", self.x or "none")
-		-- 	print("[DBG-canSee]   self.x is ", self.x or "none")
-		-- 	print("[DBG-canSee]   self.x is ", self.x or "none")
-		-- 	print("[DBG-canSee]   self.x is ", self.x or "none")
-		-- end
 		return false, 0
 	end
 
@@ -307,51 +308,64 @@ function _M:canSee(actor, def, def_pct)
 	-- NB: check this against the FOV fns, this might be a redundant check
 	local dist = core.fov.distance(self.x, self.y, actor.x, actor.y)
 	if self.sight and self.sight < dist then
-		-- if self.player then
-		-- 	print("[DBG-canSee]too far, player cannot see "..actor.name.." uid "..actor.uid)
-		-- 	print("[DBG-canSee]   self.sight is "..self.sight)
-		-- 	print("[DBG-canSee]   dist is "..dist)
-		-- end
+		if self.player then
+			self:senseDebug("vision", "actor is beyond sight")
+		end
 		return false, 0
 	end
 
-	-- Must have light, either theirs, ours, or ambient
-	-- NB: should just be able to see if map:x,y is lit, or ambient
+	-- Must have light for vision, either theirs, ours, or ambient.  Or infravision.
+	-- NB: should just be able to see if map:x,y is lit, or ambient?
 	if actor.lite and actor.lite > 0 then
-		--print ("[DBG-canSee] seen: actor "..actor.name.." is carrying a lite")
-		return true, 100
+		self:senseDebug("vision", "actor is carrying a lite")
+		--fall through --return true, 100
 	else
-		--print ("[DBG-canSee] continue: actor "..actor.name.." is not carrying a lite")
+		senseDebug("vision", "actor is NOT carrying a lite")
 		if self.lite and self.lite > 0 and dist <= self.lite then
-			--print ("[DBG-canSee] seen: actor "..actor.name.." is inside my lite radius")
-			return true, 100
+			self:senseDebug("vision", "actor is inside my lite radius")
+			-- fall through --return true, 100
 		else
-			--print ("[DBG-canSee] continue: actor "..actor.name.." is not inside my lite radius")
+			self:senseDebug("vision", "actor is not inside my lite radius")
 			if game.level and game.level.data and game.level.data.ambient_light then
 				if (self.nightvision and dist <= (game.level.data.ambient_light + self.nightvision)) or
 				    dist <= game.level.data.ambient_light then
-					--print ("[DBG-canSee] seen: actor "..actor.name.." is visible in ambient light")
-					return true, 100
+					self:senseDebug("vision", "actor is visible in ambient light")
+					-- fall through --return true, 100
 				else
+					self:senseDebug("vision", "actor is not visible in ambient light")
 					return false, 0
 				end
 			else
-				--print ("[DBG-canSee] unseen: actor "..actor.name.." is not visible in any light")
-				return false, 0
+				if self.infravision and self.infravision >= dist then
+					self:senseDebug("vision", "actor is visible due to infravision")
+					-- fall through -- return true, 100
+				else
+					if self.ultravision then
+						self:senseDebug("vision", "actor is visible due to ultravision")
+					    -- fall through -- return true, 100
+					else
+						self:senseDebug("vision", "actor is not visible, no ambient light, no infravision")
+						return false, 0
+					end
+				end
 			end
 		end
 	end
 
-	-- redo the above loop if we need to check additional states - eg invisibility
-	-- if we get here, target is lit, somehow, and visible
-	-- Note that this means the default is seen
---[[
+	-- At this point, the actor is visible due to light.  Now check other things.
+	-- Rationlize these
 	if actor.attr("hide") and actor.attr("hide") > 0 then
         if self.getSns() < actor.attr("hide") then
             return false, 0
         end
 	end
-]]--
+
+	if actor.attr("invisible") and actor.attr("invisible") > 0 then
+        if self.getSns() < actor.attr("invisible") then
+            return false, 0
+        end
+	end
+
 	return true, 100
 end
 
@@ -366,9 +380,24 @@ function _M:canHear(actor, def, def_pct)
         actor._mo:onHeard(res)
     end
 
+    -- check for deafness? pointless
     if actor == self then return true, 100 end
 
-    return true, 100
+    if actor.noise_made and actor.noise_made > 0 then
+    	local dist = core.fov.distance(self.x, self.y, actor.x, actor.y)
+    	if game.level and game.level.data and game.level.data.ambient_noise then
+    		if actor.noise_made < game.level.data.ambient_noise then
+    			self:senseDebug("hearing", "actor noise drowned in ambient noise")
+    			return false, 0
+    		end
+    	end
+    	if self.hearing and (actor.noise_made - dist) > self.hearing then
+    		self:senseDebug("hearing", "actor hears self")
+    		return true, 100
+    	end
+    end
+
+    return false, 0
 end
 
 
@@ -385,7 +414,19 @@ function _M:canFeel(actor, def, def_pct)
 
     if actor == self then return true, 100 end
 
-    return true, 100
+	if actor.vibration_made then
+		local dist = core.fov.distance(self.x, self.y, actor.x, actor.y)
+    	if game.level and game.level.data and game.level.data.ambient_vibration then
+    		if actor.vibration_made < game.level.data.ambient_vibration then
+    			return false, 0
+    		end
+    	end
+    	if self.feeling and (actor.vibration_made - dist) > self.feeling then
+    		return true, 100
+    	end
+	end
+
+    return false, 0
 end
 
 
@@ -401,6 +442,10 @@ function _M:canSmell(actor, def, def_pct)
     end
 
     if actor == self then return true, 100 end
+
+    -- Need a map saved, or per grid values that decline, or a FIFO list of X grids, or some other way to denote smell
+    -- perhaps check all grids around actor.x,actor.y?
+    -- Can be restricted to player's movements, no need to save everybody's scent
 
     return true, 100
 end
