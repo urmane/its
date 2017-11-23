@@ -8,7 +8,7 @@ config.settings.its.autosave = true
 -- DEBUG mode
 config.settings.cheat = false
 config.settings.debugprint = true
-config.settings.its.debugsense = true
+--config.settings.its.debugsense = true
 
 --config.settings.its.cheat_start_zone = "gora-town"
 --config.settings.its.cheat_start_zone = "murmon"

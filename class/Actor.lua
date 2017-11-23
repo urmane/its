@@ -268,7 +268,7 @@ end
 -- FIXME dinna work, need to figure out why
 function _M:senseDebug( sns, str1)
 	if config.settings.its.debugsense then
-		print(string.format("[DBG-%s] %s", sns, str1)
+		print(string.format("[DBG-%s] %s", sns, str1))
 	end
 end
 
@@ -320,7 +320,7 @@ function _M:canSee(actor, def, def_pct)
 		self:senseDebug("vision", "actor is carrying a lite")
 		--fall through --return true, 100
 	else
-		senseDebug("vision", "actor is NOT carrying a lite")
+		self:senseDebug("vision", "actor is NOT carrying a lite")
 		if self.lite and self.lite > 0 and dist <= self.lite then
 			self:senseDebug("vision", "actor is inside my lite radius")
 			-- fall through --return true, 100

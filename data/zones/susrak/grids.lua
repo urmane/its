@@ -31,12 +31,12 @@ newEntity{
 }
 
 newEntity{
-    define_as = "TO_UNDERWORLD",
-    name = "Enter the Underworld",
+    define_as = "TO_KHOLBADUL",
+    name = "Magma Tube to Volcano",
     display = '>', color_r=255, color_g=0, color_b=255, back_color=colors.DARK_GREY,
     always_remember = true,
     notice = true,
     change_level = 1,
-    change_zone = "underworld",
+    change_zone = "kholbadul",
 }
 

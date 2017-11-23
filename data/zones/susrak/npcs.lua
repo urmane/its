@@ -17,26 +17,4 @@
 -- James Niemira "urmane"
 -- jim.niemira@gmail.com
 
-load("/data/general/grids/redgranite.lua")
-load("/data/general/grids/town.lua")
-
-newEntity{
-    define_as = "TO_AFEEDI",
-    name = "Exit to the World Map",
-    display = '<', color_r=255, color_g=0, color_b=255, back_color=colors.DARK_GREY,
-    always_remember = true,
-    notice = true,
-    change_level = 1,
-    change_zone = "world-of-afeedi",
-}
-
-newEntity{
-    define_as = "TO_UNDERWORLD",
-    name = "Enter the Underworld",
-    display = '>', color_r=255, color_g=0, color_b=255, back_color=colors.DARK_GREY,
-    always_remember = true,
-    notice = true,
-    change_level = 1,
-    change_zone = "underworld",
-}
-
+load("/data/general/npcs/wisps.lua")

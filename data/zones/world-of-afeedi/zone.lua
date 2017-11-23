@@ -32,7 +32,7 @@ return {
 	endy = 171,
 	all_lited = true,
     ambient_light = 10,
-	hidden_zones = ("tomb"),
+	-- hidden_zones = ("susrak", "kholbadul"),
 	-- first pass - randomly generated world
 	-- second pass - add a second underwater "level" based on mirror image of land/water
 	generator =  {
@@ -71,40 +71,42 @@ return {
 	        islol = "ISLOL",
     	},
 	},
---	post_process = funtion(level)
-		-- This block of code reveals zones on the main map that have prereqs completed
-		-- Could potentially loop through a list of known "X"s:
-
--- for X in hidden_zones do
-		-- if player:hasQuest("reveal-X") and not player:hasQuest("reveal-X"):isEnded() then
-		-- 	local g = game.zone:makeEntityByName(level, "terrain", "X", true)
-  --           print("[DBG] placing X")
-  --           if g then
-  --               local x, y = rng.range(10, level.map.w-11), rng.range(10, level.map.h-11)
-  --               --local x, y = rng.range(10, game.player.x-11), rng.range(10, game.player.y-11)
-  --               local tries = 0
-  --               while (level.map:checkEntity(x, y, engine.Map.TERRAIN, "block_move") or level.map(x, y, engine.Map.OBJECT)) and tries < 100 do
-  --                   x, y = rng.range(10, level.map.w-11), rng.range(10, level.map.h-11)
-  --                   tries = tries + 1
-  --               end
-  --               if tries < 100 then
-  --                   game.zone:addEntity(level, g, "terrain", x, y)
-  --                   print("[DBG]GRAVITYLENS is at %s, %s", x, y)
-  --                   -- Change that print to X is revealed on your map ...
-  --                   level.spots[#level.spots+1] = {x=x, y=y, check_connectivity="entrance", type="zone-pop", subtype="X"} --?
-  --               else
-  --               	-- dunno if we want this here...
-  --                   level.force_recreate = true
-  --               end
-  --           else
-  --               print("[DBG] cannot place X")
-  --           end
-  --           -- this achievement should say "X is now revealed on your map..."
-  --           world:gainAchievement("X-is-revealed", player)
-  --           game.player:setQuestStatus("reveal-X" , engine.Quest.DONE)
-  --       end
-
-  --	end
-
---  end,
 }
+
+--[[
+	post_process = funtion(level)
+		This block of code reveals zones on the main map that have prereqs completed
+		Could potentially loop through a list of known "X"s:
+
+for X in hidden_zones do
+		if player:hasQuest("reveal-X") and not player:hasQuest("reveal-X"):isEnded() then
+			local g = game.zone:makeEntityByName(level, "terrain", "X", true)
+            print("[DBG] placing X")
+            if g then
+                local x, y = rng.range(10, level.map.w-11), rng.range(10, level.map.h-11)
+                --local x, y = rng.range(10, game.player.x-11), rng.range(10, game.player.y-11)
+                local tries = 0
+                while (level.map:checkEntity(x, y, engine.Map.TERRAIN, "block_move") or level.map(x, y, engine.Map.OBJECT)) and tries < 100 do
+                    x, y = rng.range(10, level.map.w-11), rng.range(10, level.map.h-11)
+                    tries = tries + 1
+                end
+                if tries < 100 then
+                    game.zone:addEntity(level, g, "terrain", x, y)
+                    print("[DBG]GRAVITYLENS is at %s, %s", x, y)
+                    -- Change that print to X is revealed on your map ...
+                    level.spots[#level.spots+1] = {x=x, y=y, check_connectivity="entrance", type="zone-pop", subtype="X"} --?
+                else
+                	-- dunno if we want this here...
+                    level.force_recreate = true
+                end
+            else
+                print("[DBG] cannot place X")
+            end
+            -- this achievement should say "X is now revealed on your map..."
+            world:gainAchievement("X-is-revealed", player)
+            game.player:setQuestStatus("reveal-X" , engine.Quest.DONE)
+        end
+  	end
+ end,
+}
+--]]
