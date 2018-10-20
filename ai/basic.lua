@@ -19,8 +19,27 @@
 
 -- ITS AIs
 -- These AI are modified from engine base:
--- -ITS does not assume enemies are seen, algorithm is more subtle, see Actor:canSee()
--- -ITS allows initially moving items - guards follow psuedo-"routes" for instance
+--    does not assume enemies are seen, see Actor:canSee()
+--    ITS allows initially moving items - guards follow psuedo-"routes" for instance
+--    multiple senses, tested in universal order: if self.ai_sees, ai_hears, ai_smells, ai_feels, ai_tastes
+--        primary is the first true in that list, secondary is any other
+--    detection not based on senses: ai_knows?
+-- Currently restricted to ActorFOV, which is based on vision, alas
+-- Base AI are either dormant or targeting, ITS adds a suspicious and normal pattern-based movement
+--
+--[[
+   ai_sees = false
+   ai_hears = false
+   ai_smells = false
+   ai_feels = false
+   ai_tastes = false
+   ai_knows = false
+   ai_focus = int -- rng.percent(self.ai_focus) that self sticks to target normally
+   ai_morale = int -- if ((self.hp / self.total_hp) * 100.0) < self.ai_morale then self:runAI("run_away")
+   global_speed = float -- actual speed
+   pursuit_speed = float -- target acquired with primary sense
+   suspicious_speed = float -- target detected with secondary sense
+--]]
 
 newAI("none", function(self)
     return true
@@ -78,6 +97,12 @@ newAI("its_guard_wander", function(self)
 	end
 end)
 
+newAI("stationary_emoter", function(self)
+        if self:canSee(game.player) and self:hasLOS(game.player.x,game.player.y,nil,nil,self.x,self.y) then
+        	return self:setRandomEmote()
+        end
+end)
+
 newAI("prisoner", function(self)
 	if self:canSee(game.player) and self:hasLOS(game.player.x,game.player.y,nil,nil,self.x,self.y) then
         return self:setRandomEmote()
@@ -119,4 +144,11 @@ newAI("townperson", function(self)
 	if self:canSee(game.player) and self:hasLOS(game.player.x,game.player.y,nil,nil,self.x,self.y) then
         return self:setRandomEmote("townperson")
 	end
+end)
+
+newAI("pinball_emoter", function(self)
+    self:runAI("pinball")
+    if self:canSee(game.player) and self:hasLOS(game.player.x,game.player.y,nil,nil,self.x,self.y) then
+        return self:setRandomEmote("townperson")
+    end
 end)

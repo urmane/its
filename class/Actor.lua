@@ -94,6 +94,16 @@ function _M:act()
 	return true
 end
 
+function _M:scent_trail(x, y)
+	if self.scent then
+		-- add a marker x,y,self.scent to the list
+		-- iterate thru the rest of the list, dec each item's scent by 1
+		-- remove any nodes that are <= 0
+		return true
+	end
+	return false
+end
+
 function _M:move(x, y, force)
 	local moved = false
 	local ox, oy = self.x, self.y
@@ -103,11 +113,26 @@ function _M:move(x, y, force)
 	end
 	if force or self:enoughEnergy() then
 		moved = engine.Actor.move(self, x, y, force)
+		-- if tracking smell, need to mark current square after moving
+		self:scent_trail(x, y)
 		if not force and moved and (self.x ~= ox or self.y ~= oy) and not self.did_energy then
 			self:useEnergy()
 			spd = self.move_speed or "normal"
+			-- play movement sounds
 			if self.move_sounds and self.move_sounds[spd] then
 				game:playSoundNear(self, self.move_sounds[spd])
+			end
+			-- record how much noise I made
+			if self.move_noise and self.move_noise[spd] then
+				self.noise_made = self.move_noise[spd]
+			else
+				self.noise_made = 0
+			end
+			-- record how much vibration I made
+			if self.move_vibration and self.move_vibration[spd] then
+				self.vibration_made = self.move_vibration[spd]
+			else
+				self.vibration_made = 0
 			end
 		end
 	end

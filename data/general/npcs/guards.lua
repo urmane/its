@@ -39,6 +39,7 @@ newEntity{
 	lite = 0,
 	sight = 3,
 	nightvision = 3, -- prisoners see better than guards
+	scent = 99, -- stinky!
 	max_life = 1,
 }
 
@@ -48,7 +49,6 @@ newEntity{
 	display = "G", color=colors.WHITE,
 	desc = [[Ugly and ill-tempered.]],
 	image = "npcs/Trolldoll2.png",
-
 	-- ai = "dumb_talented_simple", ai_state = { talent_in=3, },
     normal_speed = 0.33,
     pursuit_speed = 0.9,
@@ -72,10 +72,32 @@ newEntity{ base = "BASE_GUARD",
     lite_flicker = 90,      -- percent chance per turn to mod lite
     lite_min = 3,           -- min radius
     lite_max = 5,           -- max radius
-	sight = 5,		-- absolute limit of sight in grids
-	nightvision = 0,	-- minimum light level this actor can distinguish
 	move_dir = 2,	-- initial move direction, they'll rotate clockwise 90 degrees for now
 	lite_angle = 90,-- angle of light projected, in direction move_dir
+	sight = 5,		-- absolute limit of sight in grids
+	nightvision = 0,	-- max ambient light level this actor can distinguish
+	scent = 99, -- how much scent I leave
+	noise_made = 0, -- how much noise I made this past turn
+	vibration_made = 0,
+	move_speed = "normal", -- set by AI to stop/slow/normal/fast
+	-- movev = {
+	--    [MoveType.SLOW] = 0,
+	--    [MoveType.NORMAL] = {},
+    --}
+
+
+	--movev = {
+	--   "stop" = {},
+	--   "slow" = {
+	--      noise = 1,
+	--      vibration = 1,
+	--      sounds = {"file", "file", "...", },
+	--   },
+    --},
+	
+
+	-- act_sounds = {
+	-- }
 	max_life = resolvers.rngavg(5,9),
 	combat = { dam=2 },
 }
