@@ -1,40 +1,109 @@
-
 This is the todo list, currently divided into:
 - sprints (roughly related items for minor version rev)
 - semi-organized lists of item details
 
 Sprints:
-- move to 1.4.X source tree and test
-- dude, add an Asylum, and other scary places
-- research and note methods to add dread and horror
-- concern->nervousness (something *might* happen, but no real danger)->fear (you're sure *some*thing bad is going to happen)
-- dread - afraid of an event,thing, place you've seen before
-- terror - something bad *is* happening, but you cannot identify the cause / do not understand it
-- horror - fear elicited by something frightening you have seen
-- alarm - sudden appearance of something frightening
-- panic - extreme fear causing one to become unreasonable
-- Story ==> hero's journey steps
-- add a tesseract and non-euclidian geometry zones
-
-done: reorg Talents tree, stats
-- enhance town
-	- keys and keyed doors; door to Caste Kurtok keyed
-	- add gold bricks gfx
-	- pile guarded in castle by elite guards - treasury
-	- keyed door - armory
-	- keyed doors - empties for later
+- reorg rando worldmap into one city (rando worldmap and other unused zones to TROCK)
+	- static worldmap becomes a city - or no worldmap at all?
+		- What use is a city "worldmap"?  travel w/out going thru lvls
+		- will there be multiple visits, or one-time-only?  Or market-central plus one-time onlies?
+	- zones become city sections - inventory and nodegraph them
+		- weird, fantasy violence, real violence, spooky/ghostly, mindfuck, actual phobias,
+		- avoid stereotypes, fear of the unknown
+		- random or psuedorandom layouts
+		- on-the-fly random minizones - houses per area to loot; oneshot?
+	- Gora Prison:
+		- 1 Holding Cells - static (conx castle)
+		- 2 Dungeon - vaults
+		- 3 Torture Chamber - psuedo-random (conx sewers)
+		- 4 Oubliette
+	- sewers:
+		- 1 Sewers (conx graveyard)
+		- 2 Cisterns - sublevels
+		- 3 Rat Caves - random
+		- 4 Abandoned Maintenance Accessways - maze
+	- graveyard:
+		- 1 Potter's Field - conx Market
+		- 2 Common Graves - conx Church
+		- 3 Honored Tombs - regular vaults
+		- 4 Ancient Mausoleums - psuedo random irregular vaults
+	- market:
+		- 1 Market Square - regular - conx poor, docks
+		- 2 Bazaar - semi-irregular - conx sewers
+		- 3 Grey Market - maze with random placement of static shop inventory
+		- 4 Artisan's Shops - random placement static shop inventory - conx rich
+	- poor:
+		- 1 Drinker's Row
+		- 2 Workman's Lodgings - conx Church
+		- 3 Hovels - conx Asylum
+		- 4 Mud Maze
+	- Merchant Districts:
+		- 1 Commodities
+		- 2 Industrial Products
+		- 3 Art Gallery
+		- 4 Financial District
+	- Docks:
+		- 1 Fisherman's Wharf
+		- 2 Merchant's Port
+		- 3 Yacht Club
+		- 4 Warehouse District
+		- 5 Naval Yard
+		- 6 Lagoon
+	- rich:
+		- 1 The Plantation
+		- 2 The Manors
+		- 3 The Estates
+		- 4 The Heights - conx castle
+	- church:
+		- 1 Nave
+		- 2 Sanctuary
+		- 3 Sanctum Sanctorum
+		- 4 Catacombs - conx forest
+	- asylum: 4-(PCF)
+		- 1 Offices
+		- 2 Patient Rooms
+		- 3 Cafeteria
+		- 4 Surgery - conx pcf
+		- 5 Basement
+	- Personnel Collection Facility
+	- forest:
+		- 1 Woods
+		- 2 Clearing
+		- 3 Cave
+		- 4
+	- castle:
+		- 1
+		- 2
+		- 3
+		- 4
+- Display zone name in UI
+- skeleton all the talent trees
+- add keys and keyed doors (could be faked with Quest items?)
 - NPC facing indicator
-- NPC suspicion indicator (green-yellow-red, high alpha?)
-- complete skeleton of talents, how to review?
-- Awareness / AI tied to suspicion flag
-- qt5 + tiled (after 1.4 released)
-- scripts to copy/mod colors in gfx, then move gfx to "src" and script mods to final dests (mostly terrain?)
-- move from lit/not lit grids to variable - might be much work
 - Player visibility indicator
-- AI - assure they change state normal/suspcious/active, then back down if not directly viewing - careful considering the back to normal shift
--- indicator, print AI stat/e: "Aware", "suspicious", "patrolling",....
+- NPC suspicion indicator (green-yellow-red, high alpha?)
+	- print AI stat/e: "Aware", "suspicious", "patrolling",.... ?
+- Mod AI - assure they change state normal/suspcious/active, then back down if not directly viewing - careful considering the back to normal shift
+- Mod Awareness / AI tied to suspicion flag
 - Sound - on Player:move, same precomp'd dist array as vis, if n > e.hearing then e.ai_suspicion++
 - Smell - leaves a trail that decays (but never goes to zero) - ai can search surrounding grids for vals
+
+
+Completed sprints:
+- move to 1.5.10 source tree and test
+
+---
+old, reorg
+---
+Reorder these:
+- research and note methods to add dread and horror
+	- concern->nervousness (something *might* happen, but no real danger)->fear (you're sure *some*thing bad is going to happen)
+	- dread - afraid of an event,thing, place you've seen before
+	- terror - something bad *is* happening, but you cannot identify the cause / do not understand it
+	- horror - fear elicited by something frightening you have seen
+	- alarm - sudden appearance of something frightening
+	- panic - extreme fear causing one to become unreasonable
+- Story ==> hero's journey steps?  Not sure that's what we want for this game ... maybe
 
 Semi-Organized todo:
 High level
@@ -47,7 +116,7 @@ finalize the overall storyline, and sketch out the major bits needed, do the end
 	large-scale famous acts (ie steal X's thing)
 	overall has to be save the world
 
-World/General:
+Move to TROCK:
 worldmap, underworld, undersea - all "worldmaps", each with zones (that might connect to >1 worldmap)
 make a config settings?
 done-place init into random geography
