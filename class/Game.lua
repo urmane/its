@@ -145,7 +145,7 @@ function _M:newGame()
 			self:changeLevel(1, config.settings.its.cheat_start_zone)
 		else
 			-- For real game start:
-			self:changeLevel(1, "gora-prison")
+			self:changeLevel(1, "prison")
 		end
 		print("[PLAYER BIRTH] resolve...")
 		self.player:resolve()
