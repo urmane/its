@@ -3,7 +3,7 @@ newTalent{
     name = "Flattery",
     short_name = "Flattery",
     type = {"thief/politics", 1},
-    info = "My, you are tall and good looking!",
+    info = "My, you're tall and good looking!",
     mode = "activated",
 }
 

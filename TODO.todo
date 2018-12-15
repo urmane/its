@@ -7,12 +7,12 @@ Sprints (current work, remember to mark done in Projects below):
     ✔ remove/recreate new zones, dirs and mapnames @done (18-11-18 22:01)
     ✔ add all names @done (18-11-18 22:01)
     ✔ make all the connectivity, don't worry about placement @done (18-11-20 22:31)
-    ☐ git commit -a
-    ☐ Move now-trock stuff below to the trock TODO.todo file
+    ✔ git commit -a @done (18-11-20 22:39)
+    ✔ Move now-trock stuff below to the trock TODO.todo file @done (18-11-20 22:40)
     ☐ Org remaining todo below, including emptying out TODO
-  ☐ Add zone+level name to top
-  ☐ Skeleton in all talent trees
-  ☐ Player visibility indicator
+  ✔ Add zone+level name to top (to the side for now) @done (18-12-02 17:44)
+  ✔ Skeleton in all talent trees @done (18-12-15 16:26)
+  ☐ Player visibility indicator (hm, relies on knowing, and vision is variable?)
   ☐ Keys and keyed doors
   ☐ Actor facing indicator
   ☐ AI work, allow for future sound/smell
@@ -44,7 +44,7 @@ GUI:
     ☐ each action takes a turn, one action per mechanism (cannot see screen)
 
 Storyline/Quests:
-
+rewrite me
 
 Zones:
   Locations:
@@ -111,18 +111,30 @@ Zones:
     - 2 Clearing
     - 3 Cave
     - 4
+  - Hospital
+  - Iron Works
+  - Theater
+  - Hidden/unlockables
+    - Lagoon underwater cave
+    - something in a fountain
   - castle:
     - 1
     - 2
     - 3
     - 4 
+  - Visible but ungettable loot, inc planned-for-later and "never" (maybe with artis)
   move me Locations:
     Gora:
 
   Features:
    ☐ Keys for doors - certainly key tied to specific door, no generics (use lockpicks)
+   ☐ "Prep" items that can be turned into needed base resources on demand
    ☐ Variable lighting per grid
    ☐ tie variable lighting to visual indicator
+   Game modifies as it's played:
+     ☐ Achievements for character actions
+     ☐ Unlocks for crossing thresholds/combos/etc - added to game
+     ☐ Denials for the same - removals from game
 
 Sound:
  ☐ done - understand playSoundNear - appears to be for playing sounds at !player-location
@@ -149,10 +161,13 @@ NPC/AI:
 Talents:
  ☐ real Stealth (whatever that means)
  Default Trees:
-   ☐ Awareness:Vision:activated
-   ☐ Awareness:Listen:activated
-   ☐ Awareness:Environment:activated (thruwalls)
-   ☐ Awareness:See Around Corners:activated (better cornerFOV)
+   ☐ Unarmed:Disarm:activated
+   ☐ Unarmed:Throw:activated
+   ☐ Unarmed:Kick:activated
+   ☐ Awareness:Vision:passive
+   ☐ Awareness:Listen:passive
+   ☐ Awareness:Search:activated (thruwalls)
+   ☐ Awareness:Peek Around Corners:activated (better cornerFOV?)
    ☐ Mechanic:Pick Locks:activated
    ☐ Mechanic:Disarm Trap:activated
    ☐ Mechanic:Disable Mechanism:activated
@@ -169,6 +184,7 @@ Talents:
  Anti-Elemental Trees:
    ☐ Speed:Avoid Trap:sustained
    ☐ Speed:Shadowjump:activated
+   ☐ Shadow:Darkvision:passive
    ☐ Shadow:Hide In Plain Sight:sustained
    ☐ Shadow:Create Shadow:activated
    ☐ Control:Phantom Noise:activated
@@ -176,7 +192,7 @@ Talents:
    ☐ Control:Summon Shadows:activated
    ☐ Control:Anti-Door:sustained?
    ☐ Death:Nerve Strike:activated
-   ☐ Death:Assassinate:activated
+   ☐ Death:Touch of Death:activated
 
 Stats - You are what you do:
  ☐ Reputation

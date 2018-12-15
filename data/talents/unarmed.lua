@@ -5,6 +5,9 @@ newTalent{
     type = {"combat/unarmed", 1},
     info = "Disarm target",
     mode = "activated",
+    info = function(self, t)
+        return "Hey, you dropped something."
+    end,
 }
 newTalent{
     name = "Throw",
@@ -12,6 +15,9 @@ newTalent{
     type = {"combat/unarmed", 1},
     info = "Throw target",
     mode = "activated",
+    info = function(self, t)
+        return "Allow me to provide you an alternate viewpoint."
+    end,
 }
 
 newTalent{
@@ -31,7 +37,7 @@ newTalent{
         return true
     end,
     info = function(self, t)
-        return "Kick!"
+        return "Wa-paaaahhhh!"
     end,
 }
 newTalent{

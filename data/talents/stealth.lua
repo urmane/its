@@ -26,6 +26,7 @@ newTalent{
 
 newTalent{
     name = "Move Silently",
+    short_name = "Creep",
     type = {"thief/stealth", 1},
     info = "Move silently",
     mode = "sustained",

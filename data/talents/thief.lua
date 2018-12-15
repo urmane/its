@@ -2,6 +2,7 @@ newTalentType{ type="thief/thief", name = "thief", description = "Standard thief
 
 newTalent{
     name = "Pick Pockets",
+    short_name = "Lift",
     type = {"thief/thief", 1},
     info = "Liberate items from the confines of pockets",
     mode = "activated",
