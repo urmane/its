@@ -2,49 +2,108 @@ This file is managed with sublime_text's PlainTasks
 
 Sprints (current work, remember to mark done in Projects below):
   ✔ Move to 1.5.10 and test @done (18-11-18 22:18)
-  Rewrite:
+  trock-separation rewrite:
     ✔ copy existing to trock (to save the worldgen) @done (18-11-18 22:01)
     ✔ remove/recreate new zones, dirs and mapnames @done (18-11-18 22:01)
     ✔ add all names @done (18-11-18 22:01)
     ✔ make all the connectivity, don't worry about placement @done (18-11-20 22:31)
     ✔ git commit -a @done (18-11-20 22:39)
     ✔ Move now-trock stuff below to the trock TODO.todo file @done (18-11-20 22:40)
-    ☐ Org remaining todo below, including emptying out TODO
-  ✔ Add zone+level name to top (to the side for now) @done (18-12-02 17:44)
-  ✔ Skeleton in all talent trees @done (18-12-15 16:26)
-  ☐ Player visibility indicator (hm, relies on knowing, and vision is variable?)
-  ☐ Keys and keyed doors
-  ☐ Actor facing indicator
-  ☐ AI work, allow for future sound/smell
-  ☐ NPC suspicion indicator, including AI state (ie "aware")
-  ☐ Sound on Player/Actor:move, same precomp'd dist array as vis, if n > e.hearing then e.ai_suspicion++
-  ☐ Smell - leaves a trail that decays (but never goes to zero) - ai can search surrounding grids for vals
+    ✔ Org remaining todo below, including emptying out TODO @done (18-12-15 16:39)
+  new alpha 0.0.1:
+    ✔ Add zone+level name to top (to the side for now) @done (18-12-02 17:44)
+    ✔ Skeleton in all talent trees @done (18-12-15 16:26)
+    ✔ Loot poor house - small houses on map, dialog-based single action at door @done (19-01-30 19:15)
+    Loot merchant house:
+      ☐ subzone multilevel starts at smallish ground floor
+      ☐ options walls around small grounds
+      ☐ +addl levels up to Y
+    Loot rich mansion:
+      ☐ pass in starting level
+      ☐ subzone multilevel gen starts at ground floor
+      ☐ ground floor large grounds, with guards and dogs
+      ☐ +basements, down to X
+      ☐ +addl floors up to Y
+    ☐ Keys and keyed doors
+    ☐ Lockpick gui to unlock doors without keys
+    ☐ additional unlockables
+    ☐ AI work, allow for future sound/smell
+    ☐ NPC suspicion indicator, including AI state (ie "aware")
+ 
+Topic-specific sections below include completed and future
 
-GUI:
- ☐ Facing indicator
- ☐ NPC suspicion indicator
- ☐ Visual indicator of how much light player is in: circular/oval like xbox Thief
- ☐ Visual indicator of how much noise I'm making
- ☐ Visual indicator of how "stealth"ed/visible I am
- ☐ Visual indicator of "smell trail" ... but when/how to see this ...
- ☐ particles for fog, snow, dust
- ☐ footprints (as mos_* grids a la TOME)
+Basic Feel:
+  First person sneaker - avoid combat, everything can/might kill you
+  Horror in some places - control music (if any), background sound, action sounds, effects, lighting
+  Lore - the story supports the plotline, the actions, and the outcomes
 
- Lockpick GUI:
+Basic Storyline/Quests:
+  Start with mid-length "simple" win; unlocks expand the story and win conditions for replayability
+  Base storyline - hero's journey:
+    Land of Adventure - gain equips, skills, $, talents - the stealy thief
+    Abyss:
+      Fight the big bad, and lose
+      Be thrown back into prison
+      Escape with new motivation and goals
+    Road of Trials - take down lieutenants and big bad - the sneaky thief
+  Game modifies as it's played:
+    ☐ Achievements for character actions
+    ☐ Unlocks for crossing thresholds/combos/etc - added to game
+    ☐ Denials for the same - removals from game
+
+GUI and lighting improvements:
+  ☐ Facing indicator for all (nonplayer?) actors
+  ☐ NPC suspicion indicator
+  ☐ Visual indicator of how much light player is in: circular/oval like xbox Thief
+  ☐ Visual indicator of how much noise I'm making
+  ☐ Visual indicator of how "stealth"ed/visible I am
+  ☐ Visual indicator of "smell trail" ... but when/how to see this ...
+  ☐ particles for fog, snow, dust
+  ☐ footprints (as mos_* grids a la TOME)
+  ☐ Variable lighting per grid - tie variable lighting to visual indicator
+    ☐ This may not be possible with the current base engine
+
+Keys, Locked doors, and Lockpick GUI:
+  ☐ Three(four) kinds of unlockables
+    ☐ random locked/doors, no key - good for rng house robbing
+    ☐ specific unlockable/doors in designed levels, with specifically placed keys (match SNs)
+    ☐ plot keys in one loc open a specific plot "door" in another loc - hardcoded
+    ☐ Potentially secret doors - consider adding them as first class citizens, and coloring them differently (instead of their current custom on_block_change mechanic)
+  ☐ Lockable item: door, chest, safe, etc
+    ✔ Door currently implemented as terrains - unlock replaces terrain @done (18-12-16 13:14)
+    ✔ Add chest @done (19-01-05 16:36)
+    ✔ Add safe @done (19-01-05 16:36)
+  ☐ locktypes: ward/level/wafer/pin/rotary/tubular/disc/magnet/magic
+    ✔ Field added - simple random name @done (18-12-16 13:15)
+    ☐ Add set of game-specific randomly generated mfctr names
+      ☐ rng generated mfctr names and series names (more series at higher levels?)
+      ☐ # of mechanisms (or range) goes up
+    ☐ Add to resolver to assign per door
+  ☐ lock attributes and states
+    ☐ mfctr and series
+    ☐ difficulty, level - replace with serial number, to match key (if any)
+  ☐ lock features: sprint, reset, trap
+  ☐ randomly-initialized mfctr name => locktype, series => difficulty + certain features
+  ☐ Key has mfctr name and series - open any door with same?
+    ☐ Make a mfctr-specific skeleton key item
+    ☐ Key has serial number, opens specific lock
+    ☐ Need to design how they will be placed
+      ☐ random lower tiers, and placed current tiers?
+      ☐ How to avoid trapping the players?
+      ☐ Need to separate this mech from plot-based - easy, call plot-based something else
+  ☐ tools align to locktypes (perhaps multiple): picks for pins
+    ✔ lockpicks done, only works on simple value range @done (18-12-16 13:18)
+    ☐ Modify to diff tools per locktype, perhaps with diff qualities or quality categories
+    ☐ "This tool only works with <mfctr> locks"
+  GUI
     ☐ popup window
     ☐ background image
     ☐ determine how it will work: no analog ability or forcefeedback
-    ☐ locktypes: ward/level/wafer/pin/rotary/tubular/disc/magnet/magic
-    ☐ lock attributes and states - mfctr and series, difficulty, level, #mechanisms
-    ☐ lock features: sprint, reset, trap
-    ☐ randomly-initialized mfctr => locktype, series => difficulty + certain features
-    ☐ tools align to locktypes (perhaps multiple): picks for pins
     ☐ actions - what can be done, with what tools
     ☐ successful pick => known info displays foreverafter
     ☐ each action takes a turn, one action per mechanism (cannot see screen)
-
-Storyline/Quests:
-rewrite me
+    ☐ fail consequences - noise, alert, etc
+  ☐ Upon opening, lockable dumps contents at player's feet
 
 Zones:
   Locations:
@@ -64,7 +123,7 @@ Zones:
     - 3 Honored Tombs - regular vaults
     - 4 Ancient Mausoleums - psuedo random irregular vaults
   - Market:
-    - 1 Market Square - regular - conx poor, docks
+    - 1 Market Square - regular - conx lower, docks
     - 2 Bazaar - semi-irregular - conx sewers
     - 3 Artisan's Shops - random placement static shop inventory - conx rich
     - 4 Grey Market - maze with random placement of static shop inventory
@@ -123,18 +182,22 @@ Zones:
     - 3
     - 4 
   - Visible but ungettable loot, inc planned-for-later and "never" (maybe with artis)
-  move me Locations:
-    Gora:
 
-  Features:
-   ☐ Keys for doors - certainly key tied to specific door, no generics (use lockpicks)
-   ☐ "Prep" items that can be turned into needed base resources on demand
-   ☐ Variable lighting per grid
-   ☐ tie variable lighting to visual indicator
-   Game modifies as it's played:
-     ☐ Achievements for character actions
-     ☐ Unlocks for crossing thresholds/combos/etc - added to game
-     ☐ Denials for the same - removals from game
+Keys and lockpicks:
+ ☐ for doors - certainly key tied to specific door, no generics (or use lockpicks)
+ ☐ for safes, lockboxes, chests, etc
+
+Stats - You are what you do:
+ ☐ Reputation, made up of
+   ☐ Fame - things the public likes (well, most of the public ;-)  
+   ☐ Infamy - things the public does not like
+ ☐ GoldEarnedFromSellingTreasure, added from Fence (not GoldInCurrentPossession)
+ ☐ Stats tied to each talent (tree), value++ on usage
+ ☐ XP == sum(stats, reputation, goldEarned, others) - no XP directly for killing
+ ☐ STR - carry loot, attack
+ ☐ DEX - lockpick, pickpock
+ ☐ maybe no stats?
+
 
 Sound:
  ☐ done - understand playSoundNear - appears to be for playing sounds at !player-location
@@ -145,6 +208,9 @@ Sound:
  ☐ zombie: on_aware "RRR!"
  ☐ torch,brazier: random, sparks?
  ☐ Lich scream :-)
+  ☐ Sound on Player/Actor:move, same precomp'd dist array as vis, if n > e.hearing then e.ai_suspicion++
+  ☐ Smell - leaves a trail that decays (but never goes to zero) - ai can search surrounding grids for vals
+
 
 NPC/AI:
  ✔ AI psuedo-patrol - turn on bump @done (17-01-29 11:50)
@@ -157,6 +223,13 @@ NPC/AI:
  ☐ Noticing abnormals: bodies, broken windows, et al. raises suspicion
  ☐ Hearing: Sound plays on Player:move (same precomp'd dist array as vis?), if n > e.hearing_sensitivity then e.ai_suspicion++ (and sound plays there, too)
  ☐ Smell: some NPCs can use this to track while suspicious+
+
+Level:
+  "XP" = fame + infamy
+  Fame:
+    ☐ Steal from rich houses
+  Infamy:
+    ☐ Steal from poor houses
 
 Talents:
  ☐ real Stealth (whatever that means)
@@ -194,27 +267,25 @@ Talents:
    ☐ Death:Nerve Strike:activated
    ☐ Death:Touch of Death:activated
 
-Stats - You are what you do:
- ☐ Reputation
- ☐ GoldEarnedFromSellingTreasure, added from Fence (not GoldInCurrentPossession)
- ☐ Stats tied to each talent (tree), value++ on usage
- ☐ XP == sum(stats, reputation, goldEarned, others) - no XP directly for killing
- ☐ STR - carry loot, attack
- ☐ DEX - lockpick, pickpock
- ☐ maybe no stats?
-
 Shops/Fence:
   Fence: Sell treasures for gold, hidden locations
 
 Items:
- ☐ bodies - "unconscious guard"
+ ☐ bodies - "unconscious guard", adds to AI
+ ☐ "Prep" items that can be turned into needed base resources on demand
  ☐ specialty arrows: water for lights, moss arrow, etc.  needs ranged, bow, etc.
   Treasures:
     ☐ Gems
     ☐ paintings
     ☐ jewelry
     ☐ sculptures (heavy!)
-    ☐ 
+  Decoration grids:
+    blocking:
+      ☐ Statues
+      ☐ Tombstones
+    non-blocking:
+      ☐ furniture (leap over?)
 
 Optionals to consider:
- ☐ climb walls
+ ☐ climb walls - implement as jump to other side, +/- a grid or three
+ ☐ jump over furniture - may or may not be the same as "leap"

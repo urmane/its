@@ -40,6 +40,7 @@ newEntity{
             local tg = {type="bolt", range=1, nolock=true}
             local x, y = who:getTarget(tg)
             if not x or not y then return nil end
+            -- this var ls "door" but applies to any unlockable
 			local door = game.level.map(x, y, engine.Map.TERRAIN) -- only works on doors (TERRAIN) right now
 			if door.door_unlocked then
 				lock_value = door.lock_value or 10
@@ -54,15 +55,17 @@ newEntity{
 					game.level.map(x, y, engine.Map.TERRAIN, game.zone.grid_list[door.door_unlocked])
 					local sx, sy = game.level.map:getTileToScreen(x, y)
 					game.flyers:add(sx, sy, 10, 0, -1, "Unlocked!", {0,255,0}, false)
+					-- add success consequences here
 				else
 					print("failed to unlock at ", x, ",", y)
 					local sx, sy = game.level.map:getTileToScreen(x, y)
 					game.flyers:add(sx, sy, 10, 0, -1, "Fail!", {255,0,0}, false)
+					-- add fail consequences here
 				end
 			-- regardless of success, bump skill counter based on lock difficulty
 			else
-				print("Attempt to lockpick a terrain that is not an unlockable door at", x, ",", y)
-				-- maybe popup err msg here
+				print("Attempt to lockpick an unlockable at", x, ",", y)
+				-- maybe popup err msg here for player
 			end
             return {id=true, used=true}
         end

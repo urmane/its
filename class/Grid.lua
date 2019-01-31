@@ -34,13 +34,22 @@ function _M:block_move(x, y, e, act, couldpass)
 		return true
 	end
 
-	-- Open doors
-	if self.door_opened and act then
+	-- Open unlockables, new
+	if self.opened and act then
+		game.level.map(x, y, engine.Map.TERRAIN, game.zone.grid_list[self.opened])
+		--game.level.map:updateMap(x, y)
+		return true
+	elseif self.opened and not couldpass then
+		return true
+	end
+
+	-- Open doors, old - remove if above works
+	--[[if self.door_opened and act then
 		game.level.map(x, y, engine.Map.TERRAIN, game.zone.grid_list.DOOR_OPEN)
 		return true
 	elseif self.door_opened and not couldpass then
 		return true
-	end
+	end--]]
 
 	-- Pass walls
 	if e and self.can_pass and e.can_pass then
@@ -53,7 +62,7 @@ function _M:block_move(x, y, e, act, couldpass)
     -- on_block_bump is a function defined on the entity
     -- on_block_bump_msg is an attr defined on the grid (for uniques) and on the entity (for generics)
     if e and act and self.does_block_move and e.player and self.on_block_bump then
-        self.on_block_bump(e)
+        self.on_block_bump(self, e)
         -- do the general one first
         if self.on_block_bump_msg then
         	game.log("%s", self.on_block_bump_msg)

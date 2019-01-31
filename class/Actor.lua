@@ -172,6 +172,20 @@ function _M:die(src)
 	return true
 end
 
+function _M:incGold(v)
+	self.gold = self.gold + v
+	if self.gold < 0 then self.gold = 0 end
+	self.changed = true
+	-- This is what TOME does:
+	-- if self.player then
+	--   world:gainAchievement("TREASURE_HUNTER", self)
+	--   ...
+end
+
+function _M:getGold(v)
+	return self.gold
+end
+
 function _M:levelup()
 	self.max_life = self.max_life + 2
 
@@ -297,13 +311,24 @@ function _M:senseDebug( sns, str1)
 	end
 end
 
---- Can self see the target actor
+--- Vision: Can self see the target actor
 -- This does not check LOS or such, only the actual ability to see it.
 -- Check for telepathy, invisibility, stealth, ...
 -- How is this def_pct used, and how is the pct returned as 2nd arg used?
 --   Provocative, might be useful instead of / in addition to light_level
 function _M:canSee(actor, def, def_pct)
+	-- Error conditions
 	if not actor then return false, 0 end
+	-- NB: for the player, self.x/y might be "none" at level create!
+	if not (self.x and self.y and actor.x and actor.y) then
+		return false, 0
+	end
+
+	-- Trivial returns
+	-- Can always see self
+	if actor == self then return true, 100 end
+
+	-- debugging sight:
 	if self.player then
 		self:senseDebug("vision", string.format("Player at %s, %s", self.x or "none", self.y or "none"))
 		self:senseDebug("vision", string.format("checking against actor %s, uid %s", actor.name or "none", actor.uid))
@@ -320,47 +345,42 @@ function _M:canSee(actor, def, def_pct)
 	-- in that case acts like lite rad of ambient + self.nightvision
 	-- and can see distant lites (how to implement separate from "normal"?)
 
-	-- Error conditions
-	-- NB: for the player, self.x/y might be "none" at level create!
-	if not (self.x and self.y and actor.x and actor.y) then
-		return false, 0
-	end
 
-	-- Can always see self
-	if actor == self then return true, 100 end
+	-- Calcs used later
+	local dist = core.fov.distance(self.x, self.y, actor.x, actor.y)
 
 	-- Is he too far away for my ability to see?
-	-- NB: check this against the FOV fns, this might be a redundant check
-	local dist = core.fov.distance(self.x, self.y, actor.x, actor.y)
+	-- NB: check this against the FOV fns, this might be a redundant check	
 	if self.sight and self.sight < dist then
-		if self.player then
-			self:senseDebug("vision", "actor is beyond sight")
-		end
+		if self.player then self:senseDebug("vision", "actor is beyond sight") end
 		return false, 0
 	end
 
+	-- He's within sight range - check if applicable light sources are sufficient.
 	-- Must have light for vision, either theirs, ours, or ambient.  Or infravision.
 	-- NB: should just be able to see if map:x,y is lit, or ambient?
 	if actor.lite and actor.lite > 0 then
-		self:senseDebug("vision", "actor is carrying a lite")
+		if self.player then self:senseDebug("vision", "actor is carrying a lite") end
 		--fall through --return true, 100
 	else
 		self:senseDebug("vision", "actor is NOT carrying a lite")
 		if self.lite and self.lite > 0 and dist <= self.lite then
-			self:senseDebug("vision", "actor is inside my lite radius")
+			if self.player then self:senseDebug("vision", "actor is inside my lite radius") end
 			-- fall through --return true, 100
 		else
-			self:senseDebug("vision", "actor is not inside my lite radius")
+			if self.player then self:senseDebug("vision", "actor is not inside my lite radius") end
 			if game.level and game.level.data and game.level.data.ambient_light then
-				if (self.nightvision and dist <= (game.level.data.ambient_light + self.nightvision)) or
-				    dist <= game.level.data.ambient_light then
-					self:senseDebug("vision", "actor is visible in ambient light")
+				--if (self.nightvision and dist <= (game.level.data.ambient_light + self.nightvision)) or
+				--    dist <= game.level.data.ambient_light then
+				if dist <= game.level.data.ambient_light then
+					if self.player then self:senseDebug("vision", "actor is visible in ambient light") end
 					-- fall through --return true, 100
 				else
-					self:senseDebug("vision", "actor is not visible in ambient light")
+					if self.player then self:senseDebug("vision", "actor is not visible in ambient light") end
 					return false, 0
 				end
-			else
+			--[[else
+				self:senseDebug("vision", "no or insufficient ambient light")
 				if self.infravision and self.infravision >= dist then
 					self:senseDebug("vision", "actor is visible due to infravision")
 					-- fall through -- return true, 100
@@ -372,7 +392,7 @@ function _M:canSee(actor, def, def_pct)
 						self:senseDebug("vision", "actor is not visible, no ambient light, no infravision")
 						return false, 0
 					end
-				end
+				end--]]
 			end
 		end
 	end
@@ -391,6 +411,8 @@ function _M:canSee(actor, def, def_pct)
         end
 	end
 
+	-- Yes, we see him!
+	if self.player then self:senseDebug("vision", "actor is seen!") end
 	return true, 100
 end
 

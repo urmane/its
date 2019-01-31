@@ -53,3 +53,30 @@ newEntity{
         change_level=1, change_zone="asylum",
 }
 
+newEntity{
+        define_as = "HOVEL",
+        name="A dark alley leading to the old asylum.",
+        display='#', color=colors.VIOLET,
+        image = "terrain/fixme.png",
+        notice = true,
+        always_remember = true,
+        does_block_move = true,
+        block_sight = true,
+        show_tooltip = true,
+        -- do this here?
+        gold = resolvers.rngavg(1,5),
+        on_block_bump = function(g, e) if e.player then
+                engine.ui.Dialog:yesnoPopup("Loot", "Loot this poor hovel?",
+                                                --function(ok) if ok then game.player:incGold(10) end end,
+                                                function(ok) if ok then
+                                                        if g.gold > 0 then
+                                                                game.player:incGold(g.gold or 0)
+                                                                g.gold = 0
+                                                        else 
+                                                                game.log("Nothing worthwhile here.")
+                                                        end
+                                                end end,
+                                                "Loot!", "Cancel")
+        end end,
+        --on_block_bump_msg = "Loot this poor hovel?",
+}

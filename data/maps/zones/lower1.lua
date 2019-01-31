@@ -4,11 +4,13 @@ starty = 2
 endx = 0
 endy = 2
 
-defineTile(".", "GRASS")
+defineTile(".", "DIRT")
 defineTile("s", "SIGN")
 defineTile(":", "PAVED_ROAD")
+defineTile(",", "DIRT_ROAD")
 defineTile("~", "DEEP_WATER")
-defineTile("#", "WALL")
+defineTile("#", "HOVEL")
+
 defineTile("_", "WALL", nil, nil, nil, {on_block_change="GRASS", on_block_change_msg="You've discovered a secret passage!"})
 defineTile("^", "GRAVESTONE")
 defineTile("'", "DOOR_OPEN")
@@ -16,6 +18,7 @@ defineTile("+", "DOOR_LOCKED")
 defineTile("=", "FENCE")
 defineTile("|", "TREE")
 defineTile("F", "FOUNTAIN")
+
 defineTile("M", "TO_MARKET")
 defineTile(">", "DOWN")
 
@@ -24,7 +27,7 @@ return [[||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 |^^^.s.........................................................|
 >::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::M
 |................p.............:.....p.........................|
-|_|||||=======================.:.==============================|
+|_|||||=======================.:..................#..#...#..#..|
 |.###.......#.......###........:...............................|
 |.#########.#.#####.#.#.#####..:...............................|
 |.#1#|#.....#.#...#.#+#.#...#..:...............................|

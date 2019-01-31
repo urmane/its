@@ -112,8 +112,8 @@ function _M:display()
     -- spacer 
     h = h + self.font_h
 
-    --self:makeTexture("#ffcc80#Gold:", nil, player:getGold(), player.max_gold, 0, x, h, 0, 0, 0, colors.GOLD, {r=colors.GOLD.r/2, g=colors.GOLD.g/2, b=colors.GOLD.b/2})
-    --h = h + self.font_h
+    self:makeTexture(("#ffcc80#Gold: %s"):format(player:getGold() or 0), x, h, colors.GOLD.r, colors.GOLD.g, colors.GOLD.b)
+    h = h + self.font_h
 
 --    self:makeTextureBar("#ffcc80#Power:", nil, player:getPower(), player.max_power, player.power_regen, x, h, 255, 255, 255, colors.DARK_BLUE, {r=colors.DARK_BLUE.r/2, g=colors.DARK_BLUE.g/2, b=colors.DARK_BLUE.b/2})
 --    h = h + self.font_h
@@ -122,6 +122,9 @@ function _M:display()
     --h = h + self.font_h
 
     self:makeTexture(("Zone: %s"):format(game.zone.name or "none"), x, h, 255, 255, 255)
+    h = h + self.font_h
+
+    self:makeTexture(("Area: %s"):format(game.level.data.name or "none"), x, h, 255, 255, 255)
     h = h + self.font_h
 
     if savefile_pipe.saving then

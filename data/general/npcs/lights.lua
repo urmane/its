@@ -21,7 +21,7 @@ local Talents = require("engine.interface.ActorTalents")
 
 newEntity{
 	define_as = "BASE_LIGHT",
-	type = "light", subtype = "light",
+	type = "light", subtype = "man-made light",
 	display = "*", color=colors.YELLOW,
 	desc = [[A stationary light.]],
 	ai = "none",
@@ -49,9 +49,9 @@ newEntity{ base = "BASE_LIGHT",
 	lite = 4,		-- radius of the light this actor puts out
 	lite_pulse = 90,        -- percent chance per turn to mod lite
 	lite_pulse_step = 1,    -- amount and step to inc/dec
-	lite_min = 2,           -- min radius
-	lite_max = 4,           -- max radius
-	sight = 4,		-- absolute limit of sight
+	lite_min = 3,           -- min radius
+	lite_max = 6,           -- max radius
+	sight = 6,		-- absolute limit of sight
 	nightvision = 0,		-- minimum light level this actor can distinguish
 	max_life = 1,
 	combat = { dam=1 },
@@ -65,9 +65,9 @@ newEntity{ base = "BASE_LIGHT",
 	lite = 2,		-- radius of the light this actor puts out
 	lite_pulse = 20,        -- percent chance per turn to mod lite
 	lite_pulse_step = 1,    -- amount and step to inc/dec
-	lite_min = 1,           -- min radius
-	lite_max = 2,           -- max radius
-	sight = 2,		-- absolute limit of sight
+	lite_min = 2,           -- min radius
+	lite_max = 4,           -- max radius
+	sight = 4,		-- absolute limit of sight
 	nightvision = 0,		-- minimum light level this actor can distinguish
 	max_life = 1,
 	combat = { dam=1 },

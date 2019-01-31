@@ -3,7 +3,7 @@ starty = 3
 
 defineTile(".", "FLOOR")
 defineTile("#", "WALL")
-defineTile("'", "CELL_DOOR")
+defineTile("'", "CELL_DOOR_CLOSED")
 defineTile("+", "CELL_DOOR_LOCKED")
 defineTile("$", "FLOOR", "A_FEW_COINS")
 defineTile("1", "FLOOR", "PERSIAN_RUG")

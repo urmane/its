@@ -64,14 +64,17 @@ ActorTalents:loadDefinition("/data/talents.lua")
 ActorTemporaryEffects:loadDefinition("/data/timed_effects.lua")
 
 -- Actor resources
-ActorResource:defineResource("Gold", "gold", nil, nil, "Total liquid assets portion of total net worth.")
+-- Oops duh Gold cannot be a Resource or a Stat, it's hard-coded into Actor
+--ActorResource:defineResource("Gold", "gold", nil, nil, "Total liquid assets portion of total net worth.", 0, 1000)
 ActorResource:defineResource("Power", "power", nil, "power_regen", "Power represent your ability to use special talents.")
 ActorResource:defineResource("breath", "breath", nil, "power_regen", "Holding your breath.")
 ActorResource:defineResource("Earth", "earth", nil, "power_regen", "Earth mana.")
 ActorResource:defineResource("Air",   "air",   nil, "power_regen", "Air mana.")
 ActorResource:defineResource("Fire",  "fire", nil, "power_regen", "Fire mana.")
 ActorResource:defineResource("Water", "water", nil, "power_regen", "Water mana.")
-ActorResource:defineResource("Reputation", "reputation", nil, "power_regen", "Notoriety.")
+ActorResource:defineResource("Reputation", "reputation", nil, nil, "Notoriety.", 0, nil)
+ActorResource:defineResource("Fame", "fame", nil, nil, "Fame.", 0, nil)
+ActorResource:defineResource("Infamy", "infamy", nil, nil, "Infamy.", 0, nil)
 
 -- Actor stats
 -- Body

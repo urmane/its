@@ -17,6 +17,9 @@
 -- James Niemira "urmane"
 -- jim.niemira@gmail.com
 
+
+load("/data/general/grids/lockables.lua")
+
 newEntity{
 	define_as = "TO_WORLDMAP",
 	name = "Exit to the World Map",
@@ -83,35 +86,4 @@ newEntity{
 	display = '~', color_r=0, color_g=0, color_b=255, back_color=colors.DARK_BLUE,
 }
 
-newEntity{
-	define_as = "DOOR",
-	name = "door", image = "terrain/granite_door_closed.png",
-	display = '+', color_r=238, color_g=154, color_b=77, back_color=colors.DARK_UMBER,
-	notice = true,
-	always_remember = true,
-	block_sight = true,
-	door_opened = "DOOR_OPEN",
-	dig = "DOOR_OPEN",
-}
-
-newEntity{
-	define_as = "DOOR_OPEN",
-	name = "open door", image = "terrain/granite_door_open.png",
-	display = "'", color_r=238, color_g=154, color_b=77, back_color=colors.DARK_GREY,
-	always_remember = true,
-	door_closed = "DOOR",
-}
-
--- putting lock_mfctr here makes them all the same for a level ... hm ...
-newEntity{
-	define_as = "DOOR_LOCKED",
-	name = "locked door", image = "terrain/granite_door_closed.png",
-	display = '+', color_r=238, color_g=154, color_b=77, back_color=colors.DARK_UMBER,
-	notice = true,
-	always_remember = true,
-	block_sight = true,
-	door_unlocked = "DOOR",
-	lock_mfctr=game.markov["elvish"]:generateWord("E", 3, 9),
-	lock_value = 10,
-}
 
